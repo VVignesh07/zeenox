@@ -16,10 +16,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         <a href="#" className="font-display text-2xl font-bold tracking-tight">
-          <span className="gradient-text">Zeenox</span>
+          <span className="gradient-text">✦ Zeenox</span>
         </a>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <a
@@ -32,13 +31,12 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
-            className="rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition-all hover:shadow-[0_0_25px_hsla(190,100%,50%,0.4)]"
+            className="rounded-full btn-primary-glow px-6 py-2 text-sm"
           >
-            Start a Project
+            Get In Touch
           </a>
         </div>
 
-        {/* Mobile toggle */}
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -66,9 +64,9 @@ const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+                className="rounded-full btn-primary-glow px-6 py-2.5 text-center text-sm"
               >
-                Start a Project
+                Get In Touch
               </a>
             </div>
           </motion.div>
