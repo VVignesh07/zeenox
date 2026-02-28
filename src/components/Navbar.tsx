@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["Services", "Portfolio", "About", "Contact"];
+const navItems = ["About", "Services", "Portfolio", "Process", "Contact"];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -11,11 +11,11 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, delay: 1.8 }}
       className="fixed top-0 left-0 right-0 z-50 glass-strong"
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="font-display text-2xl font-bold tracking-tight">
+        <a href="#" className="font-display text-xl font-bold tracking-tight">
           <span className="gradient-text">✦ Zeenox</span>
         </a>
 
@@ -24,21 +24,18 @@ const Navbar = () => {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300"
+              className="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               {item}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="rounded-full btn-primary-glow px-6 py-2 text-sm"
-          >
-            Get In Touch
+          <a href="#contact" className="rounded-full btn-primary-glow px-6 py-2 text-xs uppercase tracking-wider">
+            Start a Project
           </a>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -66,7 +63,7 @@ const Navbar = () => {
                 onClick={() => setOpen(false)}
                 className="rounded-full btn-primary-glow px-6 py-2.5 text-center text-sm"
               >
-                Get In Touch
+                Start a Project
               </a>
             </div>
           </motion.div>
