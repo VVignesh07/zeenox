@@ -10,7 +10,7 @@ const services = [
   {
     icon: Palette,
     title: "Brand Identity",
-    desc: "Compelling visual identities that resonate with your audience and market.",
+    desc: "Compelling visual identities that resonate with your audience.",
   },
   {
     icon: Megaphone,
@@ -25,12 +25,12 @@ const services = [
   {
     icon: Code,
     title: "App Development",
-    desc: "Native and cross-platform mobile apps with seamless user experiences.",
+    desc: "Native and cross-platform mobile apps with seamless UX.",
   },
   {
     icon: BarChart3,
     title: "Analytics & SEO",
-    desc: "Turn data into insights with advanced analytics and search optimization.",
+    desc: "Turn data into insights with advanced analytics and optimization.",
   },
 ];
 
@@ -44,15 +44,16 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-primary">
-            What We Do
+          <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+            ✦ Our Services
           </span>
           <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Services That <span className="gradient-text">Drive Growth</span>
+            Our Best Quality{" "}
+            <span className="font-serif-accent gradient-text">Service</span>
           </h2>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <motion.div
               key={s.title}
@@ -60,10 +61,10 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="group rounded-2xl p-8 glass glow-border glow-border-hover transition-all duration-300 cursor-pointer"
+              whileHover={{ y: -6 }}
+              className="group rounded-2xl p-8 card-dark card-dark-hover transition-all duration-300 cursor-pointer"
             >
-              <div className="mb-5 inline-flex rounded-xl bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary/20">
+              <div className="mb-5 inline-flex rounded-xl bg-secondary p-3.5 text-primary transition-colors group-hover:bg-primary/10">
                 <s.icon size={24} />
               </div>
               <h3 className="mb-2 font-display text-lg font-semibold text-foreground">{s.title}</h3>
