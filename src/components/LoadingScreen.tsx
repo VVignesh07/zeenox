@@ -32,9 +32,11 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center gap-8"
           >
-            <h1 className="font-display text-4xl font-bold">
-              <span className="gradient-text">✦ Zeenox</span>
-            </h1>
+            <img
+              src="/images/logo2.png"
+              alt="Zeenox"
+              className="h-16 w-auto"
+            />
             <div className="relative h-[2px] w-48 overflow-hidden rounded-full bg-secondary">
               <motion.div
                 className="absolute inset-y-0 left-0 bg-primary"
