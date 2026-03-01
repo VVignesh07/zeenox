@@ -305,35 +305,56 @@ const PricingSection = () => {
                         We build conversion-focused, scalable, and tailored digital solutions for your business.
                     </p>
 
-                    <div className="mx-auto mt-10 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-secondary/30 p-1.5 backdrop-blur-md">
-                        <button
-                            onClick={() => setActiveTab("website")}
-                            className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "website" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"
-                                }`}
-                        >
-                            Website Packages
-                        </button>
-                        <button
-                            onClick={() => setActiveTab("app")}
-                            className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "app" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"
-                                }`}
-                        >
-                            Mobile App Packages
-                        </button>
-                        <button
-                            onClick={() => setActiveTab("video")}
-                            className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "video" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"
-                                }`}
-                        >
-                            Video Content
-                        </button>
-                        <button
-                            onClick={() => setActiveTab("ecommerce")}
-                            className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "ecommerce" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"
-                                }`}
-                        >
-                            E-Commerce
-                        </button>
+                    {/* Mobile: 2x2 grid | Desktop: pill row */}
+                    <div className="mx-auto mt-10 w-full max-w-md sm:max-w-none sm:w-auto">
+                        {/* Mobile grid */}
+                        <div className="grid grid-cols-2 gap-3 sm:hidden">
+                            {[
+                                { key: "website", icon: "🌐", label: "Website" },
+                                { key: "app", icon: "📱", label: "Mobile App" },
+                                { key: "video", icon: "🎬", label: "Video Content" },
+                                { key: "ecommerce", icon: "🛒", label: "E-Commerce" },
+                            ].map(({ key, icon, label }) => (
+                                <button
+                                    key={key}
+                                    onClick={() => setActiveTab(key as "website" | "app" | "video" | "ecommerce")}
+                                    className={`flex flex-col items-center justify-center gap-1.5 rounded-2xl border px-4 py-4 text-sm font-semibold transition-all duration-300 ${activeTab === key
+                                            ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                                            : "border-border bg-secondary/30 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                                        }`}
+                                >
+                                    <span className="text-xl">{icon}</span>
+                                    <span className="text-xs font-medium">{label}</span>
+                                </button>
+                            ))}
+                        </div>
+                        {/* Desktop pill row */}
+                        <div className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full border border-border bg-secondary/30 p-1.5 backdrop-blur-md">
+                            <button
+                                onClick={() => setActiveTab("website")}
+                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "website" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
+                            >
+                                Website Packages
+                            </button>
+                            <button
+                                onClick={() => setActiveTab("app")}
+                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "app" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
+                            >
+                                Mobile App Packages
+                            </button>
+                            <button
+                                onClick={() => setActiveTab("video")}
+                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "video" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
+                            >
+                                Video Content
+                            </button>
+                            <button
+                                onClick={() => setActiveTab("ecommerce")}
+                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "ecommerce" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
+                            >
+                                E-Commerce
+                            </button>
+                        </div>
                     </div>
                 </motion.div>
 
