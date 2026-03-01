@@ -7,7 +7,13 @@ const Footer = () => {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <span className="font-display text-xl font-bold gradient-text">✦ Zeenox</span>
+            <div className="flex items-center gap-2">
+              <img
+                src="/images/logo2.png"
+                alt="Zeenox Logo"
+                className="h-10 w-auto"
+              />
+            </div>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               Media. Technology. Automation.
               Building growth engines for brands worldwide.
@@ -45,8 +51,8 @@ const Footer = () => {
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">Connect</h4>
             <div className="flex flex-col gap-3">
               <span className="text-sm text-muted-foreground">hello@zeenox.agency</span>
-              <span className="text-sm text-muted-foreground">+91 98765 43210</span>
-              <span className="text-sm text-muted-foreground">Mumbai, India</span>
+              <span className="text-sm text-muted-foreground">+91 7603917369</span>
+              <span className="text-sm text-muted-foreground">vakkanangundu, 626104</span>
               <a href="#" className="mt-2 inline-flex items-center gap-2 text-sm text-primary hover:underline">
                 <Download size={14} /> Download CV
               </a>

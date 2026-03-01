@@ -39,9 +39,9 @@ const ContactSection = () => {
           >
             <div className="flex flex-col gap-5">
               {[
-                { icon: Phone, label: "Call", text: "+91 98765 43210" },
+                { icon: Phone, label: "Call", text: "+91 7603917369" },
                 { icon: Mail, label: "Email", text: "hello@zeenox.agency" },
-                { icon: MapPin, label: "Location", text: "Mumbai, India" },
+                { icon: MapPin, label: "Location", text: "vakkanangundu, 626104" },
               ].map(({ icon: Icon, label, text }) => (
                 <div key={label} className="flex items-center gap-4 rounded-xl p-4 card-dark card-dark-hover transition-all">
                   <div className="rounded-lg bg-primary/10 p-3 text-primary">
@@ -58,7 +58,7 @@ const ContactSection = () => {
             {/* Quick links */}
             <div className="flex flex-col gap-3 mt-2">
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/917603917369"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 rounded-xl p-4 card-dark card-dark-hover transition-all text-sm"
@@ -83,6 +83,27 @@ const ContactSection = () => {
             viewport={{ once: true }}
             onSubmit={(e) => {
               e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const name = formData.get("name") as string;
+              const phone = formData.get("phone") as string;
+              const email = formData.get("email") as string;
+              const subject = formData.get("subject") as string;
+              const message = formData.get("message") as string;
+
+              // Construct the WhatsApp message text
+              let text = `*New Contact Request*\n\n`;
+              text += `*Name:* ${name}\n`;
+              text += `*Phone:* ${phone}\n`;
+              text += `*Email:* ${email}\n`;
+              if (subject) text += `*Subject:* ${subject}\n`;
+              text += `*Message:* ${message}`;
+
+              // Encode the message
+              const encodedMessage = encodeURIComponent(text);
+
+              // Open WhatsApp
+              window.open(`https://wa.me/917603917369?text=${encodedMessage}`, "_blank");
+
               setSubmitted(true);
             }}
             className="flex flex-col gap-5 rounded-2xl p-8 card-dark glow-border"
@@ -105,15 +126,15 @@ const ContactSection = () => {
                   ].map((field) => (
                     <div key={field.name} className="relative">
                       <label
-                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                          focused === field.name
-                            ? "top-1 text-[10px] text-primary"
-                            : "top-3.5 text-sm text-muted-foreground"
-                        }`}
+                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === field.name
+                          ? "top-1 text-[10px] text-primary"
+                          : "top-3.5 text-sm text-muted-foreground"
+                          }`}
                       >
                         {field.label}*
                       </label>
                       <input
+                        name={field.name}
                         type={field.type}
                         required
                         onFocus={() => setFocused(field.name)}
@@ -125,15 +146,15 @@ const ContactSection = () => {
                 </div>
                 <div className="relative">
                   <label
-                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                      focused === "email"
-                        ? "top-1 text-[10px] text-primary"
-                        : "top-3.5 text-sm text-muted-foreground"
-                    }`}
+                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === "email"
+                      ? "top-1 text-[10px] text-primary"
+                      : "top-3.5 text-sm text-muted-foreground"
+                      }`}
                   >
                     Email Address*
                   </label>
                   <input
+                    name="email"
                     type="email"
                     required
                     onFocus={() => setFocused("email")}
@@ -143,15 +164,15 @@ const ContactSection = () => {
                 </div>
                 <div className="relative">
                   <label
-                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                      focused === "subject"
-                        ? "top-1 text-[10px] text-primary"
-                        : "top-3.5 text-sm text-muted-foreground"
-                    }`}
+                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === "subject"
+                      ? "top-1 text-[10px] text-primary"
+                      : "top-3.5 text-sm text-muted-foreground"
+                      }`}
                   >
                     Subject
                   </label>
                   <input
+                    name="subject"
                     type="text"
                     onFocus={() => setFocused("subject")}
                     onBlur={(e) => { if (!e.target.value) setFocused(null); }}
@@ -160,15 +181,15 @@ const ContactSection = () => {
                 </div>
                 <div className="relative">
                   <label
-                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                      focused === "message"
-                        ? "top-1 text-[10px] text-primary"
-                        : "top-3.5 text-sm text-muted-foreground"
-                    }`}
+                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === "message"
+                      ? "top-1 text-[10px] text-primary"
+                      : "top-3.5 text-sm text-muted-foreground"
+                      }`}
                   >
                     Message*
                   </label>
                   <textarea
+                    name="message"
                     rows={4}
                     required
                     onFocus={() => setFocused("message")}

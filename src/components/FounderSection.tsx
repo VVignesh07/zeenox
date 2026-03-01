@@ -3,8 +3,7 @@ import { useRef, useEffect, useState } from "react";
 
 const stats = [
   { value: 6, suffix: "+", label: "Projects Completed" },
-  { value: 5, suffix: "+", label: "Brands Worked With" },
-  { value: 20, suffix: "K+", label: "Revenue Generated" },
+  { value: 6, suffix: "+", label: "Brands Worked With" },
   { value: 3, suffix: "+", label: "Years Experience" },
 ];
 
@@ -81,7 +80,7 @@ const FounderSection = () => {
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               I help brands scale using content, technology, and automation systems.
-              With 8+ years of experience across healthcare, fashion, jewellery, and wellness
+              With 3 years of experience across healthcare, fashion, jewellery, and wellness
               industries, I've built Zeenox into a powerhouse agency that delivers measurable results.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">

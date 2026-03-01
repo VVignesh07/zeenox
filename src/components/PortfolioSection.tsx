@@ -5,10 +5,10 @@ import { useState } from "react";
 type Category = "All" | "Media" | "Tech" | "Branding" | "Automation";
 
 const projects = [
-  { title: "Aura Clinic", category: "Tech" as Category, industry: "Healthcare", result: "+300% bookings", image: "/images/project-aura-clinic.webp" },
-  { title: "Luxe Jewels", category: "Branding" as Category, industry: "Jewellery", result: "+180% brand awareness", image: "/images/project-luxe-jewels.webp" },
-  { title: "Urban Thread", category: "Media" as Category, industry: "Fashion", result: "+3x online sales", image: "/images/project-urban-thread.webp" },
-  { title: "Herbal Roots", category: "Tech" as Category, industry: "Wellness", result: "+250% web traffic", image: "/images/project-herbal-roots.webp" },
+  { title: "Venu's Health Care", category: "Tech" as Category, industry: "Healthcare", result: "+300% bookings", image: "/images/project-aura-clinic.webp" },
+  { title: "KVP Jewellery", category: "Tech" as Category, industry: "Jewellery", result: "+180% brand awareness", image: "/images/project-luxe-jewels.webp" },
+  { title: "Zero Fashion", category: "Tech" as Category, industry: "Fashion", result: "+3x online sales", image: "/images/project-urban-thread.webp" },
+  { title: "Lovein", category: "Tech" as Category, industry: "Wellness", result: "+250% web traffic", image: "/images/project-herbal-roots.webp" },
   { title: "FitPro CRM", category: "Automation" as Category, industry: "Fitness", result: "40hrs/mo saved", image: "/images/project-fitpro-crm.webp" },
   { title: "StyleVault", category: "Media" as Category, industry: "Fashion", result: "+500K reach", image: "/images/project-stylevault.webp" },
   { title: "MediConnect", category: "Automation" as Category, industry: "Healthcare", result: "+90% efficiency", image: "/images/project-mediconnect.webp" },
@@ -51,11 +51,10 @@ const PortfolioSection = () => {
             <button
               key={f}
               onClick={() => setActive(f)}
-              className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                active === f
-                  ? "btn-primary-glow"
-                  : "border border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
-              }`}
+              className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${active === f
+                ? "btn-primary-glow"
+                : "border border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
+                }`}
             >
               {f}
             </button>

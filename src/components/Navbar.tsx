@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navItems = ["About", "Services", "Portfolio", "Process", "Contact"];
+const navItems = ["About", "Services", "Portfolio", "Pricing", "Contact"];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -15,8 +15,12 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-strong"
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="font-display text-xl font-bold tracking-tight">
-          <span className="gradient-text">✦ Zeenox</span>
+        <a href="#" className="flex items-center gap-2">
+          <img
+            src="/images/logo2.png"
+            alt="Zeenox Logo"
+            className="h-8 w-auto"
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -29,8 +33,8 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <a href="#contact" className="rounded-full btn-primary-glow px-6 py-2 text-xs uppercase tracking-wider">
-            Start a Project
+          <a href="tel:7603917369" className="rounded-full btn-primary-glow px-6 py-2 text-xs uppercase tracking-wider">
+            Call Now
           </a>
         </div>
 
@@ -59,11 +63,11 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="tel:7603917369"
                 onClick={() => setOpen(false)}
                 className="rounded-full btn-primary-glow px-6 py-2.5 text-center text-sm"
               >
-                Start a Project
+                Call Now
               </a>
             </div>
           </motion.div>
