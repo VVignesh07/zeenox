@@ -64,11 +64,11 @@ const websitePackages: Package[] = [
             "15 Days Bug Support",
             "Delivery in 7–10 Days",
             "1 Year Free Domain & Hosting",
+            "Payment Gateway Integration",
         ],
         notIncluded: [
             "Advanced Dashboard",
             "Multiple Admin Roles",
-            "Payment Gateway",
             "E-commerce System",
             "Advanced Animations",
             "Custom UI from Scratch",
@@ -95,12 +95,12 @@ const websitePackages: Package[] = [
             "2–3 Revisions",
             "Delivery in 10–15 Days",
             "1 Year Free Domain & Hosting",
+            "Payment Gateway Integration",
         ],
         notIncluded: [
             "Custom Web Application Logic",
             "Complex Reports",
             "Third-Party API Heavy Integration",
-            "Payment Gateway (Optional Extra)",
             "Custom Animation Development",
             "Lifetime Free Maintenance",
         ],
@@ -207,12 +207,84 @@ const videoPackages: Package[] = [
     },
 ];
 
+const ecommercePackages: Package[] = [
+    {
+        name: "Starter E-Commerce",
+        price: "₹20,000",
+        subtitle: "Best for small brands starting online.",
+        color: "bg-green-500/10 text-green-500 border-green-500/20",
+        badge: "Entry Level",
+        features: [
+            "Professional Theme Setup",
+            "Up to 30 Products Upload",
+            "Category Setup",
+            "Cart & Secure Checkout",
+            "Payment Gateway Integration",
+            "Shipping Setup",
+            "Mobile Responsive Design",
+            "Basic On-Page SEO",
+            "2 Revisions",
+            "15 Days Technical Support",
+        ],
+        notIncluded: [
+            "Custom UI Design",
+            "Unlimited Products",
+            "Advanced Analytics",
+            "Marketing Automation",
+            "Multi-Vendor System",
+            "Ongoing SEO / Ads",
+        ],
+    },
+    {
+        name: "Business E-Commerce",
+        price: "₹30,000",
+        subtitle: "Best for growing brands.",
+        recommended: true,
+        color: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
+        badge: "Recommended Plan",
+        features: [
+            "Custom Homepage Design",
+            "Unlimited Product Upload",
+            "Admin Dashboard",
+            "Order & Customer Management",
+            "Coupon / Discount System",
+            "Payment & Shipping Integration",
+            "Basic Sales Reports",
+            "Speed Optimization",
+            "1 Month Support",
+            "3 Revisions",
+        ],
+        notIncluded: [
+            "ERP Integration",
+            "Complex Inventory Automation",
+            "Multi-Warehouse System",
+            "Custom Mobile App",
+        ],
+    },
+    {
+        name: "Advanced E-Commerce",
+        price: "Custom Pricing",
+        subtitle: "For serious scalable brands.",
+        color: "bg-blue-500/10 text-blue-500 border-blue-500/20",
+        features: [
+            "Fully Custom UI/UX",
+            "Advanced Admin Panel",
+            "Role-Based Access",
+            "Detailed Sales Analytics",
+            "Performance Optimization",
+            "Security Hardening",
+            "2 Months Support",
+        ],
+    },
+];
+
 const PricingSection = () => {
-    const [activeTab, setActiveTab] = useState<"website" | "app" | "video">("website");
+    const [activeTab, setActiveTab] = useState<"website" | "app" | "video" | "ecommerce">("website");
 
     let packages = websitePackages;
     if (activeTab === "app") packages = appPackages;
     if (activeTab === "video") packages = videoPackages;
+    if (activeTab === "ecommerce") packages = ecommercePackages;
 
     return (
         <section id="pricing" className="relative py-28 bg-background">
@@ -254,6 +326,13 @@ const PricingSection = () => {
                                 }`}
                         >
                             Video Content
+                        </button>
+                        <button
+                            onClick={() => setActiveTab("ecommerce")}
+                            className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "ecommerce" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"
+                                }`}
+                        >
+                            E-Commerce
                         </button>
                     </div>
                 </motion.div>
