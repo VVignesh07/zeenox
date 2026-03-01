@@ -5,14 +5,14 @@ import { useState } from "react";
 type Category = "All" | "Media" | "Tech" | "Branding" | "Automation";
 
 const projects = [
-  { title: "Aura Clinic", category: "Tech" as Category, industry: "Healthcare", result: "+300% bookings" },
-  { title: "Luxe Jewels", category: "Branding" as Category, industry: "Jewellery", result: "+180% brand awareness" },
-  { title: "Urban Thread", category: "Media" as Category, industry: "Fashion", result: "+3x online sales" },
-  { title: "Herbal Roots", category: "Tech" as Category, industry: "Wellness", result: "+250% web traffic" },
-  { title: "FitPro CRM", category: "Automation" as Category, industry: "Fitness", result: "40hrs/mo saved" },
-  { title: "StyleVault", category: "Media" as Category, industry: "Fashion", result: "+500K reach" },
-  { title: "MediConnect", category: "Automation" as Category, industry: "Healthcare", result: "+90% efficiency" },
-  { title: "GoldCraft", category: "Branding" as Category, industry: "Jewellery", result: "+220% engagement" },
+  { title: "Aura Clinic", category: "Tech" as Category, industry: "Healthcare", result: "+300% bookings", image: "/images/project-aura-clinic.webp" },
+  { title: "Luxe Jewels", category: "Branding" as Category, industry: "Jewellery", result: "+180% brand awareness", image: "/images/project-luxe-jewels.webp" },
+  { title: "Urban Thread", category: "Media" as Category, industry: "Fashion", result: "+3x online sales", image: "/images/project-urban-thread.webp" },
+  { title: "Herbal Roots", category: "Tech" as Category, industry: "Wellness", result: "+250% web traffic", image: "/images/project-herbal-roots.webp" },
+  { title: "FitPro CRM", category: "Automation" as Category, industry: "Fitness", result: "40hrs/mo saved", image: "/images/project-fitpro-crm.webp" },
+  { title: "StyleVault", category: "Media" as Category, industry: "Fashion", result: "+500K reach", image: "/images/project-stylevault.webp" },
+  { title: "MediConnect", category: "Automation" as Category, industry: "Healthcare", result: "+90% efficiency", image: "/images/project-mediconnect.webp" },
+  { title: "GoldCraft", category: "Branding" as Category, industry: "Jewellery", result: "+220% engagement", image: "/images/project-goldcraft.webp" },
 ];
 
 const filters: Category[] = ["All", "Media", "Tech", "Branding", "Automation"];
@@ -75,16 +75,25 @@ const PortfolioSection = () => {
               whileHover={{ y: -6 }}
               className="group relative overflow-hidden rounded-2xl card-dark card-dark-hover transition-all cursor-pointer"
             >
-              <div className="aspect-[4/3] flex flex-col justify-between p-6">
-                <div>
-                  <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
-                    {p.category}
-                  </span>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">{p.industry}</p>
-                  <h3 className="font-display text-lg font-bold text-foreground">{p.title}</h3>
-                  <p className="mt-1 text-xs font-medium text-primary">{p.result}</p>
+              <div className="aspect-[4/3] relative">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-between p-6">
+                  <div>
+                    <span className="inline-flex rounded-full bg-primary/10 backdrop-blur-sm px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                      {p.category}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1">{p.industry}</p>
+                    <h3 className="font-display text-lg font-bold text-foreground">{p.title}</h3>
+                    <p className="mt-1 text-xs font-medium text-primary">{p.result}</p>
+                  </div>
                 </div>
               </div>
               <div className="absolute inset-0 flex items-center justify-center bg-background/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

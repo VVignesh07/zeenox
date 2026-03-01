@@ -48,12 +48,14 @@ const FounderSection = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative mx-auto aspect-[3/4] max-w-sm overflow-hidden rounded-3xl card-dark glow-border">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background/80" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
-                <div className="h-28 w-28 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center mb-6">
-                  <span className="font-display text-3xl font-bold gradient-text">AP</span>
-                </div>
+            <div className="relative mx-auto aspect-[3/4] max-w-sm overflow-hidden rounded-3xl glow-border">
+              <img
+                src="/images/founder-arun.webp"
+                alt="Arun Pandian - Founder & CEO of Zeenox"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/90" />
+              <div className="absolute bottom-6 left-0 right-0 text-center">
                 <h3 className="font-display text-xl font-bold text-foreground">Arun Pandian</h3>
                 <p className="text-sm text-primary mt-1">Founder & CEO</p>
               </div>
