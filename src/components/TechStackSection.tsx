@@ -34,7 +34,7 @@ const TechStackSection = () => {
           {[...techStack, ...techStack].map((tech, i) => (
             <div
               key={`${tech}-${i}`}
-              className="mx-4 flex-shrink-0 rounded-xl border border-border bg-card px-8 py-4 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
+              className="mx-4 flex-shrink-0 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-8 py-4 text-sm font-medium text-foreground/80 shadow-[0_8px_32px_0_rgba(255,255,255,0.02)] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 hover:text-foreground hover:shadow-[0_8px_32px_0_rgba(255,255,255,0.05)]"
             >
               {tech}
             </div>

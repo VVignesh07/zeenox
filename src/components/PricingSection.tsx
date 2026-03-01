@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Star } from "lucide-react";
+import { Check, Star, X } from "lucide-react";
 
 interface Package {
     name: string;
     price: string;
     subtitle: string;
     features: string[];
+    notIncluded?: string[];
     recommended?: boolean;
     color: string;
     note?: string;
@@ -17,36 +18,64 @@ const websitePackages: Package[] = [
     {
         name: "Starter Website",
         price: "₹5,000",
-        subtitle: "Perfect for small businesses starting their online presence.",
+        subtitle: "Purpose: Entry level small shops.",
         color: "bg-green-500/10 text-green-500 border-green-500/20",
         badge: "Lead Magnet",
         features: [
-            "1 Page Landing Website",
-            "Mobile Responsive Design",
+            "1 Page (Scrolling Landing Page)",
+            "Template-Based Design",
+            "Mobile Responsive",
             "Contact Form",
-            "WhatsApp Integration",
+            "WhatsApp Button",
             "Google Map Integration",
-            "1 Revision",
-            "Delivery in 5–7 Days",
+            "Basic Hosting Setup Support",
+            "1 Revision Only",
+            "Delivery in 4–5 Days",
         ],
-        note: "No admin panel. Limited customization.",
+        notIncluded: [
+            "Admin Panel",
+            "Custom UI Design",
+            "SEO Optimization",
+            "Blog / Product Section",
+            "Speed Optimization",
+            "Multiple Revisions",
+            "Content Writing",
+            "Domain & Hosting Cost",
+            "Payment Gateway",
+            "Logo Design",
+        ],
     },
     {
         name: "Business Website",
         price: "₹15,000",
-        subtitle: "Ideal for businesses looking for lead generation & professional branding.",
+        subtitle: "Purpose: Small businesses who want lead generation.",
         recommended: true,
         color: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
         badge: "Most Recommended",
         features: [
-            "5–6 Pages",
-            "Admin Panel (Basic Content Update)",
-            "Lead Capture Forms",
-            "Mobile Optimized",
-            "Basic SEO Setup",
-            "Speed Optimization",
+            "5–6 Pages (Home, About, Services, Contact, etc.)",
+            "Basic Admin Panel (Content Edit – 1 Module)",
+            "Lead Capture Form",
+            "Mobile Responsive",
+            "Basic On-Page SEO Setup",
+            "Basic Speed Optimization",
+            "WhatsApp & Google Map",
             "2 Revisions",
-            "15 Days Technical Support",
+            "15 Days Bug Support",
+            "Delivery in 7–10 Days",
+            "1 Year Free Domain & Hosting",
+        ],
+        notIncluded: [
+            "Advanced Dashboard",
+            "Multiple Admin Roles",
+            "Payment Gateway",
+            "E-commerce System",
+            "Advanced Animations",
+            "Custom UI from Scratch",
+            "API Integrations",
+            "Unlimited Revisions",
+            "Ongoing SEO",
+            "Content Writing (Extra Cost)",
         ],
     },
     {
@@ -59,9 +88,21 @@ const websitePackages: Package[] = [
             "Full Admin Dashboard",
             "Blog / Product Management",
             "Database Integration",
-            "Performance Optimization",
+            "Advanced Forms",
             "Basic Security Setup",
-            "1 Month Support",
+            "Speed Optimization",
+            "1 Month Technical Support",
+            "2–3 Revisions",
+            "Delivery in 10–15 Days",
+            "1 Year Free Domain & Hosting",
+        ],
+        notIncluded: [
+            "Custom Web Application Logic",
+            "Complex Reports",
+            "Third-Party API Heavy Integration",
+            "Payment Gateway (Optional Extra)",
+            "Custom Animation Development",
+            "Lifetime Free Maintenance",
         ],
     },
 ];
@@ -262,7 +303,7 @@ const PricingSection = () => {
 
                                     <hr className="mb-6 border-border" />
 
-                                    <ul className="mb-10 flex flex-1 flex-col gap-4">
+                                    <ul className={`mb-6 flex flex-col gap-4 ${!pkg.notIncluded || pkg.notIncluded.length === 0 ? "flex-1" : ""}`}>
                                         {pkg.features.map((feature, i) => (
                                             <li key={i} className="flex items-start gap-3">
                                                 <div className="mt-0.5 shrink-0 rounded-full bg-primary/20 p-1 text-primary">
@@ -272,6 +313,23 @@ const PricingSection = () => {
                                             </li>
                                         ))}
                                     </ul>
+
+                                    {pkg.notIncluded && pkg.notIncluded.length > 0 && (
+                                        <>
+                                            <hr className="mb-6 border-border" />
+                                            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">Not Included</h4>
+                                            <ul className="mb-10 flex flex-1 flex-col gap-4 opacity-75">
+                                                {pkg.notIncluded.map((feature, i) => (
+                                                    <li key={i} className="flex items-start gap-3">
+                                                        <div className="mt-0.5 shrink-0 rounded-full bg-destructive/10 p-1 text-destructive">
+                                                            <X size={12} className="stroke-[3]" />
+                                                        </div>
+                                                        <span className="text-sm text-foreground/70 line-through decoration-foreground/20">{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </>
+                                    )}
 
                                     <div className="mt-auto flex flex-col gap-3">
                                         {pkg.note && (
@@ -332,6 +390,30 @@ const PricingSection = () => {
                                                 <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Editing Only</p>
                                                 <p className="text-xl font-bold">₹1,500 <span className="text-xs text-muted-foreground font-normal">/reel</span></p>
                                             </div>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : activeTab === "website" ? (
+                                <>
+                                    <div className="col-span-1 lg:col-span-3">
+                                        <h3 className="font-display text-2xl font-bold mb-4 text-primary">Extra Charges <span className="text-muted-foreground text-lg font-normal">(Very Important)</span></h3>
+                                        <p className="text-sm text-muted-foreground mb-6">These must always be separate based on actuals or specific requirements.</p>
+                                        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                                            {[
+                                                { label: "Domain Cost", price: "Actual Price" },
+                                                { label: "Hosting", price: "Actual Price" },
+                                                { label: "Content Writing", price: "₹2,000 – ₹5,000" },
+                                                { label: "Logo Design", price: "₹3,000+" },
+                                                { label: "Payment Gateway", price: "₹5,000+" },
+                                                { label: "Extra Revision", price: "₹1,000 / change" },
+                                                { label: "Maintenance", price: "₹2,000 / month" },
+                                            ].map((extra, i) => (
+                                                <div key={i} className="rounded-xl border border-border/50 bg-background/50 p-4 relative overflow-hidden">
+                                                    <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
+                                                    <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 relative z-10">{extra.label}</p>
+                                                    <p className="text-lg font-bold relative z-10">{extra.price}</p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </>
