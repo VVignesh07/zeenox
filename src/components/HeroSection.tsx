@@ -54,7 +54,7 @@ const HeroSection = () => {
             We Don't Just Build Brands.
             <br />
             <span className="font-serif-accent gradient-text glow-text">
-              We Engineer Growth.
+              We Build Brands That Grow.
             </span>
           </motion.h1>
 
