@@ -287,164 +287,135 @@ const PricingSection = () => {
     if (activeTab === "ecommerce") packages = ecommercePackages;
 
     return (
-        <section id="pricing" className="relative py-28 bg-background">
-            <div className="container mx-auto px-6">
+        <section id="pricing" className="relative py-32 bg-background overflow-hidden">
+            {/* Background elements for depth */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 text-center"
+                    className="mb-20 text-center"
                 >
-                    <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-                        ✦ Pricing Packages
+                    <span className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-primary/80">
+                        ✦ Pricing Packages ✦
                     </span>
-                    <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
-                        Choose Your <span className="font-serif-accent gradient-text">Growth</span> Plan
+                    <h2 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl tracking-tight">
+                        Choose Your <span className="font-serif-accent italic gradient-text">Growth</span> Plan
                     </h2>
-                    <p className="mx-auto mt-6 max-w-2xl text-muted-foreground">
-                        We build conversion-focused, scalable, and tailored digital solutions for your business.
+                    <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground/80 leading-relaxed">
+                        Invest in your digital future with transparent, conversion-focused, and tailored solutions.
                     </p>
 
-                    {/* Mobile: 2x2 grid | Desktop: pill row */}
-                    <div className="mx-auto mt-10 w-full max-w-md sm:max-w-none sm:w-auto">
-                        {/* Mobile grid */}
-                        <div className="grid grid-cols-2 gap-3 sm:hidden">
+                    <div className="mx-auto mt-12 w-full max-w-4xl">
+                        {/* Tab Switcher */}
+                        <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-secondary/20 border border-white/5 backdrop-blur-xl">
                             {[
-                                { key: "website", icon: "🌐", label: "Website" },
-                                { key: "app", icon: "📱", label: "Mobile App" },
-                                { key: "video", icon: "🎬", label: "Video Content" },
-                                { key: "ecommerce", icon: "🛒", label: "E-Commerce" },
-                            ].map(({ key, icon, label }) => (
+                                { key: "website", label: "Websites" },
+                                { key: "app", label: "Mobile Apps" },
+                                { key: "video", label: "Video Tech" },
+                                { key: "ecommerce", label: "E-Commerce" },
+                            ].map(({ key, label }) => (
                                 <button
                                     key={key}
                                     onClick={() => setActiveTab(key as "website" | "app" | "video" | "ecommerce")}
-                                    className={`flex flex-col items-center justify-center gap-1.5 rounded-2xl border px-4 py-4 text-sm font-semibold transition-all duration-300 ${activeTab === key
-                                            ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                                            : "border-border bg-secondary/30 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                                    className={`relative px-8 py-3 rounded-xl text-sm font-semibold transition-all duration-500 overflow-hidden ${activeTab === key
+                                            ? "text-primary-foreground"
+                                            : "text-muted-foreground hover:text-foreground"
                                         }`}
                                 >
-                                    <span className="text-xl">{icon}</span>
-                                    <span className="text-xs font-medium">{label}</span>
+                                    {activeTab === key && (
+                                        <motion.div
+                                            layoutId="activeTabPricing"
+                                            className="absolute inset-0 bg-primary shadow-[0_0_20px_rgba(172,255,26,0.3)]"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{label}</span>
                                 </button>
                             ))}
-                        </div>
-                        {/* Desktop pill row */}
-                        <div className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full border border-border bg-secondary/30 p-1.5 backdrop-blur-md">
-                            <button
-                                onClick={() => setActiveTab("website")}
-                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "website" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
-                            >
-                                Website Packages
-                            </button>
-                            <button
-                                onClick={() => setActiveTab("app")}
-                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "app" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
-                            >
-                                Mobile App Packages
-                            </button>
-                            <button
-                                onClick={() => setActiveTab("video")}
-                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "video" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
-                            >
-                                Video Content
-                            </button>
-                            <button
-                                onClick={() => setActiveTab("ecommerce")}
-                                className={`rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 ${activeTab === "ecommerce" ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground"}`}
-                            >
-                                E-Commerce
-                            </button>
                         </div>
                     </div>
                 </motion.div>
 
-                <div className="mx-auto mt-16 max-w-7xl">
+                <div className="mx-auto max-w-7xl">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -30 }}
-                            transition={{ duration: 0.4 }}
-                            className="grid gap-8 lg:grid-cols-3"
+                            initial={{ opacity: 0, scale: 0.98, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.98, y: -20 }}
+                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                            className="grid gap-8 lg:grid-cols-3 items-stretch"
                         >
                             {packages.map((pkg, index) => (
                                 <motion.div
                                     key={pkg.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                                    className={`relative flex flex-col rounded-3xl border p-8 backdrop-blur-sm transition-all duration-300 ${pkg.recommended
-                                        ? "border-primary glow-border bg-primary/5 shadow-[0_0_40px_-15px_rgba(255,255,255,0.2)] md:scale-105 z-10"
-                                        : "border-border bg-card/60 hover:bg-card/80 hover:border-border/80"
+                                    whileHover={{ y: -10, scale: 1.02 }}
+                                    className={`relative flex flex-col p-10 rounded-[2.5rem] border transition-all duration-500 group ${pkg.recommended
+                                            ? "bg-gradient-to-br from-primary/10 via-background to-background border-primary shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5),0_0_20px_rgba(172,255,26,0.1)] lg:scale-105 z-20"
+                                            : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
                                         }`}
                                 >
                                     {pkg.recommended && (
-                                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-lg flex items-center gap-1.5">
-                                            <Star size={14} className="fill-current" />
-                                            {pkg.badge || "Recommended"}
-                                        </div>
-                                    )}
-                                    {!pkg.recommended && pkg.badge && (
-                                        <div className={`absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider border bg-background shadow-sm ${pkg.color}`}>
-                                            {pkg.badge}
+                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest shadow-[0_4px_20px_rgba(172,255,26,0.4)] flex items-center gap-2">
+                                            <Star size={12} className="fill-current" />
+                                            {pkg.badge || "PRO CHOICE"}
                                         </div>
                                     )}
 
-                                    <div className="mb-6">
-                                        <h3 className="font-display text-2xl font-bold">{pkg.name}</h3>
-                                        <div className="mt-4 flex items-baseline gap-2">
-                                            <span className="text-4xl font-bold tracking-tight text-foreground">{pkg.price}</span>
+                                    <div className="mb-10">
+                                        <h3 className="font-display text-2xl font-bold tracking-tight mb-2">{pkg.name}</h3>
+                                        <div className="flex items-baseline gap-1 mt-6">
+                                            <span className="text-5xl font-black tracking-tighter text-foreground">{pkg.price}</span>
+                                            <span className="text-muted-foreground/60 text-sm font-medium">/project</span>
                                         </div>
-                                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground min-h-[40px]">
+                                        <p className="mt-6 text-sm leading-relaxed text-muted-foreground/80 font-medium">
                                             {pkg.subtitle}
                                         </p>
                                     </div>
 
-                                    <hr className="mb-6 border-border" />
-
-                                    <ul className={`mb-6 flex flex-col gap-4 ${!pkg.notIncluded || pkg.notIncluded.length === 0 ? "flex-1" : ""}`}>
+                                    <div className="space-y-5 mb-10 flex-1">
                                         {pkg.features.map((feature, i) => (
-                                            <li key={i} className="flex items-start gap-3">
-                                                <div className="mt-0.5 shrink-0 rounded-full bg-primary/20 p-1 text-primary">
-                                                    <Check size={12} className="stroke-[3]" />
+                                            <div key={i} className="flex items-start gap-4 group/item">
+                                                <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-transform duration-300 group-hover/item:scale-110">
+                                                    <Check size={12} strokeWidth={4} />
                                                 </div>
-                                                <span className="text-sm text-foreground/80">{feature}</span>
-                                            </li>
+                                                <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors">{feature}</span>
+                                            </div>
                                         ))}
-                                    </ul>
+                                    </div>
 
                                     {pkg.notIncluded && pkg.notIncluded.length > 0 && (
-                                        <>
-                                            <hr className="mb-6 border-border" />
-                                            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">Not Included</h4>
-                                            <ul className="mb-10 flex flex-1 flex-col gap-4 opacity-75">
-                                                {pkg.notIncluded.map((feature, i) => (
-                                                    <li key={i} className="flex items-start gap-3">
-                                                        <div className="mt-0.5 shrink-0 rounded-full bg-destructive/10 p-1 text-destructive">
-                                                            <X size={12} className="stroke-[3]" />
+                                        <div className="pt-8 mt-4 border-t border-white/5">
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/40 mb-6 block">Excluded</span>
+                                            <div className="space-y-4 mb-10">
+                                                {pkg.notIncluded.slice(0, 5).map((feature, i) => (
+                                                    <div key={i} className="flex items-start gap-4 opacity-50 grayscale">
+                                                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground">
+                                                            <X size={10} strokeWidth={4} />
                                                         </div>
-                                                        <span className="text-sm text-foreground/70 line-through decoration-foreground/20">{feature}</span>
-                                                    </li>
+                                                        <span className="text-sm font-medium line-through decoration-white/20">{feature}</span>
+                                                    </div>
                                                 ))}
-                                            </ul>
-                                        </>
+                                            </div>
+                                        </div>
                                     )}
 
-                                    <div className="mt-auto flex flex-col gap-3">
-                                        {pkg.note && (
-                                            <p className="text-xs text-muted-foreground/80 italic text-center">
-                                                Note: {pkg.note}
-                                            </p>
-                                        )}
+                                    <div className="mt-auto pt-6">
                                         <a
                                             href="#contact"
-                                            className={`inline-flex w-full items-center justify-center rounded-xl p-4 text-sm font-semibold transition-all duration-300 ${pkg.recommended
-                                                ? "bg-primary text-primary-foreground shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
-                                                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                                            className={`relative group/btn inline-flex w-full items-center justify-center h-16 rounded-2xl text-sm font-black uppercase tracking-widest transition-all duration-300 overflow-hidden ${pkg.recommended
+                                                    ? "bg-primary text-primary-foreground hover:shadow-[0_10px_30px_rgba(172,255,26,0.3)]"
+                                                    : "bg-white/5 text-foreground hover:bg-white/10"
                                                 }`}
                                         >
-                                            Choose {pkg.name.split(" ")[0]}
+                                            <span className="relative z-10">Choose Plan</span>
+                                            {pkg.recommended && (
+                                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:animate-shimmer" />
+                                            )}
                                         </a>
                                     </div>
                                 </motion.div>
@@ -452,113 +423,57 @@ const PricingSection = () => {
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Additional Info section showing combo/maintenance/separate shoots depending on active tab */}
+                    {/* Footer Info */}
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="mt-20 rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center sm:p-12 relative overflow-hidden glass"
+                        className="mt-24 p-1 rounded-[3rem] bg-gradient-to-r from-primary/20 via-transparent to-primary/20"
                     >
-                        <div className="absolute top-0 right-0 p-8 opacity-5">
-                            <Star size={200} className="fill-current text-primary" />
-                        </div>
+                        <div className="rounded-[2.9rem] bg-background p-10 sm:p-14 relative overflow-hidden backdrop-blur-3xl border border-white/5">
+                            <div className="grid gap-16 lg:grid-cols-12 items-center">
+                                <div className="lg:col-span-4">
+                                    <h3 className="font-display text-3xl font-bold mb-6">Need a <span className="gradient-text">Custom</span> Solution?</h3>
+                                    <p className="text-muted-foreground leading-relaxed mb-8 font-medium">
+                                        For larger enterprises or specialized requirements, we offer custom development tailored to your exact business metrics.
+                                    </p>
+                                    <a href="#contact" className="inline-flex items-center gap-3 font-black uppercase tracking-widest text-sm text-primary hover:gap-5 transition-all">
+                                        Contact our experts <Star size={16} fill="currentColor" />
+                                    </a>
+                                </div>
 
-                        <div className="relative z-10 grid gap-12 md:grid-cols-2 lg:grid-cols-3 text-left">
-                            {activeTab === "video" ? (
-                                <>
-                                    <div className="col-span-1 lg:col-span-1">
-                                        <h3 className="font-display text-2xl font-bold mb-4">Combo Offer 🔥</h3>
-                                        <div className="rounded-xl border border-primary/30 bg-primary/10 p-5 mt-4">
-                                            <p className="font-bold text-lg">Website + Content</p>
-                                            <p className="text-3xl font-bold text-primary mt-2 flex items-center gap-2">₹22,000 <span className="text-sm line-through text-muted-foreground">₹27,000</span></p>
-                                            <p className="text-sm text-muted-foreground mt-3">Business Website + Standard Reels Content Package.</p>
-                                        </div>
-                                    </div>
-                                    <div className="col-span-1 lg:col-span-2">
-                                        <h3 className="font-display text-2xl font-bold mb-4">Separate Charges</h3>
-                                        <p className="text-sm text-muted-foreground mb-6">If you have custom requirements or just need specific services.</p>
-                                        <div className="grid gap-6 sm:grid-cols-3">
-                                            <div className="rounded-xl border border-border/50 bg-background/50 p-4">
-                                                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Half Day Shoot</p>
-                                                <p className="text-xl font-bold">₹7,000</p>
+                                <div className="lg:col-span-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                    {activeTab === "website" ? (
+                                        [
+                                            { label: "Domain & Hosting", val: "Market Actuals" },
+                                            { label: "Content Support", val: "Premium Copy" },
+                                            { label: "SEO Campaign", val: "Quarterly" },
+                                            { label: "Security", val: "End-to-End" },
+                                            { label: "Maintenance", val: "Monthly" },
+                                            { label: "Integration", val: "Pay-as-go" }
+                                        ].map((item, i) => (
+                                            <div key={i} className="p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-primary/20 transition-all group">
+                                                <p className="text-[10px] font-black uppercase text-primary/60 mb-2 group-hover:text-primary transition-colors">{item.label}</p>
+                                                <p className="font-bold text-lg">{item.val}</p>
                                             </div>
-                                            <div className="rounded-xl border border-border/50 bg-background/50 p-4">
-                                                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Full Day Shoot</p>
-                                                <p className="text-xl font-bold">₹15,000</p>
+                                        ))
+                                    ) : (
+                                        [
+                                            { label: "Advance", val: "50%" },
+                                            { label: "Pre-Delivery", val: "40%" },
+                                            { label: "Final Hook", val: "10%" },
+                                            { label: "Support", val: "24/7" },
+                                            { label: "Testing", val: "Intense" },
+                                            { label: "Release", val: "Global" }
+                                        ].map((item, i) => (
+                                            <div key={i} className="p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:border-primary/20 transition-all group">
+                                                <p className="text-[10px] font-black uppercase text-primary/60 mb-2 group-hover:text-primary transition-colors">{item.label}</p>
+                                                <p className="font-bold text-lg">{item.val}</p>
                                             </div>
-                                            <div className="rounded-xl border border-border/50 bg-background/50 p-4">
-                                                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Editing Only</p>
-                                                <p className="text-xl font-bold">₹1,500 <span className="text-xs text-muted-foreground font-normal">/reel</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                            ) : activeTab === "website" ? (
-                                <>
-                                    <div className="col-span-1 lg:col-span-3">
-                                        <h3 className="font-display text-2xl font-bold mb-4 text-primary">Extra Charges <span className="text-muted-foreground text-lg font-normal">(Very Important)</span></h3>
-                                        <p className="text-sm text-muted-foreground mb-6">These must always be separate based on actuals or specific requirements.</p>
-                                        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-                                            {[
-                                                { label: "Domain Cost", price: "Actual Price" },
-                                                { label: "Hosting", price: "Actual Price" },
-                                                { label: "Content Writing", price: "₹2,000 – ₹5,000" },
-                                                { label: "Logo Design", price: "₹3,000+" },
-                                                { label: "Payment Gateway", price: "₹5,000+" },
-                                                { label: "Extra Revision", price: "₹1,000 / change" },
-                                                { label: "Maintenance", price: "₹2,000 / month" },
-                                            ].map((extra, i) => (
-                                                <div key={i} className="rounded-xl border border-border/50 bg-background/50 p-4 relative overflow-hidden">
-                                                    <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
-                                                    <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1 relative z-10">{extra.label}</p>
-                                                    <p className="text-lg font-bold relative z-10">{extra.price}</p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    <div className="col-span-1 lg:col-span-2">
-                                        <h3 className="font-display text-2xl font-bold mb-4">Maintenance & Support</h3>
-                                        <div className="grid gap-6 sm:grid-cols-2">
-                                            <div>
-                                                <p className="font-semibold text-primary mb-1">Website Maintenance</p>
-                                                <p className="text-2xl font-bold">₹1,500 - ₹3,000 <span className="text-sm font-normal text-muted-foreground">/mo</span></p>
-                                            </div>
-                                            <div>
-                                                <p className="font-semibold text-primary mb-1">App Maintenance</p>
-                                                <p className="text-2xl font-bold">₹2,500 - ₹5,000 <span className="text-sm font-normal text-muted-foreground">/mo</span></p>
-                                            </div>
-                                        </div>
-                                        <div className="mt-6 flex flex-wrap gap-4">
-                                            {["Bug Fixes", "Minor Updates", "Server Monitoring"].map(item => (
-                                                <span key={item} className="inline-flex items-center gap-1.5 text-sm text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-full border border-border/50">
-                                                    <Check size={14} className="text-primary" /> {item}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="rounded-xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm">
-                                        <h3 className="font-display text-lg font-bold mb-4">Payment Terms</h3>
-                                        <ul className="space-y-3 relative">
-                                            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border/80" />
-                                            {[
-                                                { percent: "50%", text: "Advance" },
-                                                { percent: "40%", text: "Before Delivery" },
-                                                { percent: "10%", text: "After Final Testing" }
-                                            ].map((term, i) => (
-                                                <li key={i} className="flex items-center gap-4 relative z-10">
-                                                    <div className="w-3.5 h-3.5 rounded-full bg-primary/20 border-2 border-primary shrink-0" />
-                                                    <span className="font-bold text-lg min-w-[3rem] text-primary">{term.percent}</span>
-                                                    <span className="text-sm text-muted-foreground">{term.text}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </>
-                            )}
+                                        ))
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

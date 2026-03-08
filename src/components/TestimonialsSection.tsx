@@ -10,17 +10,12 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Arjun Mehta",
+    name: "Balasundari",
     role: "Founder, KVP Jewellery",
-    text: "The branding and website they built captured the essence of our luxury brand perfectly. Sales went up 180% after the rebrand. Truly premium work.",
+    text: "You did a really nice job on the KVP store website. It looks clean, professional, and easy to navigate. The branding feels consistent, and the shopping flow is smooth. Overall great work!",
     rating: 5,
   },
-  {
-    name: "Sanya Kapoor",
-    role: "Director, Zero Fashion",
-    text: "From strategy to execution, Zeenox delivered beyond expectations. Our online sales tripled and social engagement skyrocketed. Best agency decision we ever made.",
-    rating: 5,
-  },
+
   {
     name: "Vikram Singh",
     role: "COO, FitPro",
@@ -54,7 +49,7 @@ const TestimonialsSection = () => {
 
         {/* Logos */}
         <div className="mb-14 flex flex-wrap items-center justify-center gap-8">
-          {["Venu's Health Care", "KVP Jewellery", "Zero Fashion", "FitPro", "Lovein"].map((name) => (
+          {["Venu's Health Care", "KVP Jewellery", "FitPro"].map((name) => (
             <span key={name} className="text-xs font-medium text-muted-foreground/40 uppercase tracking-wider">
               ✦ {name}
             </span>

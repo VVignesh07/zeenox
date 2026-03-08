@@ -1,0 +1,21 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <rect x="0" y="0" width="400" height="400" fill="url(#paint0_radial_saas_v3)" fill-opacity="0.15"/>
+  <g opacity="0.8">
+    <path d="M200 100L310 160L200 220L90 160L200 100Z" stroke="#ACFF1A" stroke-width="1.5"/>
+    <path d="M200 140L310 200L200 260L90 200L200 140Z" stroke="#ACFF1A" stroke-width="1.5" stroke-opacity="0.5"/>
+    <path d="M200 180L310 240L200 300L90 240L200 180Z" stroke="#ACFF1A" stroke-width="1.5" stroke-opacity="0.2"/>
+    
+    <path d="M200 100V300" stroke="#ACFF1A" stroke-width="1.5" stroke-opacity="0.1"/>
+    <path d="M90 160V240M310 160V240" stroke="#ACFF1A" stroke-width="1.5" stroke-opacity="0.1"/>
+    
+    <circle cx="200" cy="160" r="20" fill="#ACFF1A" fill-opacity="0.1"/>
+    <circle cx="200" cy="160" r="5" fill="#ACFF1A"/>
+  </g>
+  <defs>
+    <radialGradient id="paint0_radial_saas_v3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200 200) rotate(90) scale(180)">
+      <stop stop-color="#ACFF1A"/>
+      <stop offset="1" stop-color="#ACFF1A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

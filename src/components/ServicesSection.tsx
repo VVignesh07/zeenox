@@ -1,27 +1,26 @@
 import { motion } from "framer-motion";
 import {
-  Camera, Video, Share2, Palette,
   Globe, Smartphone, Layers, Zap, Settings, Database
 } from "lucide-react";
 
 const mediaServices = [
-  { icon: Camera, title: "Content Creation", desc: "Premium photography and content that captures attention." },
-  { icon: Video, title: "Video Production", desc: "Cinematic videos, reels, and brand stories." },
-  { icon: Share2, title: "Social Media Management", desc: "Strategic social presence across all platforms." },
-  { icon: Palette, title: "Brand Design", desc: "Visual identities that stand out in the market." },
+  { image: "/images/service-content-creation.png", title: "Content Creation", desc: "Premium photography and content that captures attention." },
+  { image: "/images/service-video-production.png", title: "Video Production", desc: "Cinematic videos, reels, and brand stories." },
+  { image: "/images/service-social-media.png", title: "Social Media Management", desc: "Strategic social presence across all platforms." },
+  { image: "/images/service-brand-design.png", title: "Brand Design", desc: "Visual identities that stand out in the market." },
 ];
 
 const techServices = [
-  { icon: Globe, title: "Website Development", desc: "High-performance websites built for conversion." },
-  { icon: Smartphone, title: "App Development", desc: "Native and cross-platform mobile applications." },
-  { icon: Layers, title: "SaaS Development", desc: "Scalable software products from concept to launch." },
-  { icon: Zap, title: "Business Automation", desc: "Intelligent workflows that save time and money." },
-  { icon: Settings, title: "CRM & Admin Panels", desc: "Custom dashboards and management tools." },
-  { icon: Database, title: "API & Integrations", desc: "Connect your tools into one powerful ecosystem." },
+  { image: "/images/tech-website-dev.svg", title: "Website Development", desc: "High-performance websites built for conversion." },
+  { image: "/images/tech-app-dev.svg", title: "App Development", desc: "Native and cross-platform mobile applications." },
+  { image: "/images/tech-saas-dev.svg", title: "SaaS Development", desc: "Scalable software products from concept to launch." },
+  { image: "/images/tech-automation.svg", title: "Business Automation", desc: "Intelligent workflows that save time and money." },
+  { image: "/images/tech-crm.svg", title: "CRM & Admin Panels", desc: "Custom dashboards and management tools." },
+  { image: "/images/tech-api.svg", title: "API & Integrations", desc: "Connect your tools into one powerful ecosystem." },
 ];
 
-const ServiceCard = ({ icon: Icon, title, desc, delay }: {
-  icon: typeof Camera; title: string; desc: string; delay: number;
+const ServiceCard = ({ image, icon: Icon, title, desc, delay }: {
+  image?: string; icon?: any; title: string; desc: string; delay: number;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -29,14 +28,35 @@ const ServiceCard = ({ icon: Icon, title, desc, delay }: {
     viewport={{ once: true }}
     transition={{ delay }}
     whileHover={{ y: -8, rotateX: 2, rotateY: -2 }}
-    className="group rounded-2xl p-7 card-dark card-dark-hover transition-all duration-300 cursor-pointer"
+    className="group rounded-2xl overflow-hidden card-dark card-dark-hover transition-all duration-300 cursor-pointer"
     style={{ transformStyle: "preserve-3d" }}
   >
-    <div className="mb-5 inline-flex rounded-xl bg-secondary p-3.5 text-primary transition-all group-hover:bg-primary/10 group-hover:shadow-[0_0_20px_hsla(90,100%,54%,0.2)]">
-      <Icon size={22} />
+    <div className="relative h-44 w-full overflow-hidden bg-secondary/30 flex items-center justify-center">
+      {image ? (
+        <>
+          <img
+            src={image}
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        </>
+      ) : (
+        <div className="relative flex items-center justify-center w-full h-full">
+          {/* Neon Glow Background */}
+          <div className="absolute h-20 w-20 rounded-full bg-primary/10 blur-[40px] group-hover:bg-primary/20 transition-colors" />
+          <Icon
+            size={42}
+            strokeWidth={1.5}
+            className="text-primary/70 group-hover:text-primary transition-colors group-hover:scale-110 duration-500"
+          />
+        </div>
+      )}
     </div>
-    <h3 className="mb-2 font-display text-base font-semibold text-foreground">{title}</h3>
-    <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
+    <div className="p-6">
+      <h3 className="mb-2 font-display text-base font-semibold text-foreground">{title}</h3>
+      <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
+    </div>
   </motion.div>
 );
 
