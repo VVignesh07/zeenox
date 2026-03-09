@@ -157,55 +157,6 @@ const appPackages: Package[] = [
     },
 ];
 
-const videoPackages: Package[] = [
-    {
-        name: "Basic Reel Package",
-        price: "₹6,000",
-        subtitle: "Best for small shops & Instagram beginners.",
-        color: "bg-green-500/10 text-green-500 border-green-500/20",
-        features: [
-            "1–2 Hours Shoot",
-            "2 Reels",
-            "Basic Editing",
-            "Captions & Background Music",
-            "1 Revision",
-            "Delivery: 3–4 Days",
-        ],
-    },
-    {
-        name: "Standard Content",
-        price: "₹12,000",
-        subtitle: "Professional reels to boost engagement.",
-        recommended: true,
-        color: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
-        badge: "Most Recommended",
-        features: [
-            "3–4 Hours Shoot",
-            "4 Reels",
-            "Trend-Based Editing & Color Grading",
-            "Hook Text Animation",
-            "Thumbnail Design",
-            "2 Revisions",
-            "Delivery: 4–5 Days",
-        ],
-    },
-    {
-        name: "Monthly Content",
-        price: "₹25,000",
-        subtitle: "Best for serious businesses.",
-        color: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-        badge: "Scalable Model",
-        features: [
-            "1 Full Day Shoot",
-            "8 Reels",
-            "Content Planning & Caption Writing",
-            "Basic Hashtag Strategy",
-            "Performance Suggestions",
-            "2 Revisions per Reel",
-            "Weekly posting schedule",
-        ],
-    },
-];
 
 const ecommercePackages: Package[] = [
     {
@@ -279,11 +230,10 @@ const ecommercePackages: Package[] = [
 ];
 
 const PricingSection = () => {
-    const [activeTab, setActiveTab] = useState<"website" | "app" | "video" | "ecommerce">("website");
+    const [activeTab, setActiveTab] = useState<"website" | "app" | "ecommerce">("website");
 
     let packages = websitePackages;
     if (activeTab === "app") packages = appPackages;
-    if (activeTab === "video") packages = videoPackages;
     if (activeTab === "ecommerce") packages = ecommercePackages;
 
     return (
@@ -315,15 +265,14 @@ const PricingSection = () => {
                             {[
                                 { key: "website", label: "Websites" },
                                 { key: "app", label: "Mobile Apps" },
-                                { key: "video", label: "Video Tech" },
                                 { key: "ecommerce", label: "E-Commerce" },
                             ].map(({ key, label }) => (
                                 <button
                                     key={key}
-                                    onClick={() => setActiveTab(key as "website" | "app" | "video" | "ecommerce")}
+                                    onClick={() => setActiveTab(key as "website" | "app" | "ecommerce")}
                                     className={`relative px-8 py-3 rounded-xl text-sm font-semibold transition-all duration-500 overflow-hidden ${activeTab === key
-                                            ? "text-primary-foreground"
-                                            : "text-muted-foreground hover:text-foreground"
+                                        ? "text-primary-foreground"
+                                        : "text-muted-foreground hover:text-foreground"
                                         }`}
                                 >
                                     {activeTab === key && (
@@ -355,8 +304,8 @@ const PricingSection = () => {
                                     key={pkg.name}
                                     whileHover={{ y: -10, scale: 1.02 }}
                                     className={`relative flex flex-col p-10 rounded-[2.5rem] border transition-all duration-500 group ${pkg.recommended
-                                            ? "bg-gradient-to-br from-primary/10 via-background to-background border-primary shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5),0_0_20px_rgba(172,255,26,0.1)] lg:scale-105 z-20"
-                                            : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
+                                        ? "bg-gradient-to-br from-primary/10 via-background to-background border-primary shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5),0_0_20px_rgba(172,255,26,0.1)] lg:scale-105 z-20"
+                                        : "bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
                                         }`}
                                 >
                                     {pkg.recommended && (
@@ -408,8 +357,8 @@ const PricingSection = () => {
                                         <a
                                             href="#contact"
                                             className={`relative group/btn inline-flex w-full items-center justify-center h-16 rounded-2xl text-sm font-black uppercase tracking-widest transition-all duration-300 overflow-hidden ${pkg.recommended
-                                                    ? "bg-primary text-primary-foreground hover:shadow-[0_10px_30px_rgba(172,255,26,0.3)]"
-                                                    : "bg-white/5 text-foreground hover:bg-white/10"
+                                                ? "bg-primary text-primary-foreground hover:shadow-[0_10px_30px_rgba(172,255,26,0.3)]"
+                                                : "bg-white/5 text-foreground hover:bg-white/10"
                                                 }`}
                                         >
                                             <span className="relative z-10">Choose Plan</span>
