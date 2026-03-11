@@ -37,8 +37,15 @@ const RoadmapSection = () => {
                         </div>
 
                         {/* Connection from Phase 1 to Phase 2/3 */}
-                        <svg className="absolute top-[48px] left-1/2 -translate-x-1/2 w-[600px] h-[60px] pointer-events-none" viewBox="0 0 600 60" fill="none">
-                            <path d="M300 0V30H0V60M300 30H600V60" stroke="currentColor" strokeWidth="2" className="text-primary/30" />
+                        <svg className="absolute top-[38px] left-1/2 -translate-x-1/2 w-full h-[80px] pointer-events-none overflow-visible" viewBox="0 0 1000 80" preserveAspectRatio="none">
+                            <path 
+                                d="M500 0V40H250V80M500 40H750V80" 
+                                stroke="hsl(var(--primary))" 
+                                strokeWidth="3" 
+                                fill="none"
+                                strokeLinecap="round"
+                                className="opacity-60" 
+                            />
                         </svg>
 
                         <div className="grid grid-cols-2 gap-24 items-start pt-8">
@@ -63,9 +70,7 @@ const RoadmapSection = () => {
                                     />
 
                                     {/* Connection to Phase 4 Build */}
-                                    <svg className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-px h-16 pointer-events-none" viewBox="0 0 1 64">
-                                        <line x1="0.5" y1="0" x2="0.5" y2="64" stroke="currentColor" strokeWidth="2" className="text-primary/30" />
-                                    </svg>
+                                    <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-px h-24 bg-primary/60" />
                                 </div>
                             </div>
 
@@ -90,9 +95,7 @@ const RoadmapSection = () => {
                                     />
 
                                     {/* Connection to Phase 4 Launch */}
-                                    <svg className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-px h-16 pointer-events-none" viewBox="0 0 1 64">
-                                        <line x1="0.5" y1="0" x2="0.5" y2="64" stroke="currentColor" strokeWidth="2" className="text-primary/30" />
-                                    </svg>
+                                    <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-px h-24 bg-primary/60" />
                                 </div>
                             </div>
                         </div>
@@ -205,7 +208,7 @@ const RoadmapSection = () => {
 const PhaseHeader = ({ title, color }: { title: string; color: string }) => (
     <motion.div
         whileHover={{ scale: 1.05 }}
-        className={`${color} text-white px-10 py-4 rounded-[1.2rem] font-bold text-lg shadow-[0_10px_30px_rgba(172,255,26,0.2)] relative z-20`}
+        className={`${color} text-black px-10 py-4 rounded-[1.2rem] font-bold text-lg shadow-[0_10px_30px_rgba(172,255,26,0.2)] relative z-20`}
     >
         {title}
     </motion.div>

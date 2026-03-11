@@ -28,8 +28,8 @@ const TechStackSection = () => {
 
       {/* Scrolling marquee */}
       <div className="relative">
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-r from-background to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-l from-background to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-72 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-72 bg-gradient-to-l from-background to-transparent" />
         <div className="flex animate-marquee">
           {[...techStack, ...techStack].map((tech, i) => (
             <div

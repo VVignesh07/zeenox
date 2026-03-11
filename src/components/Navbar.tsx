@@ -14,16 +14,18 @@ const Navbar = () => {
       transition={{ duration: 0.6, delay: 1.8 }}
       className="fixed top-0 left-0 right-0 z-50 glass-strong"
     >
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2">
-          <img
-            src="/images/logo2.png"
-            alt="Zeenox Logo"
-            className="h-8 w-auto"
-          />
-        </a>
+      <div className="container mx-auto flex items-center px-6 py-4">
+        <div className="flex-1">
+          <a href="#" className="flex items-center gap-2">
+            <img
+              src="/images/logo2.png"
+              alt="Zeenox Logo"
+              className="h-8 w-auto"
+            />
+          </a>
+        </div>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex flex-1 justify-center items-center gap-8">
           {navItems.map((item) => (
             <a
               key={item}
@@ -33,14 +35,16 @@ const Navbar = () => {
               {item}
             </a>
           ))}
+        </div>
+
+        <div className="flex-1 flex justify-end">
           <a href="tel:7603917369" className="rounded-full btn-primary-glow px-6 py-2 text-xs uppercase tracking-wider">
             Call Now
           </a>
+          <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
-
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       <AnimatePresence>
