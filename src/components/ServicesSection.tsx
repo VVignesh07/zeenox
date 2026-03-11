@@ -48,8 +48,7 @@ const ServiceCard = ({ icon: Icon, title, desc, index }: {
     </div>
     
     <div className="mb-8 relative inline-flex items-center justify-center">
-        <div className="absolute inset-0 bg-primary/10 blur-[30px] rounded-full scale-0 group-hover:scale-150 transition-transform duration-700" />
-        <div className="relative h-16 w-16 rounded-2xl bg-secondary/50 border border-white/5 flex items-center justify-center group-hover:border-primary/20 transition-colors duration-500">
+        <div className="relative h-16 w-16 flex items-center justify-center transition-colors duration-500">
             <Icon
                 size={32}
                 strokeWidth={1.5}

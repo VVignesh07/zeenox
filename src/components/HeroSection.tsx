@@ -54,6 +54,71 @@ const HeroSection = () => {
                 transition={{ duration: 1.5 }}
                 className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
             >
+                {/* 3D Social Icons with floating and parallax */}
+                <motion.div
+                    animate={{ 
+                        y: [-15, 15, -15],
+                        rotate: [-10, 10, -10]
+                    }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-[15%] left-[10%] w-28 h-28 md:w-40 md:h-40 z-10"
+                >
+                    <img 
+                        src="/images/3d-meta.png" 
+                        alt="3D Meta" 
+                        className="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(0,129,255,0.4)] mix-blend-screen brightness-110 contrast-110" 
+                        style={{ maskImage: "radial-gradient(circle at center, black 50%, transparent 85%)" }}
+                    />
+                </motion.div>
+
+                <motion.div
+                    animate={{ 
+                        y: [-20, 20, -20],
+                        rotate: [10, -10, 10]
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-[20%] right-[10%] w-32 h-32 md:w-48 md:h-48 z-10"
+                >
+                    <img 
+                        src="/images/3d-instagram.png" 
+                        alt="3D Instagram" 
+                        className="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(214,41,118,0.5)] mix-blend-screen brightness-110 contrast-110" 
+                        style={{ maskImage: "radial-gradient(circle at center, black 50%, transparent 85%)" }}
+                    />
+                </motion.div>
+
+                <motion.div
+                    animate={{ 
+                        y: [20, -20, 20],
+                        rotate: [-15, 15, -15]
+                    }}
+                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute bottom-[20%] left-[8%] w-32 h-32 md:w-44 md:h-44 z-10"
+                >
+                    <img 
+                        src="/images/3d-whatsapp.png" 
+                        alt="3D WhatsApp" 
+                        className="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(37,211,102,0.5)] mix-blend-screen brightness-110 contrast-110" 
+                        style={{ maskImage: "radial-gradient(circle at center, black 50%, transparent 85%)" }}
+                    />
+                </motion.div>
+
+                <motion.div
+                    animate={{ 
+                        y: [-15, 15, -15],
+                        rotate: [5, -5, 5]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    className="absolute top-[60%] right-[5%] w-24 h-24 md:w-36 md:h-36 z-10"
+                >
+                    <img 
+                        src="/images/3d-youtube.png" 
+                        alt="3D YouTube" 
+                        className="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(255,0,0,0.4)] mix-blend-screen brightness-110 contrast-110" 
+                        style={{ maskImage: "radial-gradient(circle at center, black 50%, transparent 85%)" }}
+                    />
+                </motion.div>
+
                 <motion.div
                     animate={{ 
                         rotate: 360,

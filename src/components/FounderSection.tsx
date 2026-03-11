@@ -71,7 +71,7 @@ const FounderSection = () => {
               
               <div className="absolute bottom-8 left-8 right-8 p-6 glass rounded-2xl border border-white/10 backdrop-blur-xl">
                 <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full border border-primary/20 bg-primary/10 flex items-center justify-center">
+                    <div className="h-12 w-12 flex items-center justify-center">
                         <Quote size={20} className="text-primary fill-current" />
                     </div>
                     <div>
@@ -124,15 +124,17 @@ const FounderSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="relative group p-6 rounded-3xl bg-secondary/20 border border-white/5 hover:border-primary/20 transition-all duration-500"
+                    className="group flex items-center gap-6 p-6 rounded-3xl bg-secondary/20 border border-white/5 hover:border-primary/20 transition-all duration-500"
                   >
-                    <div className="absolute top-4 right-4">
-                        <stat.icon size={16} className="text-primary/20 group-hover:text-primary transition-colors" />
+                    <div className="h-14 w-14 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
+                      <stat.icon size={24} />
                     </div>
-                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mt-3 group-hover:text-foreground transition-colors">
-                        {stat.label}
-                    </p>
+                    <div>
+                      <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mt-3 group-hover:text-foreground transition-colors">
+                          {stat.label}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>

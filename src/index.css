@@ -156,6 +156,10 @@
     height: 2px;
     background: linear-gradient(90deg, transparent, hsla(90, 100%, 50%, 0.3), transparent);
   }
+
+  .mix-blend-screen {
+    mix-blend-mode: screen;
+  }
 }
 
 @keyframes marquee {

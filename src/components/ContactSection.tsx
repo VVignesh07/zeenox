@@ -57,7 +57,7 @@ const ContactSection = () => {
                 { icon: MapPin, label: "Visit Us", text: "vakkanangundu, 626104" },
               ].map(({ icon: Icon, label, text }) => (
                 <div key={label} className="group flex items-center gap-6 p-6 rounded-3xl bg-secondary/20 border border-white/5 hover:border-primary/20 transition-all duration-500">
-                  <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
+                  <div className="h-14 w-14 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
                     <Icon size={24} />
                   </div>
                   <div>

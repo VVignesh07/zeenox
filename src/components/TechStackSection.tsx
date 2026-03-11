@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 
 const techStack = [
   "React", "Next.js", "Node.js", "Firebase", "AWS", "Figma",
-  "Adobe Suite", "Tailwind", "TypeScript", "Supabase", "Stripe", "Vercel",
+  "Tailwind", "TypeScript", "Supabase", "Stripe", "Vercel",
+  "Premiere Pro", "After Effects", "DaVinci", "CapCut", "Photoshop", "Blender", "Meta Ads"
 ];
 
 const TechStackSection = () => {

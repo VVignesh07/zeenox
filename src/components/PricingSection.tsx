@@ -416,7 +416,7 @@ const PricingSection = () => {
                                     <div className="space-y-5 mb-10 flex-1">
                                         {pkg.features.map((feature, i) => (
                                             <div key={i} className="flex items-start gap-4 group/item">
-                                                <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-transform duration-300 group-hover/item:scale-110">
+                                                <div className="mt-1 flex-shrink-0 w-5 h-5 flex items-center justify-center text-primary transition-transform duration-300 group-hover/item:scale-110">
                                                     <Check size={12} strokeWidth={4} />
                                                 </div>
                                                 <span className="text-sm font-medium text-foreground/80 group-hover/item:text-foreground transition-colors">{feature}</span>
@@ -430,7 +430,7 @@ const PricingSection = () => {
                                             <div className="space-y-4 mb-10">
                                                 {pkg.notIncluded.slice(0, 5).map((feature, i) => (
                                                     <div key={i} className="flex items-start gap-4 opacity-50 grayscale">
-                                                        <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground">
+                                                        <div className="mt-1 flex-shrink-0 w-5 h-5 flex items-center justify-center text-muted-foreground">
                                                             <X size={10} strokeWidth={4} />
                                                         </div>
                                                         <span className="text-sm font-medium line-through decoration-white/20">{feature}</span>
