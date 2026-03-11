@@ -39,8 +39,8 @@ const PortfolioSection = () => {
       <div className="flex flex-col gap-10">
         {/* First Row - Scrolling Right to Left */}
         <div className="relative group">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-72 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-72 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-1/3 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-1/3 bg-gradient-to-l from-background via-background/80 to-transparent" />
           
           <div className="flex animate-marquee hover:[animation-play-state:paused]">
             {[...projects, ...projects].map((p, i) => (
@@ -51,8 +51,8 @@ const PortfolioSection = () => {
 
         {/* Second Row - Scrolling Left to Right (Reverse) */}
         <div className="relative group">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-72 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-72 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-1/3 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-1/3 bg-gradient-to-l from-background via-background/80 to-transparent" />
           
           <div className="flex animate-marquee direction-reverse [animation-direction:reverse] hover:[animation-play-state:paused]">
             {[...projects.slice().reverse(), ...projects.slice().reverse()].map((p, i) => (

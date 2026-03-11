@@ -107,6 +107,69 @@ const websitePackages: Package[] = [
     },
 ];
 
+const videoPackages: Package[] = [
+    {
+        name: "Starter Package",
+        price: "₹10,000",
+        subtitle: "Small Business",
+        color: "bg-green-500/10 text-green-500 border-green-500/20",
+        features: [
+            "1 Shoot Day",
+            "4 Instagram Reels",
+            "Basic Video Editing",
+            "Reel Posting",
+            "Caption Writing",
+            "Hashtags",
+        ],
+    },
+    {
+        name: "Business Growth",
+        price: "₹20,000",
+        subtitle: "Most Recommended",
+        recommended: true,
+        color: "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
+        badge: "MOST POPULAR",
+        features: [
+            "1 Shoot Day per month",
+            "8 Reels",
+            "Professional Editing",
+            "Color Grading",
+            "Reel Posting",
+            "Caption + Hashtags",
+            "Content Planning",
+        ],
+    },
+    {
+        name: "Premium Brand",
+        price: "₹45,000",
+        subtitle: "Cinematic & Strategy",
+        color: "bg-blue-500/10 text-blue-500 border-blue-500/20",
+        features: [
+            "2 Shoot Days",
+            "12–15 Reels",
+            "Cinematic Editing",
+            "Trend Based Reels",
+            "Content Strategy",
+            "Reel Posting",
+            "Caption + Hashtags",
+            "Monthly Growth Plan",
+        ],
+    },
+    {
+        name: "Real Estate Special",
+        price: "₹40,000",
+        subtitle: "Construction & Real Estate",
+        color: "bg-purple-500/10 text-purple-500 border-purple-500/20",
+        features: [
+            "Property Shoot",
+            "10 Reels",
+            "Walkthrough Video",
+            "Professional Editing",
+            "Instagram Handling",
+        ],
+    },
+];
+
 const appPackages: Package[] = [
     {
         name: "Starter App",
@@ -230,9 +293,10 @@ const ecommercePackages: Package[] = [
 ];
 
 const PricingSection = () => {
-    const [activeTab, setActiveTab] = useState<"website" | "app" | "ecommerce">("website");
+    const [activeTab, setActiveTab] = useState<"video" | "website" | "app" | "ecommerce">("video");
 
-    let packages = websitePackages;
+    let packages = videoPackages;
+    if (activeTab === "website") packages = websitePackages;
     if (activeTab === "app") packages = appPackages;
     if (activeTab === "ecommerce") packages = ecommercePackages;
 
@@ -263,14 +327,15 @@ const PricingSection = () => {
                         {/* Tab Switcher */}
                         <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-secondary/20 border border-white/5 backdrop-blur-xl">
                             {[
+                                { key: "video", label: "Video Production" },
                                 { key: "website", label: "Websites" },
                                 { key: "app", label: "Mobile Apps" },
                                 { key: "ecommerce", label: "E-Commerce" },
                             ].map(({ key, label }) => (
                                 <button
                                     key={key}
-                                    onClick={() => setActiveTab(key as "website" | "app" | "ecommerce")}
-                                    className={`relative px-8 py-3 rounded-xl text-sm font-semibold transition-all duration-500 overflow-hidden ${activeTab === key
+                                    onClick={() => setActiveTab(key as "video" | "website" | "app" | "ecommerce")}
+                                    className={`relative px-6 py-3 rounded-xl text-xs font-semibold transition-all duration-500 overflow-hidden ${activeTab === key
                                         ? "text-primary-foreground"
                                         : "text-muted-foreground hover:text-foreground"
                                         }`}
@@ -297,7 +362,7 @@ const PricingSection = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.98, y: -20 }}
                             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                            className="grid gap-8 lg:grid-cols-3 items-stretch"
+                            className={`grid gap-8 items-stretch md:grid-cols-2 ${activeTab === 'video' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}
                         >
                             {packages.map((pkg, index) => (
                                 <motion.div
@@ -309,19 +374,27 @@ const PricingSection = () => {
                                         }`}
                                 >
                                     {pkg.recommended && (
-                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest shadow-[0_4px_20px_rgba(172,255,26,0.4)] flex items-center gap-2">
+                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest shadow-[0_8px_30px_rgba(172,255,26,0.5)] flex items-center gap-2 z-30 whitespace-nowrap whitespace-nowrap">
                                             <Star size={12} className="fill-current" />
-                                            {pkg.badge || "PRO CHOICE"}
+                                            {pkg.badge || "MOST POPULAR"}
                                         </div>
                                     )}
 
-                                    <div className="mb-10">
-                                        <h3 className="font-display text-2xl font-bold tracking-tight mb-2">{pkg.name}</h3>
-                                        <div className="flex items-baseline gap-1 mt-6">
-                                            <span className="text-5xl font-black tracking-tighter text-foreground">{pkg.price}</span>
-                                            <span className="text-muted-foreground/60 text-sm font-medium">/project</span>
+                                    <div className="mb-10 text-center lg:text-left">
+                                        <h3 className="font-display text-2xl font-bold tracking-tight mb-2 min-h-[64px] flex items-end justify-center lg:justify-start">
+                                            {pkg.name}
+                                        </h3>
+                                        <div className="mt-6">
+                                            <div className="flex flex-col gap-1 items-center lg:items-start">
+                                                <span className={`font-black tracking-tighter text-foreground leading-none ${pkg.price.includes('–') || pkg.price.includes('-') ? 'text-4xl' : 'text-5xl'}`}>
+                                                    {pkg.price}
+                                                </span>
+                                                <span className="text-muted-foreground/60 text-[10px] font-bold uppercase tracking-[0.2em] mt-2">
+                                                    {pkg.note === 'One Time' ? 'one time setup' : (activeTab === 'video' ? 'per month' : 'per project')}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <p className="mt-6 text-sm leading-relaxed text-muted-foreground/80 font-medium">
+                                        <p className="mt-6 text-sm leading-relaxed text-muted-foreground/80 font-medium min-h-[40px]">
                                             {pkg.subtitle}
                                         </p>
                                     </div>
