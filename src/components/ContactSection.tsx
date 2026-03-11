@@ -1,77 +1,89 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Send, Mail, MapPin, Phone, MessageCircle, Calendar } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const ContactSection = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const rotateIcon = useTransform(scrollYProgress, [0, 1], [-12, 12]);
+
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contact" className="relative py-28">
-      <div className="section-divider mb-28" />
-      <div className="container mx-auto px-6">
+    <section id="contact" ref={containerRef} className="relative py-32 bg-background overflow-hidden">
+      <motion.div style={{ y: y1 }} className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-20 flex flex-col items-center text-center"
         >
-          <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            ✦ Contact
-          </span>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Get In Touch{" "}
-            <span className="font-serif-accent gradient-text">Today</span>
+          <motion.span 
+            initial={{ opacity: 0, letterSpacing: "0.2em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.4em" }}
+            className="mb-6 text-[10px] font-black uppercase text-primary/80"
+          >
+            ✦ Contact Us ✦
+          </motion.span>
+          <h2 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+            Let's Forge Your <br />
+            <span className="font-serif-accent italic gradient-text">Digital Future.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
-            Whether you're a startup looking to establish your brand or an established
-            company aiming to unleash your online identity — let's make it happen.
+          <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground/80 leading-relaxed font-medium">
+            Ready to scale? Whether it's high-end production or industrial-grade automation, we're here to engineer your growth.
           </p>
         </motion.div>
 
-        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-20 lg:grid-cols-2 items-start">
           {/* Left — Info + Quick links */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-10"
           >
-            <div className="flex flex-col gap-5">
+            <div className="space-y-6">
               {[
-                { icon: Phone, label: "Call", text: "+91 7603917369" },
-                { icon: Mail, label: "Email", text: "hello@zeenox.agency" },
-                { icon: MapPin, label: "Location", text: "vakkanangundu, 626104" },
+                { icon: Phone, label: "Call Us", text: "+91 7603917369" },
+                { icon: Mail, label: "Email Us", text: "hello@zeenox.agency" },
+                { icon: MapPin, label: "Visit Us", text: "vakkanangundu, 626104" },
               ].map(({ icon: Icon, label, text }) => (
-                <div key={label} className="flex items-center gap-4 rounded-xl p-4 card-dark card-dark-hover transition-all">
-                  <div className="rounded-lg bg-primary/10 p-3 text-primary">
-                    <Icon size={18} />
+                <div key={label} className="group flex items-center gap-6 p-6 rounded-3xl bg-secondary/20 border border-white/5 hover:border-primary/20 transition-all duration-500">
+                  <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-500">
+                    <Icon size={24} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-primary">{label}</p>
-                    <p className="text-sm text-foreground">{text}</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-primary/60 mb-1">{label}</p>
+                    <p className="text-lg font-bold text-foreground">{text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Quick links */}
-            <div className="flex flex-col gap-3 mt-2">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="https://wa.me/917603917369"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl p-4 card-dark card-dark-hover transition-all text-sm"
+                className="flex-1 flex items-center justify-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-500 group"
               >
-                <MessageCircle size={18} className="text-primary" />
-                <span className="text-foreground">Quick Connect via WhatsApp</span>
+                <MessageCircle size={20} className="text-primary group-hover:scale-110 transition-transform" />
+                <span className="text-sm font-black uppercase tracking-widest">WhatsApp</span>
               </a>
               <a
                 href="#"
-                className="flex items-center gap-3 rounded-xl p-4 card-dark card-dark-hover transition-all text-sm"
+                className="flex-1 flex items-center justify-center gap-3 p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all duration-500 group"
               >
-                <Calendar size={18} className="text-primary" />
-                <span className="text-foreground">Book a Call</span>
+                <Calendar size={20} className="text-primary group-hover:scale-110 transition-transform" />
+                <span className="text-sm font-black uppercase tracking-widest">Book Call</span>
               </a>
             </div>
           </motion.div>
@@ -106,104 +118,75 @@ const ContactSection = () => {
 
               setSubmitted(true);
             }}
-            className="flex flex-col gap-5 rounded-2xl p-8 card-dark glow-border"
+            className="relative p-10 rounded-[3rem] bg-secondary/30 border border-white/5 backdrop-blur-3xl shadow-2xl overflow-hidden"
           >
+             <motion.div style={{ y: y2, rotate: rotateIcon }} className="absolute top-0 right-0 p-8 pointer-events-none opacity-10">
+                <Send size={120} className="text-primary" />
+             </motion.div>
+
             {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="mb-4 rounded-full bg-primary/10 p-4 text-primary">
-                  <Send size={28} />
+              <div className="flex flex-col items-center justify-center py-20 text-center relative z-10">
+                <div className="mb-6 h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <Send size={40} className="animate-bounce" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground">Message Sent!</h3>
-                <p className="mt-2 text-sm text-muted-foreground">We'll get back to you within 24 hours.</p>
+                <h3 className="font-display text-2xl font-black text-foreground">Message Sent!</h3>
+                <p className="mt-4 text-muted-foreground font-medium">I'll personally get back to you within 24 hours.</p>
               </div>
             ) : (
-              <>
-                <h3 className="font-display text-lg font-bold text-foreground mb-2">Leave a Message</h3>
-                <div className="grid gap-4 sm:grid-cols-2">
+              <div className="relative z-10 space-y-6">
+                <div className="grid gap-6 sm:grid-cols-2">
                   {[
                     { name: "name", label: "Full Name", type: "text" },
                     { name: "phone", label: "Phone Number", type: "tel" },
                   ].map((field) => (
-                    <div key={field.name} className="relative">
-                      <label
-                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === field.name
-                          ? "top-1 text-[10px] text-primary"
-                          : "top-3.5 text-sm text-muted-foreground"
-                          }`}
-                      >
-                        {field.label}*
-                      </label>
+                    <div key={field.name} className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-primary/60 ml-1">{field.label}</label>
                       <input
                         name={field.name}
                         type={field.type}
                         required
-                        onFocus={() => setFocused(field.name)}
-                        onBlur={(e) => { if (!e.target.value) setFocused(null); }}
-                        className="w-full rounded-lg border border-border bg-muted/20 px-4 pt-5 pb-2 text-sm text-foreground focus:border-primary focus:outline-none transition-colors"
+                        placeholder={`Enter your ${field.label.toLowerCase()}...`}
+                        className="w-full h-14 rounded-2xl bg-white/5 border border-white/10 px-6 text-sm text-foreground focus:border-primary focus:bg-white/[0.08] transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
                       />
                     </div>
                   ))}
                 </div>
-                <div className="relative">
-                  <label
-                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === "email"
-                      ? "top-1 text-[10px] text-primary"
-                      : "top-3.5 text-sm text-muted-foreground"
-                      }`}
-                  >
-                    Email Address*
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    onFocus={() => setFocused("email")}
-                    onBlur={(e) => { if (!e.target.value) setFocused(null); }}
-                    className="w-full rounded-lg border border-border bg-muted/20 px-4 pt-5 pb-2 text-sm text-foreground focus:border-primary focus:outline-none transition-colors"
-                  />
+                <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary/60 ml-1">Email Address</label>
+                    <input
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="yourname@example.com"
+                        className="w-full h-14 rounded-2xl bg-white/5 border border-white/10 px-6 text-sm text-foreground focus:border-primary focus:bg-white/[0.08] transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
+                    />
                 </div>
-                <div className="relative">
-                  <label
-                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === "subject"
-                      ? "top-1 text-[10px] text-primary"
-                      : "top-3.5 text-sm text-muted-foreground"
-                      }`}
-                  >
-                    Subject
-                  </label>
-                  <input
-                    name="subject"
-                    type="text"
-                    onFocus={() => setFocused("subject")}
-                    onBlur={(e) => { if (!e.target.value) setFocused(null); }}
-                    className="w-full rounded-lg border border-border bg-muted/20 px-4 pt-5 pb-2 text-sm text-foreground focus:border-primary focus:outline-none transition-colors"
-                  />
+                <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary/60 ml-1">Subject</label>
+                    <input
+                        name="subject"
+                        type="text"
+                        placeholder="What are you looking for?"
+                        className="w-full h-14 rounded-2xl bg-white/5 border border-white/10 px-6 text-sm text-foreground focus:border-primary focus:bg-white/[0.08] transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
+                    />
                 </div>
-                <div className="relative">
-                  <label
-                    className={`absolute left-4 transition-all duration-200 pointer-events-none ${focused === "message"
-                      ? "top-1 text-[10px] text-primary"
-                      : "top-3.5 text-sm text-muted-foreground"
-                      }`}
-                  >
-                    Message*
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    required
-                    onFocus={() => setFocused("message")}
-                    onBlur={(e) => { if (!e.target.value) setFocused(null); }}
-                    className="w-full resize-none rounded-lg border border-border bg-muted/20 px-4 pt-5 pb-2 text-sm text-foreground focus:border-primary focus:outline-none transition-colors"
-                  />
+                <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary/60 ml-1">Message</label>
+                    <textarea
+                        name="message"
+                        rows={4}
+                        required
+                        placeholder="Tell me about your project..."
+                        className="w-full rounded-3xl bg-white/5 border border-white/10 p-6 text-sm text-foreground focus:border-primary focus:bg-white/[0.08] transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/30"
+                    />
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg btn-primary-glow px-6 py-3.5 text-sm"
+                  className="w-full h-16 rounded-[2rem] btn-primary-glow flex items-center justify-center gap-4 text-sm font-black uppercase tracking-widest"
                 >
-                  Submit Now <Send size={16} />
+                  Blast Off <Send size={18} />
                 </button>
-              </>
+              </div>
             )}
           </motion.form>
         </div>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Check, Star, X } from "lucide-react";
 
 interface Package {
@@ -293,6 +293,15 @@ const ecommercePackages: Package[] = [
 ];
 
 const PricingSection = () => {
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+    const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
+
     const [activeTab, setActiveTab] = useState<"video" | "website" | "app" | "ecommerce">("video");
 
     let packages = videoPackages;
@@ -301,31 +310,36 @@ const PricingSection = () => {
     if (activeTab === "ecommerce") packages = ecommercePackages;
 
     return (
-        <section id="pricing" className="relative py-32 bg-background overflow-hidden">
-            {/* Background elements for depth */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        <section id="pricing" ref={containerRef} className="relative py-32 bg-background overflow-hidden">
+            {/* Background elements for depth with Parallax */}
+            <motion.div style={{ y: y1 }} className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <motion.div style={{ y: y2 }} className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-20 text-center"
+                    className="mb-20 flex flex-col items-center text-center"
                 >
-                    <span className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-primary/80">
-                        ✦ Pricing Packages ✦
-                    </span>
-                    <h2 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl tracking-tight">
-                        Choose Your <span className="font-serif-accent italic gradient-text">Growth</span> Plan
+                    <motion.span 
+                        initial={{ opacity: 0, letterSpacing: "0.2em" }}
+                        whileInView={{ opacity: 1, letterSpacing: "0.4em" }}
+                        className="mb-6 text-[10px] font-black uppercase text-primary/80"
+                    >
+                        ✦ Transparent Pricing ✦
+                    </motion.span>
+                    <h2 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+                        Investment for <br />
+                        <span className="font-serif-accent italic gradient-text">Scale & Success.</span>
                     </h2>
-                    <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground/80 leading-relaxed">
-                        Invest in your digital future with transparent, conversion-focused, and tailored solutions.
+                    <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground/80 leading-relaxed font-medium">
+                        High-end digital solutions shouldn't be a mystery. Choose a plan that fuels your business evolution.
                     </p>
 
-                    <div className="mx-auto mt-12 w-full max-w-4xl">
+                    <div className="mx-auto mt-16 w-full max-w-4xl">
                         {/* Tab Switcher */}
-                        <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-secondary/20 border border-white/5 backdrop-blur-xl">
+                        <div className="inline-flex flex-wrap items-center justify-center gap-2 p-2 rounded-[2rem] bg-secondary/30 border border-white/5 backdrop-blur-3xl shadow-2xl">
                             {[
                                 { key: "video", label: "Video Production" },
                                 { key: "website", label: "Websites" },
@@ -334,16 +348,16 @@ const PricingSection = () => {
                             ].map(({ key, label }) => (
                                 <button
                                     key={key}
-                                    onClick={() => setActiveTab(key as "video" | "website" | "app" | "ecommerce")}
-                                    className={`relative px-6 py-3 rounded-xl text-xs font-semibold transition-all duration-500 overflow-hidden ${activeTab === key
+                                    onClick={() => setActiveTab(key as any)}
+                                    className={`relative px-8 py-4 rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest transition-all duration-500 overflow-hidden ${activeTab === key
                                         ? "text-primary-foreground"
-                                        : "text-muted-foreground hover:text-foreground"
+                                        : "text-muted-foreground/60 hover:text-foreground hover:bg-white/5"
                                         }`}
                                 >
                                     {activeTab === key && (
                                         <motion.div
                                             layoutId="activeTabPricing"
-                                            className="absolute inset-0 bg-primary shadow-[0_0_20px_rgba(172,255,26,0.3)]"
+                                            className="absolute inset-0 bg-primary shadow-[0_12px_40px_-10px_rgba(172,255,26,0.6)]"
                                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                         />
                                     )}

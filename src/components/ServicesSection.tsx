@@ -1,123 +1,133 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import {
-  Globe, Smartphone, Layers, Zap, Settings, Database
+  Globe, Smartphone, Layers, Zap, Settings, Database, ArrowRight, Video, Camera, Instagram, Palette, Rocket, Cpu, BarChart3, Link2
 } from "lucide-react";
 
 const mediaServices = [
-  { image: "/images/service-content-creation.png", title: "Content Creation", desc: "Premium photography and content that captures attention." },
-  { image: "/images/service-video-production.png", title: "Video Production", desc: "Cinematic videos, reels, and brand stories." },
-  { image: "/images/service-social-media.png", title: "Social Media Management", desc: "Strategic social presence across all platforms." },
-  { image: "/images/service-brand-design.png", title: "Brand Design", desc: "Visual identities that stand out in the market." },
+  { icon: Camera, title: "Content Creation", desc: "High-end photography that captures your brand's essence and vision." },
+  { icon: Video, title: "Video Production", desc: "Cinematic storytelling, brand films, and high-impact commercial reels." },
+  { icon: Instagram, title: "Social Management", desc: "Full-scale social strategy, handling, and community engagement." },
+  { icon: Palette, title: "Visual Identity", desc: "Premium brand design, aesthetic direction, and visual storytelling." },
 ];
 
 const techServices = [
-  { image: "/images/tech-website-dev.svg", title: "Website Development", desc: "High-performance websites built for conversion." },
-  { image: "/images/tech-app-dev.svg", title: "App Development", desc: "Native and cross-platform mobile applications." },
-  { image: "/images/tech-saas-dev.svg", title: "SaaS Development", desc: "Scalable software products from concept to launch." },
-  { image: "/images/tech-automation.svg", title: "Business Automation", desc: "Intelligent workflows that save time and money." },
-  { image: "/images/tech-crm.svg", title: "CRM & Admin Panels", desc: "Custom dashboards and management tools." },
-  { image: "/images/tech-api.svg", title: "API & Integrations", desc: "Connect your tools into one powerful ecosystem." },
+  { icon: Globe, title: "High-End Websites", desc: "Vite & Next.js engines optimized for speed, SEO, and conversion." },
+  { icon: Smartphone, title: "Mobile Ecosystems", desc: "Native-feel applications that provide seamless user experiences." },
+  { icon: Rocket, title: "SaaS Architecture", desc: "Scalable software solutions designed from concept to market launch." },
+  { icon: Cpu, title: "Industrial Automation", desc: "Smart logic and intelligent workflows to remove manual bottlenecks." },
+  { icon: BarChart3, title: "Data & Admin Panels", desc: "Proprietary dashboards that give you real-time business control." },
+  { icon: Link2, title: "API Orchestration", desc: "Seamlessly connecting your entire tech stack into one engine." },
 ];
 
-const ServiceCard = ({ image, icon: Icon, title, desc, delay }: {
-  image?: string; icon?: any; title: string; desc: string; delay: number;
-}) => (
+const ServiceCard = ({ icon: Icon, title, desc, index }: {
+  icon: any; title: string; desc: string; index: number;
+}) => {
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1] as any,
+            }
+        }
+    };
+    return (
   <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    variants={itemVariants}
+    initial="hidden"
+    whileInView="visible"
     viewport={{ once: true }}
-    transition={{ delay }}
-    whileHover={{ y: -8, rotateX: 2, rotateY: -2 }}
-    className="group rounded-2xl overflow-hidden card-dark card-dark-hover transition-all duration-300 cursor-pointer"
-    style={{ transformStyle: "preserve-3d" }}
+    transition={{ delay: index * 0.1 }}
+    className="group relative p-8 rounded-[2rem] card-dark card-dark-hover"
   >
-    <div className="relative h-44 w-full overflow-hidden bg-secondary/30 flex items-center justify-center">
-      {image ? (
-        <>
-          <img
-            src={image}
-            alt={title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-        </>
-      ) : (
-        <div className="relative flex items-center justify-center w-full h-full">
-          {/* Neon Glow Background */}
-          <div className="absolute h-20 w-20 rounded-full bg-primary/10 blur-[40px] group-hover:bg-primary/20 transition-colors" />
-          <Icon
-            size={42}
-            strokeWidth={1.5}
-            className="text-primary/70 group-hover:text-primary transition-colors group-hover:scale-110 duration-500"
-          />
+    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <ArrowRight className="text-primary/40" size={24} />
+    </div>
+    
+    <div className="mb-8 relative inline-flex items-center justify-center">
+        <div className="absolute inset-0 bg-primary/10 blur-[30px] rounded-full scale-0 group-hover:scale-150 transition-transform duration-700" />
+        <div className="relative h-16 w-16 rounded-2xl bg-secondary/50 border border-white/5 flex items-center justify-center group-hover:border-primary/20 transition-colors duration-500">
+            <Icon
+                size={32}
+                strokeWidth={1.5}
+                className="text-primary transition-all duration-500 group-hover:scale-110"
+            />
         </div>
-      )}
     </div>
-    <div className="p-6">
-      <h3 className="mb-2 font-display text-base font-semibold text-foreground">{title}</h3>
-      <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
-    </div>
+    
+    <h3 className="mb-4 font-display text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
+        {title}
+    </h3>
+    <p className="text-sm leading-relaxed text-muted-foreground/80 font-medium">
+        {desc}
+    </p>
   </motion.div>
-);
+    );
+};
 
 const ServicesSection = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+
   return (
-    <section id="services" className="relative py-28">
-      <div className="section-divider mb-28" />
-      <div className="container mx-auto px-6">
+    <section id="services" ref={containerRef} className="relative py-32 overflow-hidden bg-background">
+      <motion.div style={{ y: y1 }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 text-center"
+          className="mb-24 flex flex-col items-center text-center"
         >
-          <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
-            ✦ What We Do
-          </span>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Our Best Quality{" "}
-            <span className="font-serif-accent gradient-text">Services</span>
+          <motion.span 
+            initial={{ opacity: 0, letterSpacing: "0.2em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0.4em" }}
+            className="mb-6 text-[10px] font-black uppercase text-primary/80"
+          >
+            ✦ Our Expertise ✦
+          </motion.span>
+          <h2 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+            Powering Your <br />
+            <span className="font-serif-accent italic gradient-text">Next Evolution.</span>
           </h2>
         </motion.div>
 
         {/* Media Division */}
-        <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-8 flex items-center gap-3"
-          >
-            <div className="h-px flex-1 bg-primary/10" />
-            <span className="rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-              🔥 Media Division
-            </span>
-            <div className="h-px flex-1 bg-primary/10" />
-          </motion.div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-32">
+          <div className="flex items-center gap-6 mb-12">
+            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-foreground/40 whitespace-nowrap">
+                Media & Creative
+            </h3>
+            <div className="h-px flex-1 bg-white/5" />
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {mediaServices.map((s, i) => (
-              <ServiceCard key={s.title} {...s} delay={i * 0.08} />
+              <ServiceCard key={s.title} {...s} index={i} />
             ))}
           </div>
         </div>
 
         {/* Tech Division */}
         <div>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-8 flex items-center gap-3"
-          >
-            <div className="h-px flex-1 bg-primary/10" />
-            <span className="rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
-              ⚡ Tech Division
-            </span>
-            <div className="h-px flex-1 bg-primary/10" />
-          </motion.div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex items-center gap-6 mb-12">
+            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-foreground/40 whitespace-nowrap">
+                Tech & Performance
+            </h3>
+            <div className="h-px flex-1 bg-white/5" />
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {techServices.map((s, i) => (
-              <ServiceCard key={s.title} {...s} delay={i * 0.08} />
+              <ServiceCard key={s.title} {...s} index={i} />
             ))}
           </div>
         </div>

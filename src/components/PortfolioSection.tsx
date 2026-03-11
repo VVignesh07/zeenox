@@ -54,7 +54,7 @@ const PortfolioSection = () => {
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-1/3 bg-gradient-to-r from-background via-background/80 to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-1/3 bg-gradient-to-l from-background via-background/80 to-transparent" />
           
-          <div className="flex animate-marquee direction-reverse [animation-direction:reverse] hover:[animation-play-state:paused]">
+          <div className="flex animate-marquee-reverse hover:[animation-play-state:paused]">
             {[...projects.slice().reverse(), ...projects.slice().reverse()].map((p, i) => (
               <ProjectCard key={`${p.title}-rev-${i}`} project={p} index={i} />
             ))}
