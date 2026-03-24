@@ -30,7 +30,7 @@ const Index = () => {
         <Navbar />
         <main>
           <HeroSection />
-          
+
           <RevealSection delay={0.2}>
             <TechStackSection />
           </RevealSection>

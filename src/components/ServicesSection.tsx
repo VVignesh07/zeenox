@@ -41,18 +41,19 @@ const ServiceCard = ({ icon: Icon, title, desc, index }: {
     whileInView="visible"
     viewport={{ once: true }}
     transition={{ delay: index * 0.1 }}
-    className="group relative p-8 rounded-[2rem] card-dark card-dark-hover"
+    className="group relative p-8 card-apple card-apple-hover"
   >
     <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <ArrowRight className="text-primary/40" size={24} />
     </div>
     
     <div className="mb-8 relative inline-flex items-center justify-center">
+        <div className="absolute inset-0 bg-primary/20 blur-[25px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700" />
         <div className="relative h-16 w-16 flex items-center justify-center transition-colors duration-500">
             <Icon
-                size={32}
+                size={34}
                 strokeWidth={1.5}
-                className="text-primary transition-all duration-500 group-hover:scale-110"
+                className="text-primary filter drop-shadow-[0_0_8px_rgba(var(--primary),0.5)] transition-all duration-500 group-hover:scale-110"
             />
         </div>
     </div>
@@ -89,15 +90,15 @@ const ServicesSection = () => {
           className="mb-24 flex flex-col items-center text-center"
         >
           <motion.span 
-            initial={{ opacity: 0, letterSpacing: "0.2em" }}
-            whileInView={{ opacity: 1, letterSpacing: "0.4em" }}
-            className="mb-6 text-[10px] font-black uppercase text-primary/80"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-widest"
           >
-            ✦ Our Expertise ✦
+            Our Expertise
           </motion.span>
-          <h2 className="font-display text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+          <h2 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-foreground">
             Powering Your <br />
-            <span className="font-serif-accent italic gradient-text">Next Evolution.</span>
+            <span className="font-serif-accent italic text-primary">Next Evolution.</span>
           </h2>
         </motion.div>
 

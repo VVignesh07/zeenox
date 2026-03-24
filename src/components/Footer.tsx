@@ -2,9 +2,9 @@ import { Download, Instagram, Github, Linkedin, ArrowUpRight } from "lucide-reac
 
 const Footer = () => {
   return (
-    <footer className="relative bg-background pt-32 pb-16 overflow-hidden">
+    <footer className="relative bg-[#F5F5F7] pt-32 pb-16 overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-black/5" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid gap-16 lg:grid-cols-12">
@@ -14,12 +14,12 @@ const Footer = () => {
               <img
                 src="/images/logo2.png"
                 alt="Zeenox Logo"
-                className="h-10 w-auto brightness-110"
+                className="h-9 w-auto invert opacity-80"
               />
-              <span className="font-display text-xl font-black tracking-tighter">ZEENOX</span>
+              <span className="text-xl font-bold tracking-tighter">ZEENOX</span>
             </div>
-            <p className="max-w-sm text-lg text-muted-foreground/80 leading-relaxed font-medium mb-10">
-              A hybrid ecosystem merging high-end media production with next-gen technology. We build growth engines, not just websites.
+            <p className="max-w-sm text-lg text-muted-foreground leading-relaxed font-medium mb-10">
+              A premium ecosystem merging high-end media production with next-gen technology. We build growth engines.
             </p>
             <div className="flex gap-4">
                 {[
@@ -27,8 +27,8 @@ const Footer = () => {
                     { icon: Linkedin, href: "#" },
                     { icon: Github, href: "#" }
                 ].map((social, i) => (
-                    <a key={i} href={social.href} className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
-                        <social.icon size={20} />
+                    <a key={i} href={social.href} className="h-12 w-12 rounded-xl bg-black/5 border border-black/5 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-white hover:shadow-lg transition-all duration-300">
+                        <social.icon size={18} />
                     </a>
                 ))}
             </div>
@@ -74,8 +74,8 @@ const Footer = () => {
                         <p className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground/30 mb-1">Direct Line</p>
                         <p className="text-sm font-bold">+91 7603917369</p>
                     </div>
-                    <a href="#" className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-primary text-primary-foreground text-[10px] font-black uppercase tracking-widest hover:shadow-[0_8px_20px_rgba(172,255,26,0.3)] transition-all">
-                        <Download size={12} /> Digital Asset Kit
+                    <a href="#" className="inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-black text-white text-[10px] font-bold uppercase tracking-widest hover:bg-black/90 transition-all shadow-lg">
+                        <Download size={14} /> Asset Kit
                     </a>
                 </div>
             </div>
