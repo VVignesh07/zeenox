@@ -3,16 +3,16 @@ import { ArrowRight } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <section className="relative py-32 bg-white">
+    <section className="relative py-32 bg-background">
       <div className="section-divider mb-32" />
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative mx-auto max-w-5xl overflow-hidden rounded-[3rem] p-12 text-center card-apple shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] md:p-24 border-white/50"
+          className="relative mx-auto max-w-5xl overflow-hidden rounded-[3rem] p-12 text-center card-apple shadow-xl md:p-24 border-border"
           style={{
-            background: "radial-gradient(circle at top right, hsla(221,83%,53%,0.05) 0%, white 100%)",
+            background: "radial-gradient(circle at top right, hsla(221,83%,53%,0.05) 0%, var(--card) 100%)",
           }}
         >
           {/* Decorative Elite Elements */}

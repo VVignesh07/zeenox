@@ -80,7 +80,7 @@ const ServicesSection = () => {
 
   return (
     <section id="services" ref={containerRef} className="relative py-32 overflow-hidden bg-background">
-      <motion.div style={{ y: y1 }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      <motion.div style={{ y: y1 }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-border/20 to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -105,10 +105,10 @@ const ServicesSection = () => {
         {/* Media Division */}
         <div className="mb-32">
           <div className="flex items-center gap-6 mb-12">
-            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-foreground/40 whitespace-nowrap">
+            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap">
                 Media & Creative
             </h3>
-            <div className="h-px flex-1 bg-white/5" />
+            <div className="h-px flex-1 bg-border/20" />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {mediaServices.map((s, i) => (
@@ -120,10 +120,10 @@ const ServicesSection = () => {
         {/* Tech Division */}
         <div>
           <div className="flex items-center gap-6 mb-12">
-            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-foreground/40 whitespace-nowrap">
+            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap">
                 Tech & Performance
             </h3>
-            <div className="h-px flex-1 bg-white/5" />
+            <div className="h-px flex-1 bg-border/20" />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {techServices.map((s, i) => (

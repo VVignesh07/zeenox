@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import FounderSection from "@/components/FounderSection";
 import ServicesSection from "@/components/ServicesSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import ShowreelSection from "@/components/ShowreelSection";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import RoadmapSection from "@/components/RoadmapSection";
@@ -37,6 +38,10 @@ const Index = () => {
 
           <RevealSection delay={0.3}>
             <FounderSection />
+          </RevealSection>
+
+          <RevealSection delay={0.2}>
+            <ShowreelSection />
           </RevealSection>
 
           <RevealSection delay={0.2}>

@@ -15,7 +15,7 @@ const FounderSection = () => {
   const rotateOrbit = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   return (
-    <section id="about" ref={containerRef} className="relative py-40 overflow-hidden bg-white">
+    <section id="about" ref={containerRef} className="relative py-40 overflow-hidden bg-background">
       {/* Background Decorative - Apple Glows */}
       <motion.div style={{ y: y1 }} className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none opacity-60" />
       <motion.div style={{ y: y2 }} className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none opacity-50" />
@@ -83,9 +83,9 @@ const FounderSection = () => {
               </p>
               
               {/* Trust Tag */}
-              <div className="flex items-center gap-2 mb-10 px-4 py-2 rounded-xl bg-black/5 border border-black/5 w-fit">
+              <div className="flex items-center gap-2 mb-10 px-4 py-2 rounded-xl bg-foreground/5 border border-border w-fit">
                 <Sparkles size={14} className="text-primary animate-pulse" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">Trusted by Global Luxury Brands</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Trusted by Global Luxury Brands</span>
               </div>
 
               {/* Injected Stats Section */}

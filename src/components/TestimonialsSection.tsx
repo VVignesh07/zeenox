@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
   const t = testimonials[current];
 
   return (
-    <section className="relative py-32 bg-white">
+    <section className="relative py-32 bg-background">
       <div className="section-divider mb-32" />
       <div className="container mx-auto px-6">
         <motion.div
@@ -53,8 +53,8 @@ const TestimonialsSection = () => {
 
         {/* Elite Brand Logos Marquee */}
         <div className="mb-32 w-full overflow-hidden relative group">
-            <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
             
             <motion.div
                 className="flex gap-16 md:gap-32 w-max opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 hover:[animation-play-state:paused]"
@@ -62,20 +62,6 @@ const TestimonialsSection = () => {
                 transition={{ ease: "linear", duration: 12, repeat: Infinity }}
             >
                 {[
-                  ...[
-                    { name: "Venu's Health Care", industry: "Medical" },
-                    { name: "KVP Jewellery", industry: "Luxury" },
-                    { name: "FitPro", industry: "Performance" },
-                    { name: "Elite Realty", industry: "Real Estate" },
-                    { name: "Aura Clinic", industry: "Healthcare" },
-                  ],
-                  ...[
-                    { name: "Venu's Health Care", industry: "Medical" },
-                    { name: "KVP Jewellery", industry: "Luxury" },
-                    { name: "FitPro", industry: "Performance" },
-                    { name: "Elite Realty", industry: "Real Estate" },
-                    { name: "Aura Clinic", industry: "Healthcare" },
-                  ],
                   ...[
                     { name: "Venu's Health Care", industry: "Medical" },
                     { name: "KVP Jewellery", industry: "Luxury" },
@@ -130,7 +116,7 @@ const TestimonialsSection = () => {
 
             <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between pt-12 border-t border-black/[0.03]">
               <div className="flex items-center gap-6 justify-center lg:justify-start">
-                <div className="h-16 w-16 shrink-0 rounded-2xl bg-primary/5 text-primary flex items-center justify-center font-black text-xl shadow-inner overflow-hidden border border-black/5">
+                <div className="h-16 w-16 shrink-0 rounded-2xl bg-primary/5 text-primary flex items-center justify-center font-black text-xl shadow-inner overflow-hidden border border-border">
                   <motion.div
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
@@ -147,13 +133,13 @@ const TestimonialsSection = () => {
               <div className="flex gap-4 justify-center">
                 <button
                   onClick={() => setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-                  className="rounded-2xl h-14 w-14 flex items-center justify-center border border-black/5 bg-white text-foreground transition-all hover:bg-black/5 hover:border-black/10 hover:-translate-x-1 active:scale-95 shadow-sm"
+                  className="rounded-2xl h-14 w-14 flex items-center justify-center border border-border bg-card text-foreground transition-all hover:bg-foreground/5 hover:border-border/50 hover:-translate-x-1 active:scale-95 shadow-sm"
                 >
                   <ChevronLeft size={22} />
                 </button>
                 <button
                   onClick={() => setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-                  className="rounded-2xl h-14 w-14 flex items-center justify-center border border-black/5 bg-white text-foreground transition-all hover:bg-black/5 hover:border-black/10 hover:translate-x-1 active:scale-95 shadow-sm"
+                  className="rounded-2xl h-14 w-14 flex items-center justify-center border border-border bg-card text-foreground transition-all hover:bg-foreground/5 hover:border-border/50 hover:translate-x-1 active:scale-95 shadow-sm"
                 >
                   <ChevronRight size={22} />
                 </button>

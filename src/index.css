@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    --background: 240 5% 96%; /* #F5F5F7 */
-    --foreground: 240 3% 12%; /* #1D1D1F */
+    --background: 210 40% 98%; /* Clean Off-white */
+    --foreground: 222 47% 11%; /* Deep Charcoal */
 
-    --card: 0 0% 100%; /* #FFFFFF */
-    --card-foreground: 240 3% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 3% 12%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 210 100% 45%; /* #0071E3 */
-    --primary-foreground: 0 0% 100%;
+    --primary: 221 83% 53%; /* Professional Blue */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 3% 12%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 2% 54%; /* #86868B */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 221 83% 53%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 221 83% 53%;
 
-    --radius: 1.25rem;
+    --radius: 1rem;
   }
 }
 
@@ -48,12 +48,27 @@
     font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     letter-spacing: -0.01em;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+    filter: contrast(120%) brightness(120%);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'SF Pro Display', 'Outfit', 'Inter', sans-serif;
     letter-spacing: -0.03em;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   /* Custom scrollbar */
@@ -110,25 +125,21 @@
   }
 
   .card-apple {
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.02);
-    border-radius: 2.5rem;
+    @apply bg-card border border-border/50 rounded-[2.5rem];
     box-shadow: 
       0 1px 2px rgba(0, 0, 0, 0.01),
-      0 4px 8px rgba(0, 0, 0, 0.01),
-      0 12px 24px rgba(0, 0, 0, 0.02),
-      0 32px 64px -12px rgba(0, 0, 0, 0.04);
-    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      0 10px 20px -5px rgba(0, 0, 0, 0.02),
+      0 30px 60px -15px rgba(0, 0, 0, 0.03);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .card-apple-hover:hover {
-    transform: translateY(-12px) scale(1.01);
+    transform: translateY(-16px) rotateX(2deg) scale(1.02);
     box-shadow: 
-      0 2px 4px rgba(0, 0, 0, 0.02),
-      0 8px 16px rgba(0, 0, 0, 0.02),
-      0 24px 48px rgba(0, 0, 0, 0.04),
-      0 60px 120px -20px rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 113, 227, 0.15);
+      0 4px 8px rgba(0, 0, 0, 0.02),
+      0 20px 40px -10px rgba(0, 0, 0, 0.04),
+      0 80px 160px -30px rgba(0, 0, 0, 0.08);
+    @apply border-primary/20;
   }
 
   .btn-apple {
@@ -179,6 +190,15 @@
 
   .mix-blend-screen {
     mix-blend-mode: screen;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

@@ -20,7 +20,7 @@ const ProcessSection = () => {
   const lineHeight = useTransform(scrollYProgress, [0, 0.8], ["0%", "100%"]);
 
   return (
-    <section id="process" ref={containerRef} className="relative py-32 bg-[#F5F5F7] overflow-hidden">
+    <section id="process" ref={containerRef} className="relative py-32 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -29,22 +29,22 @@ const ProcessSection = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
           className="mb-24 text-center"
         >
-          <span className="mb-6 inline-block px-4 py-1.5 rounded-full border border-black/[0.06] bg-white text-neutral-600 text-[11px] font-semibold uppercase tracking-widest shadow-sm">
+          <span className="mb-6 inline-block px-4 py-1.5 rounded-full border border-border bg-card text-muted-foreground text-[11px] font-semibold uppercase tracking-widest shadow-sm">
             How We Work
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
-            Our <span className="font-serif-accent italic text-neutral-500">Process</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.15]">
+            Our <span className="font-serif-accent italic text-muted-foreground/60">Process</span>
           </h2>
         </motion.div>
 
         <div className="relative mx-auto max-w-4xl">
           {/* Timeline background line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-black/[0.04] md:left-1/2 md:-translate-x-px" />
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-border md:left-1/2 md:-translate-x-px" />
           
           {/* Timeline animated line */}
           <motion.div 
             style={{ height: lineHeight }} 
-            className="absolute left-6 top-0 w-px bg-neutral-900 md:left-1/2 md:-translate-x-px origin-top transition-all duration-100" 
+            className="absolute left-6 top-0 w-px bg-foreground md:left-1/2 md:-translate-x-px origin-top transition-all duration-100" 
           />
 
           {steps.map((step, i) => (
@@ -65,7 +65,7 @@ const ProcessSection = () => {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.1, type: "spring", stiffness: 200, damping: 20 }}
-                  className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-white border border-black/[0.08] text-neutral-900 shadow-[0_8px_20px_rgb(0,0,0,0.06)] group-hover:scale-110 group-hover:shadow-[0_12px_30px_rgb(0,0,0,0.1)] transition-all duration-500"
+                  className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-card border border-border text-foreground shadow-sm group-hover:scale-110 group-hover:shadow-md transition-all duration-500"
                 >
                   <step.icon size={22} strokeWidth={1.5} />
                 </motion.div>
@@ -73,12 +73,12 @@ const ProcessSection = () => {
 
               {/* Content */}
               <div className={`ml-20 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                <div className="rounded-[1.5rem] p-8 md:p-10 bg-white border border-black/[0.04] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500 hover:-translate-y-1">
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-neutral-400">
+                <div className="rounded-[1.5rem] p-8 md:p-10 bg-card border border-border shadow-sm hover:shadow-md transition-all duration-500 hover:-translate-y-1">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                     Phase {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-3 text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">{step.title}</h3>
-                  <p className="mt-3 text-[15px] md:text-base leading-relaxed text-neutral-500 font-medium tracking-tight">{step.desc}</p>
+                  <h3 className="mt-3 text-xl md:text-2xl font-semibold tracking-tight text-foreground">{step.title}</h3>
+                  <p className="mt-3 text-[15px] md:text-base leading-relaxed text-muted-foreground font-medium tracking-tight">{step.desc}</p>
                 </div>
               </div>
             </motion.div>

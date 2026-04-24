@@ -48,7 +48,7 @@ const StatsSection = () => {
       number: 6,
       labelLine1: "PROJECTS",
       labelLine2: "DELIVERED",
-      textColor: "text-neutral-400",
+      textColor: "text-muted-foreground",
       highlight: false,
     },
     {
@@ -57,7 +57,7 @@ const StatsSection = () => {
       number: 6,
       labelLine1: "BRANDS",
       labelLine2: "ARCHITECTED",
-      textColor: "text-neutral-400",
+      textColor: "text-muted-foreground",
       highlight: false,
     },
     {
@@ -66,7 +66,7 @@ const StatsSection = () => {
       number: 2,
       labelLine1: "YEARS",
       labelLine2: "MASTERY",
-      textColor: "text-neutral-400",
+      textColor: "text-muted-foreground",
       highlight: false,
     },
   ];
@@ -79,21 +79,21 @@ const StatsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className={`flex flex-col items-center justify-center p-8 bg-white rounded-[2rem] w-full sm:flex-1 transition-all duration-500 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)]`}
+          transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as any }}
+          className={`flex flex-col items-center justify-center p-8 bg-card rounded-[2rem] w-full sm:flex-1 transition-all duration-500 shadow-sm hover:shadow-xl border border-border`}
         >
-          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500 hover:scale-110 ${stat.iconBg}`}>
+          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500 hover:scale-110 bg-primary/10`}>
             {stat.icon}
           </div>
           
           <div className="flex items-baseline mb-3">
-            <span className="text-4xl md:text-5xl font-black text-neutral-900 tracking-tighter">
+            <span className="text-4xl md:text-5xl font-black text-foreground tracking-tighter">
               <Counter from={0} to={stat.number} duration={2} />
             </span>
             <span className={`text-2xl md:text-4xl font-black ml-1 text-primary`}>+</span>
           </div>
           
-          <span className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-center leading-relaxed flex flex-col items-center justify-center ${stat.textColor}`}>
+          <span className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-center leading-relaxed flex flex-col items-center justify-center text-muted-foreground`}>
             <span>{stat.labelLine1}</span>
             <span>{stat.labelLine2}</span>
           </span>

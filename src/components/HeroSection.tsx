@@ -1,120 +1,178 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Film, Globe, BarChart3, PenTool } from "lucide-react";
 import { useRef } from "react";
 
 const HeroSection = () => {
-    const containerRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
     });
 
-    const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-    const yCircles = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-    const opacityFade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-    const yText = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
+    // 3D Parallax Transforms
+    const yHeading = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const rotateX = useTransform(scrollYProgress, [0, 1], [0, 15]);
+    const zDepth = useTransform(scrollYProgress, [0, 1], [0, -100]);
+    const opacityFade = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+    // Floating Elements Parallax
+    const floatY1 = useTransform(scrollYProgress, [0, 1], ["0%", "150%"]);
+    const floatY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+    const floatRotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1,
+                staggerChildren: 0.12,
                 delayChildren: 0.2,
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+        hidden: { opacity: 0, y: 30, rotateX: -10 },
         visible: {
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
+            rotateX: 0,
             transition: {
-                duration: 1.2,
+                duration: 1,
                 ease: [0.16, 1, 0.3, 1] as any,
             }
         }
     };
 
-    return (
-        <section ref={containerRef} className="relative min-h-[100svh] flex items-center overflow-hidden bg-[#FAFAFA] selection:bg-black/10">
-            {/* Ultra-subtle Apple-style Background with Parallax */}
-            <motion.div style={{ y: yBackground, opacity: opacityFade }} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <div className="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:64px_64px] opacity-[0.015]" />
-                <motion.div style={{ y: yCircles }} className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-gradient-to-b from-primary/5 to-transparent blur-[120px]" />
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-gradient-to-t from-gray-50/80 to-transparent blur-[100px]" />
-            </motion.div>
+    const features = [
+        {
+            icon: <Film className="text-primary" size={24} />,
+            title: "Reels & Video",
+            desc: "High-converting content that gets attention."
+        },
+        {
+            icon: <Globe className="text-primary" size={24} />,
+            title: "Websites",
+            desc: "Modern, fast & responsive websites that convert."
+        },
+        {
+            icon: <BarChart3 className="text-primary" size={24} />,
+            title: "CRM & Automation",
+            desc: "Smart systems to automate & scale your business."
+        },
+        {
+            icon: <PenTool className="text-primary" size={24} />,
+            title: "Branding",
+            desc: "Strong identity that builds trust & recognition."
+        }
+    ];
 
-            <div className="container relative z-10 mx-auto px-6 md:px-12 pt-32 pb-24">
+    return (
+        <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-between pt-32 pb-16 overflow-hidden bg-background [perspective:1200px]">
+            {/* 3D Background Elements */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+                <motion.div 
+                    style={{ y: floatY1, rotate: floatRotate }}
+                    className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-[4rem] blur-3xl opacity-50"
+                />
+                <motion.div 
+                    style={{ y: floatY2, rotate: -floatRotate }}
+                    className="absolute bottom-1/4 -right-20 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[100px] opacity-30"
+                />
+                {/* Decorative 3D lines */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--border)_1px,transparent_1px)] [background-size:100px_100px] opacity-20" />
+            </div>
+
+            <div className="container relative z-10 mx-auto px-6 md:px-12 flex-1 flex flex-col items-center justify-center">
                 <motion.div
-                    style={{ y: yText, opacity: opacityFade }}
                     variants={containerVariants}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="max-w-5xl mx-auto flex flex-col items-center text-center"
+                    animate="visible"
+                    style={{ y: yHeading, rotateX, z: zDepth, opacity: opacityFade }}
+                    className="max-w-6xl mx-auto flex flex-col items-center text-center transition-all duration-300 ease-out"
                 >
-                    <motion.div variants={itemVariants} className="mb-12">
-                        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-black/[0.02] border border-black/[0.05] backdrop-blur-xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all hover:bg-black/[0.04]">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                            </span>
-                            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/70">
-                                Available for New Projects
-                            </span>
-                        </div>
+                    {/* Main Heading */}
+                    <motion.h1 
+                        variants={itemVariants} 
+                        className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-10 [text-wrap:balance]"
+                    >
+                        We Build Brands.<br />
+                        <span className="text-primary relative inline-block">
+                            We Drive Results.
+                            <motion.div 
+                                initial={{ width: 0 }}
+                                animate={{ width: "100%" }}
+                                transition={{ delay: 1, duration: 1 }}
+                                className="absolute -bottom-2 left-0 h-1 bg-primary/20 rounded-full"
+                            />
+                        </span>
+                    </motion.h1>
+
+                    {/* Z Divider */}
+                    <motion.div variants={itemVariants} className="flex items-center gap-5 mb-10 w-full max-w-[280px]">
+                        <div className="h-[1px] flex-1 bg-border/60" />
+                        <span className="text-xl font-black text-primary tracking-tighter opacity-80">Z</span>
+                        <div className="h-[1px] flex-1 bg-border/60" />
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="relative mb-8">
-                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-bold leading-[1.05] tracking-tight text-neutral-900">
-                            Architecting <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-900">
-                                Digital Excellence.
-                            </span>
-                        </h1>
-                    </motion.div>
-
-                    <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-xl md:text-2xl leading-relaxed text-neutral-500 font-medium tracking-tight">
-                        Zeenox is a premier digital engineering studio. We craft high-performance 
-                        experiences and intelligent automation for elite global brands.
-                    </motion.p>
-
-                    <motion.div variants={itemVariants} className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
-                        <a
-                            href="#contact"
-                            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-neutral-900 text-white font-medium text-[15px] tracking-wide shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:bg-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 w-full sm:w-auto"
-                        >
-                            <span>Start Expansion</span>
-                            <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-                        </a>
-                        <a
-                            href="#portfolio"
-                            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-neutral-900 font-medium text-[15px] tracking-wide border border-black/[0.08] shadow-[0_2px_10px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 w-full sm:w-auto"
-                        >
-                            <span>View Case Studies</span>
-                        </a>
+                    {/* Subtitle */}
+                    <motion.div variants={itemVariants} className="max-w-3xl px-4">
+                        <p className="text-base md:text-lg lg:text-xl text-muted-foreground/90 leading-relaxed font-medium">
+                            Zeenox is a digital engineering studio helping businesses grow with<br className="hidden md:block" />
+                            <span className="relative inline-block font-bold text-foreground mx-1">
+                                powerful content,
+                                <svg className="absolute -bottom-1 left-0 w-full h-1.5 text-primary/40" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none">
+                                    <path d="M1 5.5C40.5 2.5 120.5 1.5 199 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                </svg>
+                            </span>{" "}
+                            <span className="font-bold text-foreground">smart websites & intelligent automation.</span>
+                        </p>
                     </motion.div>
                 </motion.div>
             </div>
 
-            {/* Ultra-minimal Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1.5 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-            >
-                <div className="h-16 w-[1px] bg-neutral-200 relative overflow-hidden">
-                    <motion.div 
-                        animate={{ y: ["-100%", "200%"] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: [0.7, 0, 0.3, 1] as any }}
-                        className="absolute top-0 left-0 w-full h-1/2 bg-neutral-800"
-                    />
-                </div>
-            </motion.div>
+            {/* Feature Grid - Positioned at bottom */}
+            <div className="container relative z-10 mx-auto px-6 md:px-12 mt-20">
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 w-full max-w-7xl mx-auto"
+                >
+                    {features.map((feature, i) => (
+                        <motion.div key={i} variants={itemVariants} className="relative flex flex-col items-center px-4 md:px-8 group">
+                            {/* Vertical Divider (Desktop) */}
+                            {i !== 0 && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-12 bg-border hidden lg:block opacity-50" />}
+                            
+                            <div className="h-14 w-14 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-5 group-hover:scale-105 transition-all duration-500 group-hover:shadow-md group-hover:border-primary/20">
+                                {feature.icon}
+                            </div>
+                            <h3 className="text-[15px] font-bold text-foreground mb-1.5">{feature.title}</h3>
+                            <p className="text-[12px] text-muted-foreground/80 leading-relaxed max-w-[180px] text-center">
+                                {feature.desc}
+                            </p>
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                {/* Bottom CTA Text */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                    className="mt-16 text-center"
+                >
+                    <p className="text-[15px] md:text-base font-semibold tracking-tight">
+                        <span className="text-muted-foreground">Let's build. Let's grow.</span>{" "}
+                        <span className="relative inline-block font-bold text-primary ml-1 group cursor-pointer">
+                            Together.
+                            <svg className="absolute -bottom-1 left-0 w-full h-1 text-primary transition-transform duration-300 group-hover:scale-x-110" viewBox="0 0 100 6" fill="none" preserveAspectRatio="none">
+                                <path d="M1 4.5C20.5 1.5 60.5 1.5 99 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
+                        </span>
+                    </p>
+                </motion.div>
+            </div>
         </section>
     );
 };

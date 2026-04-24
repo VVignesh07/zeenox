@@ -80,7 +80,7 @@ const ContactSection = () => {
               </a>
               <a
                 href="#"
-                className="flex-1 flex items-center justify-center gap-3 p-5 rounded-2xl bg-black text-white hover:bg-black/90 transition-all duration-500 group"
+                className="flex-1 flex items-center justify-center gap-3 p-5 rounded-2xl bg-foreground text-background hover:bg-foreground/90 transition-all duration-500 group"
               >
                 <Calendar size={20} className="group-hover:scale-110 transition-transform" />
                 <span className="text-sm font-bold uppercase tracking-wider">Book Call</span>
@@ -118,10 +118,10 @@ const ContactSection = () => {
 
               setSubmitted(true);
             }}
-            className="relative p-10 rounded-[2.5rem] bg-white border border-black/5 shadow-2xl"
+            className="relative p-10 rounded-[2.5rem] bg-card border border-border shadow-2xl"
           >
              <motion.div style={{ y: y2, rotate: rotateIcon }} className="absolute top-0 right-0 p-8 pointer-events-none opacity-[0.03]">
-                <Send size={150} className="text-black" />
+                <Send size={150} className="text-foreground" />
              </motion.div>
 
             {submitted ? (
@@ -146,7 +146,7 @@ const ContactSection = () => {
                         type={field.type}
                         required
                         placeholder={field.label}
-                        className="w-full h-14 rounded-xl bg-black/[0.03] border border-black/5 px-6 text-sm text-foreground focus:border-primary focus:bg-white focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-14 rounded-xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
                       />
                     </div>
                   ))}
@@ -158,7 +158,7 @@ const ContactSection = () => {
                         type="email"
                         required
                         placeholder="yourname@example.com"
-                        className="w-full h-14 rounded-xl bg-black/[0.03] border border-black/5 px-6 text-sm text-foreground focus:border-primary focus:bg-white focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-14 rounded-xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
                     />
                 </div>
                 <div className="space-y-2">
@@ -167,7 +167,7 @@ const ContactSection = () => {
                         name="subject"
                         type="text"
                         placeholder="Project subject?"
-                        className="w-full h-14 rounded-xl bg-black/[0.03] border border-black/5 px-6 text-sm text-foreground focus:border-primary focus:bg-white focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-14 rounded-xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
                     />
                 </div>
                 <div className="space-y-2">
@@ -177,7 +177,7 @@ const ContactSection = () => {
                         rows={4}
                         required
                         placeholder="How can we help?"
-                        className="w-full rounded-2xl bg-black/[0.03] border border-black/5 p-6 text-sm text-foreground focus:border-primary focus:bg-white focus:shadow-lg transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/40"
+                        className="w-full rounded-2xl bg-foreground/[0.03] border border-border p-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/40"
                     />
                 </div>
                 <button

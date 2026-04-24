@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ReactNode, useRef } from "react";
 
 interface RevealSectionProps {
     children: ReactNode;
@@ -7,18 +7,41 @@ interface RevealSectionProps {
     width?: "fit-content" | "100%";
 }
 
-export const RevealSection = ({ children, delay = 0.2, width = "100%" }: RevealSectionProps) => {
+export const RevealSection = ({ children, delay = 0, width = "100%" }: RevealSectionProps) => {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    // 3D Parallax Scrolling Transforms (More refined 'cylindrical' feel)
+    const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [12, 0, -12]);
+    const opacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 1, 0.85]);
+    const z = useTransform(scrollYProgress, [0, 0.5, 1], [-200, 0, -200]);
+    const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
+
     return (
-        <div style={{ position: "relative", width, overflow: "hidden" }}>
+        <div 
+            ref={sectionRef}
+            style={{ 
+                position: "relative", 
+                width, 
+                perspective: "1500px",
+                zIndex: 1
+            }}
+        >
             <motion.div
-                variants={{
-                    hidden: { opacity: 0, y: 75 },
-                    visible: { opacity: 1, y: 0 },
+                style={{ 
+                    rotateX,
+                    opacity,
+                    scale,
+                    z,
+                    y,
+                    transformStyle: "preserve-3d",
+                    transformOrigin: "center center"
                 }}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+                className="will-change-transform"
             >
                 {children}
             </motion.div>
