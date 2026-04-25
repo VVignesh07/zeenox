@@ -11,32 +11,38 @@ interface Showreel {
 
 const showreels: Showreel[] = [
   {
+    title: "Election Strategy",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/ELECTION2_bejlno.mp4",
+    instagramUrl: "https://www.instagram.com/",
+    thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/ELECTION2_bejlno.jpg",
+  },
+  {
     title: "Auura Cinematic Final",
-    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/v1714058700/AUURA_FINAL_1_e4kula.mp4",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/AUURA_FINAL_1_e4kula.mp4",
     instagramUrl: "https://www.instagram.com/",
     thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/AUURA_FINAL_1_e4kula.jpg",
   },
   {
     title: "Works Showcase",
-    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/v1777052190/WORKS_FINAL_bw5yvu.mp4",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/WORKS_FINAL_bw5yvu.mp4",
     instagramUrl: "https://www.instagram.com/",
     thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/WORKS_FINAL_bw5yvu.jpg",
   },
   {
     title: "Interest Analytics",
-    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/v1777052188/INTREST_p2ooin.mp4",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/INTREST_p2ooin.mp4",
     instagramUrl: "https://www.instagram.com/",
     thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/INTREST_p2ooin.jpg",
   },
   {
     title: "Chess Strategy",
-    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/v1777052186/CHESS_GAME_nqbjb8.mp4",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/CHESS_GAME_nqbjb8.mp4",
     instagramUrl: "https://www.instagram.com/",
     thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/CHESS_GAME_nqbjb8.jpg",
   },
   {
     title: "Financial Intelligence",
-    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/v1777052177/CHIT_FUND_mot5vm.mp4",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/CHIT_FUND_mot5vm.mp4",
     instagramUrl: "https://www.instagram.com/",
     thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/CHIT_FUND_mot5vm.jpg",
   },
