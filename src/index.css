@@ -85,7 +85,7 @@
     font-family: 'SF Pro Display', 'Outfit', 'Inter', sans-serif;
     letter-spacing: -0.03em;
     font-weight: 700;
-    @apply text-foreground overflow-wrap-anywhere;
+    @apply text-foreground break-words;
   }
 
   img, video {
