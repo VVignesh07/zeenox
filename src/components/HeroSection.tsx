@@ -68,7 +68,7 @@ const HeroSection = () => {
     ];
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-between pt-32 pb-16 overflow-hidden bg-background [perspective:1200px]">
+        <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-between pt-20 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-background [perspective:1200px]">
             {/* 3D Background Elements */}
             <div className="absolute inset-0 pointer-events-none z-0">
                 <motion.div 

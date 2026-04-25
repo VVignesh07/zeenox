@@ -8,11 +8,11 @@ const techStack = [
 
 const TechStackSection = () => {
   return (
-    <section className="relative py-32 overflow-hidden bg-background">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-background">
       {/* Background depth */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[140px] pointer-events-none opacity-50" />
       
-      <div className="container mx-auto px-6 mb-20 relative z-10">
+      <div className="container mx-auto px-6 mb-12 md:mb-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const TechStackSection = () => {
           {[...techStack, ...techStack, ...techStack].map((tech, i) => (
             <div
               key={`${tech}-r1-${i}`}
-              className="mx-4 flex-shrink-0 card-apple card-apple-hover px-10 py-6 text-lg font-bold tracking-tight text-foreground/80 hover:text-primary transition-all group cursor-default"
+              className="mx-4 flex-shrink-0 card-apple card-apple-hover px-6 py-4 md:px-10 md:py-6 text-base md:text-lg font-bold tracking-tight text-foreground/80 hover:text-primary transition-all group cursor-default"
             >
               <span className="relative z-10">{tech}</span>
             </div>
@@ -59,7 +59,7 @@ const TechStackSection = () => {
           {[...techStack.slice().reverse(), ...techStack.slice().reverse(), ...techStack.slice().reverse()].map((tech, i) => (
             <div
               key={`${tech}-r2-${i}`}
-              className="mx-4 flex-shrink-0 card-apple card-apple-hover px-10 py-6 text-lg font-bold tracking-tight text-foreground/80 hover:text-primary transition-all group cursor-default"
+              className="mx-4 flex-shrink-0 card-apple card-apple-hover px-6 py-4 md:px-10 md:py-6 text-base md:text-lg font-bold tracking-tight text-foreground/80 hover:text-primary transition-all group cursor-default"
             >
               <span className="relative z-10">{tech}</span>
             </div>

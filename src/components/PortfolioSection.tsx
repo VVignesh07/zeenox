@@ -59,8 +59,8 @@ const projects = [
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="relative py-32 bg-background overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 mb-20 text-center">
+    <section id="portfolio" className="relative py-20 md:py-32 bg-background overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 mb-12 md:mb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: (index % projects.length) * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
-      className="group relative flex-shrink-0 w-[300px] sm:w-[380px] md:w-[440px] px-3 sm:px-4 cursor-pointer [perspective:1000px]"
+      className="group relative flex-shrink-0 w-[260px] sm:w-[340px] md:w-[440px] px-3 sm:px-4 cursor-pointer [perspective:1000px]"
       onClick={() => {
         const target = project.instagramUrl || project.link;
         if (target) window.open(target, "_blank");

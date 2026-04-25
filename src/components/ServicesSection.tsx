@@ -79,7 +79,7 @@ const ServicesSection = () => {
   const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
   return (
-    <section id="services" ref={containerRef} className="relative py-32 overflow-hidden bg-background">
+    <section id="services" ref={containerRef} className="relative py-20 md:py-32 overflow-hidden bg-background">
       <motion.div style={{ y: y1 }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-border/20 to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">
@@ -87,7 +87,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24 flex flex-col items-center text-center"
+          className="mb-16 md:mb-24 flex flex-col items-center text-center"
         >
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -103,7 +103,7 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Media Division */}
-        <div className="mb-32">
+        <div className="mb-20 md:mb-32">
           <div className="flex items-center gap-6 mb-12">
             <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap">
                 Media & Creative

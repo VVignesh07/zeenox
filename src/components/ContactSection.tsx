@@ -17,14 +17,14 @@ const ContactSection = () => {
   const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contact" ref={containerRef} className="relative py-32 bg-background overflow-hidden">
+    <section id="contact" ref={containerRef} className="relative py-20 md:py-32 bg-background overflow-hidden">
       <motion.div style={{ y: y1 }} className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 flex flex-col items-center text-center"
+          className="mb-12 md:mb-20 flex flex-col items-center text-center"
         >
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -42,7 +42,7 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto grid max-w-6xl gap-20 lg:grid-cols-2 items-start">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:gap-20 lg:grid-cols-2 items-start">
           {/* Left — Info + Quick links */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

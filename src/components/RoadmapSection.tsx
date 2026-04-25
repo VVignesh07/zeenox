@@ -6,7 +6,7 @@ const RoadmapSection = () => {
     const [activeTab, setActiveTab] = useState<"software" | "video">("software");
 
     return (
-        <section id="roadmap" className="relative py-32 overflow-hidden bg-background">
+        <section id="roadmap" className="relative py-20 md:py-32 overflow-hidden bg-background">
             {/* Background Decorations */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px]" />
