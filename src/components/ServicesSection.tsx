@@ -40,7 +40,7 @@ const ServiceCard = ({ icon: Icon, title, desc, index }: {
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true }}
-    className="group relative p-8 bg-card/40 backdrop-blur-sm border border-border/50 rounded-[2.5rem] transition-all duration-700 hover:bg-card hover:shadow-2xl hover:border-primary/20 hover:-translate-y-2 overflow-hidden"
+    className="group relative p-6 sm:p-8 bg-card/40 backdrop-blur-sm border border-border/50 rounded-[2rem] sm:rounded-[2.5rem] transition-all duration-700 hover:bg-card hover:shadow-2xl hover:border-primary/20 hover:-translate-y-2 overflow-hidden"
   >
     <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
         <ArrowRight className="text-primary" size={20} />

@@ -77,7 +77,7 @@ const HeroSection = () => {
                     {/* Previous Main Heading with New Style */}
                     <motion.h1 
                         variants={itemVariants} 
-                        className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.05] mb-8 [text-wrap:balance]"
+                        className="text-[2.2rem] xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.1] sm:leading-[1.05] mb-8 [text-wrap:balance]"
                     >
                         We Build <span className="text-primary">Brands.</span><br />
                         We Build <span className="text-primary">Systems.</span><br />

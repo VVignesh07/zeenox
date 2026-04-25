@@ -127,11 +127,11 @@ const ShowreelSection = () => {
           <div
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto scrollbar-hide gap-8 py-10 px-4 md:px-0 snap-x scroll-smooth"
-            style={{ scrollPadding: '0 24px' }}
+            className="flex overflow-x-auto scrollbar-hide gap-6 md:gap-8 py-10 px-4 md:px-0 snap-x scroll-smooth"
+            style={{ scrollPadding: '0 16px' }}
           >
             {showreels.map((reel, index) => (
-              <div key={`${reel.title}-${index}`} className="flex-shrink-0 w-[300px] sm:w-[380px] snap-center">
+              <div key={`${reel.title}-${index}`} className="flex-shrink-0 w-[270px] xs:w-[300px] sm:w-[380px] snap-center">
                 <ReelCard reel={reel} index={index} />
               </div>
             ))}

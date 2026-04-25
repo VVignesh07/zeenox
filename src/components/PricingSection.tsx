@@ -215,7 +215,7 @@ const PricingSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -30 }}
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+                            className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
                         >
                             {packageMap[activeTab].map((pkg, i) => (
                                 <motion.div
@@ -223,7 +223,7 @@ const PricingSection = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`relative group flex flex-col p-8 sm:p-12 rounded-[2.5rem] bg-card border border-border transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 ${
+                                    className={`relative group flex flex-col p-6 sm:p-12 rounded-[2rem] sm:rounded-[2.5rem] bg-card border border-border transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 ${
                                         pkg.recommended ? "border-primary/30 ring-1 ring-primary/20 shadow-xl lg:scale-[1.05] z-10" : ""
                                     }`}
                                 >
