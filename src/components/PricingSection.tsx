@@ -180,13 +180,13 @@ const PricingSection = () => {
                         </h2>
                     </motion.div>
 
-                    <div className="flex justify-center mb-16 md:mb-24">
-                        <div className="inline-flex p-1.5 rounded-3xl bg-card border border-border shadow-xl backdrop-blur-md">
+                    <div className="flex justify-center mb-16 md:mb-24 px-4">
+                        <div className="inline-flex p-1 rounded-2xl sm:rounded-3xl bg-card border border-border shadow-xl backdrop-blur-md overflow-x-auto scrollbar-hide max-w-full">
                             {tabs.map((tab) => (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id as any)}
-                                    className={`relative px-6 sm:px-10 py-3 sm:py-4 rounded-2xl text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-3 ${
+                                    className={`relative px-4 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-[9px] sm:text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-2 sm:gap-3 whitespace-nowrap ${
                                         activeTab === tab.id
                                             ? "text-white"
                                             : "text-muted-foreground hover:text-foreground"
