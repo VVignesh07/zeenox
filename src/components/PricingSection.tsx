@@ -14,136 +14,136 @@ interface Package {
 const packageMap: Record<string, Package[]> = {
     website: [
         {
-            name: "The Classic Engine",
-            price: "₹3,999",
-            duration: "5-7 Days",
+            name: "Premium Starter",
+            price: "₹14,999",
+            duration: "10-14 Days",
             description: "High-performance business presence with modern aesthetics.",
             features: [
-                "Single Page Design",
-                "Mobile Responsive",
-                "Basic SEO Setup",
-                "Contact Form",
-                "Social Media Icons",
-                "1 Week Support"
-            ]
-        },
-        {
-            name: "The Pro Performance",
-            price: "₹6,999",
-            duration: "10-14 Days",
-            recommended: true,
-            description: "Full-scale digital ecosystem for growing brands.",
-            features: [
-                "Up to 5 Pages",
-                "Advanced SEO",
-                "Dynamic Elements",
-                "Speed Optimization",
-                "Google Maps Integration",
+                "Up to 5 Premium Pages",
+                "Responsive Mobile Design",
+                "SEO Fundamental Setup",
+                "Contact Form Integration",
+                "SSL Certificate + Security",
                 "1 Month Support"
             ]
         },
         {
-            name: "The Ultra Ecosystem",
-            price: "₹9,999",
+            name: "Elite Performance",
+            price: "₹24,999",
             duration: "21-30 Days",
+            recommended: true,
+            description: "Full-scale digital ecosystem for growing brands.",
+            features: [
+                "Custom Dynamic Website",
+                "Advanced SEO Strategy",
+                "Content Management System",
+                "Speed & Core Web Vitals Fix",
+                "Social Media Integration",
+                "3 Months Support"
+            ]
+        },
+        {
+            name: "Industrial Authority",
+            price: "₹49,999",
+            duration: "45-60 Days",
             description: "Comprehensive software engineering for market dominance.",
             features: [
-                "E-commerce Ready",
-                "Admin Dashboard",
-                "Custom Animations",
-                "Advanced Security",
-                "Analytics Integration",
-                "3 Months Support"
+                "E-commerce / Web App",
+                "Custom Admin Dashboard",
+                "Database Integration",
+                "API Developments",
+                "Ultra-Premium UI/UX",
+                "Lifetime Core Support"
             ]
         }
     ],
     video: [
         {
-            name: "Starter Edit",
-            price: "₹4,999",
-            duration: "3-5 Days",
-            description: "Professional video editing for social impact.",
-            features: [
-                "1 High-quality Reel",
-                "Basic Color Grading",
-                "Trend Music Sync",
-                "Text Overlays",
-                "Sound Design",
-                "Standard Revision"
-            ]
-        },
-        {
-            name: "Brand Story",
-            price: "₹9,999",
-            duration: "7-10 Days",
-            recommended: true,
-            description: "Cinematic storytelling for brand authority.",
-            features: [
-                "3 Premium Reels",
-                "Professional VO",
-                "Advanced VFX",
-                "Cinematic Grading",
-                "Script Support",
-                "Social Media Strategy"
-            ]
-        },
-        {
-            name: "Market Dominance",
+            name: "Cinematic Starter",
             price: "₹19,999",
-            duration: "14-21 Days",
-            description: "Industrial-grade media production for market leaders.",
+            duration: "5-7 Days",
+            description: "High-end visual storytelling for social media.",
             features: [
-                "5-7 Ultra Reels",
-                "4K Production Edit",
-                "Full Brand Strategy",
-                "Custom Assets",
-                "Dedicated Team",
-                "Priority Revisions"
+                "3 Premium Reels/Shorts",
+                "4K Professional Editing",
+                "Sound Design & SFX",
+                "Color Grading",
+                "Trend-focused Content",
+                "Subtitles & Motion Graphics"
+            ]
+        },
+        {
+            name: "Brand Evolution",
+            price: "₹34,999",
+            duration: "14-21 Days",
+            recommended: true,
+            description: "Immersive video production for brand scaling.",
+            features: [
+                "1 High-end Ad / Showreel",
+                "Full Production Support",
+                "Scripting & Storyboarding",
+                "Advanced VFX & Motion",
+                "Multi-platform Delivery",
+                "Voiceover Integration"
+            ]
+        },
+        {
+            name: "Global Authority",
+            price: "₹74,999",
+            duration: "30-45 Days",
+            description: "Enterprise-grade cinematic media production.",
+            features: [
+                "Full Brand Documentary / Ad",
+                "Master-level VFX/CGI",
+                "Professional VO & BGM",
+                "Market-ready Strategy",
+                "Premium Color Science",
+                "Unlimited Revisions"
             ]
         }
     ],
     software: [
         {
-            name: "Automation Tool",
-            price: "₹4,999",
-            duration: "7-10 Days",
-            description: "Streamline your operations with custom automation.",
+            name: "Internal Tools",
+            price: "₹24,999",
+            duration: "2-3 Weeks",
+            description: "Optimize your operations with custom automation.",
             features: [
                 "Process Automation",
-                "Basic CRM Tool",
-                "Data Entry System",
-                "Email Notification",
-                "Dashboard Access",
-                "Technical Support"
+                "Custom Internal Dashboard",
+                "Inventory / Task Tracker",
+                "Basic User Auth",
+                "Data Visualizations",
+                "Mobile Responsive"
             ]
         },
         {
-            name: "Industrial Hub",
-            price: "₹9,999",
-            duration: "14-21 Days",
+            name: "Enterprise ERP",
+            price: "₹49,999",
+            duration: "4-6 Weeks",
             recommended: true,
-            description: "Scalable software ecosystems for enterprise growth.",
+            description: "Robust industrial-grade software ecosystems.",
             features: [
-                "Full ERP / CRM",
-                "Role-based Access",
-                "Inventory Tracking",
-                "Payment Gateway",
-                "Advanced Reports",
-                "Security Shield"
+                "Full-scale ERP/CRM",
+                "Advanced Admin Control",
+                "Role-based Permissions",
+                "Payment Integrations",
+                "Scalable Architecture",
+                "Security & Encryption"
             ]
         },
         {
-            name: "Legacy System",
-            price: "₹19,999",
-            duration: "30-45 Days",
-            description: "Custom software innovation for market authority.",
+            name: "Custom Innovation",
+            price: "₹99,999",
+            duration: "8-12 Weeks",
+            description: "Tailored software solutions for market leaders.",
             features: [
-                "Multi-platform App",
-                "Real-time Data Sync",
-                "AI/ML Integration",
-                "Cloud Infrastructure",
-                "High Availability",
-                "Enterprise Support"
+                "Machine Learning / AI",
+                "Heavy Data Processing",
+                "Custom SaaS Infrastructure",
+                "Dedicated Server Setup",
+                "24/7 Priority Support",
+                "Industrial Scalability"
             ]
         }
     ]
@@ -172,11 +172,11 @@ const PricingSection = () => {
                         <motion.span 
                             className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20"
                         >
-                            Exclusive Pricing
+                            Industrial Grade Pricing
                         </motion.span>
                         <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8">
-                            Flexible Plans for <br />
-                            <span className="text-primary italic font-serif-accent">Every Growth Stage.</span>
+                            Engineered for <br />
+                            <span className="text-primary italic font-serif-accent">High-End Performance.</span>
                         </h2>
                     </motion.div>
 
@@ -229,7 +229,7 @@ const PricingSection = () => {
                                 >
                                     {pkg.recommended && (
                                         <div className="absolute top-0 right-10 -translate-y-1/2 px-4 py-1.5 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg">
-                                            Recommended
+                                            Most Requested
                                         </div>
                                     )}
 
