@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, Play, ChevronLeft, ChevronRight, Pause, Volume2, VolumeX } from "lucide-react";
+import { Instagram, Play, ChevronLeft, ChevronRight, Pause, Volume2, VolumeX, Loader2 } from "lucide-react";
 
 interface Showreel {
   title: string;
@@ -44,7 +44,7 @@ const showreels: Showreel[] = [
 
 const getOptimizedVideoUrl = (url: string) => {
   if (url.includes("cloudinary.com") && url.includes("/upload/")) {
-    return url.replace("/upload/", "/upload/f_auto,q_auto,vc_h264/");
+    return url.replace("/upload/", "/upload/q_auto,vc_h264/");
   }
   return url;
 };
@@ -195,9 +195,11 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    if (!videoRef.current) return;
+    if (!videoRef.current || isLoading || hasError) return;
 
     if (isHovered && !isPlaying) {
       const playPromise = videoRef.current.play();
@@ -207,7 +209,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
     } else if (!isHovered && !isPlaying) {
       videoRef.current.pause();
     }
-  }, [isHovered, isPlaying]);
+  }, [isHovered, isPlaying, isLoading, hasError]);
 
   const toggleFullPlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -248,14 +250,50 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
         muted={isMuted}
         playsInline
         preload="auto"
-        className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? 'scale-105' : 'scale-100'}`}
+        className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? 'scale-105' : 'scale-100'} ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        onLoadStart={() => setIsLoading(true)}
+        onCanPlay={() => setIsLoading(false)}
+        onError={() => {
+          setIsLoading(false);
+          setHasError(true);
+        }}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
 
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm z-10"
+          >
+            <Loader2 className="text-primary animate-spin" size={40} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {hasError && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-20 p-6 text-center">
+          <p className="text-white text-sm font-medium mb-4">Failed to load video</p>
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              setHasError(false);
+              setIsLoading(true);
+              if (videoRef.current) videoRef.current.load();
+            }}
+            className="px-4 py-2 bg-primary text-white rounded-full text-xs font-bold"
+          >
+            Retry
+          </button>
+        </div>
+      )}
+
       <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 transition-opacity duration-500 ${isPlaying ? 'opacity-0' : 'opacity-100'}`} />
 
-      {!isPlaying && (
+      {!isPlaying && !isLoading && !hasError && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="h-20 w-20 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center border border-white/30 scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
             <Play className="text-white fill-white ml-1" size={32} />
@@ -276,16 +314,18 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
             </motion.div>
           )}
         </AnimatePresence>
-        <button 
-          onClick={toggleMute}
-          className="h-10 w-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors pointer-events-auto"
-        >
-          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-        </button>
+        {!isLoading && !hasError && (
+          <button 
+            onClick={toggleMute}
+            className="h-10 w-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors pointer-events-auto"
+          >
+            {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+          </button>
+        )}
       </div>
 
       <div className="absolute top-6 right-6 z-20">
-        <div className={`px-4 py-1.5 rounded-full bg-primary backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-widest transition-all duration-500 ${isHovered && !isPlaying ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
+        <div className={`px-4 py-1.5 rounded-full bg-primary backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-widest transition-all duration-500 ${isHovered && !isPlaying && !isLoading ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
           Previewing
         </div>
       </div>
@@ -298,7 +338,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
           <div className="overflow-hidden">
             <h3 className="text-xl font-bold text-white leading-tight truncate">{reel.title}</h3>
             <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest mt-1">
-              {isPlaying ? 'Now Playing' : (isHovered ? 'Hover to Preview' : 'Tap to Play Full')}
+              {isPlaying ? 'Now Playing' : (isLoading ? 'Loading...' : (isHovered ? 'Hover to Preview' : 'Tap to Play Full'))}
             </p>
           </div>
         </div>
