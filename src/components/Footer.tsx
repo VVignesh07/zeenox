@@ -16,7 +16,6 @@ const Footer = () => {
                 alt="Zeenox Logo"
                 className="h-9 w-auto invert opacity-80"
               />
-              <span className="text-xl font-bold tracking-tighter text-foreground">ZEENOX</span>
             </div>
             <p className="max-w-sm text-lg text-muted-foreground leading-relaxed font-medium mb-10">
               A premium ecosystem merging high-end media production with next-gen technology. We build growth engines.
