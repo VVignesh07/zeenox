@@ -136,25 +136,48 @@ const SoftwareRoadmap = () => (
         </div>
 
         {/* Mobile Software */}
-        <div className="lg:hidden space-y-12">
-            <div className="flex flex-col items-center">
-                <PhaseHeader title="Phase 1: Planning" color="bg-foreground" />
-                <div className="w-px h-12 bg-border my-4" />
-                <PhaseHeader title="Phase 2: Platform" color="bg-muted-foreground" />
-                <div className="grid gap-4 mt-6 w-full">
-                    <RoadmapCard number="1" icon={<Globe className="text-foreground" size={20} />} title="Domain" items={["GoDaddy", "Hostinger"]} />
-                    <RoadmapCard number="2" icon={<Server className="text-foreground" size={20} />} title="Hosting" items={["Hostinger", "Bluehost"]} />
+        <div className="lg:hidden relative">
+            {/* Vertical Connector Line */}
+            <div className="absolute left-[26px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-foreground/20 via-border to-transparent z-0" />
+            
+            <div className="space-y-12 relative z-10">
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-foreground text-background flex items-center justify-center shadow-lg font-black text-xs">P1</div>
+                    <div className="flex-1 pt-4">
+                        <PhaseHeader title="Phase 1: Planning" color="bg-foreground" />
+                    </div>
                 </div>
-                <div className="w-px h-12 bg-border my-8" />
-                <PhaseHeader title="Phase 3: Setup" color="bg-muted-foreground" />
-                <div className="grid gap-4 mt-6 w-full">
-                    <RoadmapCard number="3" icon={<Settings className="text-foreground" size={20} />} title="Server" items={["SSL", "CDN"]} />
-                    <RoadmapCard number="4" icon={<Zap className="text-foreground" size={20} />} title="Plan" items={["Pro", "Elite"]} />
+
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground">P2</div>
+                    <div className="flex-1 space-y-4">
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Platform Selection</h4>
+                        <div className="grid gap-3">
+                            <RoadmapCard number="1" icon={<Globe className="text-foreground" size={16} />} title="Domain" items={["GoDaddy", "Hostinger"]} />
+                            <RoadmapCard number="2" icon={<Server className="text-foreground" size={16} />} title="Hosting" items={["Hostinger", "Bluehost"]} />
+                        </div>
+                    </div>
                 </div>
-                <div className="w-px h-12 bg-border my-8" />
-                <div className="w-full p-10 bg-card border border-border rounded-[2rem] text-center shadow-lg">
-                    <h3 className="text-xl font-bold mb-4 text-foreground">Phase 4: Build & Launch</h3>
-                    <p className="text-sm text-muted-foreground font-medium">Comprehensive setup, customization, and optimization for a global release.</p>
+
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground">P3</div>
+                    <div className="flex-1 space-y-4">
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Technical Setup</h4>
+                        <div className="grid gap-3">
+                            <RoadmapCard number="3" icon={<Settings className="text-foreground" size={16} />} title="Server" items={["SSL", "CDN"]} />
+                            <RoadmapCard number="4" icon={<Zap className="text-foreground" size={16} />} title="Plan" items={["Pro", "Elite"]} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground">P4</div>
+                    <div className="flex-1">
+                        <div className="p-6 bg-card border border-border rounded-[2rem] shadow-lg">
+                            <h3 className="text-lg font-bold mb-3 text-foreground">Build & Launch</h3>
+                            <p className="text-[11px] text-muted-foreground font-medium leading-relaxed">Full customization, performance optimization, and global deployment.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -224,25 +247,48 @@ const VideoRoadmap = () => (
         </div>
 
         {/* Mobile Video */}
-        <div className="lg:hidden space-y-12">
-            <div className="flex flex-col items-center">
-                <PhaseHeader title="Phase 1: Business Analysis" color="bg-primary" />
-                <div className="w-px h-12 bg-border my-4" />
-                <PhaseHeader title="Phase 2: Strategy" color="bg-primary/80" />
-                <div className="grid gap-4 mt-6 w-full">
-                    <RoadmapCard number="1" icon={<Target className="text-primary" size={20} />} title="Research" items={["Audience", "Pain Points"]} />
-                    <RoadmapCard number="2" icon={<PenTool className="text-primary" size={20} />} title="Script" items={["Viral Hooks", "Storyboarding"]} />
+        <div className="lg:hidden relative">
+            {/* Vertical Connector Line */}
+            <div className="absolute left-[26px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary/20 via-primary/40 to-transparent z-0" />
+
+            <div className="space-y-12 relative z-10">
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg font-black text-xs">P1</div>
+                    <div className="flex-1 pt-4">
+                        <PhaseHeader title="Phase 1: Analysis" color="bg-primary" />
+                    </div>
                 </div>
-                <div className="w-px h-12 bg-border my-8" />
-                <PhaseHeader title="Phase 3: Production" color="bg-primary/80" />
-                <div className="grid gap-4 mt-6 w-full">
-                    <RoadmapCard number="3" icon={<Camera className="text-primary" size={20} />} title="Shoot" items={["4K Output", "Pro Audio"]} />
-                    <RoadmapCard number="4" icon={<Film className="text-primary" size={20} />} title="Edit" items={["Dynamic Cuts", "Color Grade"]} />
+
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary">P2</div>
+                    <div className="flex-1 space-y-4">
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Strategy & Script</h4>
+                        <div className="grid gap-3">
+                            <RoadmapCard number="1" icon={<Target className="text-primary" size={16} />} title="Research" items={["Audience", "Pain Points"]} />
+                            <RoadmapCard number="2" icon={<PenTool className="text-primary" size={16} />} title="Script" items={["Viral Hooks", "Storyboarding"]} />
+                        </div>
+                    </div>
                 </div>
-                <div className="w-px h-12 bg-border my-8" />
-                <div className="w-full p-10 bg-card border border-border rounded-[2rem] shadow-lg text-center">
-                    <h3 className="text-xl font-bold mb-4 text-foreground">Phase 4: Leads & Sales</h3>
-                    <p className="text-sm text-muted-foreground font-medium">Solving client problems through targeted media, driving verified leads, and scaling overall business revenue.</p>
+
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary">P3</div>
+                    <div className="flex-1 space-y-4">
+                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Production</h4>
+                        <div className="grid gap-3">
+                            <RoadmapCard number="3" icon={<Camera className="text-primary" size={16} />} title="Shoot" items={["4K Output", "Pro Audio"]} />
+                            <RoadmapCard number="4" icon={<Film className="text-primary" size={16} />} title="Edit" items={["Dynamic Cuts", "Color Grade"]} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex gap-6">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary">P4</div>
+                    <div className="flex-1">
+                        <div className="p-6 bg-card border border-border rounded-[2rem] shadow-lg">
+                            <h3 className="text-lg font-bold mb-3 text-foreground">Leads & Sales</h3>
+                            <p className="text-[11px] text-muted-foreground font-medium leading-relaxed">Solving client problems through targeted media and driving verified revenue.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,7 +298,7 @@ const VideoRoadmap = () => (
 const PhaseHeader = ({ title, color }: { title: string; color: string }) => (
     <motion.div
         whileHover={{ scale: 1.05, y: -2 }}
-        className={`${color} text-primary-foreground px-10 py-3.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl shadow-black/5 relative z-20 transition-all`}
+        className={`${color} text-primary-foreground px-6 sm:px-10 py-3 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-black/5 relative z-20 transition-all text-center`}
     >
         {title}
     </motion.div>
@@ -261,19 +307,19 @@ const PhaseHeader = ({ title, color }: { title: string; color: string }) => (
 const RoadmapCard = ({ number, icon, title, items }: { number: string; icon: any; title: string, items: string[] }) => (
     <motion.div
         whileHover={{ y: -5, scale: 1.02 }}
-        className="bg-card border border-border rounded-[2rem] shadow-sm hover:shadow-xl p-6 relative group transition-all"
+        className="bg-card border border-border rounded-[1.5rem] sm:rounded-[2rem] shadow-sm hover:shadow-xl p-4 sm:p-6 relative group transition-all"
     >
-        <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-foreground text-background flex items-center justify-center text-[10px] font-bold shadow-lg z-10">
+        <div className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-foreground text-background flex items-center justify-center text-[9px] font-bold shadow-lg z-10">
             {number}
         </div>
         <div className="flex flex-col items-center text-center">
-            <div className="w-12 h-12 rounded-xl bg-muted/30 border border-border flex items-center justify-center mb-4 transition-all">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-muted/30 border border-border flex items-center justify-center mb-3 sm:mb-4 transition-all">
                 {icon}
             </div>
-            <h4 className="font-bold text-[11px] mb-4 uppercase tracking-widest text-foreground">{title}</h4>
-            <ul className="space-y-2 w-full">
+            <h4 className="font-bold text-[10px] sm:text-[11px] mb-3 sm:mb-4 uppercase tracking-widest text-foreground">{title}</h4>
+            <ul className="space-y-1.5 sm:space-y-2 w-full">
                 {items.map((item, i) => (
-                    <li key={i} className="text-[10.5px] font-semibold text-muted-foreground flex items-center gap-2 text-left justify-start">
+                    <li key={i} className="text-[10px] sm:text-[10.5px] font-semibold text-muted-foreground flex items-center gap-2 text-left justify-start">
                         <div className="w-1.5 h-1.5 rounded-full bg-border" />
                         {item}
                     </li>
