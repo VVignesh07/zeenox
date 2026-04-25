@@ -33,11 +33,11 @@ const ContactSection = () => {
           >
             Contact Us
           </motion.span>
-          <h2 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-foreground">
+          <h2 className="text-3xl sm:text-6xl md:text-7xl text-foreground font-extrabold tracking-tight">
             Let's Forge Your <br />
             <span className="font-serif-accent italic text-primary">Digital Future.</span>
           </h2>
-          <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed font-medium">
+          <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
             Ready to scale? Whether it's high-end production or industrial-grade automation, we're here to engineer your growth.
           </p>
         </motion.div>
@@ -56,13 +56,14 @@ const ContactSection = () => {
                 { icon: Mail, label: "Email Us", text: "hello@zeenox.agency" },
                 { icon: MapPin, label: "Visit Us", text: "vakkanangundu, 626104" },
               ].map(({ icon: Icon, label, text }) => (
-                <div key={label} className="group flex items-center gap-6 p-6 card-apple hover:border-primary/20 transition-all duration-500">
-                  <div className="h-14 w-14 flex items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm shadow-primary/5">
-                    <Icon size={24} />
+                <div key={label} className="group flex items-center gap-4 sm:gap-6 p-4 sm:p-6 card-apple hover:border-primary/20 transition-all duration-500">
+                  <div className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center rounded-xl sm:rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm shadow-primary/5">
+                    <Icon size={20} className="sm:hidden" />
+                    <Icon size={24} className="hidden sm:block" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">{label}</p>
-                    <p className="text-lg font-bold text-foreground">{text}</p>
+                    <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-primary mb-0.5 sm:mb-1">{label}</p>
+                    <p className="text-base sm:text-lg font-bold text-foreground">{text}</p>
                   </div>
                 </div>
               ))}
@@ -75,8 +76,9 @@ const ContactSection = () => {
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-3 p-5 rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-500 group"
               >
-                <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-bold uppercase tracking-wider">WhatsApp</span>
+                <MessageCircle size={18} className="group-hover:scale-110 transition-transform sm:hidden" />
+                <MessageCircle size={20} className="group-hover:scale-110 transition-transform hidden sm:block" />
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">WhatsApp</span>
               </a>
               <a
                 href="#"
@@ -118,7 +120,7 @@ const ContactSection = () => {
 
               setSubmitted(true);
             }}
-            className="relative p-10 rounded-[2.5rem] bg-card border border-border shadow-2xl"
+            className="relative p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] bg-card border border-border shadow-2xl"
           >
              <motion.div style={{ y: y2, rotate: rotateIcon }} className="absolute top-0 right-0 p-8 pointer-events-none opacity-[0.03]">
                 <Send size={150} className="text-foreground" />
@@ -146,7 +148,7 @@ const ContactSection = () => {
                         type={field.type}
                         required
                         placeholder={field.label}
-                        className="w-full h-14 rounded-xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-12 sm:h-14 rounded-xl bg-foreground/[0.03] border border-border px-5 sm:px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
                       />
                     </div>
                   ))}
@@ -158,7 +160,7 @@ const ContactSection = () => {
                         type="email"
                         required
                         placeholder="yourname@example.com"
-                        className="w-full h-14 rounded-xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-12 sm:h-14 rounded-xl bg-foreground/[0.03] border border-border px-5 sm:px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
                     />
                 </div>
                 <div className="space-y-2">
@@ -167,7 +169,7 @@ const ContactSection = () => {
                         name="subject"
                         type="text"
                         placeholder="Project subject?"
-                        className="w-full h-14 rounded-xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-12 sm:h-14 rounded-xl bg-foreground/[0.03] border border-border px-5 sm:px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
                     />
                 </div>
                 <div className="space-y-2">
@@ -182,9 +184,9 @@ const ContactSection = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full h-16 rounded-2xl bg-primary text-white font-bold uppercase tracking-widest shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-4"
+                  className="w-full h-14 sm:h-16 rounded-xl sm:rounded-2xl bg-primary text-white font-bold uppercase tracking-widest shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-4"
                 >
-                  Send Message <Send size={18} />
+                  Send Message <Send size={16} className="sm:hidden" /> <Send size={18} className="hidden sm:block" />
                 </button>
               </div>
             )}
