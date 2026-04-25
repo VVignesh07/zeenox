@@ -16,6 +16,8 @@ import LoadingScreen from "@/components/LoadingScreen";
 import CursorFollower from "@/components/CursorFollower";
 import RevealSection from "@/components/ui/RevealSection";
 
+
+
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
 
@@ -72,6 +74,8 @@ const Index = () => {
             <ContactSection />
           </RevealSection>
         </main>
+
+
         <Footer />
       </div>
     </>
