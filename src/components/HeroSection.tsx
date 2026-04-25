@@ -70,33 +70,26 @@ const HeroSection = () => {
                     <motion.div variants={itemVariants} className="flex justify-center mb-8">
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 bg-primary/5 backdrop-blur-md shadow-sm">
                             <Sparkles size={14} className="text-primary animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Next Gen Digital Studio</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Media · Technology · Automation</span>
                         </div>
                     </motion.div>
 
-                    {/* Main Heading */}
+                    {/* Previous Main Heading with New Style */}
                     <motion.h1 
                         variants={itemVariants} 
-                        className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-extrabold tracking-tight text-foreground leading-[1.05] mb-8 [text-wrap:balance]"
+                        className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.05] mb-8 [text-wrap:balance]"
                     >
-                        We Build Brands.<br />
-                        <span className="text-primary relative inline-block">
-                            That Dominate.
-                            <motion.div 
-                                initial={{ width: 0 }}
-                                animate={{ width: "100%" }}
-                                transition={{ delay: 1.2, duration: 1, ease: "easeInOut" }}
-                                className="absolute -bottom-2 left-0 h-2 bg-primary/10 rounded-full -z-10"
-                            />
-                        </span>
+                        We Build <span className="text-primary">Brands.</span><br />
+                        We Build <span className="text-primary">Systems.</span><br />
+                        We Build <span className="text-primary">Growth Engines.</span>
                     </motion.h1>
 
-                    {/* Subtext */}
+                    {/* Previous Subtext */}
                     <motion.p 
                         variants={itemVariants}
                         className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed font-medium mb-12"
                     >
-                        Partner with Zeenox to engineer high-end software ecosystems and cinematic media production. We don't just build, we expand your market authority.
+                        A full-service digital agency crafting premium experiences for clinics, fashion brands, jewellery houses, and beyond — with 10+ years of expertise in design, development & automation.
                     </motion.p>
 
                     {/* Action Buttons */}
@@ -111,13 +104,13 @@ const HeroSection = () => {
                             <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-400 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer" />
                         </a>
                         <a 
-                            href="#showreels" 
+                            href="#portfolio" 
                             className="group flex w-full sm:w-auto items-center justify-center gap-3 px-10 py-5 rounded-2xl border border-border bg-card/50 backdrop-blur-md font-bold uppercase tracking-widest text-foreground hover:bg-card hover:border-primary/20 transition-all duration-300"
                         >
                             <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                                 <Play size={14} fill="currentColor" />
                             </div>
-                            View Showreels
+                            View Our Work
                         </a>
                     </motion.div>
 
