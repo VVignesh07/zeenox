@@ -1,178 +1,180 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Film, Globe, BarChart3, PenTool } from "lucide-react";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles, Play, ShieldCheck, Zap } from "lucide-react";
 
 const HeroSection = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end start"]
-    });
-
-    // 3D Parallax Transforms
-    const yHeading = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-    const rotateX = useTransform(scrollYProgress, [0, 1], [0, 15]);
-    const zDepth = useTransform(scrollYProgress, [0, 1], [0, -100]);
-    const opacityFade = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-    // Floating Elements Parallax
-    const floatY1 = useTransform(scrollYProgress, [0, 1], ["0%", "150%"]);
-    const floatY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-    const floatRotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
-
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.12,
-                delayChildren: 0.2,
+                staggerChildren: 0.15,
+                delayChildren: 0.3,
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 30, rotateX: -10 },
+        hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
-            rotateX: 0,
             transition: {
                 duration: 1,
-                ease: [0.16, 1, 0.3, 1] as any,
+                ease: [0.16, 1, 0.3, 1]
             }
         }
     };
 
-    const features = [
-        {
-            icon: <Film className="text-primary" size={24} />,
-            title: "Reels & Video",
-            desc: "High-converting content that gets attention."
-        },
-        {
-            icon: <Globe className="text-primary" size={24} />,
-            title: "Websites",
-            desc: "Modern, fast & responsive websites that convert."
-        },
-        {
-            icon: <BarChart3 className="text-primary" size={24} />,
-            title: "CRM & Automation",
-            desc: "Smart systems to automate & scale your business."
-        },
-        {
-            icon: <PenTool className="text-primary" size={24} />,
-            title: "Branding",
-            desc: "Strong identity that builds trust & recognition."
+    const floatVariants = {
+        animate: {
+            y: [0, -15, 0],
+            transition: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
         }
-    ];
+    };
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-between pt-20 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-background [perspective:1200px]">
-            {/* 3D Background Elements */}
-            <div className="absolute inset-0 pointer-events-none z-0">
+        <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 md:pt-32 pb-20 overflow-hidden bg-background">
+            {/* Background Architectural Elements */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(0,113,227,0.08),transparent_50%)]" />
                 <motion.div 
-                    style={{ y: floatY1, rotate: floatRotate }}
-                    className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-[4rem] blur-3xl opacity-50"
+                    animate={{ 
+                        scale: [1, 1.1, 1],
+                        opacity: [0.3, 0.5, 0.3]
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" 
                 />
                 <motion.div 
-                    style={{ y: floatY2, rotate: -floatRotate }}
-                    className="absolute bottom-1/4 -right-20 w-[30rem] h-[30rem] bg-primary/10 rounded-full blur-[100px] opacity-30"
+                    animate={{ 
+                        scale: [1, 1.2, 1],
+                        opacity: [0.2, 0.4, 0.2]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" 
                 />
-                {/* Decorative 3D lines */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--border)_1px,transparent_1px)] [background-size:100px_100px] opacity-20" />
             </div>
 
-            <div className="container relative z-10 mx-auto px-6 md:px-12 flex-1 flex flex-col items-center justify-center">
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    style={{ y: yHeading, rotateX, z: zDepth, opacity: opacityFade }}
-                    className="max-w-6xl mx-auto flex flex-col items-center text-center transition-all duration-300 ease-out"
+                    className="max-w-5xl mx-auto text-center"
                 >
+                    {/* Badge */}
+                    <motion.div variants={itemVariants} className="flex justify-center mb-8">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 bg-primary/5 backdrop-blur-md shadow-sm">
+                            <Sparkles size={14} className="text-primary animate-pulse" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Next Gen Digital Studio</span>
+                        </div>
+                    </motion.div>
+
                     {/* Main Heading */}
                     <motion.h1 
                         variants={itemVariants} 
-                        className="text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-6 sm:mb-10 [text-wrap:balance]"
+                        className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-extrabold tracking-tight text-foreground leading-[1.05] mb-8 [text-wrap:balance]"
                     >
                         We Build Brands.<br />
                         <span className="text-primary relative inline-block">
-                            We Drive Results.
+                            That Dominate.
                             <motion.div 
                                 initial={{ width: 0 }}
                                 animate={{ width: "100%" }}
-                                transition={{ delay: 1, duration: 1 }}
-                                className="absolute -bottom-2 left-0 h-1 bg-primary/20 rounded-full"
+                                transition={{ delay: 1.2, duration: 1, ease: "easeInOut" }}
+                                className="absolute -bottom-2 left-0 h-2 bg-primary/10 rounded-full -z-10"
                             />
                         </span>
                     </motion.h1>
 
-                    {/* Z Divider */}
-                    <motion.div variants={itemVariants} className="flex items-center gap-5 mb-10 w-full max-w-[280px]">
-                        <div className="h-[1px] flex-1 bg-border/60" />
-                        <span className="text-xl font-black text-primary tracking-tighter opacity-80">Z</span>
-                        <div className="h-[1px] flex-1 bg-border/60" />
-                    </motion.div>
+                    {/* Subtext */}
+                    <motion.p 
+                        variants={itemVariants}
+                        className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed font-medium mb-12"
+                    >
+                        Partner with Zeenox to engineer high-end software ecosystems and cinematic media production. We don't just build, we expand your market authority.
+                    </motion.p>
 
-                    {/* Subtitle */}
-                    <motion.div variants={itemVariants} className="max-w-3xl px-4">
-                        <p className="text-base md:text-lg lg:text-xl text-muted-foreground/90 leading-relaxed font-medium">
-                            Zeenox is a digital engineering studio helping businesses grow with<br className="hidden md:block" />
-                            <span className="relative inline-block font-bold text-foreground mx-1">
-                                powerful content,
-                                <svg className="absolute -bottom-1 left-0 w-full h-1.5 text-primary/40" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none">
-                                    <path d="M1 5.5C40.5 2.5 120.5 1.5 199 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                </svg>
-                            </span>{" "}
-                            <span className="font-bold text-foreground">smart websites & intelligent automation.</span>
-                        </p>
-                    </motion.div>
-                </motion.div>
-            </div>
-
-            {/* Feature Grid - Positioned at bottom */}
-            <div className="container relative z-10 mx-auto px-6 md:px-12 mt-20">
-                <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 w-full max-w-7xl mx-auto"
-                >
-                    {features.map((feature, i) => (
-                        <motion.div key={i} variants={itemVariants} className="relative flex flex-col items-center px-4 md:px-8 group">
-                            {/* Vertical Divider (Desktop) */}
-                            {i !== 0 && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-12 bg-border hidden lg:block opacity-50" />}
-                            
-                            <div className="h-14 w-14 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-5 group-hover:scale-105 transition-all duration-500 group-hover:shadow-md group-hover:border-primary/20">
-                                {feature.icon}
+                    {/* Action Buttons */}
+                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a 
+                            href="#contact" 
+                            className="group relative inline-flex w-full sm:w-auto items-center justify-center px-10 py-5 bg-primary text-white font-bold uppercase tracking-widest rounded-2xl shadow-2xl shadow-primary/30 hover:scale-105 hover:shadow-primary/40 active:scale-95 transition-all duration-300 overflow-hidden"
+                        >
+                            <span className="relative z-10 flex items-center gap-3">
+                                Start Your Expansion <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                            </span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-400 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer" />
+                        </a>
+                        <a 
+                            href="#showreels" 
+                            className="group flex w-full sm:w-auto items-center justify-center gap-3 px-10 py-5 rounded-2xl border border-border bg-card/50 backdrop-blur-md font-bold uppercase tracking-widest text-foreground hover:bg-card hover:border-primary/20 transition-all duration-300"
+                        >
+                            <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                                <Play size={14} fill="currentColor" />
                             </div>
-                            <h3 className="text-[15px] font-bold text-foreground mb-1.5">{feature.title}</h3>
-                            <p className="text-[12px] text-muted-foreground/80 leading-relaxed max-w-[180px] text-center">
-                                {feature.desc}
-                            </p>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                            View Showreels
+                        </a>
+                    </motion.div>
 
-                {/* Bottom CTA Text */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.5, duration: 1 }}
-                    className="mt-16 text-center"
-                >
-                    <p className="text-[15px] md:text-base font-semibold tracking-tight">
-                        <span className="text-muted-foreground">Let's build. Let's grow.</span>{" "}
-                        <span className="relative inline-block font-bold text-primary ml-1 group cursor-pointer">
-                            Together.
-                            <svg className="absolute -bottom-1 left-0 w-full h-1 text-primary transition-transform duration-300 group-hover:scale-x-110" viewBox="0 0 100 6" fill="none" preserveAspectRatio="none">
-                                <path d="M1 4.5C20.5 1.5 60.5 1.5 99 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        </span>
-                    </p>
+                    {/* Trust Indicators */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="mt-20 pt-10 border-t border-border/50 flex flex-wrap justify-center gap-8 md:gap-16 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                    >
+                        <div className="flex items-center gap-2">
+                            <ShieldCheck size={18} />
+                            <span className="text-xs font-bold uppercase tracking-widest">Enterprise Security</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Zap size={18} />
+                            <span className="text-xs font-bold uppercase tracking-widest">Industrial Speed</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <Sparkles size={18} />
+                            <span className="text-xs font-bold uppercase tracking-widest">Premium Quality</span>
+                        </div>
+                    </motion.div>
                 </motion.div>
             </div>
+
+            {/* Floating Decorative Objects */}
+            <motion.div 
+                variants={floatVariants}
+                animate="animate"
+                className="absolute top-1/3 left-10 hidden xl:block p-4 rounded-3xl bg-card border border-border shadow-2xl backdrop-blur-md opacity-50"
+            >
+                <div className="flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <Zap size={18} />
+                    </div>
+                    <div className="space-y-1">
+                        <div className="h-2 w-16 bg-border rounded-full" />
+                        <div className="h-2 w-10 bg-border/50 rounded-full" />
+                    </div>
+                </div>
+            </motion.div>
+
+            <motion.div 
+                variants={floatVariants}
+                animate="animate"
+                transition={{ delay: 1 }}
+                className="absolute bottom-1/3 right-10 hidden xl:block p-4 rounded-3xl bg-card border border-border shadow-2xl backdrop-blur-md opacity-50"
+            >
+                <div className="flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <Play size={18} fill="currentColor" />
+                    </div>
+                    <div className="space-y-1">
+                        <div className="h-2 w-20 bg-border rounded-full" />
+                        <div className="h-2 w-12 bg-border/50 rounded-full" />
+                    </div>
+                </div>
+            </motion.div>
         </section>
     );
 };

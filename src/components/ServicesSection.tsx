@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
-  Globe, Smartphone, Layers, Zap, Settings, Database, ArrowRight, Video, Camera, Instagram, Palette, Rocket, Cpu, BarChart3, Link2
+  Globe, Smartphone, ArrowRight, Video, Camera, Instagram, Palette, Rocket, Cpu, BarChart3, Link2
 } from "lucide-react";
 
 const mediaServices = [
@@ -30,7 +30,7 @@ const ServiceCard = ({ icon: Icon, title, desc, index }: {
             y: 0,
             transition: {
                 duration: 0.8,
-                ease: [0.22, 1, 0.36, 1] as any,
+                ease: [0.16, 1, 0.3, 1] as any,
             }
         }
     };
@@ -40,30 +40,32 @@ const ServiceCard = ({ icon: Icon, title, desc, index }: {
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true }}
-    transition={{ delay: index * 0.1 }}
-    className="group relative p-8 card-apple card-apple-hover"
+    className="group relative p-8 bg-card/40 backdrop-blur-sm border border-border/50 rounded-[2.5rem] transition-all duration-700 hover:bg-card hover:shadow-2xl hover:border-primary/20 hover:-translate-y-2 overflow-hidden"
   >
-    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <ArrowRight className="text-primary/40" size={24} />
+    <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
+        <ArrowRight className="text-primary" size={20} />
     </div>
     
-    <div className="mb-8 relative inline-flex items-center justify-center">
-        <div className="absolute inset-0 bg-primary/20 blur-[25px] rounded-full scale-110 group-hover:scale-150 transition-transform duration-700" />
-        <div className="relative h-16 w-16 flex items-center justify-center transition-colors duration-500">
+    <div className="mb-10 relative inline-flex items-center justify-center">
+        <div className="absolute inset-0 bg-primary/20 blur-[20px] rounded-full scale-100 group-hover:scale-150 transition-transform duration-700" />
+        <div className="relative h-14 w-14 flex items-center justify-center bg-card rounded-2xl shadow-sm border border-border/50 group-hover:border-primary/30 transition-colors duration-500">
             <Icon
-                size={34}
+                size={28}
                 strokeWidth={1.5}
-                className="text-primary filter drop-shadow-[0_0_8px_rgba(var(--primary),0.5)] transition-all duration-500 group-hover:scale-110"
+                className="text-primary transition-all duration-500 group-hover:scale-110"
             />
         </div>
     </div>
     
-    <h3 className="mb-4 font-display text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
+    <h3 className="mb-4 font-bold text-xl tracking-tight text-foreground transition-colors group-hover:text-primary">
         {title}
     </h3>
-    <p className="text-sm leading-relaxed text-muted-foreground/80 font-medium">
+    <p className="text-sm leading-relaxed text-muted-foreground font-medium group-hover:text-muted-foreground/100">
         {desc}
     </p>
+
+    {/* Subtle animated light effect */}
+    <div className="absolute -bottom-px left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent group-hover:w-full transition-all duration-700" />
   </motion.div>
     );
 };
@@ -75,16 +77,16 @@ const ServicesSection = () => {
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
     <section id="services" ref={containerRef} className="relative py-12 md:py-32 overflow-hidden bg-background">
-      <motion.div style={{ y: y1 }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-border/20 to-transparent" />
+      {/* Decorative background glow */}
+      <motion.div style={{ y: y1 }} className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none opacity-40" />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16 md:mb-24 flex flex-col items-center text-center"
@@ -92,23 +94,23 @@ const ServicesSection = () => {
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-widest"
+            className="mb-6 inline-block px-4 py-1.5 rounded-full border border-border bg-card text-muted-foreground text-[11px] font-bold uppercase tracking-widest shadow-sm"
           >
             Our Expertise
           </motion.span>
-          <h2 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-foreground">
-            Powering Your <br />
-            <span className="font-serif-accent italic text-primary">Next Evolution.</span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+            Engineering Digital <br />
+            <span className="font-serif-accent italic text-primary">Masterpieces.</span>
           </h2>
         </motion.div>
 
         {/* Media Division */}
         <div className="mb-20 md:mb-32">
           <div className="flex items-center gap-6 mb-12">
-            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap">
-                Media & Creative
+            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary whitespace-nowrap">
+                Media Division
             </h3>
-            <div className="h-px flex-1 bg-border/20" />
+            <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {mediaServices.map((s, i) => (
@@ -120,10 +122,10 @@ const ServicesSection = () => {
         {/* Tech Division */}
         <div>
           <div className="flex items-center gap-6 mb-12">
-            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-muted-foreground whitespace-nowrap">
-                Tech & Performance
+            <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary whitespace-nowrap">
+                Tech Division
             </h3>
-            <div className="h-px flex-1 bg-border/20" />
+            <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {techServices.map((s, i) => (
