@@ -14,41 +14,41 @@ const ContactSection = () => {
   const rotateIcon = useTransform(scrollYProgress, [0, 1], [-12, 12]);
 
   const [submitted, setSubmitted] = useState(false);
-  const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contact" ref={containerRef} className="relative py-12 md:py-32 bg-background overflow-hidden">
+    <section id="contact" ref={containerRef} className="relative py-16 md:py-32 bg-background overflow-hidden">
+      {/* Background Decorative Elements */}
       <motion.div style={{ y: y1 }} className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 md:mb-20 flex flex-col items-center text-center"
+          className="mb-12 md:mb-24 flex flex-col items-center text-center"
         >
           <motion.span 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-widest"
+            className="mb-6 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20"
           >
-            Contact Us
+            Connect with Us
           </motion.span>
-          <h2 className="text-3xl sm:text-6xl md:text-7xl text-foreground font-extrabold tracking-tight">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl text-foreground font-extrabold tracking-tight leading-[1.1]">
             Let's Forge Your <br />
             <span className="font-serif-accent italic text-primary">Digital Future.</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
+          <p className="mx-auto mt-8 max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
             Ready to scale? Whether it's high-end production or industrial-grade automation, we're here to engineer your growth.
           </p>
         </motion.div>
 
-        <div className="mx-auto grid max-w-6xl gap-12 lg:gap-20 lg:grid-cols-2 items-start">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:gap-20 lg:grid-cols-2 items-start">
           {/* Left — Info + Quick links */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-10"
           >
             <div className="space-y-4">
               {[
@@ -56,36 +56,35 @@ const ContactSection = () => {
                 { icon: Mail, label: "Email Us", text: "hello@zeenox.agency" },
                 { icon: MapPin, label: "Visit Us", text: "vakkanangundu, 626104" },
               ].map(({ icon: Icon, label, text }) => (
-                <div key={label} className="group flex items-center gap-4 sm:gap-6 p-4 sm:p-6 card-apple hover:border-primary/20 transition-all duration-500">
-                  <div className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center rounded-xl sm:rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm shadow-primary/5">
-                    <Icon size={20} className="sm:hidden" />
-                    <Icon size={24} className="hidden sm:block" />
+                <div key={label} className="group flex items-center gap-5 p-5 sm:p-7 rounded-[1.5rem] bg-card border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
+                  <div className="h-12 w-12 sm:h-16 sm:w-16 flex items-center justify-center rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-inner">
+                    <Icon size={22} className="sm:hidden" />
+                    <Icon size={28} className="hidden sm:block" />
                   </div>
                   <div>
-                    <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-primary mb-0.5 sm:mb-1">{label}</p>
-                    <p className="text-base sm:text-lg font-bold text-foreground">{text}</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">{label}</p>
+                    <p className="text-base sm:text-xl font-bold text-foreground">{text}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
                 href="https://wa.me/917603917369"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-3 p-5 rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-500 group"
+                className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 hover:scale-105 transition-all duration-500 group"
               >
-                <MessageCircle size={18} className="group-hover:scale-110 transition-transform sm:hidden" />
-                <MessageCircle size={20} className="group-hover:scale-110 transition-transform hidden sm:block" />
-                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider">WhatsApp</span>
+                <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
+                <span className="text-[11px] font-black uppercase tracking-widest">WhatsApp Inquire</span>
               </a>
               <a
                 href="#"
-                className="flex-1 flex items-center justify-center gap-3 p-5 rounded-2xl bg-foreground text-background hover:bg-foreground/90 transition-all duration-500 group"
+                className="flex items-center justify-center gap-3 p-6 rounded-2xl border border-border bg-card text-foreground hover:bg-foreground hover:text-background transition-all duration-500 group"
               >
                 <Calendar size={20} className="group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-bold uppercase tracking-wider">Book Call</span>
+                <span className="text-[11px] font-black uppercase tracking-widest">Book Strategy Call</span>
               </a>
             </div>
           </motion.div>
@@ -104,7 +103,6 @@ const ContactSection = () => {
               const subject = formData.get("subject") as string;
               const message = formData.get("message") as string;
 
-              // Construct the WhatsApp message text
               let text = `*New Contact Request*\n\n`;
               text += `*Name:* ${name}\n`;
               text += `*Phone:* ${phone}\n`;
@@ -112,81 +110,77 @@ const ContactSection = () => {
               if (subject) text += `*Subject:* ${subject}\n`;
               text += `*Message:* ${message}`;
 
-              // Encode the message
               const encodedMessage = encodeURIComponent(text);
-
-              // Open WhatsApp
               window.open(`https://wa.me/917603917369?text=${encodedMessage}`, "_blank");
-
               setSubmitted(true);
             }}
-            className="relative p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] bg-card border border-border shadow-2xl"
+            className="relative p-8 sm:p-12 rounded-[2.5rem] bg-card border border-border shadow-2xl overflow-hidden"
           >
-             <motion.div style={{ y: y2, rotate: rotateIcon }} className="absolute top-0 right-0 p-8 pointer-events-none opacity-[0.03]">
-                <Send size={150} className="text-foreground" />
+             <motion.div style={{ y: y2, rotate: rotateIcon }} className="absolute top-0 right-0 p-12 pointer-events-none opacity-[0.03]">
+                <Send size={200} className="text-foreground" />
              </motion.div>
 
             {submitted ? (
-              <div className="flex flex-col items-center justify-center py-20 text-center relative z-10">
-                <div className="mb-6 h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center text-primary shadow-inner">
-                  <Send size={40} className="animate-bounce" />
+              <div className="flex flex-col items-center justify-center py-24 text-center relative z-10">
+                <div className="mb-8 h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center text-primary shadow-inner">
+                  <Send size={48} className="animate-bounce" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
-                <p className="mt-4 text-muted-foreground font-medium">I'll personally get back to you within 24 hours.</p>
+                <h3 className="text-3xl font-black text-foreground uppercase tracking-tight">Message Sent!</h3>
+                <p className="mt-6 text-muted-foreground font-medium text-lg">We'll reach out to you within 24 hours.</p>
               </div>
             ) : (
-              <div className="relative z-10 space-y-5">
+              <div className="relative z-10 space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   {[
                     { name: "name", label: "Full Name", type: "text" },
                     { name: "phone", label: "Phone Number", type: "tel" },
                   ].map((field) => (
-                    <div key={field.name} className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-widest text-primary ml-1">{field.label}</label>
+                    <div key={field.name} className="space-y-2.5">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-primary/70 ml-1">{field.label}</label>
                       <input
                         name={field.name}
                         type={field.type}
                         required
                         placeholder={field.label}
-                        className="w-full h-12 sm:h-14 rounded-xl bg-foreground/[0.03] border border-border px-5 sm:px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
                       />
                     </div>
                   ))}
                 </div>
-                <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-primary ml-1">Email Address</label>
+                <div className="space-y-2.5">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary/70 ml-1">Email Address</label>
                     <input
                         name="email"
                         type="email"
                         required
                         placeholder="yourname@example.com"
-                        className="w-full h-12 sm:h-14 rounded-xl bg-foreground/[0.03] border border-border px-5 sm:px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
                     />
                 </div>
-                <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-primary ml-1">Subject</label>
+                <div className="space-y-2.5">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary/70 ml-1">Subject</label>
                     <input
                         name="subject"
                         type="text"
                         placeholder="Project subject?"
-                        className="w-full h-12 sm:h-14 rounded-xl bg-foreground/[0.03] border border-border px-5 sm:px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none placeholder:text-muted-foreground/40"
+                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
                     />
                 </div>
-                <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase tracking-widest text-primary ml-1">Message</label>
+                <div className="space-y-2.5">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-primary/70 ml-1">Message</label>
                     <textarea
                         name="message"
-                        rows={4}
+                        rows={5}
                         required
                         placeholder="How can we help?"
-                        className="w-full rounded-2xl bg-foreground/[0.03] border border-border p-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-lg transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/40"
+                        className="w-full rounded-3xl bg-foreground/[0.03] border border-border p-7 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/30"
                     />
                 </div>
                 <button
                   type="submit"
-                  className="w-full h-14 sm:h-16 rounded-xl sm:rounded-2xl bg-primary text-white font-bold uppercase tracking-widest shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-4"
+                  className="w-full h-16 sm:h-20 rounded-2xl bg-primary text-white font-black uppercase tracking-[0.2em] text-[11px] shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-4"
                 >
-                  Send Message <Send size={16} className="sm:hidden" /> <Send size={18} className="hidden sm:block" />
+                  Send Inquiry <Send size={18} />
                 </button>
               </div>
             )}
