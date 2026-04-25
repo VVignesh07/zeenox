@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Check, Star, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Star, Shield, Zap, Sparkles, Trophy } from "lucide-react";
 
 interface Package {
     name: string;
@@ -9,291 +9,213 @@ interface Package {
     features: string[];
     notIncluded?: string[];
     recommended?: boolean;
-    color?: string;
-    note?: string;
     badge?: string;
+    note?: string;
 }
 
-const websitePackages: Package[] = [
-    {
-        name: "Starter Website",
-        price: "₹5,000",
-        subtitle: "Purpose: Entry level small shops.",
-        badge: "Lead Magnet",
-        features: [
-            "1 Page (Scrolling Landing Page)",
-            "Template-Based Design",
-            "Mobile Responsive",
-            "Contact Form",
-            "WhatsApp Button",
-            "Google Map Integration",
-            "Basic Hosting Setup Support",
-            "1 Revision Only",
-            "Delivery in 4–5 Days",
-        ],
-        notIncluded: [
-            "Admin Panel",
-            "Custom UI Design",
-            "SEO Optimization",
-            "Blog / Product Section",
-            "Speed Optimization",
-            "Multiple Revisions",
-            "Content Writing",
-            "Domain & Hosting Cost",
-            "Payment Gateway",
-            "Logo Design",
-        ],
-    },
-    {
-        name: "Business Website",
-        price: "₹15,000",
-        subtitle: "Purpose: Small businesses who want lead generation.",
-        recommended: true,
-        badge: "Most Recommended",
-        features: [
-            "5–6 Pages (Home, About, Services, Contact, etc.)",
-            "Basic Admin Panel (Content Edit – 1 Module)",
-            "Lead Capture Form",
-            "Mobile Responsive",
-            "Basic On-Page SEO Setup",
-            "Basic Speed Optimization",
-            "WhatsApp & Google Map",
-            "2 Revisions",
-            "15 Days Bug Support",
-            "Delivery in 7–10 Days",
-            "1 Year Free Domain & Hosting",
-            "Payment Gateway Integration",
-        ],
-        notIncluded: [
-            "Advanced Dashboard",
-            "Multiple Admin Roles",
-            "E-commerce System",
-            "Advanced Animations",
-            "Custom UI from Scratch",
-            "API Integrations",
-            "Unlimited Revisions",
-            "Ongoing SEO",
-            "Content Writing (Extra Cost)",
-        ],
-    },
-    {
-        name: "Growth Website",
-        price: "₹28,000",
-        subtitle: "For businesses that want scalability and control.",
-        features: [
-            "Dynamic Website",
-            "Full Admin Dashboard",
-            "Blog / Product Management",
-            "Database Integration",
-            "Advanced Forms",
-            "Basic Security Setup",
-            "Speed Optimization",
-            "1 Month Technical Support",
-            "2–3 Revisions",
-            "Delivery in 10–15 Days",
-            "1 Year Free Domain & Hosting",
-            "Payment Gateway Integration",
-        ],
-        notIncluded: [
-            "Custom Web Application Logic",
-            "Complex Reports",
-            "Third-Party API Heavy Integration",
-            "Custom Animation Development",
-            "Lifetime Free Maintenance",
-        ],
-    },
-];
-
-const videoPackages: Package[] = [
-    {
-        name: "Starter Package",
-        price: "₹10,000",
-        subtitle: "Small Business",
-        features: [
-            "1 Shoot Day",
-            "4 Instagram Reels",
-            "Basic Video Editing",
-            "Reel Posting",
-            "Caption Writing",
-            "Hashtags",
-        ],
-    },
-    {
-        name: "Business Growth",
-        price: "₹20,000",
-        subtitle: "Most Recommended",
-        recommended: true,
-        badge: "MOST POPULAR",
-        features: [
-            "1 Shoot Day per month",
-            "8 Reels",
-            "Professional Editing",
-            "Color Grading",
-            "Reel Posting",
-            "Caption + Hashtags",
-            "Content Planning",
-        ],
-    },
-    {
-        name: "Premium Brand",
-        price: "₹45,000",
-        subtitle: "Cinematic & Strategy",
-        features: [
-            "2 Shoot Days",
-            "12–15 Reels",
-            "Cinematic Editing",
-            "Trend Based Reels",
-            "Content Strategy",
-            "Reel Posting",
-            "Caption + Hashtags",
-            "Monthly Growth Plan",
-        ],
-    },
-    {
-        name: "Real Estate Special",
-        price: "₹40,000",
-        subtitle: "Construction & Real Estate",
-        features: [
-            "Property Shoot",
-            "10 Reels",
-            "Walkthrough Video",
-            "Professional Editing",
-            "Instagram Handling",
-        ],
-    },
-];
-
-const appPackages: Package[] = [
-    {
-        name: "Starter App",
-        price: "₹18,000",
-        subtitle: "Best for MVP or basic business apps.",
-        features: [
-            "3–4 Screens",
-            "Login / Signup",
-            "Basic Dashboard",
-            "Firebase Backend",
-            "APK File Delivery",
-            "1 Revision",
-            "Delivery in 15–20 Days",
-        ],
-    },
-    {
-        name: "Business App",
-        price: "₹35,000",
-        subtitle: "For businesses requiring database & admin control.",
-        recommended: true,
-        badge: "Profit Engine",
-        features: [
-            "5–8 Screens",
-            "User Login",
-            "Web-Based Admin Panel",
-            "Database Integration",
-            "Push Notifications",
-            "API Integration",
-            "Basic Play Store Guidance",
-            "1 Month Support",
-        ],
-    },
-    {
-        name: "Advanced App",
-        price: "₹60,000+",
-        subtitle: "For scalable & advanced solutions.",
-        features: [
-            "Role-Based Access",
-            "Payment Gateway Integration",
-            "Custom Backend",
-            "Reports & Analytics",
-            "Full Deployment Support",
-            "Performance Optimization",
-        ],
-    },
-];
-
-
-const ecommercePackages: Package[] = [
-    {
-        name: "Starter E-Commerce",
-        price: "₹20,000",
-        subtitle: "Best for small brands starting online.",
-        badge: "Entry Level",
-        features: [
-            "Professional Theme Setup",
-            "Up to 30 Products Upload",
-            "Category Setup",
-            "Cart & Secure Checkout",
-            "Payment Gateway Integration",
-            "Shipping Setup",
-            "Mobile Responsive Design",
-            "Basic On-Page SEO",
-            "2 Revisions",
-            "15 Days Technical Support",
-        ],
-        notIncluded: [
-            "Custom UI Design",
-            "Unlimited Products",
-            "Advanced Analytics",
-            "Marketing Automation",
-            "Multi-Vendor System",
-            "Ongoing SEO / Ads",
-        ],
-    },
-    {
-        name: "Business E-Commerce",
-        price: "₹30,000",
-        subtitle: "Best for growing brands.",
-        recommended: true,
-        badge: "Recommended Plan",
-        features: [
-            "Custom Homepage Design",
-            "Unlimited Product Upload",
-            "Admin Dashboard",
-            "Order & Customer Management",
-            "Coupon / Discount System",
-            "Payment & Shipping Integration",
-            "Basic Sales Reports",
-            "Speed Optimization",
-            "1 Month Support",
-            "3 Revisions",
-        ],
-        notIncluded: [
-            "ERP Integration",
-            "Complex Inventory Automation",
-            "Multi-Warehouse System",
-            "Custom Mobile App",
-        ],
-    },
-    {
-        name: "Advanced E-Commerce",
-        price: "Custom Pricing",
-        subtitle: "For serious scalable brands.",
-        features: [
-            "Fully Custom UI/UX",
-            "Advanced Admin Panel",
-            "Role-Based Access",
-            "Detailed Sales Analytics",
-            "Performance Optimization",
-            "Security Hardening",
-            "2 Months Support",
-        ],
-    },
-];
+const packageMap: Record<string, Package[]> = {
+    website: [
+        {
+            name: "The Classic Engine",
+            price: "₹3,999",
+            subtitle: "Essential performance for emerging businesses seeking a professional digital storefront.",
+            features: [
+                "Single Landing Page Architecture",
+                "Mobile-First Responsive Engineering",
+                "Advanced SEO Foundation",
+                "WhatsApp API Integration",
+                "Social Media Asset Linking",
+                "High-Speed Asset Optimization"
+            ],
+            notIncluded: [
+                "E-commerce Functionality",
+                "Custom Dynamic Backend",
+                "Premium Domain & Hosting"
+            ],
+            note: "One Time"
+        },
+        {
+            name: "The Pro Performance",
+            price: "₹6,999",
+            subtitle: "Advanced multi-page architecture designed for established brands scaling their reach.",
+            features: [
+                "Multi-Page Brand Ecosystem (5+)",
+                "Elite UI/UX Experience",
+                "Performance-Grade CMS",
+                "Premium Contact & Lead Funnels",
+                "Priority SEO Indexing",
+                "Enhanced Visual Content"
+            ],
+            notIncluded: [
+                "Full E-commerce Suite",
+                "Advanced Database Scaling"
+            ],
+            recommended: true,
+            badge: "HIGH ROI",
+            note: "One Time"
+        },
+        {
+            name: "The Ultra Ecosystem",
+            price: "₹9,999",
+            subtitle: "Uncompromising digital dominance with full-scale E-commerce & industrial-grade design.",
+            features: [
+                "Full E-commerce Integration",
+                "Unlimited Page Architecture",
+                "Advanced Product Inventory",
+                "Secure Payment Infrastructure",
+                "Premium Animation Suite",
+                "Lifetime Technical Support"
+            ],
+            note: "One Time"
+        }
+    ],
+    video: [
+        {
+            name: "Reel Spark",
+            price: "₹4,999",
+            subtitle: "High-impact short-form content designed for immediate viral traction.",
+            features: [
+                "5-7 High-End Social Reels",
+                "Viral Hook Engineering",
+                "Cinematic Color Grading",
+                "Dynamic Captioning",
+                "Strategic Sound Design",
+                "Weekly Performance Review"
+            ],
+            note: "Per Month"
+        },
+        {
+            name: "Content Engine",
+            price: "₹9,999",
+            subtitle: "Sustainable growth architecture with consistent high-volume premium output.",
+            features: [
+                "10-12 Industrial Reels",
+                "2 Cinematic Long-form Edits",
+                "Advanced Storyboarding",
+                "Trend-Jumping Execution",
+                "Custom Graphics & VFX",
+                "Full Brand Voice Calibration"
+            ],
+            recommended: true,
+            badge: "BEST VALUE",
+            note: "Per Month"
+        },
+        {
+            name: "The Legacy Suite",
+            price: "₹19,999",
+            subtitle: "Complete digital media takeover for brands demanding total market authority.",
+            features: [
+                "20-25 High-Frequency Reels",
+                "4 Documentary-Style Edits",
+                "On-Site Production Strategy",
+                "Multi-Platform Distribution",
+                "Dedicated Growth Architect",
+                "Full Portfolio Management"
+            ],
+            note: "Per Month"
+        }
+    ],
+    software: [
+        {
+            name: "Custom Utility",
+            price: "₹4,999",
+            subtitle: "Focused automation tools to eliminate manual friction and boost efficiency.",
+            features: [
+                "Core Logic Development",
+                "Basic API Integration",
+                "Automated Reporting",
+                "Cloud Deployment",
+                "3 Months Support",
+                "Security Hardening"
+            ],
+            note: "Per Project"
+        },
+        {
+            name: "Full Stack Nexus",
+            price: "₹9,999",
+            subtitle: "End-to-end software ecosystems designed to manage entire business operations.",
+            features: [
+                "Custom Dashboard & Admin",
+                "Advanced Database (SQL/NoSQL)",
+                "Full API Suite Integration",
+                "Real-time Data Streams",
+                "Role-Based Auth (RBAC)",
+                "Enterprise Maintenance"
+            ],
+            recommended: true,
+            badge: "MOST POPULAR",
+            note: "Per Project"
+        },
+        {
+            name: "Enterprise Core",
+            price: "₹19,999",
+            subtitle: "Industrial-grade platforms built for high-concurrency scaling & complex logic.",
+            features: [
+                "Microservices Architecture",
+                "High-Availability Infrastructure",
+                "Custom AI/ML Integrations",
+                "Deep-Level Data Analytics",
+                "Dedicated Server Cluster",
+                "24/7 Priority Ops"
+            ],
+            note: "Per Project"
+        }
+    ],
+    ads: [
+        {
+            name: "Starter Funnel",
+            price: "₹4,999",
+            subtitle: "Launch your presence with precision-targeted testing and initial lead generation.",
+            features: [
+                "Meta Ads Setup & Launch",
+                "Lead Funnel Architecture",
+                "Creative Asset Design",
+                "Daily Budget Optimization",
+                "Basic Audience Research",
+                "Weekly ROI Reports"
+            ],
+            note: "Per Month"
+        },
+        {
+            name: "Growth Engine",
+            price: "₹9,999",
+            subtitle: "Aggressive scaling strategy with advanced retargeting and high-volume lead capture.",
+            features: [
+                "Meta & Google Omnichannel",
+                "Advanced Retargeting Pixel",
+                "High-Conversion Ad Copy",
+                "Competitor Intelligence",
+                "Scale-Ready Infrastructure",
+                "Dedicated Ad Manager"
+            ],
+            recommended: true,
+            badge: "ELITE SCALING",
+            note: "Per Month"
+        },
+        {
+            name: "Total Authority",
+            price: "₹19,999",
+            subtitle: "Dominant market presence through saturated ad coverage and premium brand awareness.",
+            features: [
+                "Total Brand Immersion Ads",
+                "Dynamic Remarketing Engine",
+                "High-Frequency Creative Refresh",
+                "Full Funnel Lifecycle Management",
+                "Premium CRM Integration",
+                "Bespoke Scaling Strategy"
+            ],
+            note: "Per Month"
+        }
+    ]
+};
 
 const PricingSection = () => {
-    const containerRef = useRef<HTMLElement>(null);
+    const [activeTab, setActiveTab] = useState("website");
+    const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     });
-
-    const [activeTab, setActiveTab] = useState<"video" | "website" | "app" | "ecommerce">("video");
-
-    const packageMap = {
-        video: videoPackages,
-        website: websitePackages,
-        app: appPackages,
-        ecommerce: ecommercePackages
-    };
 
     const packages = packageMap[activeTab];
 
@@ -303,49 +225,37 @@ const PricingSection = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-20 flex flex-col items-center text-center"
+                    viewport={{ once: true }}
+                    className="mb-16 md:mb-24 text-center"
                 >
-                    <span className="mb-6 inline-block px-4 py-1.5 rounded-full border border-border bg-card text-muted-foreground text-[11px] font-semibold uppercase tracking-widest shadow-sm">
-                        Transparent Pricing
+                    <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-widest">
+                        Strategic Investment
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.15]">
-                        Investment for <br className="hidden sm:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-br from-foreground to-muted-foreground">
-                            Scale & Success.
-                        </span>
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-foreground">
+                        Precision Plans. <br />
+                        <span className="font-serif-accent italic text-primary">Predictable Scaling.</span>
                     </h2>
-                    <p className="mx-auto mt-6 max-w-2xl text-[17px] text-muted-foreground leading-relaxed font-medium tracking-tight">
-                        High-end digital solutions shouldn't be a mystery. Choose a plan that fuels your business evolution.
-                    </p>
 
-                    <div className="mx-auto mt-14 w-full max-w-4xl">
-                        {/* Tab Switcher */}
-                        <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full bg-foreground/[0.04] border border-border backdrop-blur-md">
-                            {[
-                                { key: "video", label: "Video Production" },
-                                { key: "website", label: "Websites" },
-                                { key: "app", label: "Mobile Apps" },
-                                { key: "ecommerce", label: "E-Commerce" },
-                            ].map(({ key, label }) => (
+                    <div className="mx-auto mt-12 w-full max-w-2xl overflow-x-auto scrollbar-hide">
+                        <div className="flex items-center justify-start sm:justify-center p-1 rounded-full bg-foreground/5 border border-border min-w-max">
+                            {Object.keys(packageMap).map((tab) => (
                                 <button
-                                    key={key}
-                                    onClick={() => setActiveTab(key as "video" | "website" | "app" | "ecommerce")}
-                                    className={`relative px-6 py-2.5 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-300 ${activeTab === key
-                                        ? "text-foreground"
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    className={`relative px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === tab
+                                        ? "text-background"
                                         : "text-muted-foreground hover:text-foreground"
                                         }`}
                                 >
-                                    {activeTab === key && (
+                                    {activeTab === tab && (
                                         <motion.div
-                                            layoutId="activeTabPricing"
-                                            className="absolute inset-0 bg-card shadow-sm border border-border"
+                                            layoutId="activePricingTab"
+                                            className="absolute inset-0 bg-foreground"
                                             transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
                                             style={{ borderRadius: '9999px' }}
                                         />
                                     )}
-                                    <span className="relative z-10">{label}</span>
+                                    <span className="relative z-10">{tab}</span>
                                 </button>
                             ))}
                         </div>
@@ -360,13 +270,13 @@ const PricingSection = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.98, y: -20 }}
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className={`grid gap-8 items-stretch md:grid-cols-2 ${activeTab === 'video' ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}
+                            className="flex flex-wrap justify-center gap-8"
                         >
                             {packages.map((pkg, index) => (
                                 <motion.div
                                     key={pkg.name}
                                     whileHover={{ y: -5 }}
-                                    className={`relative flex flex-col p-6 sm:p-10 rounded-[2.5rem] transition-all duration-500 group ${pkg.recommended
+                                    className={`w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm relative flex flex-col p-6 sm:p-10 rounded-[2.5rem] transition-all duration-500 group ${pkg.recommended
                                         ? "bg-card border-2 border-primary shadow-2xl lg:scale-[1.02] z-20"
                                         : "bg-card border border-border shadow-sm hover:shadow-xl"
                                         }`}
