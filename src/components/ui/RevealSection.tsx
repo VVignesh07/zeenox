@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ReactNode, useRef } from "react";
 
 interface RevealSectionProps {
@@ -9,7 +9,15 @@ interface RevealSectionProps {
 
 export const RevealSection = ({ children, delay = 0, width = "100%" }: RevealSectionProps) => {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Substantive Parallax (Parallel Scrolling) without shrinking the content
+    const y = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -60]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [5, 0, -5]);
 
     return (
         <div 
@@ -17,17 +25,23 @@ export const RevealSection = ({ children, delay = 0, width = "100%" }: RevealSec
             style={{ 
                 position: "relative", 
                 width,
+                perspective: "1200px",
                 zIndex: 1
             }}
         >
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                style={{ 
+                    y,
+                    opacity,
+                    rotateX,
+                    transformStyle: "preserve-3d",
+                }}
                 transition={{ 
                     duration: 0.8, 
                     delay,
-                    ease: [0.16, 1, 0.3, 1] 
+                    ease: "easeOut"
                 }}
+                className="will-change-transform"
             >
                 {children}
             </motion.div>
