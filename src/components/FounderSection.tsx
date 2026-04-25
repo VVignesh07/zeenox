@@ -34,18 +34,19 @@ const FounderSection = () => {
               <img
                 src="/images/founder-arun.webp"
                 alt="Arun Pandian - Founder & CEO of Zeenox"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 scale-105 hover:scale-100"
+                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-1000 scale-105 hover:scale-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
               
-              <div className="absolute bottom-10 left-10 right-10 p-8 glass-strong rounded-[2rem] border border-white/60 shadow-2xl">
-                <div className="flex items-center gap-5">
-                    <div className="h-14 w-14 flex items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/20">
-                        <Quote size={24} className="text-white fill-current" />
+              <div className="absolute bottom-4 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 p-4 sm:p-8 glass-strong rounded-[1.5rem] sm:rounded-[2rem] border border-white/60 shadow-2xl">
+                <div className="flex items-center gap-3 sm:gap-5">
+                    <div className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/20">
+                        <Quote size={18} className="text-white fill-current sm:hidden" />
+                        <Quote size={24} className="text-white fill-current hidden sm:block" />
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-foreground leading-none">Arun Pandian</h3>
-                        <div className="flex items-center gap-3 mt-2.5">
+                        <h3 className="text-base sm:text-xl font-bold text-foreground leading-none">Arun Pandian</h3>
+                        <div className="flex items-center gap-2 sm:gap-3 mt-1.5 sm:mt-2.5">
                             <p className="text-[11px] font-extrabold text-primary uppercase tracking-[0.2em]">Architect & CEO</p>
                             <span className="h-1.5 w-1.5 rounded-full bg-black/5" />
                             <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Elite Scaling</p>
