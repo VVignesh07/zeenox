@@ -30,7 +30,7 @@ const FounderSection = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="relative mx-auto aspect-[4/5] max-w-lg overflow-hidden rounded-[3rem] border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.12)]">
+            <div className="relative mx-auto aspect-[4/5] max-w-lg overflow-visible sm:overflow-hidden rounded-[3rem] border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.12)] bg-card">
               <img
                 src="/images/founder-arun.webp"
                 alt="Arun Pandian - Founder & CEO of Zeenox"
@@ -38,7 +38,7 @@ const FounderSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
               
-              <div className="absolute bottom-4 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 p-4 sm:p-8 glass-strong rounded-[1.5rem] sm:rounded-[2rem] border border-white/60 shadow-2xl">
+              <div className="absolute -bottom-6 sm:bottom-10 left-4 sm:left-10 right-4 sm:right-10 p-4 sm:p-8 glass-strong rounded-[1.5rem] sm:rounded-[2rem] border border-white/60 shadow-2xl z-20">
                 <div className="flex items-center gap-3 sm:gap-5">
                     <div className="h-10 w-10 sm:h-14 sm:w-14 flex items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/20">
                         <Quote size={18} className="text-white fill-current sm:hidden" />
@@ -47,7 +47,7 @@ const FounderSection = () => {
                     <div>
                         <h3 className="text-base sm:text-xl font-bold text-foreground leading-none">Arun Pandian</h3>
                         <div className="flex items-center gap-2 sm:gap-3 mt-1.5 sm:mt-2.5">
-                            <p className="text-[11px] font-extrabold text-primary uppercase tracking-[0.2em]">Architect & CEO</p>
+                            <p className="text-[11px] font-extrabold text-primary uppercase tracking-[0.2em]">Founder & CEO</p>
                             <span className="h-1.5 w-1.5 rounded-full bg-black/5" />
                             <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Elite Scaling</p>
                         </div>
@@ -73,7 +73,7 @@ const FounderSection = () => {
             >
               <div className="inline-flex items-center gap-4 mb-8">
                 <span className="h-px w-12 bg-primary/30" />
-                <span className="text-[11px] font-black uppercase tracking-[0.5em] text-primary/60">The Architect's Vision</span>
+                <span className="text-[11px] font-black uppercase tracking-[0.5em] text-primary/60">The Founder's Vision</span>
               </div>
               <h2 className="text-3xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight lg:text-8xl mb-6 md:mb-10 text-foreground text-balance">
                 Precision Driven. <br />
