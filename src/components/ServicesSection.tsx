@@ -79,7 +79,7 @@ const ServicesSection = () => {
   const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
 
   return (
-    <section id="services" ref={containerRef} className="relative py-20 md:py-32 overflow-hidden bg-background">
+    <section id="services" ref={containerRef} className="relative py-12 md:py-32 overflow-hidden bg-background">
       <motion.div style={{ y: y1 }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-border/20 to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">

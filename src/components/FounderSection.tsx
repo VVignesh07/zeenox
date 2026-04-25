@@ -15,7 +15,7 @@ const FounderSection = () => {
   const rotateOrbit = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   return (
-    <section id="about" ref={containerRef} className="relative py-20 md:py-32 lg:py-40 overflow-hidden bg-background">
+    <section id="about" ref={containerRef} className="relative py-12 md:py-32 lg:py-40 overflow-hidden bg-background">
       {/* Background Decorative - Apple Glows */}
       <motion.div style={{ y: y1 }} className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none opacity-60" />
       <motion.div style={{ y: y2 }} className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none opacity-50" />

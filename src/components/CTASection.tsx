@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const CTASection = () => {
   return (
-    <section className="relative py-20 md:py-32 bg-background">
+    <section className="relative py-12 md:py-32 bg-background">
       <div className="section-divider mb-12 md:mb-20" />
       <div className="container mx-auto px-6">
         <motion.div

@@ -59,7 +59,7 @@ const projects = [
 
 const PortfolioSection = () => {
   return (
-    <section id="portfolio" className="relative py-20 md:py-32 bg-background overflow-hidden">
+    <section id="portfolio" className="relative py-12 md:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 mb-12 md:mb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

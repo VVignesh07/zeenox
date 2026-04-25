@@ -17,7 +17,7 @@ const ContactSection = () => {
   const [focused, setFocused] = useState<string | null>(null);
 
   return (
-    <section id="contact" ref={containerRef} className="relative py-20 md:py-32 bg-background overflow-hidden">
+    <section id="contact" ref={containerRef} className="relative py-12 md:py-32 bg-background overflow-hidden">
       <motion.div style={{ y: y1 }} className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div

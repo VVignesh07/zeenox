@@ -87,7 +87,7 @@ const ShowreelSection = () => {
   };
 
   return (
-    <section id="showreels" className="py-20 md:py-32 bg-background border-t border-border overflow-hidden">
+    <section id="showreels" className="py-12 md:py-32 bg-background border-t border-border overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
