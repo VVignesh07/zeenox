@@ -181,12 +181,12 @@ const PricingSection = () => {
                     </motion.div>
 
                     <div className="flex justify-center mb-16 md:mb-24 px-4">
-                        <div className="inline-flex p-1 rounded-2xl sm:rounded-3xl bg-card border border-border shadow-xl backdrop-blur-md overflow-x-auto scrollbar-hide max-w-full">
+                        <div className="flex flex-col sm:flex-row w-full sm:w-auto p-1.5 rounded-2xl sm:rounded-3xl bg-card border border-border shadow-xl backdrop-blur-md gap-1">
                             {tabs.map((tab) => (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id as any)}
-                                    className={`relative px-4 sm:px-10 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-[9px] sm:text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center gap-2 sm:gap-3 whitespace-nowrap ${
+                                    className={`relative px-4 sm:px-10 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl text-[10px] sm:text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center justify-center sm:justify-start gap-3 grow ${
                                         activeTab === tab.id
                                             ? "text-white"
                                             : "text-muted-foreground hover:text-foreground"
@@ -195,13 +195,17 @@ const PricingSection = () => {
                                     {activeTab === tab.id && (
                                         <motion.div
                                             layoutId="pricingTab"
-                                            className="absolute inset-0 bg-primary rounded-2xl shadow-lg shadow-primary/20"
+                                            className="absolute inset-0 bg-primary rounded-xl sm:rounded-2xl shadow-lg shadow-primary/20"
                                             transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                         />
                                     )}
                                     <span className="relative z-10 flex items-center gap-3">
                                         <tab.icon size={16} />
-                                        {tab.label}
+                                        <span className="hidden sm:inline">{tab.label}</span>
+                                        <span className="sm:hidden">
+                                            {tab.id === "website" ? "Web & Software" : 
+                                             tab.id === "video" ? "Cinematic Media" : "Enterprise Solutions"}
+                                        </span>
                                     </span>
                                 </button>
                             ))}
