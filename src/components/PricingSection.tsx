@@ -366,7 +366,7 @@ const PricingSection = () => {
                                 <motion.div
                                     key={pkg.name}
                                     whileHover={{ y: -5 }}
-                                    className={`relative flex flex-col p-10 rounded-[2rem] transition-all duration-500 group ${pkg.recommended
+                                    className={`relative flex flex-col p-6 sm:p-10 rounded-[2.5rem] transition-all duration-500 group ${pkg.recommended
                                         ? "bg-card border-2 border-primary shadow-2xl lg:scale-[1.02] z-20"
                                         : "bg-card border border-border shadow-sm hover:shadow-xl"
                                         }`}

@@ -94,7 +94,7 @@ const HeroSection = () => {
                     {/* Main Heading */}
                     <motion.h1 
                         variants={itemVariants} 
-                        className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-10 [text-wrap:balance]"
+                        className="text-3xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.1] mb-6 sm:mb-10 [text-wrap:balance]"
                     >
                         We Build Brands.<br />
                         <span className="text-primary relative inline-block">

@@ -74,7 +74,7 @@ const FounderSection = () => {
                 <span className="h-px w-12 bg-primary/30" />
                 <span className="text-[11px] font-black uppercase tracking-[0.5em] text-primary/60">The Architect's Vision</span>
               </div>
-              <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-8xl mb-10 text-foreground text-balance">
+              <h2 className="text-3xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight lg:text-8xl mb-6 md:mb-10 text-foreground text-balance">
                 Precision Driven. <br />
                 <span className="font-serif-accent italic text-primary">Profit Oriented.</span>
               </h2>
