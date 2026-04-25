@@ -14,136 +14,136 @@ interface Package {
 const packageMap: Record<string, Package[]> = {
     website: [
         {
-            name: "Premium Starter",
-            price: "₹14,999",
-            duration: "10-14 Days",
+            name: "The Classic Engine",
+            price: "₹3,999",
+            duration: "5-7 Days",
             description: "High-performance business presence with modern aesthetics.",
             features: [
-                "Up to 5 Premium Pages",
-                "Responsive Mobile Design",
-                "SEO Fundamental Setup",
-                "Contact Form Integration",
-                "SSL Certificate + Security",
+                "Single Page Design",
+                "Mobile Responsive",
+                "Basic SEO Setup",
+                "Contact Form",
+                "Social Media Icons",
+                "1 Week Support"
+            ]
+        },
+        {
+            name: "The Pro Performance",
+            price: "₹6,999",
+            duration: "10-14 Days",
+            recommended: true,
+            description: "Full-scale digital ecosystem for growing brands.",
+            features: [
+                "Up to 5 Pages",
+                "Advanced SEO",
+                "Dynamic Elements",
+                "Speed Optimization",
+                "Google Maps Integration",
                 "1 Month Support"
             ]
         },
         {
-            name: "Elite Performance",
-            price: "₹29,999",
+            name: "The Ultra Ecosystem",
+            price: "₹9,999",
             duration: "21-30 Days",
-            recommended: true,
-            description: "Full-scale digital ecosystem for growing brands.",
-            features: [
-                "Custom Dynamic Website",
-                "Advanced SEO Strategy",
-                "Content Management System",
-                "Speed & Core Web Vitals Fix",
-                "Social Media Integration",
-                "3 Months Support"
-            ]
-        },
-        {
-            name: "Industrial Authority",
-            price: "₹59,999",
-            duration: "45-60 Days",
             description: "Comprehensive software engineering for market dominance.",
             features: [
-                "E-commerce / Web App",
-                "Custom Admin Dashboard",
-                "Database Integration",
-                "API Developments",
-                "Ultra-Premium UI/UX",
-                "Lifetime Core Support"
+                "E-commerce Ready",
+                "Admin Dashboard",
+                "Custom Animations",
+                "Advanced Security",
+                "Analytics Integration",
+                "3 Months Support"
             ]
         }
     ],
     video: [
         {
-            name: "Cinematic Starter",
-            price: "₹19,999",
-            duration: "5-7 Days",
-            description: "High-end visual storytelling for social media.",
+            name: "Starter Edit",
+            price: "₹4,999",
+            duration: "3-5 Days",
+            description: "Professional video editing for social impact.",
             features: [
-                "3 Premium Reels/Shorts",
-                "4K Professional Editing",
-                "Sound Design & SFX",
-                "Color Grading",
-                "Trend-focused Content",
-                "Subtitles & Motion Graphics"
+                "1 High-quality Reel",
+                "Basic Color Grading",
+                "Trend Music Sync",
+                "Text Overlays",
+                "Sound Design",
+                "Standard Revision"
             ]
         },
         {
-            name: "Brand Evolution",
-            price: "₹34,999",
-            duration: "14-21 Days",
+            name: "Brand Story",
+            price: "₹9,999",
+            duration: "7-10 Days",
             recommended: true,
-            description: "Immersive video production for brand scaling.",
+            description: "Cinematic storytelling for brand authority.",
             features: [
-                "1 High-end Ad / Showreel",
-                "Full Production Support",
-                "Scripting & Storyboarding",
-                "Advanced VFX & Motion",
-                "Multi-platform Delivery",
-                "Voiceover Integration"
+                "3 Premium Reels",
+                "Professional VO",
+                "Advanced VFX",
+                "Cinematic Grading",
+                "Script Support",
+                "Social Media Strategy"
             ]
         },
         {
-            name: "Global Authority",
-            price: "₹74,999",
-            duration: "30-45 Days",
-            description: "Enterprise-grade cinematic media production.",
+            name: "Market Dominance",
+            price: "₹19,999",
+            duration: "14-21 Days",
+            description: "Industrial-grade media production for market leaders.",
             features: [
-                "Full Brand Documentary / Ad",
-                "Master-level VFX/CGI",
-                "Professional VO & BGM",
-                "Market-ready Strategy",
-                "Premium Color Science",
-                "Unlimited Revisions"
+                "5-7 Ultra Reels",
+                "4K Production Edit",
+                "Full Brand Strategy",
+                "Custom Assets",
+                "Dedicated Team",
+                "Priority Revisions"
             ]
         }
     ],
     software: [
         {
-            name: "Internal Tools",
-            price: "₹24,999",
-            duration: "2-3 Weeks",
-            description: "Optimize your operations with custom automation.",
+            name: "Automation Tool",
+            price: "₹4,999",
+            duration: "7-10 Days",
+            description: "Streamline your operations with custom automation.",
             features: [
                 "Process Automation",
-                "Custom Internal Dashboard",
-                "Inventory / Task Tracker",
-                "Basic User Auth",
-                "Data Visualizations",
-                "Mobile Responsive"
+                "Basic CRM Tool",
+                "Data Entry System",
+                "Email Notification",
+                "Dashboard Access",
+                "Technical Support"
             ]
         },
         {
-            name: "Enterprise ERP",
-            price: "₹49,999",
-            duration: "4-6 Weeks",
+            name: "Industrial Hub",
+            price: "₹9,999",
+            duration: "14-21 Days",
             recommended: true,
-            description: "Robust industrial-grade software ecosystems.",
+            description: "Scalable software ecosystems for enterprise growth.",
             features: [
-                "Full-scale ERP/CRM",
-                "Advanced Admin Control",
-                "Role-based Permissions",
-                "Payment Integrations",
-                "Scalable Architecture",
-                "Security & Encryption"
+                "Full ERP / CRM",
+                "Role-based Access",
+                "Inventory Tracking",
+                "Payment Gateway",
+                "Advanced Reports",
+                "Security Shield"
             ]
         },
         {
-            name: "Custom Innovation",
-            price: "₹99,999",
-            duration: "8-12 Weeks",
-            description: "Tailored software solutions for market leaders.",
+            name: "Legacy System",
+            price: "₹19,999",
+            duration: "30-45 Days",
+            description: "Custom software innovation for market authority.",
             features: [
-                "Machine Learning / AI",
-                "Heavy Data Processing",
-                "Custom SaaS Infrastructure",
-                "Dedicated Server Setup",
-                "24/7 Priority Support",
-                "Industrial Scalability"
+                "Multi-platform App",
+                "Real-time Data Sync",
+                "AI/ML Integration",
+                "Cloud Infrastructure",
+                "High Availability",
+                "Enterprise Support"
             ]
         }
     ]
@@ -161,13 +161,6 @@ const PricingSection = () => {
 
     return (
         <section id="pricing" ref={containerRef} className="relative py-20 md:py-32 bg-background overflow-hidden">
-            {/* Background architectural elements */}
-            <div className="absolute inset-0 pointer-events-none opacity-20">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-                <div className="absolute -top-24 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
-            </div>
-
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
@@ -177,22 +170,16 @@ const PricingSection = () => {
                         className="text-center mb-16 md:mb-24"
                     >
                         <motion.span 
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-bold uppercase tracking-widest border border-primary/20"
+                            className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20"
                         >
-                            Industrial Grade Pricing
+                            Exclusive Pricing
                         </motion.span>
                         <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8">
-                            Engineered for <br />
-                            <span className="text-primary italic font-serif-accent">High-End Performance.</span>
+                            Flexible Plans for <br />
+                            <span className="text-primary italic font-serif-accent">Every Growth Stage.</span>
                         </h2>
-                        <p className="max-w-2xl mx-auto text-muted-foreground text-lg font-medium leading-relaxed">
-                            Premium pricing for premium results. We don't just deliver projects; we engineer market authority and cinematic excellence.
-                        </p>
                     </motion.div>
 
-                    {/* Industrial Tabs */}
                     <div className="flex justify-center mb-16 md:mb-24">
                         <div className="inline-flex p-1.5 rounded-3xl bg-card border border-border shadow-xl backdrop-blur-md">
                             {tabs.map((tab) => (
@@ -242,7 +229,7 @@ const PricingSection = () => {
                                 >
                                     {pkg.recommended && (
                                         <div className="absolute top-0 right-10 -translate-y-1/2 px-4 py-1.5 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg">
-                                            Most Requested
+                                            Recommended
                                         </div>
                                     )}
 
@@ -269,12 +256,6 @@ const PricingSection = () => {
                                     </div>
 
                                     <div className="pt-6 border-t border-border/50">
-                                        <div className="flex items-center justify-between mb-6">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Timeline</span>
-                                            <span className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                                                <Zap size={12} className="text-primary" /> {pkg.duration}
-                                            </span>
-                                        </div>
                                         <a
                                             href={`https://wa.me/917603917369?text=I'm interested in the ${pkg.name} package for ${activeTab}.`}
                                             target="_blank"
