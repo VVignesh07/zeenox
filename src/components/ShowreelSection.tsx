@@ -11,6 +11,18 @@ interface Showreel {
 
 const showreels: Showreel[] = [
   {
+    title: "Kalvipaavai",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/KALVIPAAVAI_tnbds5.mp4",
+    instagramUrl: "https://www.instagram.com/",
+    thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/KALVIPAAVAI_tnbds5.jpg",
+  },
+  {
+    title: "Kalvi Paavai Reel",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/KALVI_PAAVAI_REEL_zznxiw.mp4",
+    instagramUrl: "https://www.instagram.com/",
+    thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/KALVI_PAAVAI_REEL_zznxiw.jpg",
+  },
+  {
     title: "Election Strategy",
     videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/ELECTION2_bejlno.mp4",
     instagramUrl: "https://www.instagram.com/",
