@@ -23,6 +23,12 @@ const showreels: Showreel[] = [
     thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/KALVI_PAAVAI_REEL_zznxiw.jpg",
   },
   {
+    title: "Bit City Reel",
+    videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/BIT_CITY_REEL_femqmf.mp4",
+    instagramUrl: "https://www.instagram.com/",
+    thumbnail: "https://res.cloudinary.com/dtjnm2nc8/video/upload/so_0,f_auto,q_auto/BIT_CITY_REEL_femqmf.jpg",
+  },
+  {
     title: "Election Strategy",
     videoUrl: "https://res.cloudinary.com/dtjnm2nc8/video/upload/ELECTION2_bejlno.mp4",
     instagramUrl: "https://www.instagram.com/",
@@ -171,8 +177,8 @@ const ShowreelSection = () => {
               key={i}
               onClick={() => scrollToVideo(i)}
               className={`h-2 rounded-full transition-all duration-500 ${activeIndex === i
-                  ? "w-10 bg-primary shadow-lg shadow-primary/30"
-                  : "w-2 bg-border hover:bg-muted-foreground"
+                ? "w-10 bg-primary shadow-lg shadow-primary/30"
+                : "w-2 bg-border hover:bg-muted-foreground"
                 }`}
             />
           ))}
@@ -222,7 +228,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
     if (isHovered && !isPlaying) {
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {});
+        playPromise.catch(() => { });
       }
     } else if (!isHovered && !isPlaying) {
       videoRef.current.pause();
@@ -281,7 +287,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
 
       <AnimatePresence>
         {isLoading && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -295,7 +301,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
       {hasError && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-20 p-6 text-center">
           <p className="text-white text-sm font-medium mb-4">Failed to load video</p>
-          <button 
+          <button
             onClick={(e) => {
               e.stopPropagation();
               setHasError(false);
@@ -322,7 +328,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
       <div className="absolute top-6 left-6 z-20 flex gap-2">
         <AnimatePresence>
           {isPlaying && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
@@ -333,7 +339,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
           )}
         </AnimatePresence>
         {!isLoading && !hasError && (
-          <button 
+          <button
             onClick={toggleMute}
             className="h-10 w-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors pointer-events-auto"
           >
