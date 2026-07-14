@@ -124,7 +124,7 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
           loading="lazy"
         />
         
