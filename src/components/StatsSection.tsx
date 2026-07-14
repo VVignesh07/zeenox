@@ -1,3 +1,4 @@
+"use client";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { TrendingUp, Users, Calendar } from "lucide-react";
@@ -63,9 +64,9 @@ const StatsSection = () => {
     {
       icon: <Calendar size={24} className="text-primary" />,
       iconBg: "bg-primary/10",
-      number: 2,
+      number: 6,
       labelLine1: "YEARS",
-      labelLine2: "MASTERY",
+      labelLine2: "EXPERIENCE",
       textColor: "text-muted-foreground",
       highlight: false,
     },

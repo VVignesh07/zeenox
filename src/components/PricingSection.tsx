@@ -1,3 +1,4 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Mail, MessageCircle, Phone, Calendar, Send, MapPin, Sparkles, Star, Zap, ShieldCheck } from "lucide-react";
 import { useState, useRef } from "react";

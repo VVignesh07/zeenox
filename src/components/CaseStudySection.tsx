@@ -1,3 +1,4 @@
+"use client";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { TrendingUp, ArrowRight } from "lucide-react";

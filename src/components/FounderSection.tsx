@@ -1,4 +1,5 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+"use client";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Quote, Sparkles } from "lucide-react";
 import StatsSection from "./StatsSection";
@@ -49,13 +50,12 @@ const FounderSection = () => {
                         <div className="flex items-center gap-2 sm:gap-3 mt-1.5 sm:mt-2.5">
                             <p className="text-[11px] font-extrabold text-primary uppercase tracking-[0.2em]">Founder & CEO</p>
                             <span className="h-1.5 w-1.5 rounded-full bg-black/5" />
-                            <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.2em]">Elite Scaling</p>
+                            <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.2em]">ZeenOx</p>
                         </div>
                     </div>
                 </div>
               </div>
             </div>
-
             {/* Decorative orbit */}
             <motion.div style={{ rotate: rotateOrbit }} className="absolute -top-16 -right-16 pointer-events-none opacity-30 hidden lg:block">
                 <div className="h-64 w-64 rounded-full border border-dashed border-primary/40" />

@@ -1,5 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Play, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Sparkles, Play, ShieldCheck, Zap, Award } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
     const containerVariants = {
@@ -7,55 +10,52 @@ const HeroSection = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.3,
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
             }
         }
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 1,
-                ease: [0.16, 1, 0.3, 1]
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1] as any
             }
         }
     };
 
     const floatVariants = {
         animate: {
-            y: [0, -15, 0],
+            y: [0, -10, 0],
             transition: {
-                duration: 4,
+                duration: 6,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut" as const
             }
         }
     };
 
+    const trustItems = [
+        { icon: ShieldCheck, label: "Trusted by 50+ Brands" },
+        { icon: Zap, label: "Lightning-Fast Delivery" },
+        { icon: Award, label: "Premium Quality" },
+    ];
+
     return (
         <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 md:pt-32 pb-20 overflow-hidden bg-background">
-            {/* Background Architectural Elements */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(0,113,227,0.08),transparent_50%)]" />
+            {/* Background Architectural Elements - Refined */}
+            <div className="absolute inset-0 z-0 flex justify-center">
+                <div className="absolute top-0 w-full h-[500px] bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
                 <motion.div 
                     animate={{ 
-                        scale: [1, 1.1, 1],
-                        opacity: [0.3, 0.5, 0.3]
+                        opacity: [0.1, 0.2, 0.1]
                     }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" 
-                />
-                <motion.div 
-                    animate={{ 
-                        scale: [1, 1.2, 1],
-                        opacity: [0.2, 0.4, 0.2]
-                    }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" 
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" 
                 />
             </div>
 
@@ -64,73 +64,62 @@ const HeroSection = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="max-w-5xl mx-auto text-center"
+                    className="max-w-4xl mx-auto text-center"
                 >
-                    {/* Badge */}
+                    {/* Eyebrow Badge */}
                     <motion.div variants={itemVariants} className="flex justify-center mb-8">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/10 bg-primary/5 backdrop-blur-md shadow-sm">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-sm">
                             <Sparkles size={14} className="text-primary animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Media · Technology · Automation</span>
+                            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/80">Media · Tech · Automation</span>
                         </div>
                     </motion.div>
 
-                    {/* Previous Main Heading with New Style */}
+                    {/* Main Heading */}
                     <motion.h1 
                         variants={itemVariants} 
-                        className="text-[2.2rem] xs:text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground leading-[1.1] sm:leading-[1.05] mb-8 [text-wrap:balance]"
+                        className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6 text-balance"
                     >
-                        We Build <span className="text-primary">Brands.</span><br />
-                        We Build <span className="text-primary">Systems.</span><br />
-                        We Build <span className="text-primary">Growth Engines.</span>
+                        We Build <span className="text-primary font-serif-accent">Brands,</span> Run{" "}
+                        <span className="text-primary font-serif-accent">Growth,</span> and{" "}
+                        Automate the Rest
                     </motion.h1>
 
-                    {/* Previous Subtext */}
+                    {/* Subheadline */}
                     <motion.p 
                         variants={itemVariants}
-                        className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed font-medium mb-12"
+                        className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed font-medium mb-12"
                     >
-                        A full-service digital agency crafting premium experiences for clinics, fashion brands, jewellery houses, and beyond — with 10+ years of expertise in design, development & automation.
+                        ZeenOx is a full-service digital agency helping businesses create standout content, grow online, and streamline operations — with video, marketing, web, and automation, all under one roof.
                     </motion.p>
 
                     {/* Action Buttons */}
-                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a 
-                            href="#contact" 
-                            className="group relative inline-flex w-full sm:w-auto items-center justify-center px-10 py-5 bg-primary text-white font-bold uppercase tracking-widest rounded-2xl shadow-2xl shadow-primary/30 hover:scale-105 hover:shadow-primary/40 active:scale-95 transition-all duration-300 overflow-hidden"
+                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <Link 
+                            href="/#contact" 
+                            className="btn-primary flex items-center justify-center gap-3 w-full sm:w-auto"
                         >
-                            <span className="relative z-10 flex items-center gap-3">
-                                Start Your Expansion <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                            </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-400 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-shimmer" />
-                        </a>
-                        <a 
-                            href="#portfolio" 
-                            className="group flex w-full sm:w-auto items-center justify-center gap-3 px-10 py-5 rounded-2xl border border-border bg-card/50 backdrop-blur-md font-bold uppercase tracking-widest text-foreground hover:bg-card hover:border-primary/20 transition-all duration-300"
+                            Start a Project <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                        <Link 
+                            href="/#work" 
+                            className="btn-apple bg-card border border-white/10 flex items-center justify-center gap-3 w-full sm:w-auto hover:bg-white/10 text-foreground"
                         >
-                            <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                                <Play size={14} fill="currentColor" />
-                            </div>
-                            View Our Work
-                        </a>
+                            <Play size={14} fill="currentColor" className="text-primary" />
+                            See Our Work
+                        </Link>
                     </motion.div>
 
                     {/* Trust Indicators */}
                     <motion.div 
                         variants={itemVariants}
-                        className="mt-20 pt-10 border-t border-border/50 flex flex-wrap justify-center gap-8 md:gap-16 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                        className="mt-20 pt-10 border-t border-white/10 flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-all duration-500"
                     >
-                        <div className="flex items-center gap-2">
-                            <ShieldCheck size={18} />
-                            <span className="text-xs font-bold uppercase tracking-widest">Enterprise Security</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Zap size={18} />
-                            <span className="text-xs font-bold uppercase tracking-widest">Industrial Speed</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Sparkles size={18} />
-                            <span className="text-xs font-bold uppercase tracking-widest">Premium Quality</span>
-                        </div>
+                        {trustItems.map((item) => (
+                            <div key={item.label} className="flex items-center gap-2">
+                                <item.icon size={16} className="text-primary" />
+                                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground/80">{item.label}</span>
+                            </div>
+                        ))}
                     </motion.div>
                 </motion.div>
             </div>
@@ -139,15 +128,15 @@ const HeroSection = () => {
             <motion.div 
                 variants={floatVariants}
                 animate="animate"
-                className="absolute top-1/3 left-10 hidden xl:block p-4 rounded-3xl bg-card border border-border shadow-2xl backdrop-blur-md opacity-50"
+                className="absolute top-1/4 left-10 hidden xl:block p-4 rounded-3xl bg-card border border-white/5 shadow-2xl backdrop-blur-xl opacity-60"
             >
                 <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                         <Zap size={18} />
                     </div>
                     <div className="space-y-1">
-                        <div className="h-2 w-16 bg-border rounded-full" />
-                        <div className="h-2 w-10 bg-border/50 rounded-full" />
+                        <div className="h-2 w-16 bg-white/20 rounded-full" />
+                        <div className="h-2 w-10 bg-white/10 rounded-full" />
                     </div>
                 </div>
             </motion.div>
@@ -156,15 +145,15 @@ const HeroSection = () => {
                 variants={floatVariants}
                 animate="animate"
                 transition={{ delay: 1 }}
-                className="absolute bottom-1/3 right-10 hidden xl:block p-4 rounded-3xl bg-card border border-border shadow-2xl backdrop-blur-md opacity-50"
+                className="absolute bottom-1/3 right-10 hidden xl:block p-4 rounded-3xl bg-card border border-white/5 shadow-2xl backdrop-blur-xl opacity-60"
             >
                 <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                         <Play size={18} fill="currentColor" />
                     </div>
                     <div className="space-y-1">
-                        <div className="h-2 w-20 bg-border rounded-full" />
-                        <div className="h-2 w-12 bg-border/50 rounded-full" />
+                        <div className="h-2 w-20 bg-white/20 rounded-full" />
+                        <div className="h-2 w-12 bg-white/10 rounded-full" />
                     </div>
                 </div>
             </motion.div>
@@ -173,3 +162,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

@@ -1,3 +1,4 @@
+"use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Send, Mail, MapPin, Phone, MessageCircle, Calendar } from "lucide-react";
 import { useState, useRef } from "react";
@@ -142,7 +143,7 @@ const ContactSection = () => {
                         type={field.type}
                         required
                         placeholder={field.label}
-                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
+                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/70"
                       />
                     </div>
                   ))}
@@ -154,7 +155,7 @@ const ContactSection = () => {
                         type="email"
                         required
                         placeholder="yourname@example.com"
-                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
+                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/70"
                     />
                 </div>
                 <div className="space-y-2.5">
@@ -163,7 +164,7 @@ const ContactSection = () => {
                         name="subject"
                         type="text"
                         placeholder="Project subject?"
-                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/30"
+                        className="w-full h-14 sm:h-16 rounded-2xl bg-foreground/[0.03] border border-border px-6 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none placeholder:text-muted-foreground/70"
                     />
                 </div>
                 <div className="space-y-2.5">
@@ -173,7 +174,7 @@ const ContactSection = () => {
                         rows={5}
                         required
                         placeholder="How can we help?"
-                        className="w-full rounded-3xl bg-foreground/[0.03] border border-border p-7 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/30"
+                        className="w-full rounded-3xl bg-foreground/[0.03] border border-border p-7 text-sm text-foreground focus:border-primary focus:bg-card focus:shadow-xl transition-all duration-300 outline-none resize-none placeholder:text-muted-foreground/70"
                     />
                 </div>
                 <button

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, Server, Laptop, Rocket, Settings, Sparkles, CheckCircle2, ChevronRight, Zap, Target, PenTool, Camera, Film, TrendingUp, Users, Presentation, LineChart, PlayCircle } from "lucide-react";
@@ -82,7 +83,7 @@ const SoftwareRoadmap = () => (
     <div className="space-y-12 lg:space-y-0">
         <div className="hidden lg:block relative">
             <div className="flex justify-center mb-16 relative">
-                <PhaseHeader title="Phase 1: Planning" color="bg-foreground" />
+                <PhaseHeader title="Phase 1: Planning" color="bg-foreground" textColor="text-background" />
             </div>
 
             <svg className="absolute top-[38px] left-1/2 -translate-x-1/2 w-[600px] h-[80px] pointer-events-none overflow-visible" viewBox="0 0 1000 80" preserveAspectRatio="none">
@@ -92,7 +93,7 @@ const SoftwareRoadmap = () => (
             <div className="grid grid-cols-2 gap-24 items-start pt-8">
                 <div className="relative">
                     <div className="flex justify-center mb-12">
-                        <PhaseHeader title="Phase 2: Platform Selection" color="bg-muted-foreground" />
+                        <PhaseHeader title="Phase 2: Platform Selection" color="bg-muted-foreground" textColor="text-background" />
                     </div>
                     <div className="grid grid-cols-2 gap-6 relative">
                         <RoadmapCard number="1" icon={<Globe className="text-foreground" size={20} />} title="Choose Domain" items={["GoDaddy", "Hostinger", "Namecheap"]} />
@@ -103,7 +104,7 @@ const SoftwareRoadmap = () => (
 
                 <div className="relative">
                     <div className="flex justify-center mb-12">
-                        <PhaseHeader title="Phase 3: Setup" color="bg-muted-foreground" />
+                        <PhaseHeader title="Phase 3: Setup" color="bg-muted-foreground" textColor="text-background" />
                     </div>
                     <div className="grid grid-cols-2 gap-6 relative">
                         <RoadmapCard number="3" icon={<Settings className="text-foreground" size={20} />} title="Server Config" items={["SSL Setup", "E-mail Config", "CDN Integration"]} />
@@ -144,7 +145,7 @@ const SoftwareRoadmap = () => (
                 <div className="flex gap-6">
                     <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-foreground text-background flex items-center justify-center shadow-lg font-black text-xs">P1</div>
                     <div className="flex-1 pt-4">
-                        <PhaseHeader title="Phase 1: Planning" color="bg-foreground" />
+                        <PhaseHeader title="Phase 1: Planning" color="bg-foreground" textColor="text-background" />
                     </div>
                 </div>
 
@@ -295,10 +296,10 @@ const VideoRoadmap = () => (
     </div>
 );
 
-const PhaseHeader = ({ title, color }: { title: string; color: string }) => (
+const PhaseHeader = ({ title, color, textColor = "text-white" }: { title: string; color: string; textColor?: string }) => (
     <motion.div
         whileHover={{ scale: 1.05, y: -2 }}
-        className={`${color} text-primary-foreground px-6 sm:px-10 py-3 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-black/5 relative z-20 transition-all text-center`}
+        className={`${color} ${textColor} px-6 sm:px-10 py-3 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-black/20 relative z-20 transition-all text-center border border-white/10`}
     >
         {title}
     </motion.div>

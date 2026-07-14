@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useState } from "react";
@@ -5,23 +7,16 @@ import { useState } from "react";
 const testimonials = [
   {
     name: "Dr. Priya Sharma",
-    role: "CEO, Venu's Health Care",
-    text: "Zeenox completely transformed our digital presence. Patient bookings increased by 3x within two months. Their strategic approach and attention to detail is unmatched.",
+    role: "Venu's Health Care",
+    text: "The turnaround time and quality exceeded all our expectations. ZeenOx delivered exactly what we needed, on time and beyond spec.",
     rating: 5,
   },
   {
     name: "Balasundari",
-    role: "Founder, KVP Jewellery",
-    text: "You did a really nice job on the KVP store website. It looks clean, professional, and easy to navigate. The branding feels consistent, and the shopping flow is smooth. Overall great work!",
+    role: "KVP Jewellery",
+    text: "Professional, creative, and easy to work with. Our brand presence has never looked better.",
     rating: 5,
-  },
-
-  {
-    name: "Vikram Singh",
-    role: "COO, FitPro",
-    text: "The automation systems they built saved us 40+ hours per month. Their CRM transformed how we handle clients. Incredible ROI.",
-    rating: 5,
-  },
+  }
 ];
 
 const TestimonialsSection = () => {
@@ -29,7 +24,7 @@ const TestimonialsSection = () => {
   const t = testimonials[current];
 
   return (
-    <section className="relative py-32 bg-background">
+    <section className="relative py-24 md:py-32 bg-background">
       <div className="section-divider mb-32" />
       <div className="container mx-auto px-6">
         <motion.div
@@ -38,16 +33,12 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <motion.span 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="mb-6 inline-block px-5 py-2 rounded-full bg-primary/10 text-primary text-[11px] font-black uppercase tracking-[0.3em] shadow-sm"
-          >
-            Proof of Excellence
-          </motion.span>
+          <span className="mb-6 inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.3em] shadow-sm">
+            TESTIMONIALS
+          </span>
           <h2 className="text-4xl font-extrabold sm:text-5xl lg:text-7xl text-foreground text-balance">
-            Trusted by the <br />
-            <span className="font-serif-accent italic text-primary">Next Generation of Leaders.</span>
+            What Our <br className="hidden sm:block" />
+            <span className="font-serif-accent italic text-primary">Clients Say</span>
           </h2>
         </motion.div>
 
@@ -96,10 +87,10 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, x: 20, scale: 0.98 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="card-apple p-10 sm:p-20 shadow-[0_50px_100px_-30px_rgba(0,0,0,0.08)] relative overflow-hidden text-center lg:text-left"
+            className="card-apple p-10 sm:p-20 shadow-[0_50px_100px_-30px_rgba(57,255,20,0.08)] relative overflow-hidden text-center lg:text-left"
           >
             {/* Quote Icon Background */}
-            <div className="absolute top-0 right-0 p-12 opacity-[0.03] rotate-12">
+            <div className="absolute top-0 right-0 p-12 opacity-[0.03] rotate-12 text-primary">
                 <Quote size={200} fill="currentColor" />
             </div>
 
@@ -153,7 +144,7 @@ const TestimonialsSection = () => {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-12 bg-primary shadow-[0_0_12px_rgba(0,113,227,0.3)]" : "w-1.5 bg-black/10"
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-12 bg-primary shadow-[0_0_12px_rgba(57,255,20,0.3)]" : "w-1.5 bg-black/10"
                   }`}
               />
             ))}

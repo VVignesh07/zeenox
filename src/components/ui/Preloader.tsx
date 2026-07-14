@@ -1,3 +1,4 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -23,22 +24,23 @@ const Preloader = () => {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
         >
           <div className="relative flex flex-col items-center">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="mb-8"
-            >
-              <img src="/images/logo2.png" alt="Zeenox" className="h-12 w-auto invert" />
-            </motion.div>
-            
-            <div className="w-48 h-[2px] bg-foreground/5 rounded-full overflow-hidden relative">
-              <motion.div
-                initial={{ left: "-100%" }}
-                animate={{ left: "100%" }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-0 bottom-0 w-24 bg-primary shadow-[0_0_15px_rgba(var(--primary),0.5)]"
-              />
+            <div className="mb-8 flex items-center justify-center space-x-1">
+              {"ZeenOx".split("").map((letter, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ y: 0, opacity: 0.5 }}
+                  animate={{ y: [-8, 0, -8], opacity: [0.5, 1, 0.5] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.1,
+                  }}
+                  className="text-4xl sm:text-5xl font-black text-green-500 tracking-wider"
+                >
+                  {letter}
+                </motion.span>
+              ))}
             </div>
             
             <motion.p
@@ -47,7 +49,7 @@ const Preloader = () => {
               transition={{ delay: 0.5 }}
               className="mt-6 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground"
             >
-              Engineering Excellence
+              Media · Tech · Automation
             </motion.p>
           </div>
 

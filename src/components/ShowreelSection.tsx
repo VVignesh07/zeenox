@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, Play, ChevronLeft, ChevronRight, Pause, Volume2, VolumeX, Loader2 } from "lucide-react";
@@ -67,9 +68,6 @@ const showreels: Showreel[] = [
 ];
 
 const getOptimizedVideoUrl = (url: string) => {
-  if (url.includes("cloudinary.com") && url.includes("/upload/")) {
-    return url.replace("/upload/", "/upload/q_auto,vc_h264/");
-  }
   return url;
 };
 
@@ -216,33 +214,41 @@ const ShowreelSection = () => {
 const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
+  const safePause = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (playPromiseRef.current) {
+      playPromiseRef.current.then(() => { video.pause(); }).catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
+
   useEffect(() => {
     if (!videoRef.current || isLoading || hasError) return;
 
-    if (isHovered && !isPlaying) {
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => { });
-      }
-    } else if (!isHovered && !isPlaying) {
-      videoRef.current.pause();
+    if (!isPlaying) {
+      playPromiseRef.current = videoRef.current.play();
+      playPromiseRef.current?.catch(() => {});
     }
-  }, [isHovered, isPlaying, isLoading, hasError]);
+  }, [isPlaying, isLoading, hasError]);
 
   const toggleFullPlay = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (videoRef.current) {
       if (isPlaying) {
-        videoRef.current.pause();
+        safePause();
         setIsMuted(true);
       } else {
-        videoRef.current.play();
+        playPromiseRef.current = videoRef.current.play();
+        playPromiseRef.current?.catch(() => {});
         setIsMuted(false);
       }
       setIsPlaying(!isPlaying);
@@ -273,6 +279,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
         loop
         muted={isMuted}
         playsInline
+        autoPlay
         preload="auto"
         className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? 'scale-105' : 'scale-100'} ${isLoading ? 'opacity-0' : 'opacity-100'}`}
         onLoadStart={() => setIsLoading(true)}
