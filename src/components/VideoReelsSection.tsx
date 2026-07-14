@@ -321,9 +321,11 @@ const ReelCard = ({ reel, index }: { reel: Reel; index: number }) => {
   };
 
   const categoryColors: Record<string, string> = {
+    education: "bg-blue-500",
+    corporate: "bg-indigo-500",
+    "real-estate": "bg-emerald-500",
+    political: "bg-red-500",
     cinematic: "bg-violet-500",
-    reel: "bg-pink-500",
-    corporate: "bg-blue-500",
   };
 
   return (
