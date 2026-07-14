@@ -1,3 +1,17 @@
 {
-  "/page": "app/page.js"
+  "/feed.xml/route": "app/feed.xml/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/services/digital-marketing/page": "app/services/digital-marketing/page.js",
+  "/services/automation/page": "app/services/automation/page.js",
+  "/services/seo/page": "app/services/seo/page.js",
+  "/internship/page": "app/internship/page.js",
+  "/services/web-development/page": "app/services/web-development/page.js",
+  "/work/page": "app/work/page.js",
+  "/locations/[town]/page": "app/locations/[town]/page.js",
+  "/services/video-editing/page": "app/services/video-editing/page.js",
+  "/dashboard/page": "app/dashboard/page.js"
 }

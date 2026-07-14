@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Flocations\u002F[town]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
