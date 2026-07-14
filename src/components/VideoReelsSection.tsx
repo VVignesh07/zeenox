@@ -124,46 +124,51 @@ const CategoryCarousel = ({ category, label, icon: Icon, categoryReels }: { cate
   if (categoryReels.length === 0) return null;
 
   return (
-    <div className="mb-20 last:mb-0">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
-          <Icon size={20} className="text-primary" />
+    <div className="mb-24 last:mb-0 relative z-10">
+      <div className="flex items-center gap-4 mb-10 px-6 md:px-12">
+        <div className="relative flex items-center justify-center">
+          <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
+          <div className="h-12 w-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center relative z-10 backdrop-blur-sm">
+            <Icon size={24} className="text-primary" />
+          </div>
         </div>
-        <h3 className="text-2xl md:text-3xl font-extrabold text-foreground">{label}</h3>
+        <h3 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight drop-shadow-sm">{label}</h3>
       </div>
 
       <div className="relative group">
-        <div
+        {/* Edge Masking for Smooth Fading */}
+        <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto scrollbar-hide gap-5 md:gap-7 py-4 px-2 snap-x scroll-smooth"
+          className="flex overflow-x-auto scrollbar-hide gap-6 md:gap-8 py-6 px-6 md:px-12 snap-x scroll-smooth"
+          style={{ maskImage: "linear-gradient(to right, transparent, black 4%, black 96%, transparent)", WebkitMaskImage: "-webkit-linear-gradient(left, transparent, black 4%, black 96%, transparent)" }}
         >
           {categoryReels.map((reel, index) => (
-            <div key={`${reel.title}-${index}`} className="flex-shrink-0 w-[260px] sm:w-[320px] md:w-[360px] snap-center">
+            <div key={`${reel.title}-${index}`} className="flex-shrink-0 w-[280px] sm:w-[340px] md:w-[380px] snap-center">
               <ReelCard reel={reel} index={index} />
             </div>
           ))}
         </div>
 
-        {/* Nav Arrows */}
-        <div className="absolute top-1/2 -translate-y-1/2 -left-4 -right-4 flex justify-between pointer-events-none z-30">
+        {/* Floating Navigation Controls */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-2 right-2 md:left-6 md:right-6 flex justify-between pointer-events-none z-30">
           <button
             onClick={() => scroll("left")}
-            className="h-12 w-12 rounded-full bg-background/90 backdrop-blur-md border border-border shadow-2xl flex items-center justify-center text-foreground pointer-events-auto hover:bg-primary hover:text-white transition-all active:scale-90 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 duration-300"
+            className="h-14 w-14 rounded-full bg-background/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] flex items-center justify-center text-foreground pointer-events-auto hover:bg-primary hover:text-white hover:border-primary/50 hover:scale-110 transition-all active:scale-95 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 duration-500 ease-out"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={28} />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="h-12 w-12 rounded-full bg-background/90 backdrop-blur-md border border-border shadow-2xl flex items-center justify-center text-foreground pointer-events-auto hover:bg-primary hover:text-white transition-all active:scale-90 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 duration-300"
+            className="h-14 w-14 rounded-full bg-background/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)] flex items-center justify-center text-foreground pointer-events-auto hover:bg-primary hover:text-white hover:border-primary/50 hover:scale-110 transition-all active:scale-95 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 duration-500 ease-out"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={28} />
           </button>
         </div>
       </div>
 
-      {/* Dots */}
-      <div className="flex justify-center items-center gap-2.5 mt-8">
+      {/* Elegant Dot Indicators */}
+      <div className="flex justify-center items-center gap-3 mt-10">
         {categoryReels.map((_, i) => (
           <button
             key={i}
@@ -177,8 +182,8 @@ const CategoryCarousel = ({ category, label, icon: Icon, categoryReels }: { cate
                 });
               }
             }}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              activeIndex === i ? "w-10 bg-primary shadow-lg shadow-primary/30" : "w-2 bg-border hover:bg-muted-foreground"
+            className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+              activeIndex === i ? "w-12 bg-primary shadow-[0_0_12px_rgba(var(--primary),0.6)]" : "w-3 bg-border hover:bg-muted-foreground/60"
             }`}
           />
         ))}
@@ -188,13 +193,20 @@ const CategoryCarousel = ({ category, label, icon: Icon, categoryReels }: { cate
 };
 
 const VideoReelsSection = () => {
-  const categories = TABS.filter(tab => tab.key !== "all");
+  const [activeTab, setActiveTab] = useState<string>("all");
+
+  const filteredReels = activeTab === "all" ? reels : reels.filter((r) => r.category === activeTab);
+  const activeTabInfo = TABS.find((t) => t.key === activeTab) || TABS[0];
 
   return (
-    <section id="video-reels" className="py-16 md:py-32 bg-background border-t border-border/30 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="video-reels" className="py-24 md:py-32 bg-background border-t border-border/20 overflow-hidden relative">
+      {/* Background ambient lighting */}
+      <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 px-6 md:px-12 relative z-10">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -202,69 +214,107 @@ const VideoReelsSection = () => {
               viewport={{ once: true }}
               className="flex items-center gap-3 mb-6"
             >
-              <div className="h-8 w-8 rounded-xl bg-primary/10 flex items-center justify-center">
+              <div className="h-8 w-8 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 shadow-inner">
                 <Film size={16} className="text-primary" />
               </div>
-              <span className="text-primary text-[11px] font-black uppercase tracking-[0.4em]">Video Editing</span>
+              <span className="text-primary text-xs font-black uppercase tracking-[0.4em]">Our Work</span>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-tight"
+              transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]"
             >
-              Showreels &{" "}
-              <br />
-              <span className="font-serif-accent italic text-primary">Cinematic Work.</span>
+              Mastering the <br />
+              <span className="font-serif-accent italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
+                Visual Narrative.
+              </span>
             </motion.h2>
           </div>
           <motion.p
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="max-w-sm text-muted-foreground text-lg leading-relaxed md:text-right"
+            transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+            className="max-w-md text-muted-foreground text-lg leading-relaxed md:text-right font-medium"
           >
-            From viral reels to cinematic brand films — every frame is engineered for impact.
+            From high-converting reels to stunning cinematic brand films — every frame is engineered for ultimate impact.
           </motion.p>
         </div>
 
-        {/* Category Rows */}
-        <div className="flex flex-col">
-          {categories.map((cat, i) => (
+        {/* Premium Category Toggle Bar */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="flex flex-wrap justify-center items-center gap-2 mb-16 p-2 bg-card/30 backdrop-blur-md rounded-3xl border border-white/5 shadow-xl max-w-max mx-auto relative z-10 mx-6 md:mx-auto"
+        >
+          {TABS.map((tab) => {
+            const isActive = activeTab === tab.key;
+            const TabIcon = tab.icon;
+            return (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`relative px-5 md:px-7 py-3 rounded-full text-xs md:text-sm font-bold tracking-wide transition-colors duration-300 outline-none ${
+                  isActive ? "text-white" : "text-muted-foreground hover:text-white"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabIndicator"
+                    className="absolute inset-0 bg-primary/80 backdrop-blur-sm rounded-full shadow-[0_0_15px_rgba(var(--primary),0.5)] border border-primary/50"
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-2.5">
+                  <TabIcon size={16} className={isActive ? "text-white" : "opacity-70"} />
+                  {tab.label}
+                </span>
+              </button>
+            );
+          })}
+        </motion.div>
+
+        {/* Dynamic Carousel Display */}
+        <div className="min-h-[500px]">
+          <AnimatePresence mode="wait">
             <motion.div
-              key={cat.key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
+              key={activeTab}
+              initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
               <CategoryCarousel 
-                category={cat.key} 
-                label={cat.label} 
-                icon={cat.icon} 
-                categoryReels={reels.filter(r => r.category === cat.key)} 
+                category={activeTab} 
+                label={activeTabInfo.label} 
+                icon={activeTabInfo.icon} 
+                categoryReels={filteredReels} 
               />
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
 
         {/* Stats bar */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 grid grid-cols-3 gap-4 p-8 rounded-[2rem] bg-card/60 border border-border"
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mt-20 mx-6 md:mx-12 grid grid-cols-1 md:grid-cols-3 gap-6 p-10 rounded-[2.5rem] bg-card/40 backdrop-blur-lg border border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10 overflow-hidden"
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
           {[
             { value: "50+", label: "Videos Delivered" },
             { value: "4K/6K", label: "Cinematic Quality" },
-            { value: "3x", label: "Avg. Engagement Boost" },
+            { value: "3x", label: "Engagement Boost" },
           ].map(({ value, label }) => (
-            <div key={label} className="text-center">
-              <p className="text-2xl md:text-3xl font-black text-primary">{value}</p>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground mt-1">{label}</p>
+            <div key={label} className="text-center relative py-6">
+              <p className="text-4xl md:text-5xl font-black text-foreground tracking-tighter drop-shadow-sm">{value}</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground mt-3">{label}</p>
             </div>
           ))}
         </motion.div>
@@ -330,15 +380,18 @@ const ReelCard = ({ reel, index }: { reel: Reel; index: number }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative aspect-[9/16] rounded-[2.5rem] overflow-hidden bg-black border border-white/10 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-700 cursor-pointer"
+      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative aspect-[9/16] rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-white/10 shadow-2xl transition-all duration-700 cursor-pointer will-change-transform"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={togglePlay}
     >
+      {/* Outer Glow Effect on Hover */}
+      <div className={`absolute inset-0 bg-primary/20 blur-2xl transition-opacity duration-700 pointer-events-none z-0 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+
       <video
         ref={videoRef}
         src={getOptimizedVideoUrl(reel.videoUrl)}
@@ -348,7 +401,7 @@ const ReelCard = ({ reel, index }: { reel: Reel; index: number }) => {
         playsInline
         autoPlay
         preload="auto"
-        className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? "scale-105" : "scale-100"} ${isLoading ? "opacity-0" : "opacity-100"}`}
+        className={`absolute inset-0 h-full w-full object-cover transition-transform duration-1000 ease-out z-10 ${isHovered ? "scale-110" : "scale-100"} ${isLoading ? "opacity-0" : "opacity-100"}`}
         onLoadStart={() => setIsLoading(true)}
         onCanPlay={() => setIsLoading(false)}
         onError={() => { setIsLoading(false); setHasError(true); }}
@@ -356,82 +409,121 @@ const ReelCard = ({ reel, index }: { reel: Reel; index: number }) => {
         onPause={() => setIsPlaying(false)}
       />
 
-      {/* Loading */}
+      {/* Loading Skeleton */}
       <AnimatePresence>
         {isLoading && (
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="absolute inset-0 flex items-center justify-center bg-black/40 z-10"
+            className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a] z-20 backdrop-blur-sm"
           >
-            <Loader2 className="text-primary animate-spin" size={36} />
+            <div className="flex flex-col items-center gap-4">
+              <Loader2 className="text-primary animate-spin" size={32} />
+              <div className="h-2 w-16 bg-white/10 rounded-full overflow-hidden">
+                <motion.div 
+                  className="h-full bg-primary"
+                  animate={{ x: ["-100%", "100%"] }}
+                  transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                />
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Error */}
+      {/* Error State */}
       {hasError && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-20 p-6 text-center">
-          <p className="text-white text-sm font-medium mb-4">Failed to load</p>
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20 p-6 text-center backdrop-blur-md">
+          <p className="text-white text-sm font-semibold mb-4 opacity-80">Media unavailable</p>
           <button
             onClick={(e) => { e.stopPropagation(); setHasError(false); setIsLoading(true); if (videoRef.current) videoRef.current.load(); }}
-            className="px-4 py-2 bg-primary text-white rounded-full text-xs font-bold"
-          >Retry</button>
+            className="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-xs font-bold tracking-widest uppercase transition-colors border border-white/10"
+          >
+            Retry
+          </button>
         </div>
       )}
 
-      {/* Gradient overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30 transition-opacity duration-500 ${isPlaying ? "opacity-30" : "opacity-100"}`} />
+      {/* Premium Gradient Overlays */}
+      <div className={`absolute inset-0 z-10 transition-all duration-700 ${
+        isPlaying && !isHovered 
+          ? "bg-gradient-to-t from-black/60 via-black/0 to-black/0" 
+          : "bg-gradient-to-t from-black/95 via-black/30 to-black/60"
+      }`} />
 
-      {/* Category badge */}
-      <div className="absolute top-5 left-5 z-20">
-        <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest text-white ${categoryColors[reel.category] ?? "bg-primary"}`}>
-          {reel.category}
-        </span>
+      {/* Category Badge */}
+      <div className="absolute top-6 left-6 z-20">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 shadow-lg">
+          <div className={`w-2 h-2 rounded-full ${categoryColors[reel.category] ?? "bg-primary"}`} />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-white/90">
+            {reel.category}
+          </span>
+        </div>
       </div>
 
-      {/* Controls top right */}
-      <div className="absolute top-5 right-5 z-20 flex gap-2">
+      {/* Audio Controls */}
+      <div className="absolute top-6 right-6 z-20 flex gap-2">
         <AnimatePresence>
           {isPlaying && (
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
-              className="h-9 w-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"
+              className="h-10 w-10 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 shadow-lg flex items-center justify-center text-white transition-all hover:bg-black/60"
             >
-              <Pause size={14} fill="white" />
+              <Pause size={14} fill="currentColor" />
             </motion.div>
           )}
         </AnimatePresence>
         {!isLoading && !hasError && (
           <button
             onClick={toggleMute}
-            className="h-9 w-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary transition-colors"
+            className={`h-10 w-10 rounded-full backdrop-blur-xl border border-white/10 shadow-lg flex items-center justify-center text-white transition-all ${
+              isMuted ? "bg-black/40 hover:bg-black/60" : "bg-primary text-white border-primary/50"
+            }`}
           >
             {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
           </button>
         )}
       </div>
 
-      {/* Center play button */}
+      {/* Interactive Play Button */}
       {!isPlaying && !isLoading && !hasError && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="h-18 w-18 h-[72px] w-[72px] rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center border border-white/30 scale-90 group-hover:scale-100 transition-all duration-500 shadow-2xl">
-            <Play className="text-white fill-white ml-1" size={28} />
+        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+          <div className="relative flex items-center justify-center">
+            {/* Pulsing ring */}
+            <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-20" />
+            
+            <div className={`h-20 w-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/30 flex items-center justify-center shadow-2xl transition-all duration-500 transform ${
+              isHovered ? "scale-110 bg-white/20" : "scale-100"
+            }`}>
+              <Play className="text-white fill-white ml-1.5" size={32} />
+            </div>
           </div>
         </div>
       )}
 
-      {/* Hover preview badge */}
-      <div className={`absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-20 px-4 py-1.5 rounded-full bg-primary text-white text-[9px] font-black uppercase tracking-widest transition-all duration-300 pointer-events-none ${isHovered && !isPlaying && !isLoading ? "opacity-100" : "opacity-0"}`}>
-        Hover Preview
-      </div>
-
-      {/* Bottom info */}
-      <div className="absolute bottom-7 left-7 right-7 z-20 pointer-events-none">
-        <h3 className="text-lg font-black text-white leading-tight">{reel.title}</h3>
-        {reel.desc && <p className="text-white/60 text-[11px] font-semibold mt-1">{reel.desc}</p>}
-        <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mt-2">
-          {isPlaying ? "● Now Playing" : isLoading ? "Loading…" : isHovered ? "Click to Play" : "Hover to Preview"}
-        </p>
+      {/* Sophisticated Bottom Info */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-8 overflow-hidden pointer-events-none">
+        <motion.div 
+          initial={false}
+          animate={{ y: isHovered || !isPlaying ? 0 : 20, opacity: isHovered || !isPlaying ? 1 : 0.6 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col gap-2"
+        >
+          <div className={`overflow-hidden transition-all duration-500 ${isHovered || !isPlaying ? "max-h-20 opacity-100 mb-2" : "max-h-0 opacity-0 mb-0"}`}>
+            <p className="text-primary text-[10px] font-black uppercase tracking-[0.2em] drop-shadow-md">
+              {isPlaying ? "● Playing" : "Tap to Play"}
+            </p>
+          </div>
+          
+          <h3 className="text-xl md:text-2xl font-black text-white leading-tight drop-shadow-xl">{reel.title}</h3>
+          
+          {reel.desc && (
+            <p className={`text-white/70 text-sm font-medium transition-all duration-500 line-clamp-2 ${
+              isHovered || !isPlaying ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}>
+              {reel.desc}
+            </p>
+          )}
+        </motion.div>
       </div>
     </motion.div>
   );

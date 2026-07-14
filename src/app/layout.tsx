@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Providers from "./Providers";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
@@ -203,6 +204,7 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} ${playfair.variable} antialiased`}
       >
         <Providers>{children}</Providers>
+        <WhatsAppButton />
       </body>
     </html>
   );
