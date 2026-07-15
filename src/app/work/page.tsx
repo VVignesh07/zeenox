@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import SocialShare from "@/components/SocialShare";
 
@@ -101,9 +102,11 @@ export default function WorkPage() {
             <div key={i} className="group cursor-pointer">
               <div className="aspect-[4/3] rounded-[2rem] bg-card mb-8 overflow-hidden relative card-apple transition-transform duration-500 group-hover:-translate-y-2 border border-white/5">
                 {/* Image */}
-                <img 
+                <Image 
                   src={cs.image} 
                   alt={cs.client} 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />

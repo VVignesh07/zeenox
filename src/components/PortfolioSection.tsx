@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 type Category = "All" | "Media" | "Tech" | "Branding" | "Automation";
 
@@ -131,11 +132,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       }}
     >
       <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-card border border-border/50 shadow-sm transition-all duration-700 hover:shadow-2xl hover:border-primary/20">
-        <img
+        <Image
           src={project.image}
           alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-          loading="lazy"
         />
         
         {/* Visual Overlay */}

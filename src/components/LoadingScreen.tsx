@@ -1,6 +1,7 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -39,9 +40,11 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute inset-0 bg-primary/20 blur-[40px] rounded-full"
                 />
-                <img
+                <Image
                   src="/images/logo2.png"
                   alt="Zeenox"
+                  width={300}
+                  height={100}
                   className="relative h-20 w-auto invert filter drop-shadow-2xl opacity-90"
                 />
             </div>

@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Quote, Sparkles } from "lucide-react";
+import Image from "next/image";
 import StatsSection from "./StatsSection";
 
 const FounderSection = () => {
@@ -32,9 +33,11 @@ const FounderSection = () => {
             className="relative"
           >
             <div className="relative mx-auto aspect-[4/5] max-w-lg overflow-visible sm:overflow-hidden rounded-[3rem] border border-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.12)] bg-card">
-              <img
+              <Image
                 src="/images/founder-arun.webp"
                 alt="Arun Pandian - Founder & CEO of Zeenox"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-1000 scale-105 hover:scale-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
