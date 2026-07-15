@@ -221,7 +221,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   const safePause = () => {
@@ -234,14 +234,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
     }
   };
 
-  useEffect(() => {
-    if (!videoRef.current || isLoading || hasError) return;
-
-    if (!isPlaying) {
-      playPromiseRef.current = videoRef.current.play();
-      playPromiseRef.current?.catch(() => {});
-    }
-  }, [isPlaying, isLoading, hasError]);
+  // Removed rogue autoplay useEffect
 
   const toggleFullPlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -282,9 +275,9 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
         loop
         muted={isMuted}
         playsInline
-        preload="metadata"
-        className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? 'scale-105' : 'scale-100'} ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-        onLoadStart={() => setIsLoading(true)}
+        preload="none"
+        className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? 'scale-105' : 'scale-100'} ${isLoading && isPlaying ? 'opacity-0' : 'opacity-100'}`}
+        onLoadStart={() => isPlaying && setIsLoading(true)}
         onCanPlay={() => setIsLoading(false)}
         onError={() => {
           setIsLoading(false);
