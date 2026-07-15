@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -107,7 +107,17 @@ const PortfolioSection = () => {
   );
 };
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+interface Project {
+  title: string;
+  category: string;
+  industry: string;
+  result: string;
+  image: string;
+  link?: string;
+  instagramUrl?: string;
+}
+
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
