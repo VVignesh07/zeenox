@@ -13,6 +13,7 @@ const OG_IMAGE = "https://storage.googleapis.com/gpt-engineer-file-uploads/jLoU2
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  applicationName: "ZeenOx",
   title: {
     default: "ZeenOx — No.1 Digital Agency in India | Video Editing, Web Development & SEO",
     template: "%s | ZeenOx Digital Agency",

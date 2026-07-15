@@ -79,6 +79,7 @@ const HeroSection = () => {
                         variants={itemVariants} 
                         className="text-[2.5rem] xs:text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1] mb-6 text-balance"
                     >
+                        <span className="sr-only">ZeenOx Digital Agency: </span>
                         We Build <span className="text-primary font-serif-accent">Brands,</span> Run{" "}
                         <span className="text-primary font-serif-accent">Growth,</span> and{" "}
                         Automate the Rest

@@ -68,6 +68,9 @@ const showreels: Showreel[] = [
 ];
 
 const getOptimizedVideoUrl = (url: string) => {
+  if (url.includes('/upload/')) {
+    return url.replace('/upload/', '/upload/w_480,q_auto,f_auto/');
+  }
   return url;
 };
 
@@ -279,8 +282,7 @@ const ReelCard = ({ reel, index }: { reel: Showreel; index: number }) => {
         loop
         muted={isMuted}
         playsInline
-        autoPlay
-        preload="auto"
+        preload="metadata"
         className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ${isHovered ? 'scale-105' : 'scale-100'} ${isLoading ? 'opacity-0' : 'opacity-100'}`}
         onLoadStart={() => setIsLoading(true)}
         onCanPlay={() => setIsLoading(false)}

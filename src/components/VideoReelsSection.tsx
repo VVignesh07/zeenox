@@ -97,6 +97,9 @@ const TABS = [
 ] as const;
 
 const getOptimizedVideoUrl = (url: string) => {
+  if (url.includes('/upload/')) {
+    return url.replace('/upload/', '/upload/w_480,q_auto,f_auto/');
+  }
   return url;
 };
 
@@ -399,8 +402,7 @@ const ReelCard = ({ reel, index }: { reel: Reel; index: number }) => {
         loop
         muted={isMuted}
         playsInline
-        autoPlay
-        preload="auto"
+        preload="metadata"
         className={`absolute inset-0 h-full w-full object-cover transition-transform duration-1000 ease-out z-10 ${isHovered ? "scale-110" : "scale-100"} ${isLoading ? "opacity-0" : "opacity-100"}`}
         onLoadStart={() => setIsLoading(true)}
         onCanPlay={() => setIsLoading(false)}
