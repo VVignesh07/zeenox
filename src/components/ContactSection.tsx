@@ -54,6 +54,7 @@ const ContactSection = () => {
             <div className="space-y-4">
               {[
                 { icon: Phone, label: "Call Us", text: "+91 7603917369" },
+                { icon: Phone, label: "Pannu", text: "+91 6369835221" },
                 { icon: Mail, label: "Email Us", text: "hello@zeenox.agency" },
                 { icon: MapPin, label: "Visit Us", text: "vakkanangundu, 626104" },
               ].map(({ icon: Icon, label, text }) => (

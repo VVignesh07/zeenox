@@ -13,7 +13,7 @@ const testimonials = [
   },
   {
     name: "Balasundari",
-    role: "KVP Jewellery",
+    role: "STUPVC Interiors",
     text: "Professional, creative, and easy to work with. Our brand presence has never looked better.",
     rating: 5,
   }
@@ -55,17 +55,17 @@ const TestimonialsSection = () => {
                 {[
                   ...[
                     { name: "Venu's Health Care", industry: "Medical" },
-                    { name: "KVP Jewellery", industry: "Luxury" },
-                    { name: "FitPro", industry: "Performance" },
-                    { name: "Elite Realty", industry: "Real Estate" },
-                    { name: "Aura Clinic", industry: "Healthcare" },
+                    { name: "Help2Survive", industry: "Charity" },
+                    { name: "STUPVC Interiors", industry: "Interior Design" },
+                    { name: "Zero Fashion", industry: "Fashion" },
+                    { name: "Feed & Fit", industry: "Health & Nutrition" },
                   ],
                   ...[
                     { name: "Venu's Health Care", industry: "Medical" },
-                    { name: "KVP Jewellery", industry: "Luxury" },
-                    { name: "FitPro", industry: "Performance" },
-                    { name: "Elite Realty", industry: "Real Estate" },
-                    { name: "Aura Clinic", industry: "Healthcare" },
+                    { name: "Help2Survive", industry: "Charity" },
+                    { name: "STUPVC Interiors", industry: "Interior Design" },
+                    { name: "Zero Fashion", industry: "Fashion" },
+                    { name: "Feed & Fit", industry: "Health & Nutrition" },
                   ],
                 ].map((brand, i) => (
                     <div key={`${brand.name}-${i}`} className="flex flex-col items-center justify-center shrink-0">

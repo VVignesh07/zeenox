@@ -12,48 +12,40 @@ const projects = [
     category: "Tech" as Category, 
     industry: "Healthcare", 
     result: "+300% bookings", 
-    image: "/images/project-aura-clinic.webp", 
+    image: "/images/project-venus-healthcare.png", 
     link: "https://www.venushealthcare.online/" 
   },
   { 
-    title: "KVP Jewellery", 
+    title: "Help2Survive", 
     category: "Tech" as Category, 
-    industry: "Jewellery", 
-    result: "+180% brand awareness", 
-    image: "/images/project-luxe-jewels.webp", 
-    link: "https://kvpjewellery.vercel.app/" 
+    industry: "Charity", 
+    result: "+140% lead capture", 
+    image: "/images/project-help2survive.png", 
+    link: "https://help2survive.org.uk/" 
+  },
+  { 
+    title: "STUPVC Interiors", 
+    category: "Tech" as Category, 
+    industry: "Interior Design", 
+    result: "+200% enquiries", 
+    image: "/images/project-stupvc.png", 
+    link: "https://www.stupvcinteriors.com/" 
   },
   { 
     title: "Zero Fashion", 
     category: "Tech" as Category, 
     industry: "Fashion", 
     result: "+3x online sales", 
-    image: "/images/project-urban-thread.webp", 
+    image: "/images/project-zero-fashion.png", 
     link: "https://www.zerofashions.in/" 
   },
   { 
-    title: "Lovein", 
+    title: "Feed & Fit", 
     category: "Tech" as Category, 
-    industry: "Wellness", 
-    result: "+250% web traffic", 
-    image: "/images/project-herbal-roots.webp", 
-    link: "https://lovein-in.vercel.app/" 
-  },
-  { 
-    title: "Digital Campaign", 
-    category: "Media" as Category, 
-    industry: "Lifestyle", 
-    result: "+500K reach", 
-    image: "/images/project-stylevault.webp",
-    instagramUrl: "https://www.instagram.com/"
-  },
-  { 
-    title: "Brand Story", 
-    category: "Branding" as Category, 
-    industry: "Fashion", 
-    result: "40hrs/mo saved", 
-    image: "/images/project-fitpro-crm.webp",
-    instagramUrl: "https://www.instagram.com/"
+    industry: "Health & Nutrition", 
+    result: "+320% organic traffic", 
+    image: "/images/project-feedandfit.png", 
+    link: "https://feedandfit.in/" 
   },
 ];
 

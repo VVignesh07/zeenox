@@ -42,11 +42,18 @@ const caseStudies = [
     tags: ["Digital Marketing", "Video Editing", "Branding"]
   },
   {
-    category: "Fashion & Retail",
-    client: "KVP Jewellery",
-    outcome: "Social content system and high-end video production driving consistent engagement and foot traffic.",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1200&auto=format&fit=crop",
-    tags: ["Video Editing", "Social Media", "Paid Ads"]
+    category: "Interior Design & Home Improvement",
+    client: "STUPVC Interiors",
+    outcome: "Full-service website build with product catalogues and enquiry automation, boosting leads by 200%.",
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+    tags: ["Web Development", "UX Design", "Lead Generation"]
+  },
+  {
+    category: "Health & Nutrition",
+    client: "Feed & Fit",
+    outcome: "Built a nutrition-focused platform with meal plans and blog content strategy, driving 320% organic traffic growth.",
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop",
+    tags: ["Web Development", "SEO", "Content Strategy"]
   },
   {
     category: "Medical & Health",

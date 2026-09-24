@@ -68,9 +68,6 @@ const showreels: Showreel[] = [
 ];
 
 const getOptimizedVideoUrl = (url: string) => {
-  if (url.includes('/upload/')) {
-    return url.replace('/upload/', '/upload/w_480,q_auto,f_auto/');
-  }
   return url;
 };
 
