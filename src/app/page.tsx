@@ -1,4 +1,6 @@
 import HeroSection from "@/components/HeroSection";
+import ServicesScrollSection from "@/components/ServicesScrollSection";
+import PaymentIntegrations from "@/components/PaymentIntegrations";
 import TechStackSection from "@/components/TechStackSection";
 import AboutSection from "@/components/AboutSection";
 import FounderSection from "@/components/FounderSection";
@@ -22,6 +24,9 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
+      
+      <ServicesScrollSection />
+      <PaymentIntegrations />
 
       <RevealSection delay={0.2}>
         <TechStackSection />
