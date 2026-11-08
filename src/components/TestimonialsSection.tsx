@@ -1,158 +1,106 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useState } from "react";
+import { Star, Quote, ExternalLink, ShieldCheck } from "lucide-react";
+import siteConfig from "@/data/siteConfig";
 
-const testimonials = [
-  {
-    name: "Dr. Priya Sharma",
-    role: "Venu's Health Care",
-    text: "The turnaround time and quality exceeded all our expectations. ZeenOx delivered exactly what we needed, on time and beyond spec.",
-    rating: 5,
-  },
-  {
-    name: "Balasundari",
-    role: "STUPVC Interiors",
-    text: "Professional, creative, and easy to work with. Our brand presence has never looked better.",
-    rating: 5,
-  }
-];
-
-const TestimonialsSection = () => {
-  const [current, setCurrent] = useState(0);
-  const t = testimonials[current];
-
+export default function TestimonialsSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-background">
-      <div className="section-divider mb-32" />
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20 text-center"
-        >
-          <span className="mb-6 inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.3em] shadow-sm">
-            TESTIMONIALS
-          </span>
-          <h2 className="text-4xl font-extrabold sm:text-5xl lg:text-7xl text-foreground text-balance">
-            What Our <br className="hidden sm:block" />
-            <span className="font-serif-accent italic text-primary">Clients Say</span>
-          </h2>
-        </motion.div>
+    <section
+      id="testimonials"
+      className="relative py-20 sm:py-28 md:py-36 bg-[#FAFAFC] overflow-hidden border-t border-b border-black/[0.04]"
+    >
+      {/* Subtle Overhead Ambient Spotlight */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(16,185,129,0.06),transparent_70%)]" />
+      </div>
 
-        {/* Elite Brand Logos Marquee */}
-        <div className="mb-32 w-full overflow-hidden relative group">
-            <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-            
-            <motion.div
-                className="flex gap-16 md:gap-32 w-max opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 hover:[animation-play-state:paused]"
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{ ease: "linear", duration: 12, repeat: Infinity }}
-            >
-                {[
-                  ...[
-                    { name: "Venu's Health Care", industry: "Medical" },
-                    { name: "Help2Survive", industry: "Charity" },
-                    { name: "STUPVC Interiors", industry: "Interior Design" },
-                    { name: "Zero Fashion", industry: "Fashion" },
-                    { name: "Feed & Fit", industry: "Health & Nutrition" },
-                  ],
-                  ...[
-                    { name: "Venu's Health Care", industry: "Medical" },
-                    { name: "Help2Survive", industry: "Charity" },
-                    { name: "STUPVC Interiors", industry: "Interior Design" },
-                    { name: "Zero Fashion", industry: "Fashion" },
-                    { name: "Feed & Fit", industry: "Health & Nutrition" },
-                  ],
-                ].map((brand, i) => (
-                    <div key={`${brand.name}-${i}`} className="flex flex-col items-center justify-center shrink-0">
-                        <span className="text-xl md:text-2xl font-black uppercase tracking-tighter text-foreground mb-1">
-                            {brand.name}
-                        </span>
-                        <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.3em] text-primary">
-                            {brand.industry}
-                        </span>
-                    </div>
-                ))}
-            </motion.div>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        {/* Header */}
+        <div className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto">
+          <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">
+            Client Feedback
+          </span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#1D1D1F] leading-[1.1] mb-4">
+            Trusted by Growing Businesses in{" "}
+            <span className="font-serif-accent italic text-primary">Tamil Nadu & Beyond.</span>
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg text-[#2D2D30] leading-relaxed max-w-xl mx-auto font-medium">
+            Real feedback from clinics, retail brands, and non-profits who partnered with ZeenOx.
+          </p>
         </div>
 
-        {/* Card */}
-        <div className="mx-auto max-w-4xl relative">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 20, scale: 0.98 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="card-apple p-10 sm:p-20 shadow-[0_50px_100px_-30px_rgba(57,255,20,0.08)] relative overflow-hidden text-center lg:text-left"
-          >
-            {/* Quote Icon Background */}
-            <div className="absolute top-0 right-0 p-12 opacity-[0.03] rotate-12 text-primary">
-                <Quote size={200} fill="currentColor" />
-            </div>
+        {/* Testimonials Grid (Apple UI, High-Contrast Distinct Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12">
+          {siteConfig.testimonials.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4 }}
+              className="p-6 sm:p-8 rounded-[2rem] bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between gpu-smooth"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  {/* Star Rating */}
+                  <div className="flex text-amber-400 gap-0.5" aria-label={`${item.rating} out of 5 stars`}>
+                    {Array.from({ length: item.rating }).map((_, i) => (
+                      <Star key={i} size={15} className="fill-current text-amber-400" />
+                    ))}
+                  </div>
 
-            <div className="mb-10 flex gap-1.5 justify-center lg:justify-start">
-              {[...Array(t.rating)].map((_, j) => (
-                <Star key={j} size={16} className="fill-primary text-primary" />
-              ))}
-              <span className="ml-4 text-[10px] font-black uppercase tracking-widest text-primary/40">Verified Partner</span>
-            </div>
-
-            <p className="mb-14 text-2xl sm:text-3xl leading-[1.4] text-foreground font-medium tracking-tight text-balance">
-              "{t.text}"
-            </p>
-
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between pt-12 border-t border-black/[0.03]">
-              <div className="flex items-center gap-6 justify-center lg:justify-start">
-                <div className="h-16 w-16 shrink-0 rounded-2xl bg-primary/5 text-primary flex items-center justify-center font-black text-xl shadow-inner overflow-hidden border border-border">
-                  <motion.div
-                    initial={{ scale: 0.8 }}
-                    animate={{ scale: 1 }}
-                    className="relative z-10"
-                  >
-                    {t.name.split(" ").map((n) => n[0]).join("")}
-                  </motion.div>
+                  {item.verified && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-2.5 py-0.5 rounded-full">
+                      <ShieldCheck size={11} /> Verified Client
+                    </span>
+                  )}
                 </div>
+
+                <blockquote className="text-sm sm:text-base text-foreground/90 font-medium leading-relaxed mb-6 italic">
+                  "{item.quote}"
+                </blockquote>
+              </div>
+
+              <div className="pt-4 border-t border-black/[0.06] flex items-center justify-between">
                 <div>
-                  <p className="text-xl font-bold text-foreground leading-tight tracking-tight">{t.name}</p>
-                  <p className="text-[11px] font-black text-primary uppercase tracking-[0.2em] mt-2 opacity-60">{t.role}</p>
+                  <h4 className="text-sm font-bold text-foreground">{item.name}</h4>
+                  <p className="text-xs text-muted-foreground font-medium">
+                    {item.role} • <strong className="text-foreground/80 font-semibold">{item.business}</strong>
+                  </p>
                 </div>
-              </div>
-              <div className="flex gap-4 justify-center">
-                <button
-                  onClick={() => setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-                  className="rounded-2xl h-14 w-14 flex items-center justify-center border border-border bg-card text-foreground transition-all hover:bg-foreground/5 hover:border-border/50 hover:-translate-x-1 active:scale-95 shadow-sm"
-                >
-                  <ChevronLeft size={22} />
-                </button>
-                <button
-                  onClick={() => setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-                  className="rounded-2xl h-14 w-14 flex items-center justify-center border border-border bg-card text-foreground transition-all hover:bg-foreground/5 hover:border-border/50 hover:translate-x-1 active:scale-95 shadow-sm"
-                >
-                  <ChevronRight size={22} />
-                </button>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Pagination Indicators */}
-          <div className="mt-10 flex justify-center gap-3">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-12 bg-primary shadow-[0_0_12px_rgba(57,255,20,0.3)]" : "w-1.5 bg-black/10"
-                  }`}
-              />
-            ))}
-          </div>
+                {item.sourceUrl && (
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
+                    aria-label={`View ${item.business} live project`}
+                  >
+                    <span>View Work</span>
+                    <ExternalLink size={12} />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Review on Google Action Bar */}
+        <div className="text-center pt-4">
+          <a
+            href={siteConfig.googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-black/[0.08] shadow-sm hover:shadow-md hover:bg-[#1D1D1F] hover:text-white text-xs font-bold uppercase tracking-wider text-muted-foreground transition-all hover:scale-105 active:scale-95"
+          >
+            <Star size={13} className="text-amber-400 fill-current" />
+            <span>Review Us on Google Business Profile</span>
+            <ExternalLink size={12} />
+          </a>
         </div>
       </div>
     </section>
   );
-};
-
-export default TestimonialsSection;
+}

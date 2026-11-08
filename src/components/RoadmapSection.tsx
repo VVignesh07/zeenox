@@ -7,32 +7,32 @@ const RoadmapSection = () => {
     const [activeTab, setActiveTab] = useState<"software" | "video">("software");
 
     return (
-        <section id="roadmap" className="relative py-12 md:py-32 overflow-hidden bg-background">
+        <section id="roadmap" className="relative py-12 sm:py-20 md:py-32 overflow-hidden bg-background">
             {/* Background Decorations */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px]" />
                 <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px]" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as any }}
-                    className="mb-16 text-center"
+                    className="mb-12 sm:mb-16 text-center"
                 >
-                    <span className="mb-6 inline-block px-4 py-1.5 rounded-full border border-border bg-card text-muted-foreground text-[11px] font-semibold uppercase tracking-widest shadow-sm">
+                    <span className="mb-4 sm:mb-6 inline-block px-4 py-1.5 rounded-full border border-border bg-card text-muted-foreground text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest shadow-sm">
                         Process Architect
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.15]">
+                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.15]">
                         Our Execution <span className="text-transparent bg-clip-text bg-gradient-to-br from-foreground to-muted-foreground">Roadmap.</span>
                     </h2>
-                    <p className="mx-auto mt-6 max-w-2xl text-[17px] text-muted-foreground leading-relaxed font-medium tracking-tight">
+                    <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base md:text-[17px] text-muted-foreground leading-relaxed font-medium tracking-tight">
                         A structured, transparent path designed to engineer explosive growth and high-performance digital presence.
                     </p>
 
-                    <div className="mx-auto mt-14 w-full max-w-sm">
+                    <div className="mx-auto mt-8 sm:mt-14 w-full max-w-sm">
                         <div className="inline-flex items-center justify-center p-1.5 rounded-full bg-black/[0.04] border border-black/[0.03] backdrop-blur-md w-full">
                             {[
                                 { key: "software", label: "Software Engineering" },
@@ -41,7 +41,7 @@ const RoadmapSection = () => {
                                 <button
                                     key={key}
                                     onClick={() => setActiveTab(key as any)}
-                                    className={`relative flex-1 py-2.5 rounded-full text-[12px] font-semibold tracking-wide transition-all duration-300 ${activeTab === key
+                                    className={`relative flex-1 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 ${activeTab === key
                                         ? "text-foreground"
                                         : "text-muted-foreground hover:text-foreground"
                                         }`}
@@ -139,20 +139,20 @@ const SoftwareRoadmap = () => (
         {/* Mobile Software */}
         <div className="lg:hidden relative">
             {/* Vertical Connector Line */}
-            <div className="absolute left-[26px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-foreground/20 via-border to-transparent z-0" />
+            <div className="absolute left-[20px] sm:left-[26px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-foreground/20 via-border to-transparent z-0" />
             
-            <div className="space-y-12 relative z-10">
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-foreground text-background flex items-center justify-center shadow-lg font-black text-xs">P1</div>
-                    <div className="flex-1 pt-4">
+            <div className="space-y-8 sm:space-y-12 relative z-10">
+                <div className="flex gap-3 sm:gap-6 items-center">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-foreground text-background flex items-center justify-center shadow-lg font-black text-xs">P1</div>
+                    <div className="flex-1">
                         <PhaseHeader title="Phase 1: Planning" color="bg-foreground" textColor="text-background" />
                     </div>
                 </div>
 
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground">P2</div>
-                    <div className="flex-1 space-y-4">
-                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Platform Selection</h4>
+                <div className="flex gap-3 sm:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground mt-1">P2</div>
+                    <div className="flex-1 space-y-3 sm:space-y-4">
+                        <h4 className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-primary">Platform Selection</h4>
                         <div className="grid gap-3">
                             <RoadmapCard number="1" icon={<Globe className="text-foreground" size={16} />} title="Domain" items={["GoDaddy", "Hostinger"]} />
                             <RoadmapCard number="2" icon={<Server className="text-foreground" size={16} />} title="Hosting" items={["Hostinger", "Bluehost"]} />
@@ -160,10 +160,10 @@ const SoftwareRoadmap = () => (
                     </div>
                 </div>
 
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground">P3</div>
-                    <div className="flex-1 space-y-4">
-                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Technical Setup</h4>
+                <div className="flex gap-3 sm:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground mt-1">P3</div>
+                    <div className="flex-1 space-y-3 sm:space-y-4">
+                        <h4 className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-primary">Technical Setup</h4>
                         <div className="grid gap-3">
                             <RoadmapCard number="3" icon={<Settings className="text-foreground" size={16} />} title="Server" items={["SSL", "CDN"]} />
                             <RoadmapCard number="4" icon={<Zap className="text-foreground" size={16} />} title="Plan" items={["Pro", "Elite"]} />
@@ -171,11 +171,11 @@ const SoftwareRoadmap = () => (
                     </div>
                 </div>
 
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground">P4</div>
+                <div className="flex gap-3 sm:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-muted-foreground mt-1">P4</div>
                     <div className="flex-1">
-                        <div className="p-6 bg-card border border-border rounded-[2rem] shadow-lg">
-                            <h3 className="text-lg font-bold mb-3 text-foreground">Build & Launch</h3>
+                        <div className="p-5 sm:p-6 bg-card border border-border rounded-2xl sm:rounded-[2rem] shadow-lg">
+                            <h3 className="text-base sm:text-lg font-bold mb-2 text-foreground">Build & Launch</h3>
                             <p className="text-[11px] text-muted-foreground font-medium leading-relaxed">Full customization, performance optimization, and global deployment.</p>
                         </div>
                     </div>
@@ -250,20 +250,20 @@ const VideoRoadmap = () => (
         {/* Mobile Video */}
         <div className="lg:hidden relative">
             {/* Vertical Connector Line */}
-            <div className="absolute left-[26px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary/20 via-primary/40 to-transparent z-0" />
+            <div className="absolute left-[20px] sm:left-[26px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary/20 via-primary/40 to-transparent z-0" />
 
-            <div className="space-y-12 relative z-10">
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg font-black text-xs">P1</div>
-                    <div className="flex-1 pt-4">
+            <div className="space-y-8 sm:space-y-12 relative z-10">
+                <div className="flex gap-3 sm:gap-6 items-center">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg font-black text-xs">P1</div>
+                    <div className="flex-1">
                         <PhaseHeader title="Phase 1: Analysis" color="bg-primary" />
                     </div>
                 </div>
 
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary">P2</div>
-                    <div className="flex-1 space-y-4">
-                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Strategy & Script</h4>
+                <div className="flex gap-3 sm:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary mt-1">P2</div>
+                    <div className="flex-1 space-y-3 sm:space-y-4">
+                        <h4 className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-primary">Strategy & Script</h4>
                         <div className="grid gap-3">
                             <RoadmapCard number="1" icon={<Target className="text-primary" size={16} />} title="Research" items={["Audience", "Pain Points"]} />
                             <RoadmapCard number="2" icon={<PenTool className="text-primary" size={16} />} title="Script" items={["Viral Hooks", "Storyboarding"]} />
@@ -271,10 +271,10 @@ const VideoRoadmap = () => (
                     </div>
                 </div>
 
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary">P3</div>
-                    <div className="flex-1 space-y-4">
-                        <h4 className="text-[11px] font-black uppercase tracking-widest text-primary">Production</h4>
+                <div className="flex gap-3 sm:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary mt-1">P3</div>
+                    <div className="flex-1 space-y-3 sm:space-y-4">
+                        <h4 className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-primary">Production</h4>
                         <div className="grid gap-3">
                             <RoadmapCard number="3" icon={<Camera className="text-primary" size={16} />} title="Shoot" items={["4K Output", "Pro Audio"]} />
                             <RoadmapCard number="4" icon={<Film className="text-primary" size={16} />} title="Edit" items={["Dynamic Cuts", "Color Grade"]} />
@@ -282,11 +282,11 @@ const VideoRoadmap = () => (
                     </div>
                 </div>
 
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary">P4</div>
+                <div className="flex gap-3 sm:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-card border border-border flex items-center justify-center shadow-md font-black text-[10px] text-primary mt-1">P4</div>
                     <div className="flex-1">
-                        <div className="p-6 bg-card border border-border rounded-[2rem] shadow-lg">
-                            <h3 className="text-lg font-bold mb-3 text-foreground">Leads & Sales</h3>
+                        <div className="p-5 sm:p-6 bg-card border border-border rounded-2xl sm:rounded-[2rem] shadow-lg">
+                            <h3 className="text-base sm:text-lg font-bold mb-2 text-foreground">Leads & Sales</h3>
                             <p className="text-[11px] text-muted-foreground font-medium leading-relaxed">Solving client problems through targeted media and driving verified revenue.</p>
                         </div>
                     </div>
@@ -299,7 +299,7 @@ const VideoRoadmap = () => (
 const PhaseHeader = ({ title, color, textColor = "text-white" }: { title: string; color: string; textColor?: string }) => (
     <motion.div
         whileHover={{ scale: 1.05, y: -2 }}
-        className={`${color} ${textColor} px-6 sm:px-10 py-3 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-black/20 relative z-20 transition-all text-center border border-white/10`}
+        className={`${color} ${textColor} px-4 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-[9px] sm:text-xs uppercase tracking-widest shadow-xl shadow-black/20 relative z-20 transition-all text-center border border-white/10`}
     >
         {title}
     </motion.div>
@@ -308,21 +308,21 @@ const PhaseHeader = ({ title, color, textColor = "text-white" }: { title: string
 const RoadmapCard = ({ number, icon, title, items }: { number: string; icon: any; title: string, items: string[] }) => (
     <motion.div
         whileHover={{ y: -5, scale: 1.02 }}
-        className="bg-card border border-border rounded-[1.5rem] sm:rounded-[2rem] shadow-sm hover:shadow-xl p-4 sm:p-6 relative group transition-all"
+        className="bg-card border border-border rounded-2xl sm:rounded-[2rem] shadow-sm hover:shadow-xl p-3.5 sm:p-6 relative group transition-all"
     >
-        <div className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-foreground text-background flex items-center justify-center text-[9px] font-bold shadow-lg z-10">
+        <div className="absolute -top-2 -left-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-foreground text-background flex items-center justify-center text-[8px] sm:text-[9px] font-bold shadow-lg z-10">
             {number}
         </div>
         <div className="flex flex-col items-center text-center">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-muted/30 border border-border flex items-center justify-center mb-3 sm:mb-4 transition-all">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl bg-muted/30 border border-border flex items-center justify-center mb-2.5 sm:mb-4 transition-all">
                 {icon}
             </div>
-            <h4 className="font-bold text-[10px] sm:text-[11px] mb-3 sm:mb-4 uppercase tracking-widest text-foreground">{title}</h4>
-            <ul className="space-y-1.5 sm:space-y-2 w-full">
+            <h4 className="font-bold text-[10px] sm:text-[11px] mb-2 sm:mb-4 uppercase tracking-widest text-foreground">{title}</h4>
+            <ul className="space-y-1 sm:space-y-2 w-full">
                 {items.map((item, i) => (
-                    <li key={i} className="text-[10px] sm:text-[10.5px] font-semibold text-muted-foreground flex items-center gap-2 text-left justify-start">
-                        <div className="w-1.5 h-1.5 rounded-full bg-border" />
-                        {item}
+                    <li key={i} className="text-[9.5px] sm:text-[10.5px] font-semibold text-muted-foreground flex items-center gap-1.5 sm:gap-2 text-left justify-start">
+                        <div className="w-1.5 h-1.5 rounded-full bg-border shrink-0" />
+                        <span className="truncate">{item}</span>
                     </li>
                 ))}
             </ul>

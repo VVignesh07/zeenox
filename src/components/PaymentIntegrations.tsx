@@ -40,12 +40,12 @@ const PaymentIntegrations = () => {
         {/* Marquee Container */}
         <div className="relative w-full overflow-hidden flex">
             {/* Fade masks */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
             {/* Scrolling Track */}
             <motion.div 
-                className="flex gap-8 md:gap-12 items-center whitespace-nowrap pl-8 md:pl-12"
+                className="flex gap-4 sm:gap-8 md:gap-12 items-center whitespace-nowrap pl-4 sm:pl-8 md:pl-12 py-2"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ duration: 25, ease: "linear", repeat: Infinity }}
             >
@@ -53,7 +53,7 @@ const PaymentIntegrations = () => {
                 {[...paymentMethods, ...paymentMethods, ...paymentMethods].map((method, i) => (
                     <div 
                         key={`${method.name}-${i}`} 
-                        className="flex items-center justify-center h-20 px-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.05] hover:border-white/15 transition-all duration-300 text-foreground/50 hover:text-foreground cursor-default group"
+                        className="flex items-center justify-center h-16 sm:h-20 px-5 sm:px-8 rounded-xl sm:rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.05] hover:border-white/15 transition-all duration-300 text-foreground/50 hover:text-foreground cursor-default group"
                     >
                         <div className="group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                             <method.icon size={method.size} />

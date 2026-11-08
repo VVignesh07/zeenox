@@ -148,11 +148,11 @@ export default function VideoEditingService() {
             ZeenOx is India's leading professional video editing agency. We create high-retention video content — reels, YouTube edits, brand films, and ad creatives — that stop the scroll, hold attention, and drive real business results. Trusted by <strong>50+ brands</strong> across India.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/#contact" className="btn-primary inline-flex items-center gap-2">
+            <Link href="/#contact" className="btn-apple inline-flex items-center gap-2">
               Get a Free Quote <ArrowRight size={16} />
             </Link>
-            <Link href="/blog/best-video-editing-agency-india" className="btn-apple inline-flex items-center gap-2 border border-white/10 bg-card text-foreground hover:bg-white/10">
-              Why ZeenOx? Read More
+            <Link href="/#work" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-black/[0.08] bg-white text-[#1D1D1F] hover:bg-black/[0.04] font-semibold text-xs tracking-wide shadow-sm transition-all">
+              See Case Studies
             </Link>
           </div>
         </div>
@@ -236,7 +236,7 @@ export default function VideoEditingService() {
         </div>
 
         {/* Long-form SEO Content */}
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-16">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl font-bold mb-6">Why ZeenOx is India's Best Video Editing Agency</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             Producing raw content is only half the battle. Whether you run a healthcare clinic, a jewellery brand, a fitness studio, or a tech startup, the way your video is edited determines how your audience perceives your brand's value. Professional video editing services do more than just trim clips — they establish authority, trigger emotions, and drive action.

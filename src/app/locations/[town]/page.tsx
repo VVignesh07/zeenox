@@ -143,7 +143,7 @@ export default async function LocationPage({ params }: { params: Promise<{ town:
           ))}
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-20">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-20">
           <h2 className="text-3xl font-bold mb-6">Why {townName} Businesses Choose ZeenOx</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             {isHQ

@@ -1,287 +1,217 @@
 "use client";
+
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Mail, MessageCircle, Phone, Calendar, Send, MapPin, Sparkles, Star, Zap, ShieldCheck } from "lucide-react";
-import { useState, useRef } from "react";
+import { Check, MessageCircle, Globe, Video, Cpu, ChevronDown, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import siteConfig from "@/data/siteConfig";
 
-interface Package {
-    name: string;
-    price: string;
-    description: string;
-    features: string[];
-    recommended?: boolean;
-    duration: string;
-}
+export default function PricingSection() {
+  const [activeTab, setActiveTab] = useState<"website" | "video" | "automation">("website");
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-const packageMap: Record<string, Package[]> = {
-    website: [
-        {
-            name: "Premium Starter",
-            price: "₹14,999",
-            duration: "10-14 Days",
-            description: "High-performance business presence with modern aesthetics.",
-            features: [
-                "Up to 5 Premium Pages",
-                "Responsive Mobile Design",
-                "SEO Fundamental Setup",
-                "Contact Form Integration",
-                "SSL Certificate + Security",
-                "1 Month Support"
-            ]
-        },
-        {
-            name: "Elite Performance",
-            price: "₹24,999",
-            duration: "21-30 Days",
-            recommended: true,
-            description: "Full-scale digital ecosystem for growing brands.",
-            features: [
-                "Custom Dynamic Website",
-                "Advanced SEO Strategy",
-                "Content Management System",
-                "Speed & Core Web Vitals Fix",
-                "Social Media Integration",
-                "3 Months Support"
-            ]
-        },
-        {
-            name: "Industrial Authority",
-            price: "₹49,999",
-            duration: "45-60 Days",
-            description: "Comprehensive software engineering for market dominance.",
-            features: [
-                "E-commerce / Web App",
-                "Custom Admin Dashboard",
-                "Database Integration",
-                "API Developments",
-                "Ultra-Premium UI/UX",
-                "Lifetime Core Support"
-            ]
-        }
-    ],
-    video: [
-        {
-            name: "Cinematic Starter",
-            price: "₹19,999",
-            duration: "5-7 Days",
-            description: "High-end visual storytelling for social media.",
-            features: [
-                "3 Premium Reels/Shorts",
-                "4K Professional Editing",
-                "Sound Design & SFX",
-                "Color Grading",
-                "Trend-focused Content",
-                "Subtitles & Motion Graphics"
-            ]
-        },
-        {
-            name: "Brand Evolution",
-            price: "₹34,999",
-            duration: "14-21 Days",
-            recommended: true,
-            description: "Immersive video production for brand scaling.",
-            features: [
-                "1 High-end Ad / Showreel",
-                "Full Production Support",
-                "Scripting & Storyboarding",
-                "Advanced VFX & Motion",
-                "Multi-platform Delivery",
-                "Voiceover Integration"
-            ]
-        },
-        {
-            name: "Global Authority",
-            price: "₹74,999",
-            duration: "30-45 Days",
-            description: "Enterprise-grade cinematic media production.",
-            features: [
-                "Full Brand Documentary / Ad",
-                "Master-level VFX/CGI",
-                "Professional VO & BGM",
-                "Market-ready Strategy",
-                "Premium Color Science",
-                "Unlimited Revisions"
-            ]
-        }
-    ],
-    software: [
-        {
-            name: "Internal Tools",
-            price: "₹24,999",
-            duration: "2-3 Weeks",
-            description: "Optimize your operations with custom automation.",
-            features: [
-                "Process Automation",
-                "Custom Internal Dashboard",
-                "Inventory / Task Tracker",
-                "Basic User Auth",
-                "Data Visualizations",
-                "Mobile Responsive"
-            ]
-        },
-        {
-            name: "Enterprise ERP",
-            price: "₹49,999",
-            duration: "4-6 Weeks",
-            recommended: true,
-            description: "Robust industrial-grade software ecosystems.",
-            features: [
-                "Full-scale ERP/CRM",
-                "Advanced Admin Control",
-                "Role-based Permissions",
-                "Payment Integrations",
-                "Scalable Architecture",
-                "Security & Encryption"
-            ]
-        },
-        {
-            name: "Custom Innovation",
-            price: "₹99,999",
-            duration: "8-12 Weeks",
-            description: "Tailored software solutions for market leaders.",
-            features: [
-                "Machine Learning / AI",
-                "Heavy Data Processing",
-                "Custom SaaS Infrastructure",
-                "Dedicated Server Setup",
-                "24/7 Priority Support",
-                "Industrial Scalability"
-            ]
-        }
-    ]
-};
+  const tabs = [
+    { id: "website", label: "Websites & Stores", icon: Globe, available: siteConfig.pricing.website.length > 0 },
+    { id: "automation", label: "Automation & CRM", icon: Cpu, available: siteConfig.pricing.automation.length > 0 },
+    { id: "video", label: "Video & Creative", icon: Video, available: siteConfig.pricing.video.length > 0 },
+  ].filter((t) => t.available);
 
-const PricingSection = () => {
-    const [activeTab, setActiveTab] = useState<"website" | "video" | "software">("website");
-    const containerRef = useRef(null);
+  const currentPackages = siteConfig.pricing[activeTab] || [];
 
-    const tabs = [
-        { id: "website", label: "Web/Software", icon: Zap },
-        { id: "video", label: "Cinematic Media", icon: Star },
-        { id: "software", label: "Enterprise Solutions", icon: ShieldCheck },
-    ];
+  const handlePricingClick = (pkgName: string) => {
+    if (typeof window !== "undefined" && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: "pricing_cta_click",
+        plan: pkgName,
+        category: activeTab,
+      });
+    }
+  };
 
-    return (
-        <section id="pricing" ref={containerRef} className="relative py-20 md:py-32 bg-background overflow-hidden">
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16 md:mb-24"
-                    >
-                        <motion.span 
-                            className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20"
-                        >
-                            Industrial Grade Pricing
-                        </motion.span>
-                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8">
-                            Engineered for <br />
-                            <span className="text-primary italic font-serif-accent">High-End Performance.</span>
-                        </h2>
-                    </motion.div>
+  return (
+    <section
+      id="pricing"
+      className="relative py-20 sm:py-28 md:py-36 bg-[#FAFAFC] overflow-hidden border-t border-b border-black/[0.04]"
+    >
+      {/* Subtle Overhead Ambient Spotlight */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(16,185,129,0.06),transparent_70%)]" />
+      </div>
 
-                    <div className="flex justify-center mb-16 md:mb-24 px-4">
-                        <div className="flex flex-col sm:flex-row w-full sm:w-auto p-1.5 rounded-2xl sm:rounded-3xl bg-card border border-border shadow-xl backdrop-blur-md gap-1">
-                            {tabs.map((tab) => (
-                                <button
-                                    key={tab.id}
-                                    onClick={() => setActiveTab(tab.id as any)}
-                                    className={`relative px-4 sm:px-10 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl text-[10px] sm:text-sm font-bold uppercase tracking-widest transition-all duration-500 flex items-center justify-center sm:justify-start gap-3 grow ${
-                                        activeTab === tab.id
-                                            ? "text-white"
-                                            : "text-muted-foreground hover:text-foreground"
-                                    }`}
-                                >
-                                    {activeTab === tab.id && (
-                                        <motion.div
-                                            layoutId="pricingTab"
-                                            className="absolute inset-0 bg-primary rounded-xl sm:rounded-2xl shadow-lg shadow-primary/20"
-                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                        />
-                                    )}
-                                    <span className="relative z-10 flex items-center gap-3">
-                                        <tab.icon size={16} />
-                                        <span className="hidden sm:inline">{tab.label}</span>
-                                        <span className="sm:hidden">
-                                            {tab.id === "website" ? "Web & Software" : 
-                                             tab.id === "video" ? "Cinematic Media" : "Enterprise Solutions"}
-                                        </span>
-                                    </span>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+            <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">
+              Clear & Transparent Pricing
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-[#1D1D1F] leading-[1.1]">
+              Fixed Scope Pricing,{" "}
+              <span className="text-primary italic font-serif-accent">Zero Hidden Fees.</span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#2D2D30] leading-relaxed max-w-xl mx-auto font-medium">
+              Straightforward pricing with 100% code ownership. No monthly lock-ins, no hostage fees.
+            </p>
+          </div>
 
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeTab}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -30 }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                        >
-                            {packageMap[activeTab].map((pkg, i) => (
-                                <motion.div
-                                    key={pkg.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className={`relative group flex flex-col p-6 sm:p-12 rounded-[2rem] sm:rounded-[2.5rem] bg-card border border-border transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 ${
-                                        pkg.recommended ? "border-primary/30 ring-1 ring-primary/20 shadow-xl lg:scale-[1.05] z-10" : ""
-                                    }`}
-                                >
-                                    {pkg.recommended && (
-                                        <div className="absolute top-0 right-10 -translate-y-1/2 px-4 py-1.5 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg">
-                                            Most Requested
-                                        </div>
-                                    )}
-
-                                    <div className="mb-8">
-                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{pkg.name}</h3>
-                                        <div className="flex items-baseline gap-2 mb-4">
-                                            <span className="text-4xl sm:text-5xl font-black tracking-tighter text-foreground">{pkg.price}</span>
-                                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">/ Project</span>
-                                        </div>
-                                        <p className="text-sm text-muted-foreground font-medium leading-relaxed min-h-[40px]">
-                                            {pkg.description}
-                                        </p>
-                                    </div>
-
-                                    <div className="space-y-4 mb-10 flex-grow">
-                                        {pkg.features.map((feature) => (
-                                            <div key={feature} className="flex items-start gap-3">
-                                                <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5 shrink-0">
-                                                    <Check size={12} strokeWidth={3} />
-                                                </div>
-                                                <span className="text-sm font-medium text-foreground/80">{feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="pt-6 border-t border-border/50">
-                                        <a
-                                            href={`https://wa.me/917603917369?text=I'm interested in the ${pkg.name} package for ${activeTab}.`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={`w-full py-5 rounded-2xl font-bold uppercase tracking-[0.2em] text-[10px] flex items-center justify-center gap-3 transition-all duration-300 ${
-                                                pkg.recommended 
-                                                ? "bg-primary text-white shadow-lg shadow-primary/20 hover:scale-105 active:scale-95" 
-                                                : "bg-foreground/5 text-foreground hover:bg-primary hover:text-white"
-                                            }`}
-                                        >
-                                            Inquire Now <MessageCircle size={14} />
-                                        </a>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
+          {/* Apple Segmented Control Tabs */}
+          <div className="flex justify-center mb-12 px-2">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto p-1.5 rounded-full bg-[#F5F5F7] border border-black/[0.06] shadow-inner gap-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`relative px-6 sm:px-8 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 grow ${
+                    activeTab === tab.id
+                      ? "bg-[#1D1D1F] text-white shadow-md"
+                      : "text-[#6E6E73] hover:text-[#1D1D1F]"
+                  }`}
+                >
+                  <tab.icon size={15} />
+                  <span>{tab.label}</span>
+                </button>
+              ))}
             </div>
-        </section>
-    );
-};
+          </div>
 
-export default PricingSection;
+          {/* Pricing Cards Grid (Apple UI, High-Contrast Distinct Cards) */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.25 }}
+              className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12 gpu-smooth"
+            >
+              {currentPackages.map((pkg) => (
+                <div
+                  key={pkg.name}
+                  className={`relative flex flex-col p-6 sm:p-8 rounded-3xl transition-all duration-300 ${
+                    pkg.recommended
+                      ? "bg-white border-2 border-primary/40 shadow-[0_20px_50px_-10px_rgba(6,78,59,0.14)] lg:scale-[1.03] z-10"
+                      : "bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1"
+                  }`}
+                >
+                  {pkg.recommended && (
+                    <div className="absolute top-0 right-6 sm:right-8 -translate-y-1/2 px-3.5 py-1 rounded-full bg-[#1D1D1F] text-white text-[9px] font-black uppercase tracking-widest shadow-md">
+                      Most Popular
+                    </div>
+                  )}
+
+                  <div className="mb-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-xl font-bold text-[#1D1D1F]">{pkg.name}</h3>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#6E6E73] px-2.5 py-1 rounded-full bg-white border border-black/[0.06] shadow-2xs">
+                        {pkg.duration}
+                      </span>
+                    </div>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1D1D1F]">{pkg.price}</span>
+                      <span className="text-xs font-semibold text-[#6E6E73]">starting from</span>
+                    </div>
+                    <p className="text-xs text-[#6E6E73] font-medium leading-relaxed min-h-[36px]">
+                      {pkg.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 mb-8 flex-grow">
+                    {pkg.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-2.5">
+                        <div className="h-4 w-4 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-0.5 shrink-0">
+                          <Check size={11} strokeWidth={3} />
+                        </div>
+                        <span className="text-xs font-medium text-[#1D1D1F]/85 leading-relaxed">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-5 border-t border-black/[0.06]">
+                    <a
+                      href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
+                        `Hi ZeenOx, I'm interested in the ${pkg.name} (${pkg.price}) package for ${activeTab}. Can we discuss the requirements?`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => handlePricingClick(pkg.name)}
+                      className={`w-full py-3.5 rounded-full font-bold uppercase tracking-[0.15em] text-[11px] flex items-center justify-center gap-2 transition-all duration-300 ${
+                        pkg.recommended
+                          ? "bg-[#1D1D1F] text-white shadow-md shadow-black/15 hover:bg-black hover:scale-[1.02] active:scale-95"
+                          : "bg-white border border-black/[0.08] text-[#1D1D1F] hover:bg-[#1D1D1F] hover:text-white"
+                      }`}
+                    >
+                      <MessageCircle size={15} className="text-[#25D366]" />
+                      <span>Lock This Plan</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Custom Scope Callout */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-[#F5F5F7] border border-black/[0.06] shadow-[0_4px_20px_rgba(0,0,0,0.04)] text-center max-w-3xl mx-auto mb-16 sm:mb-24">
+            <h3 className="text-lg font-bold text-[#1D1D1F] mb-1">
+              Need something custom or a phased roadmap?
+            </h3>
+            <p className="text-xs sm:text-sm text-[#6E6E73] mb-4 font-medium">
+              Get a custom architecture plan and fixed quote in 1 business day.
+            </p>
+            <a
+              href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
+                "Hi ZeenOx, I have a custom project requirement and I'd like a quote in 1 business day."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1D1D1F] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-black transition-all hover:scale-105 active:scale-95"
+            >
+              <MessageCircle size={15} className="text-[#25D366]" />
+              <span>Request Custom Quote on WhatsApp</span>
+              <ArrowRight size={14} />
+            </a>
+          </div>
+
+          {/* Pricing FAQ Section */}
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Got Questions?</span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F] mt-1">Frequently Asked Questions</h3>
+            </div>
+
+            <div className="space-y-3">
+              {siteConfig.pricing.faq.map((item, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="rounded-2xl bg-[#F5F5F7] border border-black/[0.06] shadow-xs hover:border-emerald-500/30 overflow-hidden transition-all"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-sm text-[#1D1D1F] hover:text-primary transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <span>{item.q}</span>
+                      <ChevronDown
+                        size={18}
+                        className={`text-[#6E6E73] transition-transform duration-300 shrink-0 ${
+                          isOpen ? "rotate-180 text-primary" : ""
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 text-xs sm:text-sm text-[#6E6E73] leading-relaxed border-t border-black/[0.05] mt-1 pt-3 font-medium bg-white/50">
+                        {item.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -226,13 +226,13 @@ const WebsiteSection = () => {
             </div>
             <div className="flex gap-4 flex-wrap">
               <Link
-                href="#contact"
+                href="/#contact"
                 className="px-8 py-4 rounded-full bg-primary text-white font-black text-[12px] uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-primary/30 flex items-center gap-2"
               >
                 Start a Project <ArrowRight size={16} />
               </Link>
               <Link
-                href="#roadmap"
+                href="/#process"
                 className="px-8 py-4 rounded-full bg-background/10 border border-background/20 text-background font-black text-[12px] uppercase tracking-widest hover:bg-background/20 transition-all flex items-center gap-2"
               >
                 View Process

@@ -1,100 +1,54 @@
 import HeroSection from "@/components/HeroSection";
-import ServicesScrollSection from "@/components/ServicesScrollSection";
-import PaymentIntegrations from "@/components/PaymentIntegrations";
-import TechStackSection from "@/components/TechStackSection";
-import AboutSection from "@/components/AboutSection";
-import FounderSection from "@/components/FounderSection";
-import VideoReelsSection from "@/components/VideoReelsSection";
-import MotionGraphicsSection from "@/components/MotionGraphicsSection";
-import WebsiteSection from "@/components/WebsiteSection";
-import RoadmapSection from "@/components/RoadmapSection";
-import PricingSection from "@/components/PricingSection";
 import ServicesSection from "@/components/ServicesSection";
-import WhyZeenoxSection from "@/components/WhyZeenoxSection";
-import WorkSection from "@/components/WorkSection";
+import LeadMagnetSection from "@/components/LeadMagnetSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import ProjectEstimator from "@/components/ProjectEstimator";
+import PricingSection from "@/components/PricingSection";
+import AutozeeSection from "@/components/AutozeeSection";
 import ProcessSection from "@/components/ProcessSection";
-import InternshipSection from "@/components/InternshipSection";
+import FounderSection from "@/components/FounderSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import CTASection from "@/components/CTASection";
+import TechStackSection from "@/components/TechStackSection";
 import ContactSection from "@/components/ContactSection";
-import RevealSection from "@/components/ui/RevealSection";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
+      {/* 1. Above-the-fold: High-Impact Value Proposition Hero (Green Gradient) */}
       <HeroSection />
-      
-      <ServicesScrollSection />
-      <PaymentIntegrations />
 
-      <RevealSection delay={0.2}>
-        <TechStackSection />
-      </RevealSection>
+      {/* 2. Core Services (White) */}
+      <ServicesSection />
 
-      <RevealSection delay={0.2}>
-        <AboutSection />
-      </RevealSection>
+      {/* 3. Lead Magnet: Free Website & Conversion Audit (Green Gradient) */}
+      <LeadMagnetSection />
 
-      <RevealSection delay={0.2}>
-        <FounderSection />
-      </RevealSection>
+      {/* 4. Verified Live Production Case Studies (White) */}
+      <PortfolioSection />
 
-      <RevealSection delay={0.2}>
-        <VideoReelsSection />
-      </RevealSection>
+      {/* 5. 60s Interactive Project Cost Estimator (Green Gradient) */}
+      <ProjectEstimator />
 
-      <RevealSection delay={0.2}>
-        <MotionGraphicsSection />
-      </RevealSection>
+      {/* 6. Milestone Pricing & FAQ (White) */}
+      <PricingSection />
 
-      <RevealSection delay={0.2}>
-        <WebsiteSection />
-      </RevealSection>
+      {/* 7. Autozee.ai - ZeenOx WhatsApp CRM SaaS Engine (Green Gradient) */}
+      <AutozeeSection />
 
-      <RevealSection delay={0.2}>
-        <RoadmapSection />
-      </RevealSection>
+      {/* 8. 4-Step Engineering Roadmap (White) */}
+      <ProcessSection />
 
-      <RevealSection delay={0.2}>
-        <PricingSection />
-      </RevealSection>
+      {/* 9. Founder Story & Truthful Proof (Green Gradient) */}
+      <FounderSection />
 
-      <RevealSection delay={0.2}>
-        <ServicesSection />
-      </RevealSection>
+      {/* 10. Verified Client Feedback & Google Review Link (White) */}
+      <TestimonialsSection />
 
-      <RevealSection delay={0.2}>
-        <WhyZeenoxSection />
-      </RevealSection>
+      {/* 11. Minimal Production Tech Stack Marquee (Green Gradient) */}
+      <TechStackSection />
 
-      <RevealSection delay={0.2}>
-        <WorkSection />
-      </RevealSection>
-
-      <RevealSection delay={0.2}>
-        <PortfolioSection />
-      </RevealSection>
-
-      <RevealSection delay={0.2}>
-        <ProcessSection />
-      </RevealSection>
-
-      <RevealSection delay={0.2}>
-        <InternshipSection />
-      </RevealSection>
-
-      <RevealSection delay={0.2}>
-        <TestimonialsSection />
-      </RevealSection>
-
-      <RevealSection delay={0.2}>
-        <CTASection />
-      </RevealSection>
-
-      <RevealSection delay={0.2}>
-        <ContactSection />
-      </RevealSection>
+      {/* 12. 4-Field Lead Capture Contact Hub (White) */}
+      <ContactSection />
     </main>
   );
 }

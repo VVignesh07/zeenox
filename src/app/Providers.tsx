@@ -9,6 +9,11 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/ui/Preloader";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import MobileStickyBar from "@/components/MobileStickyBar";
+import ScrollNudge from "@/components/ScrollNudge";
+import CookieBanner from "@/components/CookieBanner";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { useState } from "react";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -16,16 +21,20 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Preloader />
-        <CustomCursor />
-        <ScrollProgress />
-        <Navbar />
-        {children}
-        <Toaster />
-        <Sonner />
-        <Footer />
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <ScrollProgress />
+          <Navbar />
+          {children}
+          <WhatsAppButton />
+          <MobileStickyBar />
+          <ScrollNudge />
+          <CookieBanner />
+          <Toaster />
+          <Sonner />
+          <Footer />
+        </TooltipProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

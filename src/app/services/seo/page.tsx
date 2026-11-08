@@ -103,7 +103,7 @@ export default function SEOService() {
           </div>
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-24">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-24">
           <h2 className="text-3xl font-bold mb-6">Why You Need a Dedicated SEO Strategy</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             Search Engine Optimization is the highest-ROI marketing channel available. When a user searches for your service on Google, they are already displaying high purchase intent. If your competitors are ranking on page one and you aren't, you are actively losing revenue every single day.

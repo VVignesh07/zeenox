@@ -1,115 +1,176 @@
 "use client";
 
-import { Instagram, Mail, Phone, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail, Phone, ArrowUpRight, MapPin } from "lucide-react";
 import Link from "next/link";
+import siteConfig from "@/data/siteConfig";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-background pt-32 pb-16 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-px bg-border/20" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid gap-16 lg:grid-cols-12">
-          {/* Brand & Mission */}
+    <footer className="relative bg-[#F5F5F7] border-t border-black/[0.05] pt-24 sm:pt-32 pb-16 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid gap-12 sm:gap-16 lg:grid-cols-12 mb-16">
+          {/* Brand & Mission (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-8">
-              <div 
-                aria-label="ZeenOx Logo"
-                className="h-9 w-40 bg-primary opacity-90"
-                style={{
-                  maskImage: 'url(/images/logo2.png)',
-                  maskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  maskPosition: 'left center',
-                  WebkitMaskImage: 'url(/images/logo2.png)',
-                  WebkitMaskSize: 'contain',
-                  WebkitMaskRepeat: 'no-repeat',
-                  WebkitMaskPosition: 'left center',
-                }}
-              />
+            <div className="flex items-center gap-3 mb-6">
+              <Link href="/" aria-label="ZeenOx Home">
+                <div 
+                  aria-label="ZeenOx Logo"
+                  className="h-8 w-36 bg-primary opacity-95"
+                  style={{
+                    maskImage: 'url(/images/logo2.png)',
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'left center',
+                    WebkitMaskImage: 'url(/images/logo2.png)',
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'left center',
+                  }}
+                />
+              </Link>
             </div>
-            <p className="max-w-sm text-lg text-muted-foreground leading-relaxed font-medium mb-10 text-balance">
-              ZeenOx — Media · Tech · Automation
+            
+            <p className="max-w-sm text-sm sm:text-base text-muted-foreground leading-relaxed font-medium mb-6 text-balance">
+              {siteConfig.tagline} {siteConfig.shortDescription}
             </p>
-            <div className="flex gap-4">
-                {[
-                    { icon: Instagram, href: "https://www.instagram.com/zeenox.agency/" },
-                    { icon: Mail, href: "mailto:hello@zeenox.agency" },
-                    { icon: Phone, href: "tel:+917603917369" }
-                ].map((social, i) => (
-                    <a key={i} href={social.href} className="h-12 w-12 rounded-xl bg-foreground/5 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-card hover:shadow-lg hover:border-primary/20 transition-all duration-300">
-                        <social.icon size={18} />
-                    </a>
-                ))}
+
+            {/* Address */}
+            <div className="flex items-start gap-2.5 text-xs text-muted-foreground/80 mb-6 max-w-sm font-medium">
+              <MapPin size={15} className="text-primary shrink-0 mt-0.5" />
+              <span>{siteConfig.contact.address.full}</span>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex gap-3">
+              {[
+                { icon: Instagram, href: siteConfig.contact.instagramUrl, label: "Instagram" },
+                { icon: Mail, href: `mailto:${siteConfig.contact.email}`, label: "Email" },
+                { icon: Phone, href: `tel:${siteConfig.contact.primaryPhone}`, label: "Phone" }
+              ].map((social) => (
+                <a 
+                  key={social.label} 
+                  href={social.href} 
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={social.label}
+                  className="h-11 w-11 rounded-xl bg-white/90 backdrop-blur-md shadow-md hover:shadow-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:scale-105 transition-all duration-300"
+                >
+                  <social.icon size={17} />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="lg:col-span-7 grid gap-12 sm:grid-cols-3">
-            {/* Services */}
+          {/* Navigation Links (7 cols) */}
+          <div className="lg:col-span-7 grid gap-8 grid-cols-2 sm:grid-cols-3">
+            {/* Core Services */}
             <div>
-                <h4 className="mb-8 text-[10px] font-black uppercase tracking-[0.3em] text-primary">Services</h4>
-                <div className="flex flex-col gap-4">
-                {["Video Editing", "Digital Marketing", "Web Development", "Automation"].map((item) => (
-                    <Link
-                      key={item}
-                      href={`/services/${item.toLowerCase().replace(" ", "-")}`}
-                      className="text-sm font-bold text-muted-foreground/60 hover:text-primary flex items-center gap-2 group transition-all"
-                    >
-                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {item}
-                    </Link>
+              <h4 className="mb-6 text-[10px] font-black uppercase tracking-[0.25em] text-primary">Services</h4>
+              <div className="flex flex-col gap-3">
+                {[
+                  { name: "Web Development", href: "/services/web-development" },
+                  { name: "ERP, HRM & CRM Software", href: "/#services" },
+                  { name: "Mobile & Web Apps", href: "/#services" },
+                  { name: "Automation & CRM", href: "/services/automation" },
+                  { name: "Video Production", href: "/services/video-editing" },
+                  { name: "SEO & Growth", href: "/services/seo" },
+                  { name: "Autozee.ai SaaS", href: siteConfig.autozee.url, external: true },
+                ].map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                    className="text-xs sm:text-sm font-semibold text-muted-foreground hover:text-primary flex items-center gap-1.5 transition-colors"
+                  >
+                    <span>{item.name}</span>
+                    <ArrowUpRight size={12} className="opacity-60" />
+                  </Link>
                 ))}
-                </div>
+              </div>
             </div>
 
-            {/* Company */}
+            {/* Niche Pages */}
             <div>
-                <h4 className="mb-8 text-[10px] font-black uppercase tracking-[0.3em] text-primary">Company</h4>
-                <div className="flex flex-col gap-4">
-                {["About", "Work", "Blog", "Internship Program", "Contact"].map((item) => (
-                    <Link
-                      key={item}
-                      href={item === "Internship Program" ? "/internship" : item === "Work" ? "/work" : item === "Blog" ? "/blog" : `/#${item.toLowerCase()}`}
-                      className="text-sm font-bold text-muted-foreground/60 hover:text-primary flex items-center gap-2 group transition-all"
-                    >
-                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {item}
-                    </Link>
+              <h4 className="mb-6 text-[10px] font-black uppercase tracking-[0.25em] text-primary">Solutions</h4>
+              <div className="flex flex-col gap-3">
+                {siteConfig.niches.slice(0, 5).map((niche) => (
+                  <Link
+                    key={niche.slug}
+                    href={`/${niche.slug}`}
+                    className="text-xs sm:text-sm font-semibold text-muted-foreground hover:text-primary flex items-center gap-1.5 transition-colors"
+                  >
+                    <span>{niche.targetIndustry}</span>
+                    <ArrowUpRight size={12} className="opacity-60" />
+                  </Link>
                 ))}
-                </div>
+                <Link
+                  href="/blog"
+                  className="text-xs sm:text-sm font-semibold text-muted-foreground hover:text-primary flex items-center gap-1.5 transition-colors"
+                >
+                  <span>Agency Blog</span>
+                  <ArrowUpRight size={12} className="opacity-60" />
+                </Link>
+              </div>
             </div>
 
-            {/* Connect */}
-            <div>
-                <h4 className="mb-8 text-[10px] font-black uppercase tracking-[0.3em] text-primary">Connect</h4>
-                <div className="flex flex-col gap-5">
-                    <div>
-                        <p className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground/80 mb-1">Email</p>
-                        <a href="mailto:hello@zeenox.agency" className="text-sm font-bold text-foreground hover:text-primary transition-colors">hello@zeenox.agency</a>
-                    </div>
-                    <div>
-                        <p className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground/80 mb-1">Phone</p>
-                        <a href="tel:+917603917369" className="text-sm font-bold text-foreground hover:text-primary transition-colors">+91 7603917369</a>
-                    </div>
-                    <a href="https://www.instagram.com/zeenox.agency/" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-foreground hover:text-primary transition-colors">
-                      Instagram
-                    </a>
+            {/* Direct Connect */}
+            <div className="col-span-2 sm:col-span-1">
+              <h4 className="mb-6 text-[10px] font-black uppercase tracking-[0.25em] text-primary">Direct Contact</h4>
+              <div className="flex flex-col gap-4 text-xs sm:text-sm">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">Primary Call</p>
+                  <a href={`tel:${siteConfig.contact.primaryPhone}`} className="font-bold text-foreground hover:text-primary transition-colors">
+                    {siteConfig.contact.primaryPhone}
+                  </a>
                 </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">{siteConfig.contact.secondaryContactLabel}</p>
+                  <a href={`tel:${siteConfig.contact.secondaryPhone}`} className="font-bold text-foreground hover:text-primary transition-colors">
+                    {siteConfig.contact.secondaryPhone}
+                  </a>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">Email Support</p>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="font-bold text-foreground hover:text-primary transition-colors">
+                    {siteConfig.contact.email}
+                  </a>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-0.5">Hours</p>
+                  <p className="text-muted-foreground text-[11px] font-medium">{siteConfig.contact.hours}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-24 pt-12 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            © {new Date().getFullYear()} ZeenOx Media Tech Automation. All rights reserved.
+        {/* Bottom Bar: Legal + Copyright */}
+        <div className="pt-8 border-t border-black/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] font-medium text-muted-foreground text-center sm:text-left">
+            © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
           </p>
-          <div className="flex gap-8">
-            {["Privacy Policy", "Terms of Service"].map((link) => (
-              <a key={link} href="#" className="text-[10px] font-bold text-muted-foreground hover:text-primary uppercase tracking-widest transition-colors">
-                {link}
-              </a>
-            ))}
+          <div className="flex items-center gap-6">
+            <Link 
+              href="/privacy-policy" 
+              className="text-[11px] font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <span className="h-1 w-1 rounded-full bg-black/10" />
+            <Link 
+              href="/terms" 
+              className="text-[11px] font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <span className="h-1 w-1 rounded-full bg-black/10" />
+            <Link 
+              href="/internship" 
+              className="text-[11px] font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              Careers
+            </Link>
           </div>
         </div>
       </div>

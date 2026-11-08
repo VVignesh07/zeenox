@@ -1,89 +1,79 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Calendar, User } from "lucide-react";
+import { ArrowUpRight, Calendar, User, Clock, ArrowRight } from "lucide-react";
+import siteConfig from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Insights & Blog | ZeenOx Digital Agency",
-  description: "Read our latest insights, case studies, and ultimate guides on video marketing, digital transformation, and web development.",
+  title: "Agency Insights & Technical Guides | ZeenOx",
+  description: "Actionable engineering and marketing blueprints for businesses in Tamil Nadu and India. Written directly by technical lead Arun Pandian.",
+  alternates: { canonical: `${siteConfig.siteUrl}/blog` },
 };
-
-const blogPosts = [
-  {
-    title: "How Video Automation is Changing South Indian Retail",
-    slug: "video-automation-south-indian-retail",
-    excerpt: "Retailers are using AI and automated video pipelines to produce daily social content. Here's how you can do it too.",
-    category: "Video Marketing",
-    author: "Arun",
-    date: "Oct 24, 2026",
-    color: "from-blue-500/20 to-purple-500/20",
-  },
-  {
-    title: "The Ultimate Guide to Local SEO for Clinics in 2026",
-    slug: "local-seo-for-clinics-2026",
-    excerpt: "Stop losing patients to competitors. A step-by-step guide to dominating the Google Local Pack in your city.",
-    category: "SEO",
-    author: "ZeenOx Team",
-    date: "Oct 15, 2026",
-    color: "from-emerald-500/20 to-teal-500/20",
-  },
-  {
-    title: "Why Your Next.js Website Needs a Headless CMS",
-    slug: "nextjs-headless-cms-benefits",
-    excerpt: "Decoupling your frontend from your content is no longer a luxury. Explore the performance and SEO benefits of a headless architecture.",
-    category: "Web Development",
-    author: "Arun",
-    date: "Oct 02, 2026",
-    color: "from-orange-500/20 to-rose-500/20",
-  }
-];
 
 export default function BlogPage() {
   return (
-    <main className="pt-32 pb-24 bg-background min-h-screen">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="mb-20 text-center">
-          <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.3em] text-primary">
-            Insights
+    <main className="pt-32 pb-24 bg-background min-h-screen text-foreground">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <div className="mb-16 sm:mb-20 text-center max-w-3xl mx-auto">
+          <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-bold uppercase tracking-widest text-primary border border-primary/20">
+            Agency Thinking & Guides
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-            Our Thinking <br className="hidden md:block" />
-            <span className="font-serif-accent italic text-primary">Out Loud</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4">
+            Practical Guides for{" "}
+            <span className="font-serif-accent italic text-primary">Growing Businesses.</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Actionable strategies, industry reports, and deep dives into the mechanics of digital growth.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Honest pricing breakdowns, automation blueprints, and conversion advice for founders in Tamil Nadu.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, i) => (
-            <div key={i} className="group cursor-pointer flex flex-col h-full">
-              <Link href={`/blog/${post.slug}`} className="flex flex-col h-full">
-                <div className={`aspect-video rounded-3xl bg-gradient-to-br ${post.color} mb-6 overflow-hidden relative card-apple transition-transform duration-500 group-hover:-translate-y-2`}>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-background/20 backdrop-blur-sm">
-                    <span className="h-14 w-14 rounded-full bg-background flex items-center justify-center text-primary shadow-xl">
-                      <ArrowUpRight size={24} />
-                    </span>
-                  </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {siteConfig.blogPosts.map((post) => (
+            <article
+              key={post.slug}
+              className="group flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-card border border-border/80 hover:border-primary/40 hover:shadow-xl transition-all duration-300"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-4 text-xs text-muted-foreground">
+                  <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-[10px] uppercase tracking-wider">
+                    {post.category}
+                  </span>
+                  <span className="flex items-center gap-1 text-[11px]">
+                    <Clock size={12} />
+                    {post.readTime}
+                  </span>
                 </div>
-                <div className="flex-1 flex flex-col px-2">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-                      {post.category}
-                    </span>
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground leading-snug mb-4 group-hover:text-primary transition-colors">
+
+                <h2 className="text-xl font-bold text-foreground mb-3 leading-snug group-hover:text-primary transition-colors">
+                  <Link href={`/blog/${post.slug}`}>
                     {post.title}
-                  </h2>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground pt-4 border-t border-border">
-                    <span className="flex items-center gap-1.5"><Calendar size={14} /> {post.date}</span>
-                    <span className="flex items-center gap-1.5"><User size={14} /> {post.author}</span>
-                  </div>
+                  </Link>
+                </h2>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
+                  {post.excerpt}
+                </p>
+
+                <div className="space-y-2 mb-6">
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-primary">Key Takeaways:</p>
+                  {post.keyTakeaways.slice(0, 2).map((takeaway, idx) => (
+                    <p key={idx} className="text-xs text-foreground/80 line-clamp-2">
+                      • {takeaway}
+                    </p>
+                  ))}
                 </div>
-              </Link>
-            </div>
+              </div>
+
+              <div className="pt-4 border-t border-border/40 flex items-center justify-between">
+                <span className="text-xs text-muted-foreground font-medium">By {post.author}</span>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-primary group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Read Guide</span>
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>

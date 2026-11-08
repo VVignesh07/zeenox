@@ -1,14 +1,21 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { TrendingUp, Users, Calendar } from "lucide-react";
+import siteConfig from "@/data/siteConfig";
 
-const Counter = ({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) => {
-  const [count, setCount] = useState(from);
+const Counter = ({ to, duration = 1.5 }: { to: number; duration?: number }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const [count, setCount] = useState(shouldReduceMotion ? to : 0);
   const nodeRef = useRef<HTMLSpanElement>(null);
-  const inView = useInView(nodeRef, { once: true, margin: "-50px" });
+  const inView = useInView(nodeRef, { once: true, margin: "-30px" });
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      setCount(to);
+      return;
+    }
+
     if (!inView) return;
 
     let startTime: number;
@@ -18,9 +25,8 @@ const Counter = ({ from, to, duration = 2 }: { from: number; to: number; duratio
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       
-      // Calculate current value based on progress
       const current = Math.min(
-        Math.floor((progress / (duration * 1000)) * (to - from) + from),
+        Math.floor((progress / (duration * 1000)) * to),
         to
       );
 
@@ -36,65 +42,62 @@ const Counter = ({ from, to, duration = 2 }: { from: number; to: number; duratio
     animationFrame = requestAnimationFrame(updateCount);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [from, to, duration, inView]);
+  }, [to, duration, inView, shouldReduceMotion]);
 
-  return <span ref={nodeRef}>{count}</span>;
+  return (
+    <span ref={nodeRef} aria-label={`${to} plus`}>
+      {/* Fallback for environments with JS disabled or delayed hydration */}
+      <noscript>{to}</noscript>
+      <span>{count}</span>
+    </span>
+  );
 };
 
 const StatsSection = () => {
   const stats = [
     {
-      icon: <TrendingUp size={24} className="text-primary" />,
-      iconBg: "bg-primary/10",
-      number: 6,
+      icon: <TrendingUp className="text-primary w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" />,
+      number: siteConfig.proof.projectsDelivered,
       labelLine1: "PROJECTS",
       labelLine2: "DELIVERED",
-      textColor: "text-muted-foreground",
-      highlight: false,
     },
     {
-      icon: <Users size={24} className="text-primary" />,
-      iconBg: "bg-primary/10",
-      number: 6,
-      labelLine1: "BRANDS",
-      labelLine2: "ARCHITECTED",
-      textColor: "text-muted-foreground",
-      highlight: false,
+      icon: <Users className="text-primary w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" />,
+      number: siteConfig.proof.projectsDelivered,
+      labelLine1: "BUSINESSES",
+      labelLine2: "SERVED",
     },
     {
-      icon: <Calendar size={24} className="text-primary" />,
-      iconBg: "bg-primary/10",
-      number: 6,
+      icon: <Calendar className="text-primary w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" />,
+      number: siteConfig.proof.yearsOfExperience,
       labelLine1: "YEARS",
       labelLine2: "EXPERIENCE",
-      textColor: "text-muted-foreground",
-      highlight: false,
     },
   ];
 
   return (
-    <div className="flex flex-col sm:flex-row justify-start items-center gap-6 md:gap-8 w-full">
+    <div className="grid grid-cols-3 gap-2.5 sm:gap-6 w-full">
       {stats.map((stat, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as any }}
-          className={`flex flex-col items-center justify-center p-8 bg-card rounded-[2rem] w-full sm:flex-1 transition-all duration-500 shadow-sm hover:shadow-xl border border-border`}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          className="flex flex-col items-center justify-center p-3 sm:p-6 md:p-8 bg-white/90 backdrop-blur-xl border border-white/90 rounded-2xl sm:rounded-[2rem] transition-all duration-300 shadow-xl shadow-emerald-950/[0.06] hover:shadow-2xl hover:scale-[1.02] text-center"
         >
-          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500 hover:scale-110 bg-primary/10`}>
+          <div className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center mb-2 sm:mb-4 md:mb-6 transition-transform duration-300 hover:scale-110 bg-primary/10 shadow-xs">
             {stat.icon}
           </div>
           
-          <div className="flex items-baseline mb-3">
-            <span className="text-4xl md:text-5xl font-black text-foreground tracking-tighter">
-              <Counter from={0} to={stat.number} duration={2} />
+          <div className="flex items-baseline mb-1 sm:mb-2">
+            <span className="text-2xl sm:text-3xl md:text-5xl font-black text-foreground tracking-tighter">
+              <Counter to={stat.number} duration={1.5} />
             </span>
-            <span className={`text-2xl md:text-4xl font-black ml-1 text-primary`}>+</span>
+            <span className="text-lg sm:text-2xl md:text-4xl font-black ml-0.5 text-primary">+</span>
           </div>
           
-          <span className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-center leading-relaxed flex flex-col items-center justify-center text-muted-foreground`}>
+          <span className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-wider leading-tight flex flex-col items-center justify-center text-muted-foreground">
             <span>{stat.labelLine1}</span>
             <span>{stat.labelLine2}</span>
           </span>

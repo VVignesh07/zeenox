@@ -23,19 +23,19 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <Link
             href="/"
-            className="btn-primary inline-flex items-center gap-2 justify-center"
+            className="btn-apple inline-flex items-center gap-2 justify-center"
           >
             <Home size={16} /> Go to Homepage
           </Link>
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2 justify-center px-6 py-3 rounded-full border border-white/10 bg-card text-foreground hover:bg-white/10 font-semibold transition-all"
+            className="inline-flex items-center gap-2 justify-center px-6 py-3 rounded-full border border-black/[0.08] bg-white text-[#1D1D1F] hover:bg-black/[0.04] font-semibold text-xs tracking-wide shadow-sm transition-all"
           >
             <Search size={16} /> Contact Us
           </Link>
         </div>
 
-        <div className="card-apple p-8 bg-card/50 backdrop-blur-md">
+        <div className="card-apple p-8 bg-white border border-black/[0.06] shadow-sm">
           <h2 className="text-lg font-bold mb-4">Explore Our Services</h2>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link

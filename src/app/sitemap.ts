@@ -1,21 +1,13 @@
 import { MetadataRoute } from "next";
 import { locations } from "@/data/locations";
+import siteConfig from "@/data/siteConfig";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://zeenox.agency";
-  
-  // Use a fixed date for the current iteration rather than new Date()
-  // which causes the sitemap to change on every single build/request.
-  const lastModified = "2026-07-06T00:00:00.000Z";
+  const baseUrl = siteConfig.siteUrl;
+  const lastModified = "2026-03-20T00:00:00.000Z";
 
-  const locationUrls: MetadataRoute.Sitemap = locations.map((loc) => ({
-    url: `${baseUrl}/locations/${loc.id}`,
-    lastModified,
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
-
-  return [
+  // Static core routes
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
       lastModified,
@@ -23,25 +15,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/services/video-editing`,
+      url: `${baseUrl}/privacy-policy`,
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.95,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/services/web-development`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/services/seo`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/services/digital-marketing`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
@@ -50,50 +42,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/services/automation`,
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified,
-      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/blog/best-video-editing-agency-india`,
+      url: `${baseUrl}/services/video-editing`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/blog/website-development-company-india`,
+      url: `${baseUrl}/services/seo`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/blog/seo-specialist-agency-india`,
+      url: `${baseUrl}/services/digital-marketing`,
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.85,
+      priority: 0.8,
     },
-    {
-      url: `${baseUrl}/blog/no-1-digital-agency-india`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/internship`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/work`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    ...locationUrls,
   ];
+
+  // Niche landing page URLs
+  const nicheRoutes: MetadataRoute.Sitemap = siteConfig.niches.map((niche) => ({
+    url: `${baseUrl}/${niche.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  // Case study routes
+  const caseStudyRoutes: MetadataRoute.Sitemap = siteConfig.caseStudies.map((cs) => ({
+    url: `${baseUrl}/work/${cs.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  // Location routes
+  const locationUrls: MetadataRoute.Sitemap = locations.map((loc) => ({
+    url: `${baseUrl}/locations/${loc.id}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...nicheRoutes, ...caseStudyRoutes, ...locationUrls];
 }

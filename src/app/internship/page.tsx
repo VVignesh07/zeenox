@@ -84,7 +84,7 @@ export default function InternshipPage() {
           </div>
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-24">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-24">
           <h2 className="text-3xl font-bold mb-6">Why Intern at ZeenOx?</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             Most digital marketing internship programs involve fetching coffee and scheduling social media posts. At ZeenOx, interns are integrated directly into our production teams from day one. You will work on live client accounts, participate in creative strategy sessions, and build a portfolio of impactful work.

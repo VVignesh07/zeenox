@@ -1,157 +1,153 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import SocialShare from "@/components/SocialShare";
+import siteConfig from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Digital Agency Case Studies & Portfolio | ZeenOx Work",
-  description: "Explore ZeenOx's portfolio of work. See how our digital marketing, web development, and video editing services have transformed businesses across healthcare, fashion, retail, and more.",
-  keywords: [
-    "digital agency portfolio India",
-    "case study digital marketing",
-    "web development portfolio",
-    "video editing portfolio India",
-    "ZeenOx work",
-    "ZeenOx case studies",
-    "best digital agency work samples",
-    "healthcare marketing case study",
-    "fashion brand digital marketing",
-  ],
-  alternates: { canonical: "https://zeenox.agency/work" },
+  title: "Case Studies & Live Production Portfolio | ZeenOx Digital Agency",
+  description: "Explore ZeenOx's verified portfolio of work. Real results, live platforms, and performance metrics across healthcare, real estate, retail, and business automation.",
+  alternates: { canonical: `${siteConfig.siteUrl}/work` },
   openGraph: {
-    title: "Digital Agency Case Studies & Portfolio | ZeenOx",
-    description: "See how ZeenOx has transformed businesses with video editing, web development, and digital marketing. Real results for real brands.",
-    url: "https://zeenox.agency/work",
+    title: "Case Studies & Live Production Portfolio | ZeenOx",
+    description: "Explore ZeenOx's verified portfolio of work across web apps, digital platforms, and automation systems.",
+    url: `${siteConfig.siteUrl}/work`,
   },
 };
-
-const caseStudies = [
-  {
-    category: "Healthcare Marketing Agency Case Study",
-    client: "UK Charity",
-    outcome: "Rebuilt web presence for a UK-based charity, improving accessibility and lead capture by 140%.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop",
-    tags: ["Web Development", "SEO", "UX Design"]
-  },
-  {
-    category: "Clinic Marketing Case Study",
-    client: "Rehabilitation Center",
-    outcome: "10th-anniversary campaign design and digital rollout for a special-needs rehabilitation center.",
-    image: "https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?q=80&w=1200&auto=format&fit=crop",
-    tags: ["Digital Marketing", "Video Editing", "Branding"]
-  },
-  {
-    category: "Interior Design & Home Improvement",
-    client: "STUPVC Interiors",
-    outcome: "Full-service website build with product catalogues and enquiry automation, boosting leads by 200%.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
-    tags: ["Web Development", "UX Design", "Lead Generation"]
-  },
-  {
-    category: "Health & Nutrition",
-    client: "Feed & Fit",
-    outcome: "Built a nutrition-focused platform with meal plans and blog content strategy, driving 320% organic traffic growth.",
-    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop",
-    tags: ["Web Development", "SEO", "Content Strategy"]
-  },
-  {
-    category: "Medical & Health",
-    client: "Venu's Health Care",
-    outcome: "Complete digital transformation including patient portal automation and localized SEO.",
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1200&auto=format&fit=crop",
-    tags: ["Web Development", "Automation", "Local SEO"]
-  }
-];
 
 export default function WorkPage() {
   const collectionJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "ZeenOx Digital Agency — Portfolio & Case Studies",
-    "description": "A curated collection of ZeenOx's best work across digital marketing, web development, and video production.",
-    "url": "https://zeenox.agency/work",
+    "description": "A curated collection of ZeenOx's best work across web apps, platforms, and business automation.",
+    "url": `${siteConfig.siteUrl}/work`,
     "publisher": {
       "@type": "Organization",
       "name": "ZeenOx Digital Agency",
-      "url": "https://zeenox.agency"
+      "url": siteConfig.siteUrl,
     },
     "mainEntity": {
       "@type": "ItemList",
-      "itemListElement": caseStudies.map((cs, i) => ({
+      "itemListElement": siteConfig.caseStudies.map((cs, i) => ({
         "@type": "ListItem",
         "position": i + 1,
-        "name": `${cs.client}: ${cs.category}`,
-        "description": cs.outcome
-      }))
-    }
+        "name": `${cs.client}: ${cs.title}`,
+        "description": cs.summary,
+      })),
+    },
   };
 
   return (
-    <main className="pt-32 pb-24 bg-background min-h-screen">
+    <main className="pt-32 pb-24 bg-white min-h-screen text-foreground">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="mb-20 text-center">
-          <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-primary/10 text-[10px] font-black uppercase tracking-[0.3em] text-primary">
-            Our Portfolio
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <div className="mb-16 sm:mb-20 text-center max-w-3xl mx-auto">
+          <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-emerald-50 text-[10px] font-bold uppercase tracking-widest text-primary shadow-xs">
+            Engineered Results
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-[#1D1D1F]">
             Work That <br className="hidden md:block" />
-            <span className="font-serif-accent italic text-primary">Drives Results</span>
+            <span className="font-serif-accent italic text-primary">Drives Verifiable Growth</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We partner with ambitious brands to solve complex digital challenges. Here is a selection of our recent work spanning video production, marketing, and engineering.
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-medium">
+            We partner with ambitious founders in Tamil Nadu and worldwide to build high-converting websites, web apps, and automated workflows.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {caseStudies.map((cs, i) => (
-            <div key={i} className="group cursor-pointer">
-              <div className="aspect-[4/3] rounded-[2rem] bg-card mb-8 overflow-hidden relative card-apple transition-transform duration-500 group-hover:-translate-y-2 border border-white/5">
-                {/* Image */}
-                <Image 
-                  src={cs.image} 
-                  alt={cs.client} 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-                
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-background/20 backdrop-blur-sm z-10">
-                  <span className="h-16 w-16 rounded-full bg-background flex items-center justify-center text-primary shadow-2xl">
-                    <ArrowUpRight size={28} />
-                  </span>
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-10">
+          {siteConfig.caseStudies.map((cs) => (
+            <div
+              key={cs.slug}
+              className="group flex flex-col justify-between rounded-3xl bg-[#FBFBFD] shadow-[0_12px_36px_-6px_rgba(6,78,59,0.06)] overflow-hidden hover:shadow-[0_20px_50px_-10px_rgba(6,78,59,0.12)] hover:-translate-y-1 transition-all duration-300"
+            >
+              <div>
+                <Link href={`/work/${cs.slug}`} className="block aspect-[16/10] bg-muted/20 relative overflow-hidden">
+                  <Image
+                    src={cs.image}
+                    alt={cs.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  
+                  {/* Metric Pill */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#1D1D1F] font-extrabold text-xs shadow-md flex items-center gap-1.5">
+                      {cs.verified && <ShieldCheck size={13} className="text-primary" />}
+                      <span>{cs.result}</span>
+                    </span>
+                  </div>
+
+                  <div className="absolute top-4 right-4 h-9 w-9 rounded-full bg-white/95 backdrop-blur-md text-[#1D1D1F] group-hover:bg-[#1D1D1F] group-hover:text-white transition-colors flex items-center justify-center shadow-md">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </Link>
+
+                <div className="p-6 sm:p-8">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-primary">
+                      {cs.category}
+                    </span>
+                    <span className="text-xs text-muted-foreground font-medium">• {cs.location}</span>
+                  </div>
+
+                  <Link href={`/work/${cs.slug}`}>
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#1D1D1F] mb-3 leading-snug group-hover:text-primary transition-colors">
+                      {cs.client}: {cs.title}
+                    </h2>
+                  </Link>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6 line-clamp-2 font-medium">
+                    {cs.summary}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {cs.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 rounded-lg text-[11px] font-medium text-[#6E6E73] bg-[#F5F5F7]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="px-2">
-                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary mb-3">
-                  {cs.category}
-                </p>
-                <h2 className="text-2xl font-bold text-foreground leading-snug mb-4">
-                  {cs.client}: {cs.outcome}
-                </h2>
-                <div className="flex flex-wrap gap-2 mb-6">
-                    {cs.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1 rounded-full border border-border text-xs font-medium text-muted-foreground bg-card">
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-                <div className="border-t border-border pt-4 mt-auto">
-                   <SocialShare url={`https://zeenox.agency/work`} title={`${cs.client}: ${cs.category} by ZeenOx`} />
+
+              <div className="px-6 sm:px-8 pb-6 border-t border-black/[0.05] pt-4 mt-auto flex items-center justify-between">
+                <Link
+                  href={`/work/${cs.slug}`}
+                  className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
+                >
+                  Read Full Case Study <ArrowUpRight size={13} />
+                </Link>
+                <div>
+                  <SocialShare url={`${siteConfig.siteUrl}/work/${cs.slug}`} title={`${cs.client}: ${cs.title} by ZeenOx`} />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-32 text-center card-apple p-12 bg-primary/5 border-primary/20 max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Have a project in mind?</h2>
-          <p className="text-muted-foreground mb-8">We are currently accepting new clients for Q3 and Q4.</p>
-          <Link href="/#contact" className="btn-apple inline-flex">
-            Start a Conversation
-          </Link>
+        <div className="mt-24 text-center rounded-3xl p-10 sm:p-14 bg-[#FBFBFD] shadow-[0_12px_36px_-6px_rgba(6,78,59,0.06)] max-w-3xl mx-auto space-y-4">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Start a Project</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
+            Ready to build a high-performance digital presence?
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-lg mx-auto font-medium">
+            Direct collaboration with technical lead Arun Pandian. Fixed pricing, rapid sprints, and direct WhatsApp support.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#1D1D1F] text-white hover:bg-black font-semibold text-xs tracking-wide shadow-md transition-all"
+            >
+              Start a Conversation
+            </Link>
+          </div>
         </div>
       </div>
     </main>

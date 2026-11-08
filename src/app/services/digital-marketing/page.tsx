@@ -102,7 +102,7 @@ export default function DigitalMarketingService() {
           </div>
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-24">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-24">
           <h2 className="text-3xl font-bold mb-6">A Marketing Engine Built for Growth</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             Many businesses struggle because their marketing efforts are disjointed. You might have a great video editor, a separate ad buyer, and someone else running organic social. As a full-service digital marketing agency, ZeenOx unifies these efforts. We ensure that the videos we produce are immediately deployed into high-performing marketing funnels.

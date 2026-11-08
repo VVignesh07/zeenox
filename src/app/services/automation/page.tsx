@@ -71,7 +71,7 @@ export default function AutomationService() {
           </div>
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-24">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-24">
           <h2 className="text-3xl font-bold mb-6">The Unfair Advantage of Automation</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             In today's fast-paced digital economy, speed is a competitive advantage. If a lead fills out a form on your website and doesn't receive a personalized follow-up within five minutes, their conversion likelihood drops drastically. Automation services for small business bridge this gap, giving a lean team the operational capacity of a massive enterprise.

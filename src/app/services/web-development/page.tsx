@@ -102,7 +102,7 @@ export default function WebDevelopmentService() {
           </div>
         </div>
 
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-24">
+        <div className="prose prose-lg prose-neutral max-w-4xl mx-auto mb-24">
           <h2 className="text-3xl font-bold mb-6">More Than Just Code</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
             As a leading web development agency, we understand that a website must be more than just a digital brochure. It must be a functional marketing tool. That's why every site we build is optimized for technical SEO, rapid load times, and flawless mobile responsiveness.

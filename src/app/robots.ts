@@ -1,24 +1,25 @@
 import { MetadataRoute } from "next";
+import siteConfig from "@/data/siteConfig";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://zeenox.agency";
+  const baseUrl = siteConfig.siteUrl;
 
   return {
     rules: [
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/private/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       {
         userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/private/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/private/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
