@@ -12,21 +12,15 @@ const Footer = () => {
           {/* Brand & Mission (5 cols) */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3 mb-6">
-              <Link href="/" aria-label="ZeenOx Home">
-                <div 
-                  aria-label="ZeenOx Logo"
-                  className="h-8 w-36 bg-primary opacity-95"
-                  style={{
-                    maskImage: 'url(/images/logo2.png)',
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'left center',
-                    WebkitMaskImage: 'url(/images/logo2.png)',
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'left center',
-                  }}
-                />
+              <Link href="/" aria-label="ZeenOx Home" className="inline-block hover:opacity-90 transition-opacity">
+                <picture>
+                  <source srcSet="/images/logo.webp" type="image/webp" />
+                  <img
+                    src="/images/logo.png"
+                    alt="ZeenOx Digital Solution"
+                    className="h-8 sm:h-9 w-auto object-contain"
+                  />
+                </picture>
               </Link>
             </div>
             

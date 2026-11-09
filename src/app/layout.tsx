@@ -104,7 +104,7 @@ export default function RootLayout({
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: BASE_URL,
-    logo: `${BASE_URL}/images/logo2.png`,
+    logo: `${BASE_URL}/images/logo.png`,
     image: `${BASE_URL}/images/founder-arun.webp`,
     description: siteConfig.shortDescription,
     email: siteConfig.contact.email,

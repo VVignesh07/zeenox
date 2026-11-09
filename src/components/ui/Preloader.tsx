@@ -40,17 +40,14 @@ const Preloader = () => {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background pointer-events-none"
         >
           <div className="relative flex flex-col items-center">
-            <div className="mb-4 flex items-center justify-center space-x-1">
-              {"ZeenOx".split("").map((letter, i) => (
-                <span
-                  key={i}
-                  className="text-3xl sm:text-4xl font-extrabold text-[#1D1D1F] tracking-tight"
-                >
-                  {letter}
-                </span>
-              ))}
-              <span className="h-2 w-2 rounded-full bg-primary ml-1 animate-pulse" />
-            </div>
+            <picture className="mb-3">
+              <source srcSet="/images/logo.webp" type="image/webp" />
+              <img
+                src="/images/logo.png"
+                alt="ZeenOx Digital Solution"
+                className="h-9 sm:h-11 w-auto object-contain"
+              />
+            </picture>
             
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#6E6E73]">
               Media · Tech · Automation

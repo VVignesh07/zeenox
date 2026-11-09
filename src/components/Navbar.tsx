@@ -47,22 +47,17 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between gap-2 lg:gap-4">
         {/* Brand Logo & Studio Live Dot */}
-        <Link href="/" className="flex items-center gap-2.5 hover:opacity-85 transition-opacity shrink-0" aria-label="ZeenOx Home">
-          <div 
-            aria-hidden="true"
-            className="h-6 sm:h-7 w-28 sm:w-32 bg-[#1D1D1F]"
-            style={{
-              maskImage: 'url(/images/logo2.png)',
-              maskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              maskPosition: 'left center',
-              WebkitMaskImage: 'url(/images/logo2.png)',
-              WebkitMaskSize: 'contain',
-              WebkitMaskRepeat: 'no-repeat',
-              WebkitMaskPosition: 'left center',
-            }}
-          />
-          <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" title="ZeenOx Studio Live & Available" />
+        <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity shrink-0" aria-label="ZeenOx Home">
+          <picture className="shrink-0 flex items-center">
+            <source srcSet="/images/logo.webp" type="image/webp" />
+            <img
+              src="/images/logo.png"
+              alt="ZeenOx Digital Solution"
+              className="h-6 sm:h-7.5 w-auto object-contain shrink-0"
+              loading="eager"
+            />
+          </picture>
+          <span className="flex h-2 w-2 rounded-full bg-[#00D664] animate-pulse shrink-0" title="ZeenOx Studio Live & Available" />
         </Link>
 
         {/* Desktop Nav Links (Strictly Single-Line Locked, No Breaking) */}
