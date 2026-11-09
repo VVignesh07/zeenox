@@ -86,6 +86,21 @@ export const metadata: Metadata = {
     description: "Built for clinics, local brands, and growing businesses in Tamil Nadu. First draft in 48 hours.",
     images: [`${BASE_URL}/images/founder-arun.webp`],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "android-chrome-192x192", url: "/favicon-192.png" },
+      { rel: "android-chrome-512x512", url: "/favicon-512.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
