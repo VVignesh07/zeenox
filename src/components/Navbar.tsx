@@ -47,17 +47,17 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between gap-2 lg:gap-4">
         {/* Brand Logo & Studio Live Dot */}
-        <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity shrink-0" aria-label="ZeenOx Home">
+        <Link href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity shrink-0" aria-label="ZeenOx Home">
           <picture className="shrink-0 flex items-center">
             <source srcSet="/images/logo.webp" type="image/webp" />
             <img
               src="/images/logo.png"
               alt="ZeenOx Digital Solution"
-              className="h-6 sm:h-7.5 w-auto object-contain shrink-0"
+              className="h-8.5 sm:h-10 md:h-11 w-auto object-contain shrink-0"
               loading="eager"
             />
           </picture>
-          <span className="flex h-2 w-2 rounded-full bg-[#00D664] animate-pulse shrink-0" title="ZeenOx Studio Live & Available" />
+          <span className="flex h-2.5 w-2.5 rounded-full bg-[#00D664] animate-pulse shrink-0" title="ZeenOx Studio Live & Available" />
         </Link>
 
         {/* Desktop Nav Links (Strictly Single-Line Locked, No Breaking) */}

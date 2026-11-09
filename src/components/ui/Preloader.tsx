@@ -40,12 +40,12 @@ const Preloader = () => {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background pointer-events-none"
         >
           <div className="relative flex flex-col items-center">
-            <picture className="mb-3">
+            <picture className="mb-4">
               <source srcSet="/images/logo.webp" type="image/webp" />
               <img
                 src="/images/logo.png"
                 alt="ZeenOx Digital Solution"
-                className="h-9 sm:h-11 w-auto object-contain"
+                className="h-12 sm:h-16 md:h-18 w-auto object-contain"
               />
             </picture>
             

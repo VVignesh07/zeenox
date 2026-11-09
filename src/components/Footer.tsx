@@ -18,7 +18,7 @@ const Footer = () => {
                   <img
                     src="/images/logo.png"
                     alt="ZeenOx Digital Solution"
-                    className="h-8 sm:h-9 w-auto object-contain"
+                    className="h-11 sm:h-13 md:h-14 w-auto object-contain"
                   />
                 </picture>
               </Link>
