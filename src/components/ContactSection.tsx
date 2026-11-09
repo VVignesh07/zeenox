@@ -110,7 +110,13 @@ export default function ContactSection() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className="mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto"
+        >
           <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">
             Direct Studio Connection
           </span>
@@ -121,7 +127,7 @@ export default function ContactSection() {
           <p className="text-sm sm:text-base md:text-lg text-[#2D2D30] leading-relaxed max-w-xl mx-auto font-medium">
             Ready to upgrade your website, web/mobile app, or business automation? Reach out directly to our team in Tamil Nadu.
           </p>
-        </div>
+        </motion.div>
 
         <div className="mx-auto grid max-w-6xl gap-8 lg:gap-14 lg:grid-cols-12 items-start">
           {/* Left Column: Contact Details & Embedded Map (5 cols) */}

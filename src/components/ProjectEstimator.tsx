@@ -185,7 +185,13 @@ Can we discuss starting this project and lock in the architecture plan?`;
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mx-auto text-center mb-12 sm:mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-xl border border-white/90 text-primary text-[11px] font-extrabold uppercase tracking-widest mb-4 shadow-sm whitespace-nowrap">
             <Calculator size={13} className="text-primary shrink-0" />
             <span>Interactive Lead Estimator</span>
@@ -199,7 +205,7 @@ Can we discuss starting this project and lock in the architecture plan?`;
           <p className="text-base sm:text-lg text-[#2D2D30] font-medium leading-relaxed max-w-xl mx-auto">
             Select your requirements to see an instant, transparent ballpark cost. No sales fluff — just direct engineering clarity.
           </p>
-        </div>
+        </motion.div>
 
         {/* Estimator Card Grid */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

@@ -50,7 +50,13 @@ export default function ProcessSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto"
+        >
           <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-[10px] font-extrabold uppercase tracking-widest text-primary shadow-2xs">
             Structured Execution
           </span>
@@ -60,7 +66,7 @@ export default function ProcessSection() {
           <p className="text-sm sm:text-base md:text-lg text-[#2D2D30] leading-relaxed max-w-xl mx-auto font-medium">
             A battle-tested 4-step engineering roadmap. Clear milestones, continuous visibility, and zero tech debt.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {steps.map((step, idx) => {
@@ -68,11 +74,11 @@ export default function ProcessSection() {
             return (
               <motion.div
                 key={step.step}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4 }}
-                className="group p-6 sm:p-7 rounded-[2rem] bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between gpu-smooth"
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="group p-6 sm:p-7 rounded-[2rem] bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between transform-gpu will-change-transform"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

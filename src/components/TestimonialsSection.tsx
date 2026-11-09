@@ -17,7 +17,13 @@ export default function TestimonialsSection() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto"
+        >
           <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">
             Client Feedback
           </span>
@@ -28,18 +34,18 @@ export default function TestimonialsSection() {
           <p className="text-sm sm:text-base md:text-lg text-[#2D2D30] leading-relaxed max-w-xl mx-auto font-medium">
             Real feedback from clinics, retail brands, and non-profits who partnered with ZeenOx.
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Grid (Apple UI, High-Contrast Distinct Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12">
           {siteConfig.testimonials.map((item, idx) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4 }}
-              className="p-6 sm:p-8 rounded-[2rem] bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between gpu-smooth"
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="p-6 sm:p-8 rounded-[2rem] bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between transform-gpu will-change-transform"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

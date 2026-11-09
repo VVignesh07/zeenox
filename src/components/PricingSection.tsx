@@ -40,7 +40,13 @@ export default function PricingSection() {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto"
+          >
             <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">
               Clear & Transparent Pricing
             </span>
@@ -51,7 +57,7 @@ export default function PricingSection() {
             <p className="text-sm sm:text-base text-[#2D2D30] leading-relaxed max-w-xl mx-auto font-medium">
               Straightforward pricing with 100% code ownership. No monthly lock-ins, no hostage fees.
             </p>
-          </div>
+          </motion.div>
 
           {/* Apple Segmented Control Tabs */}
           <div className="flex justify-center mb-12 px-2">
