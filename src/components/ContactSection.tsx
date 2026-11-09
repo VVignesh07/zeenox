@@ -176,10 +176,10 @@ export default function ContactSection() {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "120px" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto"
         >
           <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">

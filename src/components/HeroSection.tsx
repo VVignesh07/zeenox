@@ -193,7 +193,7 @@ export default function HeroSection() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-full max-w-[620px] aspect-[4/3] relative flex items-center justify-center"
+                className="w-full max-w-[620px] aspect-[4/3] relative flex items-center justify-center transform-gpu will-change-transform"
               >
                 {/* 3D Photorealistic Technology Ecosystem Render */}
                 <div className="relative w-full h-full drop-shadow-[0_25px_50px_rgba(6,78,59,0.12)]">
@@ -213,7 +213,7 @@ export default function HeroSection() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-2 left-0 sm:-left-3 z-20 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2.5 pointer-events-none"
+                  className="absolute -top-2 left-0 sm:-left-3 z-20 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2.5 pointer-events-none transform-gpu will-change-transform"
                 >
                   <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[#00C853] shrink-0">
                     <Cpu size={15} className="animate-pulse" />
@@ -228,7 +228,7 @@ export default function HeroSection() {
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -bottom-2 right-0 sm:-right-4 z-20 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2.5 pointer-events-none"
+                  className="absolute -bottom-2 right-0 sm:-right-4 z-20 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2.5 pointer-events-none transform-gpu will-change-transform"
                 >
                   <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[#00C853] shrink-0">
                     <ShieldCheck size={15} />
@@ -243,7 +243,7 @@ export default function HeroSection() {
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute top-6 -right-2 sm:-right-5 z-20 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-[0_8px_20px_rgba(6,78,59,0.1)] flex items-center gap-2 pointer-events-none"
+                  className="absolute top-6 -right-2 sm:-right-5 z-20 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_8px_20px_rgba(6,78,59,0.1)] flex items-center gap-2 pointer-events-none transform-gpu will-change-transform"
                 >
                   <Zap size={13} className="text-[#00D664] fill-current" />
                   <span className="text-[10px] font-extrabold uppercase tracking-wide text-[#082817]">Sub-Second Edge</span>

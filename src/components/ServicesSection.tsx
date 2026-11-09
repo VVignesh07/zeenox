@@ -170,10 +170,10 @@ export default function ServicesSection() {
     return (
       <motion.div
         key={service.name}
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: "120px" }}
+        transition={{ duration: 0.35, delay: (index % 3) * 0.04, ease: "easeOut" }}
         whileHover={{ y: -6, scale: 1.012 }}
         className="rounded-[2.2rem] bg-white border border-black/[0.05] shadow-[0_4px_20px_rgba(0,0,0,0.04),0_12px_36px_rgba(6,78,59,0.04)] hover:shadow-[0_22px_55px_rgba(6,78,59,0.12)] hover:border-emerald-500/30 transition-all duration-300 p-7 sm:p-8 flex flex-col justify-between group relative overflow-hidden transform-gpu will-change-transform"
       >
@@ -261,10 +261,10 @@ export default function ServicesSection() {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         {/* Main Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "120px" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto"
         >
           <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-[10px] font-extrabold uppercase tracking-widest text-primary shadow-2xs">

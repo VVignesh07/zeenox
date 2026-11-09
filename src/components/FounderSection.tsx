@@ -55,11 +55,11 @@ export default function FounderSection() {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-6xl mx-auto rounded-[2.5rem] bg-white/95 backdrop-blur-3xl p-6 sm:p-10 md:p-14 shadow-[0_30px_90px_-15px_rgba(6,78,59,0.18)] border border-white/90 relative overflow-hidden transform-gpu will-change-transform"
+          viewport={{ once: true, margin: "120px" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="max-w-6xl mx-auto rounded-[2.5rem] bg-white/95 backdrop-blur-md sm:backdrop-blur-xl p-6 sm:p-10 md:p-14 shadow-[0_20px_60px_-15px_rgba(6,78,59,0.12)] border border-white/90 relative overflow-hidden transform-gpu will-change-transform"
         >
           {/* Subtle Ambient Glow */}
           <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />

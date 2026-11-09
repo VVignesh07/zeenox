@@ -18,10 +18,10 @@ export default function TestimonialsSection() {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "120px" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="mb-14 sm:mb-20 text-center max-w-3xl mx-auto"
         >
           <span className="mb-4 inline-block px-4 py-1.5 rounded-full bg-[#EBEBED] border border-black/[0.06] text-primary text-[10px] font-extrabold uppercase tracking-widest shadow-2xs">
@@ -41,10 +41,10 @@ export default function TestimonialsSection() {
           {siteConfig.testimonials.map((item, idx) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "120px" }}
+              transition={{ duration: 0.35, delay: idx * 0.04, ease: "easeOut" }}
               className="p-6 sm:p-8 rounded-[2rem] bg-[#F5F5F7] border border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.05),0_12px_36px_rgba(6,78,59,0.05)] hover:shadow-[0_24px_60px_-10px_rgba(6,78,59,0.14)] hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between transform-gpu will-change-transform"
             >
               <div>

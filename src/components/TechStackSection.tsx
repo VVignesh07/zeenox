@@ -167,13 +167,13 @@ export default function TechStackSection() {
         <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-36 md:w-52 bg-gradient-to-l from-[#E7F3EB] via-[#D8EFE0]/80 to-transparent z-10 pointer-events-none" />
 
         {/* Row 1: Scrolling Left (Forward) */}
-        <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
-          {[...rowOne, ...rowOne, ...rowOne].map((tech, idx) => {
+        <div className="flex w-fit animate-marquee hover:[animation-play-state:paused] transform-gpu">
+          {[...rowOne, ...rowOne].map((tech, idx) => {
             const Icon = tech.icon;
             return (
               <div
                 key={`r1-${idx}`}
-                className="group mx-3 sm:mx-4 flex items-center gap-4 px-6 sm:px-8 py-5 sm:py-6 rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-xl shadow-emerald-950/[0.06] hover:shadow-2xl hover:scale-105 transition-all duration-300 min-w-[280px] sm:min-w-[320px] shrink-0"
+                className="group mx-3 sm:mx-4 flex items-center gap-4 px-6 sm:px-8 py-5 sm:py-6 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.06] shadow-md shadow-emerald-950/[0.04] hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[280px] sm:min-w-[320px] shrink-0 transform-gpu"
               >
                 <div className="w-14 h-14 rounded-2xl bg-emerald-50/80 group-hover:bg-primary/10 flex items-center justify-center transition-colors text-3xl shrink-0 shadow-xs">
                   <Icon className={`${tech.iconColor} transition-transform group-hover:scale-110`} />
@@ -192,13 +192,13 @@ export default function TechStackSection() {
         </div>
 
         {/* Row 2: Scrolling Right (Reverse) */}
-        <div className="flex w-fit animate-marquee-reverse hover:[animation-play-state:paused]">
-          {[...rowTwo, ...rowTwo, ...rowTwo].map((tech, idx) => {
+        <div className="flex w-fit animate-marquee-reverse hover:[animation-play-state:paused] transform-gpu">
+          {[...rowTwo, ...rowTwo].map((tech, idx) => {
             const Icon = tech.icon;
             return (
               <div
                 key={`r2-${idx}`}
-                className="group mx-3 sm:mx-4 flex items-center gap-4 px-6 sm:px-8 py-5 sm:py-6 rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-2xl border border-white/90 shadow-xl shadow-emerald-950/[0.06] hover:shadow-2xl hover:scale-105 transition-all duration-300 min-w-[280px] sm:min-w-[320px] shrink-0"
+                className="group mx-3 sm:mx-4 flex items-center gap-4 px-6 sm:px-8 py-5 sm:py-6 rounded-2xl sm:rounded-3xl bg-white border border-black/[0.06] shadow-md shadow-emerald-950/[0.04] hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[280px] sm:min-w-[320px] shrink-0 transform-gpu"
               >
                 <div className="w-14 h-14 rounded-2xl bg-emerald-50/80 group-hover:bg-primary/10 flex items-center justify-center transition-colors text-3xl shrink-0 shadow-xs">
                   <Icon className={`${tech.iconColor} transition-transform group-hover:scale-110`} />
