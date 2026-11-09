@@ -45,7 +45,9 @@ const Preloader = () => {
               <img
                 src="/images/logo.png"
                 alt="ZeenOx Digital Solution"
-                className="h-12 sm:h-16 md:h-18 w-auto object-contain"
+                width={160}
+                height={40}
+                className="h-10 sm:h-12 md:h-14 w-auto max-h-14 object-contain"
               />
             </picture>
             
