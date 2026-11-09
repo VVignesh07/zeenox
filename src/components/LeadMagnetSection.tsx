@@ -180,7 +180,7 @@ export default function LeadMagnetSection() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-5 sm:space-y-6 bg-white p-7 sm:p-10 rounded-[2.2rem] border border-black/[0.06] shadow-[0_20px_60px_-15px_rgba(6,78,59,0.08)] relative overflow-hidden"
+                  className="space-y-4 sm:space-y-6 bg-white p-5 sm:p-8 md:p-10 rounded-[2.2rem] border border-black/[0.06] shadow-[0_20px_60px_-15px_rgba(6,78,59,0.08)] relative overflow-hidden"
                 >
                   {/* Apple Top Shimmer Accent */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0" />

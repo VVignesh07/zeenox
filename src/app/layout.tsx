@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -25,6 +25,14 @@ const playfair = Playfair_Display({
 });
 
 const BASE_URL = siteConfig.siteUrl;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#ffffff",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

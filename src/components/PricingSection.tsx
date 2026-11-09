@@ -60,14 +60,14 @@ export default function PricingSection() {
           </motion.div>
 
           {/* Apple Segmented Control Tabs */}
-          <div className="flex justify-center mb-12 px-2">
-            <div className="flex flex-col sm:flex-row w-full sm:w-auto p-1.5 rounded-full bg-[#F5F5F7] border border-black/[0.06] shadow-inner gap-1">
+          <div className="flex justify-center mb-10 sm:mb-12 px-2">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto p-1.5 rounded-2xl sm:rounded-full bg-[#F5F5F7] border border-black/[0.06] shadow-inner gap-1">
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`relative px-6 sm:px-8 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 grow ${
+                  className={`relative px-4 sm:px-8 py-2.5 rounded-xl sm:rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 grow ${
                     activeTab === tab.id
                       ? "bg-[#1D1D1F] text-white shadow-md"
                       : "text-[#6E6E73] hover:text-[#1D1D1F]"

@@ -59,7 +59,7 @@ export default function WhatsAppButton() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-[90] flex flex-col items-end pointer-events-auto">
+    <div className="hidden md:flex fixed bottom-8 right-8 z-[90] flex-col items-end pointer-events-auto">
       {/* Tooltip Message */}
       <AnimatePresence>
         {showTooltip && (

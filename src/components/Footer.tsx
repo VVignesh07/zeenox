@@ -6,7 +6,7 @@ import siteConfig from "@/data/siteConfig";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#F5F5F7] border-t border-black/[0.05] pt-24 sm:pt-32 pb-16 overflow-hidden">
+    <footer className="relative bg-[#F5F5F7] border-t border-black/[0.05] pt-20 sm:pt-32 pb-28 md:pb-16 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid gap-12 sm:gap-16 lg:grid-cols-12 mb-16">
           {/* Brand & Mission (5 cols) */}

@@ -117,15 +117,15 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden absolute top-[115%] left-0 right-0 bg-white/95 backdrop-blur-3xl border border-white/90 rounded-3xl shadow-2xl p-6 shadow-[0_20px_50px_rgba(6,78,59,0.15)]"
+            className="lg:hidden absolute top-[115%] left-0 right-0 bg-white/98 backdrop-blur-2xl border border-black/[0.06] rounded-3xl shadow-2xl p-5 sm:p-6 shadow-[0_20px_50px_rgba(6,78,59,0.15)] max-h-[82vh] overflow-y-auto"
           >
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-2">
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="text-xs font-bold uppercase tracking-[0.15em] text-[#1D1D1F]/80 hover:text-[#00C853] py-1.5 flex items-center justify-between whitespace-nowrap"
+                  className="text-xs font-bold uppercase tracking-[0.15em] text-[#1D1D1F]/80 hover:text-[#00C853] hover:bg-black/[0.03] py-2.5 px-3 rounded-xl flex items-center justify-between whitespace-nowrap transition-colors"
                 >
                   <span>{item.label}</span>
                   <ArrowRight size={13} className="text-[#00C853]/70" />

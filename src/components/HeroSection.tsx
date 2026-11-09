@@ -95,7 +95,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-extrabold tracking-tight text-[#082817] leading-[1.04] [text-wrap:balance]"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-[5.2rem] font-extrabold tracking-tight text-[#082817] leading-[1.08] sm:leading-[1.04] [text-wrap:balance]"
             >
               {isTamil ? (
                 <>
@@ -115,7 +115,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.12 }}
-              className="text-base sm:text-lg md:text-xl text-[#2B4B38] font-medium leading-relaxed max-w-xl text-balance"
+              className="text-sm sm:text-base md:text-xl text-[#2B4B38] font-medium leading-relaxed max-w-xl text-balance"
             >
               {isTamil
                 ? "வணிக செயல்பாடுகளை சீராக்க, உங்கள் குழுக்களை இணைக்க மற்றும் நம்பிக்கையுடன் வளர ஒருங்கிணைந்த டிஜிட்டல் தீர்வுகள்."
@@ -127,12 +127,12 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 pt-2"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2"
             >
               {/* Primary Green Pill Button */}
               <Link
                 href="/#services"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#00D664] hover:bg-[#00BF58] text-[#052B16] font-extrabold text-sm sm:text-[15px] tracking-wide shadow-[0_12px_28px_rgba(0,214,100,0.32)] hover:shadow-[0_16px_36px_rgba(0,214,100,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 shrink-0 group cursor-pointer"
+                className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-2xl bg-[#00D664] hover:bg-[#00BF58] text-[#052B16] font-extrabold text-sm sm:text-[15px] tracking-wide shadow-[0_12px_28px_rgba(0,214,100,0.32)] hover:shadow-[0_16px_36px_rgba(0,214,100,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 shrink-0 group cursor-pointer text-center"
               >
                 <span>{isTamil ? "தீர்வுகளைக் காண்க" : "Explore solutions"}</span>
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -144,7 +144,7 @@ export default function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleHeroWaClick}
-                className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white hover:bg-[#F5F5F7] text-[#082817] font-bold text-sm sm:text-[15px] tracking-wide border border-black/[0.08] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
+                className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-2xl bg-white hover:bg-[#F5F5F7] text-[#082817] font-bold text-sm sm:text-[15px] tracking-wide border border-black/[0.08] shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 text-center"
               >
                 <MessageCircle size={18} className="text-[#25D366] fill-current" />
                 <span>{isTamil ? "வாட்ஸ்அப் ஆலோசனை" : "Get a Quote"}</span>
@@ -156,27 +156,27 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="pt-4 border-t border-black/[0.06] flex items-center gap-6 sm:gap-8"
+              className="pt-4 border-t border-black/[0.06] flex items-center justify-between sm:justify-start gap-3 sm:gap-8"
             >
               <div>
-                <div className="text-xl sm:text-2xl font-black text-[#082817] tracking-tight">50+</div>
-                <div className="text-[10px] sm:text-[11px] font-bold text-[#2B4B38]/70 uppercase tracking-wider">Enterprise Systems</div>
+                <div className="text-lg sm:text-2xl font-black text-[#082817] tracking-tight">50+</div>
+                <div className="text-[9px] sm:text-[11px] font-bold text-[#2B4B38]/70 uppercase tracking-wider">Enterprise Systems</div>
               </div>
-              <div className="h-7 w-px bg-black/[0.08]" />
+              <div className="h-6 sm:h-7 w-px bg-black/[0.08]" />
               <div>
-                <div className="text-xl sm:text-2xl font-black text-[#082817] tracking-tight">99.9%</div>
-                <div className="text-[10px] sm:text-[11px] font-bold text-[#2B4B38]/70 uppercase tracking-wider">Uptime SLA</div>
+                <div className="text-lg sm:text-2xl font-black text-[#082817] tracking-tight">99.9%</div>
+                <div className="text-[9px] sm:text-[11px] font-bold text-[#2B4B38]/70 uppercase tracking-wider">Uptime SLA</div>
               </div>
-              <div className="h-7 w-px bg-black/[0.08]" />
+              <div className="h-6 sm:h-7 w-px bg-black/[0.08]" />
               <div>
-                <div className="text-xl sm:text-2xl font-black text-[#082817] tracking-tight">48-Hr</div>
-                <div className="text-[10px] sm:text-[11px] font-bold text-[#2B4B38]/70 uppercase tracking-wider">Rapid Deployment</div>
+                <div className="text-lg sm:text-2xl font-black text-[#082817] tracking-tight">48-Hr</div>
+                <div className="text-[9px] sm:text-[11px] font-bold text-[#2B4B38]/70 uppercase tracking-wider">Rapid Deployment</div>
               </div>
             </motion.div>
           </div>
 
           {/* ═══════════ RIGHT COLUMN: 3D ENTERPRISE TECHNOLOGY ECOSYSTEM ═══════════ */}
-          <div className="lg:col-span-6 relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[560px]">
+          <div className="lg:col-span-6 relative flex items-center justify-center min-h-[280px] sm:min-h-[440px] lg:min-h-[560px]">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -213,14 +213,14 @@ export default function HeroSection() {
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-2 left-0 sm:-left-3 z-20 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2.5 pointer-events-none transform-gpu will-change-transform"
+                  className="absolute -top-2 left-1 sm:-left-3 z-20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2 sm:gap-2.5 pointer-events-none transform-gpu will-change-transform"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[#00C853] shrink-0">
-                    <Cpu size={15} className="animate-pulse" />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[#00C853] shrink-0">
+                    <Cpu size={14} className="animate-pulse" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-wider text-[#082817]">Autozee AI Engine</div>
-                    <div className="text-[9px] text-[#2B4B38]/80 font-semibold">Autonomous Sync • Live</div>
+                    <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-[#082817]">Autozee AI Engine</div>
+                    <div className="text-[8px] sm:text-[9px] text-[#2B4B38]/80 font-semibold">Autonomous Sync • Live</div>
                   </div>
                 </motion.div>
 
@@ -228,14 +228,14 @@ export default function HeroSection() {
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -bottom-2 right-0 sm:-right-4 z-20 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2.5 pointer-events-none transform-gpu will-change-transform"
+                  className="absolute -bottom-2 right-1 sm:-right-4 z-20 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_12px_28px_rgba(6,78,59,0.12)] flex items-center gap-2 sm:gap-2.5 pointer-events-none transform-gpu will-change-transform"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[#00C853] shrink-0">
-                    <ShieldCheck size={15} />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[#00C853] shrink-0">
+                    <ShieldCheck size={14} />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-wider text-[#082817]">Cloud ERP & CRM</div>
-                    <div className="text-[9px] text-[#2B4B38]/80 font-semibold">99.99% Uptime • AES-256</div>
+                    <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-[#082817]">Cloud ERP & CRM</div>
+                    <div className="text-[8px] sm:text-[9px] text-[#2B4B38]/80 font-semibold">99.99% Uptime • AES-256</div>
                   </div>
                 </motion.div>
 
@@ -243,10 +243,10 @@ export default function HeroSection() {
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute top-6 -right-2 sm:-right-5 z-20 px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_8px_20px_rgba(6,78,59,0.1)] flex items-center gap-2 pointer-events-none transform-gpu will-change-transform"
+                  className="absolute top-6 right-1 sm:-right-5 z-20 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-white/95 backdrop-blur-md sm:backdrop-blur-xl border border-black/[0.08] shadow-[0_8px_20px_rgba(6,78,59,0.1)] flex items-center gap-1.5 pointer-events-none transform-gpu will-change-transform"
                 >
-                  <Zap size={13} className="text-[#00D664] fill-current" />
-                  <span className="text-[10px] font-extrabold uppercase tracking-wide text-[#082817]">Sub-Second Edge</span>
+                  <Zap size={12} className="text-[#00D664] fill-current" />
+                  <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wide text-[#082817]">Sub-Second Edge</span>
                 </motion.div>
               </motion.div>
             </motion.div>

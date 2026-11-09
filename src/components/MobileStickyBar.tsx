@@ -58,7 +58,7 @@ export default function MobileStickyBar() {
   if (isKeyboardOpen) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[75] md:hidden p-2.5 bg-white/90 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(6,78,59,0.08)]">
+    <div className="fixed bottom-0 left-0 right-0 z-[75] md:hidden px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] bg-white/95 backdrop-blur-xl border-t border-black/[0.05] shadow-[0_-8px_30px_rgba(6,78,59,0.08)]">
       <div className="grid grid-cols-2 gap-2.5 max-w-md mx-auto">
         {/* Call Now */}
         <a
