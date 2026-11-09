@@ -88,19 +88,21 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico?v=20261109", sizes: "any" },
+      { url: "/favicon.svg?v=20261109", type: "image/svg+xml" },
+      { url: "/favicon-32.png?v=20261109", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png?v=20261109", sizes: "16x16", type: "image/png" },
     ],
+    shortcut: ["/favicon.ico?v=20261109"],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=20261109", sizes: "180x180", type: "image/png" },
     ],
     other: [
-      { rel: "android-chrome-192x192", url: "/favicon-192.png" },
-      { rel: "android-chrome-512x512", url: "/favicon-512.png" },
+      { rel: "android-chrome-192x192", url: "/favicon-192.png?v=20261109" },
+      { rel: "android-chrome-512x512", url: "/favicon-512.png?v=20261109" },
     ],
   },
+  manifest: "/manifest.json?v=20261109",
 };
 
 export default function RootLayout({
@@ -201,6 +203,12 @@ export default function RootLayout({
         <meta name="geo.placename" content="Virudhunagar, Tamil Nadu, India" />
         <meta name="geo.position" content="9.6781;78.0772" />
         <meta name="ICBM" content="9.6781, 78.0772" />
+
+        {/* Cache-busting favicon links for instant browser / search bar update */}
+        <link rel="icon" href="/favicon.ico?v=20261109" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico?v=20261109" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261109" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20261109" />
         
         {/* UTM Parameter Capture Script */}
         <script
