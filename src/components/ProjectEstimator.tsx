@@ -8,6 +8,7 @@ import {
   Cpu, 
   Sparkles, 
   CheckCircle2, 
+  Check,
   ArrowRight, 
   MessageCircle, 
   Clock, 
@@ -210,7 +211,7 @@ Can we discuss starting this project and lock in the architecture plan?`;
         {/* Estimator Card Grid */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Interactive Controls (7 cols) */}
-          <div className="lg:col-span-7 space-y-8 p-6 sm:p-9 rounded-[2.2rem] bg-white/95 backdrop-blur-md sm:backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(6,78,59,0.12)] border border-white/90">
+          <div className="lg:col-span-7 space-y-8 p-6 sm:p-9 rounded-[2.2rem] bg-white/95 backdrop-blur-md sm:backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(6,78,59,0.12)]">
             {/* Step 1: Select Service */}
             <div>
               <label className="block text-xs font-extrabold uppercase tracking-wider text-[#3A3A3C] mb-3">
@@ -225,30 +226,34 @@ Can we discuss starting this project and lock in the architecture plan?`;
                       key={service.id}
                       type="button"
                       onClick={() => setSelectedService(service.id)}
-                      className={`text-left p-4 rounded-2xl border transition-all duration-300 relative flex flex-col justify-between ${
+                      className={`text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 relative flex flex-col justify-between border-0 outline-none ${
                         isSelected
-                          ? "bg-primary/[0.06] border-primary text-[#1D1D1F] shadow-sm ring-1 ring-primary/30"
-                          : "bg-[#F5F5F7] border-black/[0.04] text-[#6E6E73] hover:border-black/[0.15] hover:text-[#1D1D1F]"
+                          ? "bg-white text-[#1D1D1F] shadow-[0_16px_36px_-6px_rgba(0,214,100,0.28),0_4px_12px_rgba(0,0,0,0.06)] -translate-y-1 z-10"
+                          : "bg-[#F5F5F7] text-[#6E6E73] hover:bg-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:text-[#1D1D1F] hover:-translate-y-0.5"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center justify-between mb-3">
                         <div
-                          className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors shadow-2xs ${
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
                             isSelected
-                              ? "bg-primary text-white"
-                              : "bg-white text-[#1D1D1F]"
+                              ? "bg-primary text-white shadow-md shadow-primary/30 scale-105"
+                              : "bg-white text-[#1D1D1F] shadow-xs"
                           }`}
                         >
-                          <Icon size={18} />
+                          <Icon size={19} />
                         </div>
-                        {isSelected && (
-                          <CheckCircle2 size={18} className="text-primary" />
+                        {isSelected ? (
+                          <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shadow-xs">
+                            <Check size={12} strokeWidth={3} />
+                          </div>
+                        ) : (
+                          <div className="w-5 h-5 rounded-full bg-black/[0.05]" />
                         )}
                       </div>
-                      <h4 className="text-sm font-bold text-[#1D1D1F] mb-1">
+                      <h4 className={`text-sm sm:text-base font-bold mb-1 transition-colors ${isSelected ? "text-[#082817]" : "text-[#1D1D1F]"}`}>
                         {service.title}
                       </h4>
-                      <p className="text-[11px] leading-relaxed line-clamp-2 text-[#6E6E73] font-medium">
+                      <p className="text-[11px] sm:text-xs leading-relaxed line-clamp-2 text-[#6E6E73] font-medium">
                         {service.desc}
                       </p>
                     </button>
@@ -270,27 +275,31 @@ Can we discuss starting this project and lock in the architecture plan?`;
                       key={feat.id}
                       type="button"
                       onClick={() => toggleFeature(feat.id)}
-                      className={`w-full p-3.5 rounded-xl border text-left transition-all flex items-center justify-between gap-3 ${
+                      className={`w-full p-3.5 sm:p-4 rounded-xl text-left transition-all duration-200 flex items-center justify-between gap-3 border-0 outline-none ${
                         isChecked
-                          ? "bg-primary/[0.05] border-primary/50 text-[#1D1D1F] ring-1 ring-primary/20"
-                          : "bg-[#F5F5F7] border-black/[0.04] text-[#6E6E73] hover:border-black/[0.12]"
+                          ? "bg-white text-[#1D1D1F] shadow-[0_10px_24px_-4px_rgba(0,214,100,0.22),0_2px_8px_rgba(0,0,0,0.04)] -translate-y-0.5"
+                          : "bg-[#F5F5F7] text-[#6E6E73] hover:bg-white hover:shadow-[0_6px_18px_rgba(0,0,0,0.05)] hover:text-[#1D1D1F]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-5 h-5 rounded-md flex items-center justify-center border transition-colors ${
+                          className={`w-5 h-5 rounded-full flex items-center justify-center transition-all ${
                             isChecked
-                              ? "bg-primary border-primary text-white"
-                              : "border-black/[0.15] bg-white"
+                              ? "bg-primary text-white shadow-xs"
+                              : "bg-white shadow-2xs"
                           }`}
                         >
-                          {isChecked && <CheckCircle2 size={13} />}
+                          {isChecked ? (
+                            <Check size={12} strokeWidth={3} />
+                          ) : (
+                            <div className="w-2 h-2 rounded-full bg-black/20" />
+                          )}
                         </div>
-                        <span className="text-xs sm:text-sm font-semibold text-[#1D1D1F]">
+                        <span className={`text-xs sm:text-sm font-semibold transition-colors ${isChecked ? "text-[#082817]" : "text-[#1D1D1F]"}`}>
                           {feat.label}
                         </span>
                       </div>
-                      <span className="text-xs font-extrabold text-primary shrink-0">
+                      <span className="text-xs sm:text-sm font-extrabold text-primary shrink-0">
                         +₹{feat.price.toLocaleString("en-IN")}
                       </span>
                     </button>
@@ -312,16 +321,25 @@ Can we discuss starting this project and lock in the architecture plan?`;
                       key={time.id}
                       type="button"
                       onClick={() => setSelectedTimeline(time.id)}
-                      className={`p-3.5 rounded-xl border text-left transition-all ${
+                      className={`p-3.5 rounded-xl text-left transition-all duration-200 border-0 outline-none ${
                         isSelected
-                          ? "bg-primary/[0.06] border-primary text-[#1D1D1F] ring-1 ring-primary/20"
-                          : "bg-[#F5F5F7] border-black/[0.04] text-[#6E6E73] hover:border-black/[0.12]"
+                          ? "bg-white text-[#1D1D1F] shadow-[0_12px_28px_-4px_rgba(0,214,100,0.22),0_3px_8px_rgba(0,0,0,0.05)] -translate-y-0.5"
+                          : "bg-[#F5F5F7] text-[#6E6E73] hover:bg-white hover:shadow-[0_6px_18px_rgba(0,0,0,0.05)] hover:text-[#1D1D1F]"
                       }`}
                     >
-                      <p className="text-xs font-bold text-[#1D1D1F] mb-0.5">
-                        {time.label}
-                      </p>
-                      <p className="text-[10px] text-[#6E6E73] font-medium">{time.note}</p>
+                      <div className="flex items-center justify-between mb-1">
+                        <p className={`text-xs font-bold transition-colors ${isSelected ? "text-[#082817]" : "text-[#1D1D1F]"}`}>
+                          {time.label}
+                        </p>
+                        {isSelected ? (
+                          <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center shadow-xs">
+                            <Check size={10} strokeWidth={3} />
+                          </div>
+                        ) : (
+                          <div className="w-4 h-4 rounded-full bg-black/[0.05]" />
+                        )}
+                      </div>
+                      <p className="text-[10px] text-[#6E6E73] font-medium leading-relaxed">{time.note}</p>
                     </button>
                   );
                 })}
@@ -331,7 +349,7 @@ Can we discuss starting this project and lock in the architecture plan?`;
 
           {/* Right Column: Calculated Quote Card (5 cols) */}
           <div className="lg:col-span-5 sticky top-28">
-            <div className="p-6 sm:p-8 rounded-[2rem] bg-white/95 backdrop-blur-md sm:backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(6,78,59,0.14)] border border-white/90 relative overflow-hidden">
+            <div className="p-6 sm:p-8 rounded-[2rem] bg-white/95 backdrop-blur-md sm:backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(6,78,59,0.14)] relative overflow-hidden">
               <div className="flex items-center justify-between pb-5 border-b border-black/[0.06] mb-6">
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-widest text-primary">
