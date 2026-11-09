@@ -1,11 +1,76 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone, MessageCircle, Calendar, CheckCircle2, ArrowRight, ExternalLink } from "lucide-react";
+import {
+  Send,
+  Mail,
+  MapPin,
+  Phone,
+  MessageCircle,
+  Calendar,
+  CheckCircle2,
+  ArrowRight,
+  ExternalLink,
+  Globe,
+  Smartphone,
+  Bot,
+  Video,
+  TrendingUp,
+  HelpCircle,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import siteConfig from "@/data/siteConfig";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const SERVICE_OPTIONS = [
+  {
+    value: "Website Development",
+    label: "Website Development",
+    badge: "Corporate & E-Com",
+    icon: Globe,
+  },
+  {
+    value: "Custom Web / Mobile App",
+    label: "Custom Web / Mobile App & SaaS",
+    badge: "Next.js & Flutter",
+    icon: Smartphone,
+  },
+  {
+    value: "Automation & WhatsApp CRM",
+    label: "Automation & WhatsApp CRM (Autozee.ai)",
+    badge: "Flows & APIs",
+    icon: Bot,
+  },
+  {
+    value: "Video Editing & Brand Production",
+    label: "Video Editing & Brand Production",
+    badge: "Reels & Commercials",
+    icon: Video,
+  },
+  {
+    value: "Digital Marketing & SEO",
+    label: "Digital Marketing & Local SEO",
+    badge: "Meta & Google Ads",
+    icon: TrendingUp,
+  },
+  {
+    value: "Not sure / Need Advice",
+    label: "Not sure / Need Technical Advice",
+    badge: "Free Consultation",
+    icon: HelpCircle,
+  },
+];
 
 export default function ContactSection() {
+  const [selectedService, setSelectedService] = useState<string>("Website Development");
   const [submittedData, setSubmittedData] = useState<{
     name: string;
     service: string;
@@ -328,37 +393,52 @@ export default function ContactSection() {
                     </div>
                   </div>
 
-                  {/* 3. Service Selection */}
+                  {/* 3. Service Selection (Radix UI Custom Dropdown) */}
                   <div className="space-y-1.5">
-                    <label htmlFor="lead-service" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      What do you need? <span className="text-primary">*</span>
-                    </label>
-                    <select
-                      id="lead-service"
-                      name="service"
-                      required
-                      defaultValue="Website Development"
-                      className="w-full h-12 rounded-xl bg-white border border-black/[0.08] px-4 text-sm text-foreground focus:border-primary focus:shadow-sm outline-none transition-all"
-                    >
-                      <option value="Website Development" className="bg-white text-foreground">
-                        Website Development (Corporate / E-Commerce)
-                      </option>
-                      <option value="Custom Web / Mobile App" className="bg-white text-foreground">
-                        Custom Web / Mobile App & SaaS
-                      </option>
-                      <option value="Automation & WhatsApp CRM" className="bg-white text-foreground">
-                        Automation & WhatsApp CRM (Autozee.ai)
-                      </option>
-                      <option value="Video Editing & Brand Production" className="bg-white text-foreground">
-                        Video Editing & Brand Production
-                      </option>
-                      <option value="Digital Marketing & SEO" className="bg-white text-foreground">
-                        Digital Marketing & Local SEO
-                      </option>
-                      <option value="Not sure / Need Advice" className="bg-white text-foreground">
-                        Not sure / Need Technical Advice
-                      </option>
-                    </select>
+                    <div className="flex items-center justify-between">
+                      <label htmlFor="lead-service" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        What do you need? <span className="text-primary">*</span>
+                      </label>
+                      <span className="text-[10px] text-muted-foreground/75 font-medium">Fast 24h turnaround</span>
+                    </div>
+
+                    <input type="hidden" name="service" value={selectedService} />
+
+                    <Select value={selectedService} onValueChange={setSelectedService} name="service">
+                      <SelectTrigger
+                        id="lead-service"
+                        className="w-full h-12 rounded-xl bg-white border border-black/[0.08] px-4 text-sm font-semibold text-foreground focus:border-primary focus:shadow-sm focus:ring-2 focus:ring-primary/15 outline-none transition-all cursor-pointer"
+                      >
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white/95 backdrop-blur-2xl border border-black/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.12),0_10px_20px_rgba(6,78,59,0.06)] rounded-2xl p-1.5 z-50">
+                        <SelectGroup>
+                          <SelectLabel className="text-[10px] font-extrabold uppercase tracking-widest text-muted-foreground/70 px-3 py-1.5">
+                            Available Solutions
+                          </SelectLabel>
+                          {SERVICE_OPTIONS.map((opt) => {
+                            const Icon = opt.icon;
+                            return (
+                              <SelectItem
+                                key={opt.value}
+                                value={opt.value}
+                                className="rounded-xl py-2.5 px-3 text-xs sm:text-sm font-medium cursor-pointer transition-colors focus:bg-emerald-500/10 focus:text-primary data-[state=checked]:font-semibold data-[state=checked]:text-primary"
+                              >
+                                <div className="flex items-center justify-between w-full gap-2">
+                                  <div className="flex items-center gap-2.5">
+                                    <Icon className="h-4 w-4 text-primary shrink-0" />
+                                    <span className="truncate">{opt.label}</span>
+                                  </div>
+                                  <span className="hidden sm:inline-block text-[10px] font-semibold px-2 py-0.5 rounded-md bg-black/[0.04] text-muted-foreground shrink-0">
+                                    {opt.badge}
+                                  </span>
+                                </div>
+                              </SelectItem>
+                            );
+                          })}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   {/* 4. Optional Message */}
